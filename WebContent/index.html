@@ -5,6 +5,7 @@
 <title>首页 - 解惑</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+<link rel="stylesheet" href="./css/common.css" media="screen">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="./js/html5shiv.js"></script>
@@ -72,78 +73,100 @@
 					<div class="page-title">
 						<div>
 							<span class="page-title-latest glyphicon glyphicon-th-list">最新动态</span>
-							<span class="page-title-setting"> <a href=""
+							<span class="page-title-setting"> <a href="#"
 								class="glyphicon glyphicon-cog">设置</a>
 							</span>
 						</div>
 					</div>
 
 
-					<div class="row">
+					<div class="row" style="border-bottom: 1px solid #eeeeee; margin-top:10px; padding-bottom:10px;">
 
 						<div class="col-lg-1 col-md-1 col-sm-1"
 							style="border-bottom: 1px solid #eeeeee;">
-							<div class="avatar">avatar 38*38</div>
-							<div class="glyphicon glyphicon-chevron-up">up</div>
-							<div class="glyphicon glyphicon-chevron-down">down</div>
+							<div class="avatar"><img src="./img/avatar/b.jpg" height="45px" width="45px" style="border-radius: 10px;"></div>
+							<div>
+								<span class="up-down">333</span>
+							</div><!-- 
+							<div>
+								<span class="up-down">2</span>
+							</div> -->
 						</div>
 
 						<div class="col-lg-11 col-md-11 col-sm-11">
 							<div class="feed-main">
 								<div class="source">
-									<a href="http://www.zhihu.com/people/kennethtse"
-										target="_blank" class="zg-link">Kenneth</a> 回答了该问题 <span
-										class="time" data-timestamp="1422792977000">42 分钟前</span>
+									<a href="#"	target="_blank" class="zg-link">Kenneth</a> 回答了该问题 
+									<span class="time" data-timestamp="1422792977000" style="float:right;">42 分钟前</span>
 								</div>
 								<div class="content">
-									<h4>title</h4>
-									<div class="entry-body">
-
+									<a href="" style="font-size:1.5em;">雨为什么是一滴一滴下的？</a>
+									<div class="entry-body" style="margin-top:5px;">
 										<p>
-											Nullam quis risus eget <a href="#">urna mollis ornare</a> vel
-											eu leo. Cum sociis natoque penatibus et magnis dis parturient
-											montes, nascetur ridiculus mus. Nullam id dolor id nibh
-											ultricies vehicula.Cum sociis natoque penatibus et magnis dis
-											parturient montes, nascetur ridiculus mus. Nullam id dolor id
-											nibh ultricies vehicula.
-										</p>
-										<p>
-											<small>This line of text is meant to be treated as
-												fine print.</small>
-										</p>
-										<p>
-											The following snippet of text is <strong>rendered as
-												bold text</strong>.
-										</p>
-										<p>
-											The following snippet of text is <em>rendered as
-												italicized text</em>.
-										</p>
-										<p>
-											An abbreviation of the word attribute is <abbr
-												title="attribute">attr</abbr>.
+											Nullam quis risus eget <a href="#">urna mollis ornare</a>
 										</p>
 									</div>
+									<a class="answer-date-link meta-item" target="_blank" href="#" style="padding-bottom:10px;">发布于 18:14</a>
 									<div class="feed-meta">
 
-										<a data-follow="q:link"
-											class="follow-link zg-follow meta-item" href="javascript:;"
-											id="sfb-3341436"><i class="z-icon-follow"></i>关注问题</a> <a
-											href="#" name="addcomment" class=" meta-item toggle-comment">
-											<i class="z-icon-comment"></i>添加评论
-										</a> <a href="#" class="meta-item zu-autohide" name="thanks"><i
-											class="z-icon-thank"></i>感谢</a> <a href="#"
-											class="meta-item zu-autohide" name="share"> <i
-											class="z-icon-share"></i>分享
-										</a> <a href="#" class="meta-item zu-autohide" name="favo"> <i
-											class="z-icon-collect"></i>收藏
-										</a> <span class="zg-bull zu-autohide">•</span> <a href="#"
-											name="nohelp" class="meta-item zu-autohide">没有帮助</a> <span
-											class="zg-bull zu-autohide">•</span> <a href="#"
-											name="report" class="meta-item zu-autohide">举报</a> <span
-											class="copyright zu-autohide"></span> <a href="#"
-											name="collapse" class="collapse meta-item zg-right"><i
-											class="z-icon-fold"></i>收起</a>
+										<a class="follow-link glyphicon glyphicon-plus" href="#" style="margin-right:5px;">关注问题</a>  
+										<a href="#" class="meta-item glyphicon glyphicon-comment" style="margin-right:5px;">添加评论</a>  
+										<a href="#" class="meta-item glyphicon glyphicon-heart" style="margin-right:5px;">感谢</a>
+										<a href="#" class="meta-item glyphicon glyphicon-share" style="margin-right:5px;">分享</a> 
+										<a href="#" class="meta-item glyphicon glyphicon-bookmark" style="margin-right:5px;">收藏</a>
+										<span class="zg-bull zu-autohide" style="color: #178acc;">•</span>
+										<a href="#" class="meta-item zu-autohide">没有帮助</a> 
+										<span class="zg-bull zu-autohide" style="color: #178acc;">•</span>
+										<a href="#" class="meta-item zu-autohide">举报</a> 
+										<a href="#" class="meta-item zg-right glyphicon glyphicon-open" style="float:right;">收起</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					
+					<div class="row" style="border-bottom: 1px solid #eeeeee; margin-top:10px; padding-bottom:10px;">
+
+						<div class="col-lg-1 col-md-1 col-sm-1"
+							style="border-bottom: 1px solid #eeeeee;">
+							<div class="avatar"><img src="./img/avatar/b.jpg" height="45px" width="45px" style="border-radius: 10px;"></div>
+							<div>
+								<span class="up-down">333</span>
+							</div><!-- 
+							<div>
+								<span class="up-down">2</span>
+							</div> -->
+						</div>
+
+						<div class="col-lg-11 col-md-11 col-sm-11">
+							<div class="feed-main">
+								<div class="source">
+									<a href="#"	target="_blank" class="zg-link">Kenneth</a> 回答了该问题 
+									<span class="time" data-timestamp="1422792977000" style="float:right;">42 分钟前</span>
+								</div>
+								<div class="content">
+									<a href="" style="font-size:1.5em;">雨为什么是一滴一滴下的？</a>
+									<div class="entry-body" style="margin-top:5px;">
+										<p>
+											Nullam quis risus eget <a href="#">urna mollis ornare</a>This is a simple hero unit, a simple jumbotron-style
+								component for calling extra attention to featured content or
+								information.
+										</p>
+									</div>
+									<a class="answer-date-link meta-item" target="_blank" href="#" style="padding-bottom:10px;">发布于 18:14</a>
+									<div class="feed-meta">
+
+										<a class="follow-link glyphicon glyphicon-plus" href="#" style="margin-right:5px;">关注问题</a>  
+										<a href="#" class="meta-item glyphicon glyphicon-comment" style="margin-right:5px;">添加评论</a>  
+										<a href="#" class="meta-item glyphicon glyphicon-heart" style="margin-right:5px;">感谢</a>
+										<a href="#" class="meta-item glyphicon glyphicon-share" style="margin-right:5px;">分享</a> 
+										<a href="#" class="meta-item glyphicon glyphicon-bookmark" style="margin-right:5px;">收藏</a>
+										<span class="zg-bull zu-autohide" style="color: #178acc;">•</span>
+										<a href="#" class="meta-item zu-autohide">没有帮助</a> 
+										<span class="zg-bull zu-autohide" style="color: #178acc;">•</span>
+										<a href="#" class="meta-item zu-autohide">举报</a> 
+										<a href="#" class="meta-item zg-right glyphicon glyphicon-open" style="float:right;">收起</a>
 									</div>
 								</div>
 							</div>
@@ -1051,7 +1074,7 @@
 					<h2>Badges</h2>
 					<div class="bs-component">
 						<ul class="nav nav-pills">
-							<li class="active"><a href="#">Home <span class="badge">42</span></a></li>
+							<li class="active"><a href="#"><span class="badge">42</span></a></li>
 							<li><a href="#">Profile <span class="badge"></span></a></li>
 							<li><a href="#">Messages <span class="badge">3</span></a></li>
 						</ul>
