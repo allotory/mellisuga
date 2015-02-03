@@ -1,5 +1,16 @@
 @CHARSET "UTF-8";
-
+a:link {
+ text-decoration: none;
+}
+a:visited {
+ text-decoration: none;
+}
+a:hover {
+ text-decoration: none;
+}
+a:active {
+ text-decoration: none;
+}
 .page-content {
   padding-bottom: 9px;
   margin: 40px 0 20px;
@@ -33,3 +44,40 @@
   background-color: #2fa4e7;
   border-radius: 10px;
 }
+.index-list {
+	border-bottom: 1px solid #eeeeee; 
+	margin-top:10px; 
+	padding-bottom:10px;
+}
+.avatar-img {
+	border-radius: 10px;
+	width: 45px;
+	height: 45px;
+}
+.time {
+	float:right;
+}
+.question-link {
+	font-size:1.5em;
+}
+.entry-body {
+	margin-top:5px;
+}
+.answer-date-link {
+	padding-bottom:10px;
+}
+.meta-item {
+	margin-right:5px;
+}
+.zg-bull {
+	color: #178acc;
+}
+.meta-item-right {
+	float:right;
+}
+
+
+
+
+
+
