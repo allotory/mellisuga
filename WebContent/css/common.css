@@ -140,11 +140,24 @@ a:active {
 	padding-bottom: 10px;
 	margin: 30px 0 0px;
 }
-
-
-
-
-
+.sidebar-group {
+	margin-top: 10px;
+}
+.sidebar-title {
+	margin-top: 10px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.similar-q {
+	margin-top: 10px;
+}
+.sidebar-share {
+	margin-top:10px;
+}
+.q-share {
+	margin-left:5px;
+	margin-right:10px;
+}
 
 
 
