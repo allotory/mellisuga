@@ -267,11 +267,22 @@ a:active {
 	float: right;
 }
 
+.setting-tab-header {
+	margin-top: 10px;
+}
 
+.setting-form {
+	margin-top: 10px;
+	height: 3em;
+	line-height: 3em;
+	overflow: hidden;
+}
 
-
-
-
+.privacy{
+	height: 3em;
+	line-height: 3em;
+	overflow: hidden;
+}
 
 
 
