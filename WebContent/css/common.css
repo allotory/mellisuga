@@ -263,7 +263,9 @@ a:active {
 	font-size: 1em;
 }
 
-
+.follow-btn {
+	float: right;
+}
 
 
 
