@@ -103,31 +103,40 @@
 									class="btn btn-primary">保存</a>
 							</div>
 							<div class="tab-pane fade" id="password">
-								<span class="setting-tab-header">修改你的登录密码。</span>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">当前密码:</label>
-									<div class="col-lg-4">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="当前密码">
-									</div>
-								</div>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">新的密码:</label>
-									<div class="col-lg-4">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="新的密码">
-									</div>
-								</div>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">确认密码:</label>
-									<div class="col-lg-4">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="确认密码">
-									</div>
-								</div>
-
-								<a href="#" class="btn btn-default">重置</a> <a href="#"
-									class="btn btn-primary">保存</a>
+								<form class="form-horizontal setting-form">
+									<fieldset>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">当前密码:</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="当前密码">
+											</div>
+											<div class="col-lg-7">
+												提示消息
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">新的密码:</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="新的密码">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">确认密码:</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="确认密码">
+											</div>
+										</div>
+					                  	<div class="form-group">
+					                    	<div class="col-lg-10 col-lg-offset-2">
+					                      		<button class="btn btn-default">重置</button>
+					                      		<button type="submit" class="btn btn-primary">保存</button>
+					                    	</div>
+					                  	</div>
+									</fieldset>
+								</form>
 							</div>
 
 							<div class="tab-pane fade" id="notification">

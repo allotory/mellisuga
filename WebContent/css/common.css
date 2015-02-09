@@ -269,16 +269,11 @@ a:active {
 
 .setting-tab-header {
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .setting-form {
-	margin-top: 10px;
-}
-
-.privacy{
-	height: 3em;
-	line-height: 3em;
-	overflow: hidden;
+	margin-top: 20px;
 }
 
 
