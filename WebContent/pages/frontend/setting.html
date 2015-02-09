@@ -65,42 +65,58 @@
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div class="tab-pane fade active in" id="account">
-								<span class="setting-tab-header">修改你的帐户基本资料，登录信息和其他安全设置。</span>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">姓名:</label>
-									<div class="col-lg-2">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="姓">
-									</div>
-									<div class="col-lg-2">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="名">
-									</div>
-								</div>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">个性网址:</label>
-									<div class="col-lg-4">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="xxx.com/people/aaaa">
-									</div>
-								</div>
-								<div class="form-group setting-form">
-									<label class="col-lg-1">邮箱:</label>
-									<div class="col-lg-4">
-										<input type="text" class="form-control" id="inputEmail"
-											placeholder="Email">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-lg-1 privacy">隐私保护:</label>
-									<div class="col-lg-11 checkbox">
-										<label> <input type="checkbox">
-											在站外搜到我在创作的内容时，我的姓名将不会被显示
-										</label>
-									</div>
-								</div>
-								<a href="#" class="btn btn-default">重置</a> <a href="#"
-									class="btn btn-primary">保存</a>
+								<form class="form-horizontal setting-form">
+									<fieldset>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">姓名:</label>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="姓">
+											</div>
+											<div class="col-lg-2">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="名">
+											</div>
+											<div class="col-lg-7">
+												提示消息
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">个性网址:</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="xxx.com/people/aaaa">
+											</div>
+											<div class="col-lg-7">
+												提示消息
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">邮箱:</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="Email">
+											</div>
+											<div class="col-lg-7">
+												提示消息
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-1 control-label">隐私保护:</label>
+											<div class="checkbox" class="col-lg-11">
+												<label> 
+													<input type="checkbox"> 有私信时邮件提醒我
+												</label>
+											</div>
+										</div>
+					                  	<div class="form-group">
+					                    	<div class="col-lg-10 col-lg-offset-2">
+					                      		<button class="btn btn-default">重置</button>
+					                      		<button type="submit" class="btn btn-primary">保存</button>
+					                    	</div>
+					                  	</div>
+									</fieldset>
+								</form>
 							</div>
 							<div class="tab-pane fade" id="password">
 								<form class="form-horizontal setting-form">
