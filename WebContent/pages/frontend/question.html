@@ -11,6 +11,23 @@
       <script src="./js/html5shiv.js"></script>
       <script src="./js/respond.min.js"></script>
     <![endif]-->
+
+<link rel="stylesheet" type="text/css" href="../../plugin/simditor/styles/font-awesome.css" /> 
+<link rel="stylesheet" type="text/css" href="../../plugin/simditor/styles/simditor.css" /> 
+
+<script type="text/javascript" src="../../plugin/simditor/scripts/jquery.min.js"></script> 
+<script type="text/javascript" src="../../plugin/simditor/scripts/module.js"></script> 
+<script type="text/javascript" src="../../plugin/simditor/scripts/hotkeys.js"></script> 
+<script type="text/javascript" src="../../plugin/simditor/scripts/uploader.js"></script> 
+<script type="text/javascript" src="../../plugin/simditor/scripts/simditor.js"></script>
+<script type="text/javascript">
+$(function(){ 
+	 toolbar = [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent' ]; 
+	 var editor = new Simditor( { textarea : $('#editor'), placeholder : '这里输入内容...', 
+		 	toolbar : toolbar //工具栏 
+		 	});
+	 })
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -153,7 +170,7 @@
 										<a href="#" target="_blank" class="zg-link">Kenneth</a>
 									</div>
 									<div class="content">
-										<textarea class="form-control" rows="5" id="textArea"></textarea>
+										<textarea class="form-control" rows="5" id="editor"></textarea>
 										<div class="checkbox post-module">
 											<label> 
 												<input type="checkbox">匿名
@@ -169,8 +186,8 @@
 
 				</div>
 
-				<div class="col-lg-3 col-md-4 col-sm-5 col-md-offset-1">
-					<div class="follow-btn">
+				<div class="col-lg-3 col-md-offset-1">
+					<div class="follow-btn col-lg-12">
 						<a href="#" class="btn btn-primary">关注</a>
 							<div class="btn-group">
 								<a href="#" class="btn btn-default">操作</a> 
