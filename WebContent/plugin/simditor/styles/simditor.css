@@ -1,6 +1,7 @@
 .simditor {
   position: relative;
-  border: 1px solid #c9d8db;
+  border: 1px solid #cccccc;
+  /*border-color:rgba(82, 168, 236, 0.8);*/
 }
 .simditor .simditor-wrapper {
   position: relative;
