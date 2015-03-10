@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Ellery的关注者 - 解惑</title>
+<title>Ellery - 解惑</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../css/bootstrap.css" media="screen">
 <link rel="stylesheet" href="../../css/common.css" media="screen">
@@ -98,69 +100,90 @@
 					</div>
 					
 					<div class="panel panel-default">
-						<div class="panel-heading"><strong>Ellery关注的人</strong></div>
+						<div class="panel-heading"><strong>提问</strong></div>
 						<div class="panel-body">
 							<div class="row status-content">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="feed-main">
+										<div class="content">
+											<a href="" class="question-link">雨为什么是一滴一滴下的？</a>
+											<div class="feed-meta">
+												<a href="#" class="answer-date-link">发布于 18:14 </a> 
+												<span class="zg-bull">•</span> <a href="#" class="meta-item">975浏览</a>
+												<span class="zg-bull">•</span> <a href="#" class="meta-item">4回答</a>
+												<span class="zg-bull">•</span> <a href="#" class="meta-item">28关注</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading"><strong>最新动态</strong></div>
+						<div class="panel-body">
+							<div class="row status-content">
+								<div class="status-info">
+									<span>赞同了回答</span>
+									<span class="status-time">1天前</span>
+								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1"
 									style="border-bottom: 1px solid #eeeeee;">
 									<div class="avatar">
 										<img src="../../img/avatar/b.jpg" class="avatar-img">
 									</div>
+									<div>
+										<span class="up-down">333</span>
+									</div>
+									<!-- 
+									<div>
+										<span class="up-down">2</span>
+									</div> -->
 								</div>
 	
 								<div class="col-lg-11 col-md-11 col-sm-11">
 									<div class="feed-main">
+										<div class="source">
+											<a href="#" target="_blank" class="zg-link">Kenneth</a> ,前端工程师
+										</div>
 										<div class="content">
-											<a href="" class="question-link">allotory</a>
+											<a href="" class="question-link">雨为什么是一滴一滴下的？</a>
 											<div class="entry-body">
 												<p>
 													Nullam quis risus eget <a href="#">urna mollis ornare</a>
 												</p>
 											</div>
 											<div class="feed-meta">
-												<a href="#" class="meta-item">133关注者</a>/
-												<a href="#" class="meta-item">255提问</a>/
-												<a href="#" class="meta-item">454回答</a>/
-												<a href="#" class="meta-item">24765赞同</a>
+												<a href="#" class="answer-date-link">发布于 18:14 </a> 
+												<a href="#" class="meta-item glyphicon glyphicon-comment">133条评论</a>
+												<a href="#" class="meta-item glyphicon glyphicon-heart">感谢</a>
+												<a href="#" class="meta-item glyphicon glyphicon-share">分享</a>
+												<a href="#" class="meta-item glyphicon glyphicon-bookmark">收藏</a>
+												<span class="zg-bull">•</span> <a href="#" class="meta-item">没有帮助</a>
+												<span class="zg-bull">•</span> <a href="#" class="meta-item">举报</a>
+												<a href="#" class="meta-item-right glyphicon glyphicon-open">收起</a>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<hr>
-							
-							<div class="row status-content">
-								<div class="col-lg-1 col-md-1 col-sm-1"
-									style="border-bottom: 1px solid #eeeeee;">
-									<div class="avatar">
-										<img src="../../img/avatar/b.jpg" class="avatar-img">
-									</div>
+							<div class="row">
+								<div class="status-info">
+									<span>关注了问题</span>
+									<span class="status-time">1天前</span>
 								</div>
-	
-								<div class="col-lg-11 col-md-11 col-sm-11">
-									<div class="feed-main">
-										<div class="content">
-											<a href="" class="question-link">allotory</a>
-											<div class="follow-btn">
-              									<a href="#" class="btn btn-primary">关注他</a>
-              									<!-- <a href="#" class="btn btn-primary disabled">Primary</a> -->
-              								</div>
-											<div class="entry-body">
-												<p>
-													Nullam quis risus eget <a href="#">urna mollis ornare</a>
-												</p>
-											</div>
-											<div class="feed-meta">
-												<a href="#" class="meta-item">133关注者</a>/
-												<a href="#" class="meta-item">255提问</a>/
-												<a href="#" class="meta-item">454回答</a>/
-												<a href="#" class="meta-item">24765赞同</a>
-											</div>
-										</div>
-									</div>
-								</div>
+								<a href="" class="status-q-link">雨为什么是一滴一滴下的？</a>
 							</div>
-							
+							<hr>
+							<div class="row">
+								<div class="status-info">
+									<span>提出了一个问题</span>
+									<span class="status-time">1天前</span>
+								</div>
+								<a href="" class="status-q-link">雨为什么是一滴一滴下的？</a>
+							</div>
 						</div>
 					</div>
 				</div>
