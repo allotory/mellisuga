@@ -10,9 +10,19 @@
 <link rel="stylesheet" href="../../css/common.css" media="screen">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-      <script src="./js/html5shiv.js"></script>
-      <script src="./js/respond.min.js"></script>
+      <script src="../../js/html5shiv.js"></script>
+      <script src="../../js/respond.min.js"></script>
     <![endif]-->
+
+<script src="../../js/jquery-1.11.2.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/popover.js"></script>
+<script src="../../js/tooltip.js"></script>    
+<script type="text/javascript">
+$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -80,7 +90,12 @@
 						<div class="col-lg-11 col-md-11 col-sm-11">
 							<div class="feed-main">
 								<div class="source">
-									<a href="#"	target="_blank" class="zg-link">Kenneth</a> 回答了该问题 
+									<a href="#" class="zg-link" title="Popover title" 
+										data-toggle="popover" data-placement="bottom" 
+										data-trigger="focus" tabindex="0"
+										data-content="Vivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+										Kenneth
+									</a> 回答了该问题 
 									<span class="time">42 分钟前</span>
 								</div>
 								<div class="content">
@@ -124,7 +139,10 @@
 						<div class="col-lg-11 col-md-11 col-sm-11">
 							<div class="feed-main">
 								<div class="source">
-									<a href="#"	target="_blank" class="zg-link">Kenneth</a> 回答了该问题 
+									<a href="#" class="zg-link" title="Popover title" 
+										data-toggle="popover" data-placement="top" 
+										data-content="Vivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+										Kenneth</a> 回答了该问题 
 									<span class="time">42 分钟前</span>
 								</div>
 								<div class="content">
@@ -179,8 +197,5 @@
 		</div>
 
 	</div>
-
-	<script src="../../js/jquery-1.11.2.min.js"></script>
-	<script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>
