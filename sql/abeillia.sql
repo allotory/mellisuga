@@ -3,7 +3,7 @@ create database abeillia;
 use abeillia;
 /* 用户表 */
 CREATE TABLE user (
-	id int(10) unsigned NOT NULL AUTO_INCREMENT,
+	id int(11) unsigned NOT NULL AUTO_INCREMENT,
 	username varchar(40) NOT NULL,
 	password varchar(60) NOT NULL,
 	email varchar(200) NOT NULL,
@@ -15,8 +15,8 @@ create database mellisuga;
 use mellisuga;
 /* 成员信息表*/
 CREATE TABLE member (
-	id int(10) unsigned NOT NULL AUTO_INCREMENT,
-	member_id int(10) unsigned NOT NULL,
+	id int(11) unsigned NOT NULL AUTO_INCREMENT,
+	member_id int(11) unsigned NOT NULL,
 	fullname varchar(40) NOT NULL,
 	gender int(11) NOT NULL,
 	is_admin int(2) unsigned NOT NULL DEFAULT '0',
@@ -31,31 +31,44 @@ CREATE TABLE member (
   	education varchar(100),
   	major varchar(50),
   	description varchar(200),
-	PRIMARY KEY (member_id)
+	PRIMARY KEY (id)
 );
 
 /* 问题表 */
 CREATE TABLE question (
-	id int(10) NOT NULL AUTO_INCREMENT,
-	questioner_id int(10) unsigned NOT NULL,
+	id int(11) NOT NULL AUTO_INCREMENT,
+	questioner_id int(11) unsigned NOT NULL,
 	question_title varchar(200) NOT NULL,
 	question_content text NOT NULL,
 	answers_num int(11) NOT NULL DEFAULT '0',
 	followers_num int(11) NOT NULL DEFAULT '0',
 	last_updated datetime NOT NULL,
-	scan_num int(11) NOT null DEFAULT '0'
+	scan_num int(11) NOT null DEFAULT '0',
+	PRIMARY KEY (id)
 );
 
 /* 答案表 */
 CREATE TABLE answers (
-	id int(10) NOT NULL AUTO_INCREMENT,
-	question_id int(10) unsigned NOT NULL,
+	id int(11) NOT NULL AUTO_INCREMENT,
+	question_id int(11) unsigned NOT NULL,
 	answerer_author_id int(10) unsigned NOT NULL,
 	answers text NOT NULL,
-	answer_date datetime NOT NULL
+	answer_date datetime NOT NULL,
+	PRIMARY KEY (id)
 );
 
 /* 问题评论表 */
+CREATE TABLE question_comment (
+	id int(11) NOT NULL auto_increment,
+	reviewer_id int(11) unsigned NOT NULL,
+	pid int(11) default NULL,
+	rootid int(11) default NULL,
+	content text default NULL,
+	comment_date datetime default NULL,
+	isleaf int(11) default NULL,
+	favour_num int(11) default NULL,
+	replyNum int(11) default NULL
+);
 
 /* 问题标签表 */
 
