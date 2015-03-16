@@ -26,11 +26,12 @@ CREATE TABLE member (
 /* ee和er同时表示同一个用户A，
  * 如果A与当前用户互相关注则标记为（1，1），
  * 如果该用户A是当前用户粉丝且当前用户没有关注A 则标记为（0，1），反之亦然*/
-CREATE TABLE follow (
+CREATE TABLE relationship (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	member_id int(11) NOT NULL,
 	followee_id int(11) NOT NULL,
-	follower_id int(11) NOT NULL
+	follower_id int(11) NOT NULL,
+	PRIMARY KEY (id)
 );
 
 /* 问题表 */
@@ -42,7 +43,15 @@ CREATE TABLE question (
 	answers_num int(11) NOT NULL DEFAULT '0',
 	followers_num int(11) NOT NULL DEFAULT '0',
 	last_updated datetime NOT NULL,
-	scan_num int(11) NOT null DEFAULT '0',
+	scan_num int(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (id)
+);
+
+/* 问题关注表 */
+CREATE TABLE follow (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	question_id int(11) NOT NULL,
+	follower_id int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -50,15 +59,18 @@ CREATE TABLE question (
 CREATE TABLE answers (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	question_id int(11) unsigned NOT NULL,
-	answerer_author_id int(10) unsigned NOT NULL,
+	author_id int(10) unsigned NOT NULL,
 	answers text NOT NULL,
 	answer_date datetime NOT NULL,
 	PRIMARY KEY (id)
 );
 
-/* 问题评论表 */
-CREATE TABLE question_comment (
+/* 问题/回答评论表 */
+/* 问题id与答案id按评论位置适时填写，二者取一 */
+CREATE TABLE comment (
 	id int(11) NOT NULL auto_increment,
+	question_id int(11) NOT NULL,
+	answer_id int(11) NOT NULL,
 	reviewer_id int(11) unsigned NOT NULL,
 	pid int(11) default NULL,
 	rootid int(11) default NULL,
@@ -66,7 +78,7 @@ CREATE TABLE question_comment (
 	comment_date datetime default NULL,
 	isleaf int(11) default NULL,
 	favour_num int(11) default NULL,
-	replyNum int(11) default NULL,
+	reply_num int(11) default NULL,
 	PRIMARY KEY (id)
 );
 
@@ -80,7 +92,7 @@ CREATE TABLE topic (
 
 /* 问题日志表 */
 /* event包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等*/
-CREATE TABLE question_log (
+CREATE TABLE qlog (
 	id int(11) NOT NULL auto_increment,
 	question_id int(11) NOT NULL,
 	member_id int(11) NOT NULL,	
@@ -89,13 +101,47 @@ CREATE TABLE question_log (
 	PRIMARY KEY (id) 
 );
 
+/* 评论赞同表（不包括答案） */
+CREATE TABLE favour (
+	id int(11) NOT NULL auto_increment,
+	comment_id int(11) NOT NULL,
+	member_id int(11) NOT NULL,	
+	PRIMARY KEY (id) 
+);
 
+/* 答案投票表 */
+CREATE TABLE vote (
+	id int(11) NOT NULL auto_increment,
+	answer_id int(11) NOT NULL,
+	vote_up int(11) NOT NULL DEFAULT '0',
+	vote_down int(11) NOT NULL DEFAULT '0',
+	voter_id int(11) NOT NULL,
+	PRIMARY KEY (id) 
+);
 
-/* 答案赞同表 */
 /* 答案感谢表 */
-/* 答案收藏表 */
-/* 答案没有帮助表 */
+CREATE TABLE thanks (
+	id int(11) NOT NULL auto_increment,
+	answer_id int(11) NOT NULL,
+	thanker_id int(11) NOT NULL,
+	PRIMARY KEY (id) 
+);
 
+/* 答案收藏表 */
+CREATE TABLE collection (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	answer_id int(11) NOT NULL,
+	collector_id int(11) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+/* 答案没有帮助表 */
+CREATE TABLE nohelp (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	answer_id int(11) NOT NULL,
+	collector_id int(11) NOT NULL,
+	PRIMARY KEY (id)
+);
 
 
 
