@@ -68,23 +68,23 @@ CREATE TABLE answers (
 /* 问题/回答评论表 */
 /* 问题id与答案id按评论位置适时填写，二者取一 */
 CREATE TABLE comment (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	question_id int(11) NOT NULL,
 	answer_id int(11) NOT NULL,
 	reviewer_id int(11) unsigned NOT NULL,
-	pid int(11) default NULL,
-	rootid int(11) default NULL,
-	content text default NULL,
-	comment_date datetime default NULL,
-	isleaf int(11) default NULL,
-	favour_num int(11) default NULL,
-	reply_num int(11) default NULL,
+	pid int(11) NOT NULL,
+	rootid int(11) NOT NULL,
+	content text NOT NULL,
+	comment_date datetime NOT NULL,
+	is_leaf smallint NOT NULL,
+	favour_num int(11) NOT NULL,
+	reply_num int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 
 /* 问题标签表 */
 CREATE TABLE topic (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	name varchar(50) NOT NULL,
 	fid int(11) NOT NULL,
 	PRIMARY KEY (id)	
@@ -93,7 +93,7 @@ CREATE TABLE topic (
 /* 问题日志表 */
 /* event包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等*/
 CREATE TABLE qlog (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	question_id int(11) NOT NULL,
 	member_id int(11) NOT NULL,	
 	event varchar(20) NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE qlog (
 
 /* 评论赞同表（不包括答案） */
 CREATE TABLE favour (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	comment_id int(11) NOT NULL,
 	member_id int(11) NOT NULL,	
 	PRIMARY KEY (id) 
@@ -111,7 +111,7 @@ CREATE TABLE favour (
 
 /* 答案投票表 */
 CREATE TABLE vote (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	answer_id int(11) NOT NULL,
 	vote_up int(11) NOT NULL DEFAULT '0',
 	vote_down int(11) NOT NULL DEFAULT '0',
@@ -121,7 +121,7 @@ CREATE TABLE vote (
 
 /* 答案感谢表 */
 CREATE TABLE thanks (
-	id int(11) NOT NULL auto_increment,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	answer_id int(11) NOT NULL,
 	thanker_id int(11) NOT NULL,
 	PRIMARY KEY (id) 
@@ -143,9 +143,28 @@ CREATE TABLE nohelp (
 	PRIMARY KEY (id)
 );
 
+/* 私信表 */
+CREATE TABLE message (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	sender_id int(11) NOT NULL,
+	receiver_id int(11) NOT NULL,
+	message text NOT NULL,
+	receiver_isdel smallint NOT NULL,
+	sender_isdel smallint NOT NULL,
+	send_time datetime NOT NULL,
+	read_time datetime NOT NULL,
+	is_read smallint NOT NULL,
+	is_reply smallint NOT NULL,
+	dialog_id int(11) NOT NULL,
+	PRIMARY KEY (id)
+);
 
-
-
+/* 对话表 */
+CREATE TABLE dialog (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	member_id int(11) NOT NULL,
+	PRIMARY KEY (id)
+);
 
 
 
