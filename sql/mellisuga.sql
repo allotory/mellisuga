@@ -44,6 +44,7 @@ CREATE TABLE question (
 	followers_num int(11) NOT NULL DEFAULT '0',
 	last_updated datetime NOT NULL,
 	scan_num int(11) NOT NULL DEFAULT '0',
+	reply_num int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -62,6 +63,7 @@ CREATE TABLE answers (
 	author_id int(10) unsigned NOT NULL,
 	answers text NOT NULL,
 	answer_date datetime NOT NULL,
+	reply_num int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -69,16 +71,14 @@ CREATE TABLE answers (
 /* 问题id与答案id按评论位置适时填写，二者取一 */
 CREATE TABLE comment (
 	id int(11) NOT NULL AUTO_INCREMENT,
+	member_id int(11) NOT NULL,
 	question_id int(11) NOT NULL,
 	answer_id int(11) NOT NULL,
 	reviewer_id int(11) unsigned NOT NULL,
-	pid int(11) NOT NULL,
-	rootid int(11) NOT NULL,
+	parent_comment_id int(11) NOT NULL,
 	content text NOT NULL,
 	comment_date datetime NOT NULL,
-	is_leaf smallint NOT NULL,
 	favour_num int(11) NOT NULL,
-	reply_num int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 

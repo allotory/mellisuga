@@ -76,8 +76,7 @@ $(function () {
 					</div>
 
 					<div class="row index-list">
-						<div class="col-lg-1 col-md-1 col-sm-1"
-							style="border-bottom: 1px solid #eeeeee;">
+						<div class="col-lg-1 col-md-1 col-sm-1">
 							<div class="avatar"><img src="../../img/avatar/b.jpg" class="avatar-img"></div>
 							<div>
 								<span class="up-down">333</span>
@@ -120,14 +119,66 @@ $(function () {
 									</div>
 								</div>
 							</div>
+							<div class="comment panel panel-default">
+				                <div class="panel-body" style="padding:10px 0 10px;border-bottom: 1px solid #eeeeee;">
+				                	<div class="col-lg-1 col-md-1 col-sm-1">
+										<img src="../../img/avatar/b.jpg" class="avatar-img-small">
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11">
+										<div><a href="#">Kenneth</a></div>
+										<div>看到整体感本来想点赞同的，看到吐槽安卓的部分。。。
+										至于安卓和苹果的操作栏谁更先进的问题可以尝试用一下就知道了。
+										大屏时代使用界面内导航并安置在左上角的，如果不是苹果估计现在已经成为历史尘埃了。
+										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
+										<div class="feed-meta">
+											<a href="#" class="meta-item">14:05</a>
+											<a href="#" class="meta-item glyphicon glyphicon-share-alt">回复</a>
+											<a href="#" class="meta-item glyphicon glyphicon-thumbs-up">赞</a>
+											<a href="#" class="meta-item glyphicon glyphicon-flag">举报</a>
+										</div>
+									</div>
+				                </div>
+				                <div class="panel-body" style="padding:10px 0 10px;border-bottom: 1px solid #eeeeee;">
+				                	<div class="col-lg-1 col-md-1 col-sm-1">
+										<img src="../../img/avatar/b.jpg" class="avatar-img-small">
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11">
+										<div><a href="#">Kenneth</a></div>
+										<div>看到整体感本来想点赞同的，看到吐槽安卓的部分。。。
+										至于安卓和苹果的操作栏谁更先进的问题可以尝试用一下就知道了。
+										大屏时代使用界面内导航并安置在左上角的，如果不是苹果估计现在已经成为历史尘埃了。
+										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
+										<div class="feed-meta">
+											<a href="#" class="meta-item">14:05</a>
+											<a href="#" class="meta-item glyphicon glyphicon-share-alt">回复</a>
+											<a href="#" class="meta-item glyphicon glyphicon-thumbs-up">赞</a>
+											<a href="#" class="meta-item glyphicon glyphicon-flag">举报</a>
+										</div>
+									</div>
+				                </div>
+				                <div class="panel-body" style="padding:10px 0 10px;">
+									<div class="col-lg-12">
+										<div class="form-group">
+						                   	<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+					                	</div>
+				                  	<div class="form-group">
+				                    	<div class="col-lg-3 col-lg-offset-9">
+				                      		<button class="btn btn-default btn-sm">取消</button>
+				                      		<button type="submit" class="btn btn-primary btn-sm">评论</button>
+				                    	</div>
+				                  	</div>
+									</div>
+				                </div>
+				            </div>
 						</div>
 					</div>
 					
 
 					<div class="row index-list">
-						<div class="col-lg-1 col-md-1 col-sm-1"
-							style="border-bottom: 1px solid #eeeeee;">
-							<div class="avatar"><img src="../../img/avatar/b.jpg" class="avatar-img"></div>
+						<div class="col-lg-1 col-md-1 col-sm-1">
+							<div class="avatar">
+								<img src="../../img/avatar/b.jpg" class="avatar-img">
+							</div>
 							<div>
 								<span class="up-down">333</span>
 							</div><!-- 

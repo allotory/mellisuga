@@ -65,6 +65,11 @@ a:active {
 	width: 45px;
 	height: 45px;
 }
+.avatar-img-small {
+	border-radius: 5px;
+	width: 25px;
+	height: 25px;
+}
 
 .avatar-img-large {
 	border-radius: 10px;
@@ -279,8 +284,12 @@ a:active {
 .login-content {
 	margin-top: 80px;
 }
-
-
+.comment {
+	margin-top: 10px;
+}
+.feed-meta {
+	margin-top: 5px;
+}
 
 
 
