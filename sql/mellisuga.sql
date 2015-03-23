@@ -3,7 +3,7 @@ create database mellisuga;
 use mellisuga;
 /* 成员信息表*/
 CREATE TABLE member (
-	id int(11) unsigned NOT NULL AUTO_INCREMENT,
+	id int(11) NOT NULL AUTO_INCREMENT,
 	member_id int(11) unsigned NOT NULL,
 	fullname varchar(40) NOT NULL,
 	gender int(11) NOT NULL,
@@ -165,16 +165,5 @@ CREATE TABLE dialog (
 	member_id int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
-
-
-
-
-
-
-
-
-
-
-
 
 
