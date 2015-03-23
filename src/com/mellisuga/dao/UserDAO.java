@@ -1,0 +1,9 @@
+package com.mellisuga.dao;
+
+import com.mellisuga.model.User;
+
+public interface UserDAO {
+
+	// ÃÌº””√ªß
+	public void addUser(User user);
+}

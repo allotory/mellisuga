@@ -4,7 +4,7 @@ use mellisuga;
 /* 成员信息表*/
 CREATE TABLE member (
 	id int(11) NOT NULL AUTO_INCREMENT,
-	member_id int(11) unsigned NOT NULL,
+	member_id int(11) NOT NULL,
 	fullname varchar(40) NOT NULL,
 	gender int(11) NOT NULL,
 	is_admin int(2) unsigned NOT NULL DEFAULT '0',
