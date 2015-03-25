@@ -39,40 +39,51 @@
 									<div class="form-group">
 										<label class="col-lg-2 control-label">用户名:</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="inputEmail"
-												placeholder="用户名">
+											<input type="text" class="form-control" id="inputUsername"
+												placeholder="用户名" onBlur="validateUsername('inputUsername','usernameDiv');">
 										</div>
-										<div class="alert alert-dismissable alert-danger col-lg-5">
+										<div id="usernameDiv" class="alert alert-dismissable alert-danger col-lg-5" style="display:none">
 							                <button type="button" class="close" data-dismiss="alert">&times;</button>
-							                                邮箱密码输入错误
+							                           用户名必须为6-15个以字母开头，可带数字、“_”的字符串
 							            </div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-2 control-label">密码:</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="inputEmail"
-												placeholder="密码">
+											<input type="text" class="form-control" id="inputPassword"
+												placeholder="密码" onblur="validatePassword('inputPassword','passwordDiv')">
 										</div>
-										<div class="alert alert-dismissable alert-info col-lg-5">
+										<div id="passwordDiv" class="alert alert-dismissable alert-info col-lg-5" style="display:none">
 							                <button type="button" class="close" data-dismiss="alert">&times;</button>
-							                                邮箱密码输入错误
+							                                密码必须为6-20个以字母开头，可带数字、“_”的字符串
 							            </div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-2 control-label">确认密码:</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="inputEmail"
-												placeholder="确认密码">
+											<input type="text" class="form-control" id="inputConfirmPass"
+												placeholder="确认密码" onblur="validateConfirmPass('inputPassword', 'inputConfirmPass', 'confirmPassDiv')">
 										</div>
-										<div class="alert alert-dismissable alert-info col-lg-5">
+										<div id="confirmPassDiv" class="alert alert-dismissable alert-info col-lg-5" style="display:none">
 							                <button type="button" class="close" data-dismiss="alert">&times;</button>
-							                                邮箱密码输入错误
+							                                两次密码输入不一致
+							            </div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-2 control-label">注册邮箱:</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="inputEmail"
+												placeholder="邮箱" onblur="validateEmail('inputEmail', 'emailDiv')">
+										</div>
+										<div id="emailDiv" class="alert alert-dismissable alert-info col-lg-5" style="display:none">
+							                <button type="button" class="close" data-dismiss="alert">&times;</button>
+							                                邮箱格式输入错误
 							            </div>
 									</div>
 				                  	<div class="form-group">
 				                    	<div class="col-lg-10 col-lg-offset-2">
 				                      		<button class="btn btn-default">重置</button>
-				                      		<button type="submit" class="btn btn-primary">保存</button>
+				                      		<button type="submit" class="btn btn-primary">注册</button>
 				                    	</div>
 				                  	</div>
 								</fieldset>
@@ -85,7 +96,8 @@
 
 	</div>
 
-	<script src="./js/jquery-1.11.2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
 </body>
 </html>
