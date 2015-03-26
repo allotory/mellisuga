@@ -22,10 +22,10 @@ import com.mellisuga.model.User;
  * @author Administrator
  */
 @WebServlet("/ValidateUser")
-public class ValidateUser extends HttpServlet {
+public class ValidateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ValidateUser() {
+	public ValidateUserServlet() {
 		super();
 	}
 

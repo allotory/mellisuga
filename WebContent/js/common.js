@@ -70,7 +70,7 @@ function validateUserUniqueness() {
 	// 注册回调函数,只写函数名，不能写括号，写括号表示调用函数。
 	xmlhttp.onreadystatechange = userUniqueCallback;
 	// 设置连接信息(请求方式，请求的url,true表示异步方式交互)
-	xmlhttp.open("GET", "ValidateUser?username=" + username, true);
+	xmlhttp.open("GET", "ValidateUserServlet?username=" + username, true);
 	// 发送数据，开始和服务器进行交互。
 	xmlhttp.send(null);
 
@@ -122,8 +122,6 @@ function validatePassword(id, divId, infoId) {
 function validateConfirmPass(pid, cpid, divId, infoId) {
 	var password = document.getElementById(pid).value.trim();
 	var confirmPassword = document.getElementById(cpid).value.trim();
-	alert(password);
-	alert(confirmPassword);
 	if ((password == "") | (confirmPassword == "") 
 			|(password != confirmPassword)) {
 		showDiv(divId, infoId);

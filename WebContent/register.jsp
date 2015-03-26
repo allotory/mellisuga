@@ -29,7 +29,7 @@
 		<div class="login-content">
 			<div class="row">
 				<div class="col-lg-10 col-md-offset-2">
-					<form class="form-horizontal setting-form">
+					<form class="form-horizontal setting-form" action="RegisterServlet" method="post">
 						<fieldset>
 							<div id="usernameGroup" class="form-group">
 								<label class="col-lg-2 control-label">用户名:</label>
@@ -49,7 +49,7 @@
 							<div id="passGroup" class="form-group">
 								<label class="col-lg-2 control-label">密码:</label>
 								<div class="col-lg-3">
-									<input type="text" class="form-control" id="inputPassword"
+									<input type="text" class="form-control" id="inputPassword" name="password"
 										placeholder="密码" onblur="validatePassword('inputPassword','passGroup','passwordDiv')">
 								</div>
 								<div id="passwordDiv" class="alert alert-dismissable alert-danger col-lg-6" style="display:none">
@@ -60,7 +60,7 @@
 							<div id="confirmPassGroup" class="form-group">
 								<label class="col-lg-2 control-label">确认密码:</label>
 								<div class="col-lg-3">
-									<input type="text" class="form-control" id="inputConfirmPass"
+									<input type="text" class="form-control" id="inputConfirmPass" name="confirmpsw"
 										placeholder="确认密码" onblur="validateConfirmPass('inputPassword', 'inputConfirmPass','confirmPassGroup', 'confirmPassDiv')">
 								</div>
 								<div id="confirmPassDiv" class="alert alert-dismissable alert-danger col-lg-6" style="display:none">
@@ -71,7 +71,7 @@
 							<div id="emailGroup" class="form-group">
 								<label class="col-lg-2 control-label">注册邮箱:</label>
 								<div class="col-lg-3">
-									<input type="text" class="form-control" id="inputEmail"
+									<input type="text" class="form-control" id="inputEmail" name="email"
 										placeholder="邮箱" onblur="validateEmail('inputEmail','emailGroup', 'emailDiv')">
 								</div>
 								<div id="emailDiv" class="alert alert-dismissable alert-danger col-lg-6" style="display:none">
