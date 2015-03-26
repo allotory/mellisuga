@@ -122,8 +122,8 @@ function validatePassword(id, divId, infoId) {
 function validateConfirmPass(pid, cpid, divId, infoId) {
 	var password = document.getElementById(pid).value.trim();
 	var confirmPassword = document.getElementById(cpid).value.trim();
-	if ((password == "") | (confirmPassword == "") 
-			|(password != confirmPassword)) {
+	if ((password == "") | (confirmPassword == "")
+			| (password != confirmPassword)) {
 		showDiv(divId, infoId);
 		return false;
 	} else {
@@ -162,10 +162,16 @@ function validateSubmit() {
 	}
 }
 
-
-
-
-
-
-
-
+// 延时消息提示
+function delayURL(url) {
+	var delay = document.getElementById("time").innerHTML;
+	// 最后的innerHTML不能丢，否则delay为一个对象
+	if (delay > 0) {
+		delay--;
+		document.getElementById("time").innerHTML = delay;
+	} else {
+		window.top.location.href = url;
+	}
+	// 此处1000毫秒即每一秒跳转一次
+	setTimeout("delayURL('" + url + "')", 1000);
+}
