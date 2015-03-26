@@ -9,6 +9,11 @@
     <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
     	insert into user(username, password, email) values(#{username}, #{password}, #{email})
     </insert>
+    
+    <!-- 通过用户名查询用户信息 -->
+    <select id="findUserByName" parameterType="User" resultType="User">
+    	select * from user where username = #{username}
+    </select>
 </mapper>
 
 
