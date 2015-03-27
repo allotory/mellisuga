@@ -1,4 +1,4 @@
-package Encryption;
+package com.mellisuga.security;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

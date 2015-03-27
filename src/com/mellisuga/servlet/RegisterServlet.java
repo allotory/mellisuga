@@ -14,8 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.mellisuga.dao.UserDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.User;
-
-import Encryption.Encryption;
+import com.mellisuga.security.Encryption;
 
 /**
  * 用户注册
@@ -65,6 +64,12 @@ public class RegisterServlet extends HttpServlet {
 	        } finally {
 	        	session.close();
 	        }
+			
+			
+			//首页数据...
+			
+			
+			
 
 			//重定向到首页
 			response.sendRedirect(request.getContextPath() 

@@ -23,8 +23,8 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a href="../" class="navbar-brand">解惑</a>
-				<button class="navbar-toggle" type="button" data-toggle="collapse"
-					data-target="#navbar-main"></button>
+				<button class="navbar-toggle" type="button" 
+					data-toggle="collapse" data-target="#navbar-main"></button>
 			</div>
 		</div>
 	</div>
@@ -40,17 +40,19 @@
 						<div class="panel-body">
 							<div class="col-lg-8 col-md-offset-2">
 								<div class="col-lg-9 col-md-offset-3">
-									<span style="font-size:2em">恭喜您注册成功</span>
+									<span style="font-size:2em">
+										恭喜您注册成功
+									</span>
 								</div>
 								<div class="col-lg-8 col-md-offset-4">
 									<span id="time">5</span>秒钟之后自动跳转
 								</div>
 								<div class="col-lg-9 col-md-offset-3">
 									如不跳转，请点击链接 
-									<a href="ask.jsp">跳转页面</a>
+									<a href="index.jsp">跳转页面</a>
 								</div>
 								<script type="text/javascript"> 
-									//delayURL("ask.jsp"); 
+									delayURL("index.jsp"); 
 								</script> 
 							</div>
 						</div>
