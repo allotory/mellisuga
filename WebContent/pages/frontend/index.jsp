@@ -19,10 +19,13 @@
 <script type="text/javascript" src="../../js/popover.js"></script>
 <script type="text/javascript" src="../../js/tooltip.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>    
-<script type="text/javascript">
-$(function () {
-	  $('[data-toggle="popover"]').popover()
-	})
+<script>
+  $(function(){
+    $('#pop_demo').popover({trigger:'click',html:'true',placement:'right',title:'hello',content:'Vivamus sagittis <a href=\'#\'>lacus</a> vel augue laoreet'});
+    //$('#element').popover('show')hide toggle destroy
+    //$('#pop_demo').popover('show');
+    
+  })
 </script>
 </head>
 <body>
@@ -37,9 +40,16 @@ $(function () {
 			<div class="navbar-collapse collapse" id="navbar-main">
 
 				<form class="navbar-form navbar-left">
-					<input type="text" size="50" class="form-control col-lg-8" placeholder="Search">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" size="50" class="form-control" placeholder="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">搜索</button>
+							</span>
+						</div>
+					</div>
 				</form>
-
+				
 				<ul class="nav navbar-nav">
 					<li><a href="#">首页</a></li>
 					<li><a href="#">话题</a></li>
@@ -91,10 +101,8 @@ $(function () {
 						<div class="col-lg-11 col-md-11 col-sm-11">
 							<div class="feed-main">
 								<div class="source">
-									<a href="#" class="zg-link" title="Popover title" 
-										data-toggle="popover" data-placement="bottom" 
-										data-trigger="focus" tabindex="0"
-										data-content="Vivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+									<a href="#" class="zg-link" 
+										rel="popover" id="pop_demo">
 										Kenneth
 									</a> 回答了该问题 
 									<span class="time">42 分钟前</span>
