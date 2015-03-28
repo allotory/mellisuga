@@ -128,10 +128,6 @@ a:active {
 	margin: 10px 0 10px;
 }
 
-.q-main {
-	border-bottom: 1px solid #eeeeee;
-}
-
 .answer-info {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -143,7 +139,6 @@ a:active {
 
 .answer-main {
 	margin-top: 10px;
-	border-top: 1px solid #eeeeee;
 }
 
 .post-source {

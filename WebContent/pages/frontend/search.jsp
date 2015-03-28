@@ -26,7 +26,14 @@
 			<div class="navbar-collapse collapse" id="navbar-main">
 
 				<form class="navbar-form navbar-left">
-					<input type="text" size="50" class="form-control col-lg-8" placeholder="Search">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" size="50" class="form-control" placeholder="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button">搜索</button>
+							</span>
+						</div>
+					</div>
 				</form>
 
 				<ul class="nav navbar-nav">
