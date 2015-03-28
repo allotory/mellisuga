@@ -25,8 +25,14 @@
 			<div class="navbar-collapse collapse" id="navbar-main">
 
 				<form class="navbar-form navbar-left">
-					<input type="text" class="form-control col-lg-8" size="50"
-						placeholder="Search">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" size="50" class="form-control" placeholder="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button">搜索</button>
+							</span>
+						</div>
+					</div>
 				</form>
 
 				<ul class="nav navbar-nav">
@@ -67,33 +73,58 @@
 									<img src="../../img/avatar/b.jpg" class="avatar-img-large">
 								</div>
 								<div class="col-lg-10 col-md-11 col-sm-11">
-									<span class="location glyphicon glyphicon-map-marker seperator">HaiLin</span>
-									<span class="business seperator">互联网</span>
-									<span class="gender">男</span>
-									<a href="#" class="glyphicon glyphicon-pencil meta-item-edit">修改</a><br>
-									
-									
-									<span class="company glyphicon glyphicon-lock seperator">公司</span>
-									<span class="work">程序猿</span>
-									<a href="#" class="glyphicon glyphicon-pencil meta-item-edit">修改</a><br>
+									<div>
+										<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 
+										<span class="location seperator">HaiLin</span>
+										<span class="business seperator">互联网</span>
+										<span class="gender">男</span>
+										<a href="#" class="meta-item-edit">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+											修改
+										</a>
+									</div>
+
+									<div>
+										<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 
+										<span class="company seperator">公司</span>
+										<span class="work">程序猿</span>
+										<a href="#" class="meta-item-edit">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+											修改
+										</a>
+									</div>
+
+									<div>
+										<span class="glyphicon glyphicon-education" aria-hidden="true"></span> 
+										<span class="company seperator">大学</span>
+										<span class="work">专业</span>
+										<a href="#" class="meta-item-edit">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+											修改
+										</a>
+									</div>
+									<br>
 									
 									<p>从前有一只北极熊买了一副墨镜，他戴了墨镜之后沉思一会儿，说到：突然好想吃竹子哦～</p>
 								</div>
 							</div>
 							<div class="thanks">
-							获得  <span class="glyphicon glyphicon-thumbs-up"><strong>133</strong>赞同</span> 
-								<span class="glyphicon glyphicon-heart-empty"><strong>52</strong>感谢</span>
+								获得   &nbsp;&nbsp;
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+								<strong>133</strong>赞同 &nbsp;&nbsp;
+								<span class="glyphicon glyphicon-heart-empty"  aria-hidden="true"></span>  
+								<strong>52</strong>感谢
 								<a href="#" class="glyphicon glyphicon-pencil info-edit">编辑我的资料</a>
 							</div>
 						</div>
 						<div class="panel-footer" style="background-color: white;">
 							<div class="info-foot">
 								<a href="" class="glyphicon glyphicon-home info-item"></a>
-								<a href="" class="info-item">提问<span>0</span></a>
-								<a href="" class="info-item">回答<span>0</span></a>
-								<a href="" class="info-item">专栏文章<span>0</span></a>
-								<a href="" class="info-item">收藏<span>0</span></a>
-								<a href="" class="info-item">公共编辑<span>0</span></a>
+								<a href="" class="info-item">提问<span> 0</span></a>
+								<a href="" class="info-item">回答<span> 0</span></a>
+								<a href="" class="info-item">专栏文章<span> 0</span></a>
+								<a href="" class="info-item">收藏<span> 0</span></a>
+								<a href="" class="info-item">公共编辑<span> 0</span></a>
 								
 							</div>
 						</div>

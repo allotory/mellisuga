@@ -44,7 +44,7 @@
 						<div class="input-group">
 							<input type="text" size="50" class="form-control" placeholder="Search">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">搜索</button>
+								<button class="btn btn-primary" type="button">搜索</button>
 							</span>
 						</div>
 					</div>
@@ -79,9 +79,9 @@
 				<div class="col-lg-8 col-md-7 col-sm-6">
 					<div class="page-title">
 						<div>
-							<span class="page-title-latest glyphicon glyphicon-th-list">最新动态</span>
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 最新动态
 							<span class="page-title-setting"> 
-								<a href="#" class="glyphicon glyphicon-cog">设置</a>
+								<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 设置
 							</span>
 						</div>
 					</div>
@@ -116,16 +116,34 @@
 									</div>
 									<a class="answer-date-link" target="_blank" href="#">发布于 18:14</a>
 									<div class="feed-meta">
-										<a href="#" class="meta-item glyphicon glyphicon-plus">关注问题</a>  
-										<a href="#" class="meta-item glyphicon glyphicon-comment">添加评论</a>  
-										<a href="#" class="meta-item glyphicon glyphicon-heart">感谢</a>
-										<a href="#" class="meta-item glyphicon glyphicon-share">分享</a> 
-										<a href="#" class="meta-item glyphicon glyphicon-bookmark">收藏</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+											关注问题
+										</a>  
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+											添加评论
+										</a>  
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+											感谢
+										</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-share" aria-hidden="true"></span> 
+											分享
+										</a> 
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> 
+											收藏
+										</a>
 										<span class="zg-bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a> 
 										<span class="zg-bull">•</span>
 										<a href="#" class="meta-item">举报</a> 
-										<a href="#" class="meta-item-right glyphicon glyphicon-open">收起</a>
+										<a href="#" class="meta-item-right">
+											<span class="glyphicon glyphicon-open" aria-hidden="true"></span> 
+											收起
+										</a>
 									</div>
 								</div>
 							</div>
@@ -142,12 +160,22 @@
 										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
 										<div class="feed-meta">
 											<a href="#" class="meta-item">14:05</a>
-											<a href="#" class="meta-item glyphicon glyphicon-share-alt">回复</a>
-											<a href="#" class="meta-item glyphicon glyphicon-thumbs-up">赞</a>
-											<a href="#" class="meta-item glyphicon glyphicon-flag">举报</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+												回复
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+												赞
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+												举报
+											</a>
 										</div>
 									</div>
 				                </div>
+				                
 				                <div class="panel-body" style="padding:10px 0 10px;border-bottom: 1px solid #eeeeee;">
 				                	<div class="col-lg-1 col-md-1 col-sm-1">
 										<img src="../../img/avatar/b.jpg" class="avatar-img-small">
@@ -160,12 +188,22 @@
 										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
 										<div class="feed-meta">
 											<a href="#" class="meta-item">14:05</a>
-											<a href="#" class="meta-item glyphicon glyphicon-share-alt">回复</a>
-											<a href="#" class="meta-item glyphicon glyphicon-thumbs-up">赞</a>
-											<a href="#" class="meta-item glyphicon glyphicon-flag">举报</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+												回复
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+												赞
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+												举报
+											</a>
 										</div>
 									</div>
 				                </div>
+				                
 				                <div class="panel-body" style="padding:10px 0 10px;">
 									<div class="col-lg-12">
 										<div class="form-group">
@@ -187,12 +225,9 @@
 						</div>
 					</div>
 					
-
 					<div class="row index-list">
 						<div class="col-lg-1 col-md-1 col-sm-1">
-							<div class="avatar">
-								<img src="../../img/avatar/b.jpg" class="avatar-img">
-							</div>
+							<div class="avatar"><img src="../../img/avatar/b.jpg" class="avatar-img"></div>
 							<div>
 								<span class="up-down">333</span>
 							</div><!-- 
@@ -204,10 +239,10 @@
 						<div class="col-lg-11 col-md-11 col-sm-11">
 							<div class="feed-main">
 								<div class="source">
-									<a href="#" class="zg-link" title="Popover title" 
-										data-toggle="popover" data-placement="top" 
-										data-content="Vivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrVivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-										Kenneth</a> 回答了该问题 
+									<a href="#" class="zg-link" 
+										rel="popover" id="pop_demo">
+										Kenneth
+									</a> 回答了该问题 
 									<span class="time">42 分钟前</span>
 								</div>
 								<div class="content">
@@ -219,21 +254,115 @@
 									</div>
 									<a class="answer-date-link" target="_blank" href="#">发布于 18:14</a>
 									<div class="feed-meta">
-										<a href="#" class="meta-item glyphicon glyphicon-plus">关注问题</a>  
-										<a href="#" class="meta-item glyphicon glyphicon-comment">添加评论</a>  
-										<a href="#" class="meta-item glyphicon glyphicon-heart">感谢</a>
-										<a href="#" class="meta-item glyphicon glyphicon-share">分享</a> 
-										<a href="#" class="meta-item glyphicon glyphicon-bookmark">收藏</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+											关注问题
+										</a>  
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+											添加评论
+										</a>  
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+											感谢
+										</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-share" aria-hidden="true"></span> 
+											分享
+										</a> 
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> 
+											收藏
+										</a>
 										<span class="zg-bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a> 
 										<span class="zg-bull">•</span>
 										<a href="#" class="meta-item">举报</a> 
-										<a href="#" class="meta-item-right glyphicon glyphicon-open">收起</a>
+										<a href="#" class="meta-item-right">
+											<span class="glyphicon glyphicon-open" aria-hidden="true"></span> 
+											收起
+										</a>
 									</div>
 								</div>
 							</div>
+							<div class="comment panel panel-default">
+				                <div class="panel-body" style="padding:10px 0 10px;border-bottom: 1px solid #eeeeee;">
+				                	<div class="col-lg-1 col-md-1 col-sm-1">
+										<img src="../../img/avatar/b.jpg" class="avatar-img-small">
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11">
+										<div><a href="#">Kenneth</a></div>
+										<div>看到整体感本来想点赞同的，看到吐槽安卓的部分。。。
+										至于安卓和苹果的操作栏谁更先进的问题可以尝试用一下就知道了。
+										大屏时代使用界面内导航并安置在左上角的，如果不是苹果估计现在已经成为历史尘埃了。
+										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
+										<div class="feed-meta">
+											<a href="#" class="meta-item">14:05</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+												回复
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+												赞
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+												举报
+											</a>
+										</div>
+									</div>
+				                </div>
+				                
+				                <div class="panel-body" style="padding:10px 0 10px;border-bottom: 1px solid #eeeeee;">
+				                	<div class="col-lg-1 col-md-1 col-sm-1">
+										<img src="../../img/avatar/b.jpg" class="avatar-img-small">
+									</div>
+									<div class="col-lg-11 col-md-11 col-sm-11">
+										<div><a href="#">Kenneth</a></div>
+										<div>看到整体感本来想点赞同的，看到吐槽安卓的部分。。。
+										至于安卓和苹果的操作栏谁更先进的问题可以尝试用一下就知道了。
+										大屏时代使用界面内导航并安置在左上角的，如果不是苹果估计现在已经成为历史尘埃了。
+										安卓完全无意识去培养逻辑，真正牛逼的是苹果，直接让你错觉了。</div>
+										<div class="feed-meta">
+											<a href="#" class="meta-item">14:05</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+												回复
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+												赞
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+												举报
+											</a>
+										</div>
+									</div>
+				                </div>
+				                
+				                <div class="panel-body" style="padding:10px 0 10px;">
+									<div class="col-lg-12">
+										<div class="form-group">
+						                   	<textarea class="form-control" style="display: block;margin:0 auto;overflow: hidden;" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+					                		<script> 
+												var text = document.getElementById("textArea");
+												autoTextarea(text);// 调用
+											</script> 
+					                	</div>
+				                  	<div class="form-group">
+				                    	<div class="col-lg-3 col-lg-offset-9">
+				                      		<button class="btn btn-default btn-sm">取消</button>
+				                      		<button type="submit" class="btn btn-primary btn-sm">评论</button>
+				                    	</div>
+				                  	</div>
+									</div>
+				                </div>
+				            </div>
 						</div>
 					</div>
+					
 
 				</div>
 
