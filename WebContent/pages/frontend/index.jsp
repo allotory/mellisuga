@@ -21,12 +21,14 @@
 <script type="text/javascript" src="../../js/common.js"></script>    
 <script>
   $(function(){
-    $('#pop_demo').popover({trigger:'click',html:'true',placement:'right',title:'hello',content:'Vivamus sagittis <a href=\'#\'>lacus</a> vel augue laoreet'});
+    $('#pop_demo').popover({trigger:'click',html:'true',placement:'right',
+    	title:'hello',content:'Vivamus sagittis <a href=\'#\'>lacus</a> vel augue laoreet'})
     //$('#element').popover('show')hide toggle destroy
     //$('#pop_demo').popover('show');
     
   })
 </script>
+
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -44,11 +46,68 @@
 						<div class="input-group">
 							<input type="text" size="50" class="form-control" placeholder="Search">
 							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button">搜索</button>
+								<button class="btn btn-primary" type="button" 
+									data-toggle="modal" data-target="#myModal">
+									提问
+								</button>
 							</span>
 						</div>
 					</div>
 				</form>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel">提问</h4>
+							</div>
+							<div class="modal-body">
+								<div class="container-fluid">
+	            				<div class="row">
+								<form class="form-horizontal setting-form">
+									<fieldset>
+										<div class="form-group">
+											<div class="col-lg-10 col-md-offset-1">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="写下你的问题" autofocus>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-10 col-md-offset-1">问题说明（可选）</label>
+										</div>
+										<div class="form-group">
+						                    <div class="col-lg-10 col-md-offset-1">
+						                    	<textarea class="form-control" id="seditor" rows="5"></textarea>
+						                      	<span class="help-block">认真填写补充说明, 可以得到更精准回答. </span>
+						                    </div>
+						                </div>
+										<div class="form-group">
+											<label class="col-lg-11 col-md-offset-1">选择话题</label>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-md-offset-1">
+												<input type="text" class="form-control" id="inputEmail"
+													placeholder="搜索话题">
+											</div>
+										</div>
+									</fieldset>
+								</form>
+								</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<input type="checkbox"> 匿名
+							  	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							  	<button type="button" class="btn btn-primary">发布</button>
+							</div>
+						</div>
+					</div>
+				</div>
 				
 				<ul class="nav navbar-nav">
 					<li><a href="#">首页</a></li>
