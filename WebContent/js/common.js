@@ -245,3 +245,12 @@ var autoTextarea = function (elem, extra, maxHeight) {
         addEvent('focus', change);
         change();
 };
+
+function showItem(id) {
+	var item = document.getElementById(id);
+	item.setAttribute("style", "");
+}
+function hideItem(id) {
+	var item = document.getElementById(id);
+	item.setAttribute("style", "display:none");
+}

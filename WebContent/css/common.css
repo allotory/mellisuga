@@ -110,9 +110,10 @@ a:active {
 	color: #999;
 }
 
-.meta-item-right {
+.meta-item-hide {	
 	color: #999;
-	float: right;
+	margin-right: 10px;
+	dispaly: none;
 }
 
 .q-tag {
