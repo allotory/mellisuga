@@ -51,7 +51,7 @@ a:active {
 	white-space: nowrap;
 	text-align: center;
 	background-color: #2fa4e7;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .index-list {
@@ -114,6 +114,11 @@ a:active {
 	color: #999;
 	margin-right: 10px;
 	dispaly: none;
+}
+
+.meta-item-right {	
+	color: #999;
+	float: right;
 }
 
 .q-tag {

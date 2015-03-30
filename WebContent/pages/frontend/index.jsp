@@ -152,12 +152,13 @@
 					<div class="row index-list" onmouseover="showItem('hideitem')" onmouseout="hideItem('hideitem')">
 						<div class="col-lg-1 col-md-1 col-sm-1">
 							<div class="avatar"><img src="../../img/avatar/b.jpg" class="avatar-img"></div>
+							
 							<div>
 								<span class="up-down">333</span>
-							</div><!-- 
+							</div>
 							<div>
 								<span class="up-down">2</span>
-							</div> -->
+							</div>
 						</div>
 
 						<div class="col-lg-11 col-md-11 col-sm-11">
@@ -204,6 +205,10 @@
 											<span class="zg-bull">•</span>
 											<a href="#" class="meta-item">举报</a> 
 										</span>
+										<a href="#" class="meta-item-right">
+											<span class="glyphicon glyphicon-open" aria-hidden="true"></span> 
+											收起
+										</a>
 									</div>
 								</div>
 							</div>
