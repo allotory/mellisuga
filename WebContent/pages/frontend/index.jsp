@@ -32,8 +32,24 @@
 <script type="text/javascript" src="../../js/transition.js"></script>   
 <script type="text/javascript" src="../../js/collapse.js"></script>   
 
+
+<link rel="stylesheet" href="../../plugin/bacheditor/css/pygment_trac.css">
+<link rel="stylesheet" href="../../plugin/bacheditor/css/editor.css">
+<link rel="stylesheet" href="../../plugin/bacheditor/css/codemirror.min.css">
+<!-- <link rel="stylesheet" href="../../plugin/bacheditor/css/default.min.css"> -->
+<script src="../../plugin/bacheditor/js/highlight.min.js"></script>
+<script src="../../plugin/bacheditor/js/marked.min.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/codemirror.min.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/highlight.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/fileupload.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/modal.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/MIDI.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/bacheditor.js"></script>
+<script type="text/javascript" src="../../plugin/bacheditor/js/marimba-mp3.js"></script>
+
 </head>
-<body>
+<body style="background:white">
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -70,38 +86,44 @@
 								<h4 class="modal-title" id="myModalLabel">提问</h4>
 							</div>
 							<div class="modal-body">
-								<div class="container-fluid">
-	            				<div class="row">
 								<form class="form-horizontal setting-form">
 									<fieldset>
 										<div class="form-group">
-											<div class="col-lg-10 col-md-offset-1">
+											<div class="col-lg-10 col-lg-offset-1">
 												<input type="text" class="form-control" id="inputEmail"
 													placeholder="写下你的问题" autofocus>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-lg-10 col-md-offset-1">问题说明（可选）</label>
+											<label class="col-lg-10 col-lg-offset-1">问题说明（可选）</label>
 										</div>
 										<div class="form-group">
-						                    <div class="col-lg-10 col-md-offset-1">
-						                    	<textarea class="form-control" id="seditor" rows="5"></textarea>
+						                    <div class="col-lg-10 col-lg-offset-1">
+							                    <div class="editor">
+												    <textarea id="myEditor1"></textarea>
+												</div>
+												<script>
+													$(function() {
+													    var myEditor = new Editor();
+													    myEditor.render('#myEditor1');
+													});
+												</script>
+						                    	<!--<textarea class="form-control" id="seditor" rows="5"></textarea>
 						                      	<span class="help-block">认真填写补充说明, 可以得到更精准回答. </span>
+						                    	-->
 						                    </div>
 						                </div>
 										<div class="form-group">
-											<label class="col-lg-11 col-md-offset-1">选择话题</label>
+											<label class="col-lg-11 col-lg-offset-1">选择话题</label>
 										</div>
 										<div class="form-group">
-											<div class="col-lg-10 col-md-offset-1">
+											<div class="col-lg-10 col-lg-offset-1">
 												<input type="text" class="form-control" id="inputEmail"
 													placeholder="搜索话题">
 											</div>
 										</div>
 									</fieldset>
 								</form>
-								</div>
-								</div>
 							</div>
 							<div class="modal-footer">
 								<input type="checkbox"> 匿名
