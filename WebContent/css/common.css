@@ -296,6 +296,17 @@ a:active {
 	margin-top: 170px;
 }
 
-
+.delquote {
+	text-decoration: line-through;
+  	padding: 3px 0;
+  	background: #f5dfdf;
+  	color: #ac1414;
+}
+.insquote {
+	text-decoration: none;
+ 	padding: 3px 0;
+  	background: #EAF0DD;
+  	color: #5B7918;
+}
 
 
