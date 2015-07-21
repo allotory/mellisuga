@@ -1,11 +1,2 @@
 eclipse.preferences.version=1
-encoding//WebContent/pages/frontend/ask.jsp=UTF-8
-encoding//WebContent/pages/frontend/followers.jsp=UTF-8
-encoding//WebContent/pages/frontend/home.jsp=UTF-8
-encoding//WebContent/pages/frontend/index.jsp=UTF-8
-encoding//WebContent/pages/frontend/login.jsp=UTF-8
-encoding//WebContent/pages/frontend/question.jsp=UTF-8
-encoding//WebContent/pages/frontend/search.jsp=UTF-8
-encoding//WebContent/pages/frontend/setting.jsp=UTF-8
-encoding//WebContent/register.jsp=UTF-8
 encoding//src/com/mellisuga/servlet/ValidateUserServlet.java=UTF-8
