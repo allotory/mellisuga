@@ -1,0 +1,18 @@
+
+.index-header {
+	border-bottom: 1px solid #eeeeee;
+	padding-bottom: 5px;
+}
+
+.recent-news {
+	padding-right: 5px;
+}
+
+.news-setting {
+	float: right;
+}
+
+.news-setting a {
+	color: #999;
+	font-weight: 400;
+}
