@@ -17,6 +17,11 @@
 	font-weight: 400;
 }
 
+.index-main-wrap {
+	padding-bottom: 8px;
+	/*border-bottom: 1px solid #eeeeee;*/
+}
+
 .avatar, .avatar a, .avatar img {
 	border-radius: 5px;
 	display: block;
@@ -52,41 +57,41 @@
 	float: right;
 }
 
-.zm-item-answer-author-info {
+.answer-author-info {
 	margin-bottom: 8px;
 }
 
-.zm-item-answer-author-wrap {
+.answer-author-wrap {
 	margin: 0 0 1px;
 	font-size: 12px;
 	color: black;
 }
 
-.zm-item-answer-author-wrap a {
+.answer-author-wrap a {
 	color: inherit;
 }
 
-.zm-item-vote-info {
+.vote-info {
 	margin: 5px 0;
 	font-size: 12px;
 	color: #999;
 }
 
-.zm-item-vote-info .voters {
+.vote-info .voters {
 	display: inline;
 }
 
-.zm-item-vote-info .voters span {
+.vote-info .voters span {
 	display: inline-block;
 	display: inline\9;
 }
 
-.zm-item-vote-info a {
+.vote-info a {
 	color: inherit;
 	font-size: inherit;
 }
 
-.zm-editable-content {
+.editable-content {
 	display: block;
 }
 
@@ -103,38 +108,39 @@
 	color: #999;
 }
 
-.zm-item-expanded .zm-item-meta {
+.item-meta {
 	display: block;
 }
 
-.zm-item-meta {
+.item-meta {
 	position: relative;
 	margin-bottom: 5px;
 	color: #999;
 }
 
-.zm-item-meta .zm-meta-panel {
+.item-meta .meta-panel {
 	background: transparent;
 }
 
-.zm-meta-panel {
+.meta-panel {
 	padding: 5px 0;
 	margin-bottom: -5px;
 	background: #fff;
 }
 
-.zm-meta-panel .zg-follow {
+.meta-panel .zg-follow {
 	color: #999;
 }
 
-.zm-meta-panel>a, .zm-meta-panel>span {
+.meta-panel>a, .meta-panel>span {
 	color: #999;
+	font-size: 12px;
 	display: inline-block;
 	vertical-align: middle;
 }
 
 .meta-item+.meta-item {
-  margin-left: 7px;
+	margin-left: 7px;
 }
 
 .zg-bull {
@@ -149,7 +155,7 @@
 	position: relative;
 }
 
-.collapse {
+.answer-collapse {
 	display: block;
 	float: right;
 }
