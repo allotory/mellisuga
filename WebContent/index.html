@@ -29,11 +29,12 @@
         <div class="navbar-collapse collapse" id="navbar-main">
 
                     <form class="navbar-form navbar-left" role="search">
-                      <div class="form-group"> 
-
-                        <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                      <button type="submit" class="btn btn-default">Submit</button>
+                      <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+      </span>
+    </div>
                     </form>
                 
           <ul class="nav navbar-nav">
@@ -75,30 +76,123 @@
 
 
       	<!-- main content -->
-		<div class="main-content col-lg-12">
+		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
-				<div class="left-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-					<!--left content title row-->
+					<!--left main title row-->
 					<div class="row">
-						<div class="left-content-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="left-main-title">
 							<span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
 							<span class="news-setting">
 								<a href="#">
 									<span class="glyphicon glyphicon-cog"></span>设置
 								</a>
 							</span>
-						</div><!-- end left content title -->
-					</div><!-- end left content title row -->
+						</div><!-- end left main title -->
+					</div><!-- end left main title row -->
 
 					<!-- loding btn row  -->
 					<div class="row">
-						<div class="loding-btn col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="loding-btn">
 							<a href="#" class="btn btn-default btn-block">15条新动态</a>
 						</div>
 					</div><!-- end loding btn row  -->
 
-				</div><!-- end left content-->
+					<!-- left main content row  -->
+					<div class="row">
+						<div class="left-main-content">
+							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="#">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span style="display:block;">122</span>
+											<span style="display:block;">122</span>
+										</div>
+									</a>
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span>122</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+								<div class="row">
+									<div class="content-source">
+										<a href="#">空明流转</a> 赞同该回答
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="question-link">
+										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+									</div>
+								</div>
+								<div class="row">
+									<div class="author-info">
+										<a href="#"><strong>空明</strong></a>,
+										<span>RednaxelaFX</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="question-content">
+										<div class="editable-content" style="display: block;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											<span class="answer-date" style="display: block;">
+												<a target="_blank" href="#">发布于 14:36</a>
+											</span>
+										</div>
+										<div class="summary-content clearfix" style="display: none;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="meta-panel">
+										<a class="meta-item" href="javascript:;">
+											<span class="glyphicon glyphicon-plus"></span> 关注问题
+										</a>
+										<a href="#" name="addcomment" class="meta-item">
+											<span class="glyphicon glyphicon-comment"></span> 添加评论
+										</a>
+										<a href="#" class="meta-item" name="thanks" data-thanked="false">
+											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+										</a>
+										<a href="#" class="meta-item" name="share">
+											<span class="glyphicon glyphicon-share-alt"></span> 分享
+										</a>
+										<a href="#" class="meta-item" name="favo">
+											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+										</a>
+										<span class="bull">•</span>
+										<a href="#" name="nohelp" class="meta-item">没有帮助</a>
+										<span class="bull">•</span>
+										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+											举报
+										</a>
+										<span class="copyright"></span>
+										<a href="#" name="collapse" class="answer-collapse meta-item">
+											<span class="glyphicon glyphicon-open"></span> 收起
+										</a>
+									</div>
+								</div>
+							</div>
+														
+						</div><!-- left main content -->
+					</div><!--end left main content row  -->
+
+				</div><!-- end left main-->
 
 				<div class="right-sidebar col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					
@@ -109,19 +203,7 @@
 		</div><!-- main content -->
 
  
-        <div class="page-header">
-        	<div class="row">
-	            <div class="col-lg-8">
-	                <span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
-					<span class="news-setting">
-						<a href="#">
-							<span class="glyphicon glyphicon-cog"></span>设置
-						</a>
-					</span>
-	            </div>
-          	</div>
-        	
-        </div>
+
 
         <div class="row">
           <div class="col-lg-8">
