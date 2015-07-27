@@ -26,8 +26,9 @@
 	margin-bottom: 10px;
 }
 
-.left-main-content {
-	border-bottom: 1px solid #eeeeee;
+.left-main-content-wrap {
+	/*border-bottom: 1px solid #eeeeee;*/
+	margin-bottom: 10px;
 }
 
 .vote-number {
