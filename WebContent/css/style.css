@@ -1,3 +1,4 @@
+/* ------ index page ------ */
 .main-content {  
 	padding-bottom: 9px;
 	margin: 30px 0 20px;
@@ -108,6 +109,45 @@
 	float: right;
 }
 
-.right-sidebar {
+/* ------ question page ------ */
+.question-detail {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eeeeee;
+}
 
+.question-tag {
+	margin-bottom: 15px;
+}
+
+.item-edit {
+	color: #999;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 400;
+	padding: 0 5px 0 2px;
+	margin: 0 0 0 2px;
+}
+
+.question-title {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.question-contents {
+	font-size: 11px;
+	margin-bottom: 10px;
+}
+
+.q-meta-item {
+	color: #999;
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+.q-meta-item-right {
+	float: right;
+	color: #999;
+	font-size: 12px;
+	margin-right: 5px;
 }
