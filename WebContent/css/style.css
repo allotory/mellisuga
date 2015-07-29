@@ -188,3 +188,73 @@
 	font-size: 12px;
 	color: #999;
 }
+
+/* ------ home page ------ */
+
+.profile-header {
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.user-infos {
+	border-bottom: 1px solid #eee;
+}
+
+.user-info {
+	color: #999;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+.user-info-end {
+	color: #999;
+	font-size: 12px;
+}
+
+.location, .business, .gender, .company,
+.work, .education, .specialty{
+	margin-right: 5px;
+}
+
+.user-info-detail {
+	font-size: 12px;
+	float: right;
+}
+
+.achievement {
+	color: #999;
+	font-size: 12px;
+	margin-top: 15px;
+}
+
+.achieve {
+	margin-right: 10px;
+}
+
+.achieve-right {
+	float: right;
+	margin-right: 10px;
+}
+
+.user-info-foot {
+	color: #999;
+}
+
+.info-item {
+	color: #999;
+	margin-right: 10px;
+}
+
+.more {
+	float: right;
+	color: #999;
+}
+
+.question-list {
+	margin-bottom: 15px;
+}
+
+.ask-list {
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
