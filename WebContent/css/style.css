@@ -258,3 +258,22 @@
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 }
+
+
+.answer-question {
+	font-size: 16px;
+}
+
+.user-answer {
+	font-size: 12px;
+}
+
+.user-agree {
+	margin-left: 5px;
+}
+
+.topic-img {
+	height: 34px;
+	width: 34px;
+	border-radius: 3px;
+}
