@@ -74,16 +74,16 @@
 		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#account" data-toggle="tab">帐号</a></li>
-					<li><a href="#password" data-toggle="tab">密码</a></li>
-					<li><a href="#notification" data-toggle="tab">消息和邮件</a></li>
+					<li><a href="#account" data-toggle="tab">帐号</a></li>
+					<li><a href="#password" data-toggle="tab">帐号和密码</a></li>
+					<li class="active"><a href="#notification" data-toggle="tab">消息和邮件</a></li>
 					<li><a href="#bind" data-toggle="tab">社区绑定</a></li>
 					<li><a href="#filter" data-toggle="tab">屏蔽</a></li>
 					<li><a href="#lab" data-toggle="tab">实验室</a></li>
 				</ul>
 
 				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade active in  col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
+					<div class="tab-pane fade col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="form-group">
@@ -111,7 +111,6 @@
 										<span class="help-block">什么情况下应该使用这个选项？.</span>
 									</div>
 								</div>
-								
 								<div class="form-group">
 									<div class="col-lg-10 col-lg-offset-2">
 										<button type="reset" class="btn btn-default">取消</button>
@@ -121,11 +120,292 @@
 							</fieldset>
 						</form>
 					</div>
-					<div class="tab-pane fade" id="password">
-						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+					<div class="tab-pane fade col-lg-6 col-md-6 col-sm-12 col-xs-12" id="password">
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="form-group">
+									<label for="inputEmail" class="col-lg-2 control-label">邮箱</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="inputEmail" placeholder="all****@msn.com">
+										<span class="help-block">修改邮箱需要输入原密码.</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputOriginPass" class="col-lg-2 control-label">原密码</label>
+									<div class="col-lg-10">
+										<input type="password" class="form-control" id="inputOriginPass" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputNewPass" class="col-lg-2 control-label">新密码</label>
+									<div class="col-lg-10">
+										<input type="password" class="form-control" id="inputNewPass" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputConfirmPass" class="col-lg-2 control-label">确认密码</label>
+									<div class="col-lg-10">
+										<input type="password" class="form-control" id="inputConfirmPass" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<button type="reset" class="btn btn-default">取消</button>
+										<button type="submit" class="btn btn-primary">提交</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>	
 					</div>
-					<div class="tab-pane fade" id="notification">
-						<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+					<div class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12" id="notification">
+						<form class="form-horizontal">
+							<fieldset>
+								<legend>私信设置</legend>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">有人给我发了私信</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+												允许所有人给我发私信
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+												只允许我关注的人给我发私信
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有私信时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<legend>消息设置</legend>
+								<span class="help-block">你可以在这里设置接收的消息类型。「邀请我回答问题」和「关注的问题有了新回答」不支持关闭消息。</span>
+								<div class="form-group">
+									<label class="col-lg-2 control-label">邀请我回答的问题</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios2" id="optionsRadios3" value="option3" checked="">
+												接收所有人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios2" id="optionsRadios4" value="option4">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">关注的问题有了新答案</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios3" id="optionsRadios5" value="option5" checked="">
+												接收所有人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios3" id="optionsRadios6" value="option6">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox"checked> 获取你接收消息范围内的全部新回答通知，即便这些回答质量可能不够高。<a href="#">选中这个会发生什么？</a>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">@/评论我的</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios4" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios4" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios4" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">赞同感谢我的</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios5" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios5" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios5" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">赞了我的评论</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios6" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios6" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios6" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">赞了专栏文章</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios7" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios7" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios7" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">有人关注了我</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios8" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios8" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios8" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-2 control-label">有人关注了专栏文章</label>
+									<div class="col-lg-10">
+										<div class="radio">
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios9" id="optionsRadios7" value="option7" checked="">
+												接收所有人的消息
+											</label>
+											<label class="setting-margin">
+												<input type="radio" name="optionsRadios9" id="optionsRadios8" value="option8">
+												只接收关注人的消息
+											</label>
+											<label>
+												<input type="radio" name="optionsRadios9" id="optionsRadios9" value="option9">
+												只接收关注人的消息
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有消息时邮件提醒我
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<legend>邮件设置</legend>
+								<span class="help-block">你可以在这里设置是否接收来自知乎的邮件。</span>
+								<div class="form-group">
+									<label for="checkboxPrivate" class="col-lg-2 control-label">知乎每周精选</label>
+									<div class="col-lg-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 接收每周精选邮件
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="checkboxPrivate" class="col-lg-2 control-label">新品发布和活动通知</label>
+									<div class="col-lg-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 有新品发布或活动举行时发邮件给我
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</fieldset>
+						</form>
 					</div>
 					<div class="tab-pane fade" id="bind">
 						<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
