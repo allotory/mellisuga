@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mellisuga</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="./css/style.css" media="screen">
+	<link rel="stylesheet" href="./css/bootswatch.min.css">
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="./js/html5shiv.js"></script>
+		<script src="./js/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="../" class="navbar-brand">Mellisuga</a>
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar-main">
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button">Go!</button>
+						</span>
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">首页 <span class="sr-only">(current)</span></a>
+					</li>
+					<li>
+						<a href="#">话题</a>
+					</li>
+					<li>
+						<a href="#">发现</a>
+					</li>
+					<li>
+						<a href="#">消息</a>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ellery <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#" class="glyphicon glyphicon-user"> 我的主页</a></li>
+							<li><a href="#" class="glyphicon glyphicon-envelope"> 私信</a></li>
+							<li><a href="#" class="glyphicon glyphicon-cog"> 设置</a></li>
+							<li class="divider"></li>
+							<li><a href="#" class="glyphicon glyphicon-off"> 退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <div class="container">
+
+		<!-- main content -->
+		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="row">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#account" data-toggle="tab">帐号</a></li>
+					<li><a href="#password" data-toggle="tab">密码</a></li>
+					<li><a href="#notification" data-toggle="tab">消息和邮件</a></li>
+					<li><a href="#bind" data-toggle="tab">社区绑定</a></li>
+					<li><a href="#filter" data-toggle="tab">屏蔽</a></li>
+					<li><a href="#lab" data-toggle="tab">实验室</a></li>
+				</ul>
+
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in  col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="form-group">
+									<label for="inputName" class="col-lg-2 control-label">姓名</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="inputName" placeholder="Ellery">
+										<span class="help-block">137 天后可以修改姓名.</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputUrl" class="col-lg-2 control-label">个性网址</label>
+									<div class="col-lg-10">
+										<input type="text" class="form-control" id="inputUrl" placeholder="allotory">
+										<span class="help-block">localhost/people/allotory</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="checkboxPrivate" class="col-lg-2 control-label">隐私保护</label>
+									<div class="col-lg-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox">  在站外搜到我在知乎创作的内容时，我的姓名将不会被显示
+											</label>
+										</div>
+										<span class="help-block">什么情况下应该使用这个选项？.</span>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<button type="reset" class="btn btn-default">取消</button>
+										<button type="submit" class="btn btn-primary">提交</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="password">
+						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+					</div>
+					<div class="tab-pane fade" id="notification">
+						<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+					</div>
+					<div class="tab-pane fade" id="bind">
+						<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+					</div>
+					<div class="tab-pane fade" id="filter">
+						<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+					</div>
+					<div class="tab-pane fade" id="lab">
+						<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+					</div>
+				</div>
+			</div>	
+		</div><!-- main content -->
+
+	</div><!-- end container -->
+
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/bootswatch.js"></script>
+	</body>
+</html>
