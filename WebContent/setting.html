@@ -76,10 +76,9 @@
 				<ul class="nav nav-tabs">
 					<li><a href="#account" data-toggle="tab">帐号</a></li>
 					<li><a href="#password" data-toggle="tab">帐号和密码</a></li>
-					<li class="active"><a href="#notification" data-toggle="tab">消息和邮件</a></li>
-					<li><a href="#bind" data-toggle="tab">社区绑定</a></li>
+					<li><a href="#notification" data-toggle="tab">消息和邮件</a></li>
 					<li><a href="#filter" data-toggle="tab">屏蔽</a></li>
-					<li><a href="#lab" data-toggle="tab">实验室</a></li>
+					<li class="active"><a href="#lab" data-toggle="tab">实验室</a></li>
 				</ul>
 
 				<div id="myTabContent" class="tab-content">
@@ -157,7 +156,7 @@
 							</fieldset>
 						</form>	
 					</div>
-					<div class="tab-pane fade active in col-lg-12 col-md-12 col-sm-12 col-xs-12" id="notification">
+					<div class="tab-pane fade col-lg-12 col-md-12 col-sm-12 col-xs-12" id="notification">
 						<form class="form-horizontal">
 							<fieldset>
 								<legend>私信设置</legend>
@@ -407,14 +406,109 @@
 							</fieldset>
 						</form>
 					</div>
-					<div class="tab-pane fade" id="bind">
-						<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-					</div>
 					<div class="tab-pane fade" id="filter">
-						<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+						<form class="form-horizontal">
+							<fieldset>
+								<legend>屏蔽话题设置</legend>
+								<span class="help-block">在个人首页动态中屏蔽来自特定话题的内容</span>
+								<div class="hidden-div">
+
+								</div>
+								<div class="form-group">
+									<div class="col-lg-4">
+										<input type="text" class="form-control" id="inputName" placeholder="搜索话题">
+									</div>
+								</div>
+
+								<legend>受限话题</legend>
+								<span class="help-block">除非主动关注，来自以下话题和它们的部分子话题的内容不会出现在你的首页动态中。</span>
+								<span class="help-block">详情参见 <a href="#">哪些内容需要主动关注才会出现在首页动态中？</a></span>
+								<div class="question-tag">
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+								</div>
+
+								<legend>屏蔽专栏设置</legend>
+								<span class="help-block">在个人首页动态中屏蔽来自特定专栏的内容</span>
+								<div class="question-tag">
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+									<span class="label label-primary">Default</span>
+								</div>
+
+								<legend>屏蔽用户设置</legend>
+								<span class="help-block">在个人首页动态中屏蔽来自特定用户的内容</span>
+								<table class="table table-striped table-hover ">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>用户名</th>
+											<th>屏蔽原因</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="info">
+											<td>3</td>
+											<td>Column content</td>
+											<td>Column content</td>
+											<td><a href="#" class="btn btn-default btn-xs">取消屏蔽</a></td>
+										</tr>
+										<tr class="success">
+											<td>4</td>
+											<td>Column content</td>
+											<td>Column content</td>
+											<td><a href="#" class="btn btn-default btn-xs">取消屏蔽</a></td>
+										</tr>
+										<tr class="danger">
+											<td>5</td>
+											<td>Column content</td>
+											<td>Column content</td>
+											<td><a href="#" class="btn btn-default btn-xs">取消屏蔽</a></td>
+										</tr>
+										<tr class="warning">
+											<td>6</td>
+											<td>Column content</td>
+											<td>Column content</td>
+											<td><a href="#" class="btn btn-default btn-xs">取消屏蔽</a></td>
+										</tr>
+										<tr class="active">
+											<td>7</td>
+											<td>Column content</td>
+											<td>Column content</td>
+											<td><a href="#" class="btn btn-default btn-xs">取消屏蔽</a></td>
+										</tr>
+									</tbody>
+								</table> 
+
+							</fieldset>
+						</form>
 					</div>
-					<div class="tab-pane fade" id="lab">
-						<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+					<div class="tab-pane fade active in" id="lab">
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="form-group">
+									<label for="checkboxPrivate" class="col-lg-2 control-label">首页动态</label>
+									<div class="col-lg-10">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" checked> 开启新版首页动态体验
+												<span class="help-block">可随时在设置页开启或者关闭。</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="form-group">
+									<div class="col-lg-10 col-lg-offset-2">
+										<button type="submit" class="btn btn-primary">提交</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>	
 					</div>
 				</div>
 			</div>	
