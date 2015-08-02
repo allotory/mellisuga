@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="css/pygment_trac.css">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" href="css/codemirror.min.css">
+  <link rel="stylesheet" href="css/default.min.css">
+  <script src="js/highlight.min.js"></script>
+  <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/marked.min.js"></script>
+  <script type="text/javascript" src="js/codemirror.min.js"></script>
+  <script type="text/javascript" src="js/ZeroClipboard.min.js"></script>
+  <script type="text/javascript" src="js/highlight.js"></script>
+  <script type="text/javascript" src="js/fileupload.js"></script>
+  <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" src="js/MIDI.js"></script>
+  <script type="text/javascript" src="js/bacheditor.js"></script>
+
+  <title>Bach's Editor</title>
+  <meta name="description" content="一个有情怀的编辑器。Bach&#39;s Editor.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+        <div class="editor">
+            <textarea id="myEditor"></textarea>
+        </div>
+
+  <script>
+    $(function() {
+        var myEditor = new Editor();
+        myEditor.render('#myEditor');
+    });
+  </script>
+
+</body>
+</html>
