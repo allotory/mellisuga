@@ -1157,7 +1157,7 @@ $(document).ready(function () {\n\
                 top: 0,
                 left: 0,
                 'z-index': 999,
-                'margin-top': 0
+                'margin-top': '60px'
             });
             $('.CodeMirror').css('height', $(document).height() - 70);
             cmHeight = Math.max($('.CodeMirror').height(), $('.CodeMirror-sizer').height());
