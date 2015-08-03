@@ -7,12 +7,36 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
 	<link rel="stylesheet" href="./css/style.css" media="screen">
-	<link rel="stylesheet" href="./css/bootswatch.min.css">
+
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="./js/html5shiv.js"></script>
 		<script src="./js/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- modal -->
+	<script type="text/javascript">
+	$('#myModal').on('shown.bs.modal', function () {
+	  $('#myInput').focus()
+	})
+	</script>
+
+	<!-- bacheditor -->
+	<link rel="stylesheet" href="./plugin/BachEditor/css/pygment_trac.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/editor.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/codemirror.min.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/default.min.css">
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/marked.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/codemirror.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/fileupload.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/modal.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/MIDI.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/bacheditor.js"></script>
 
 </head>
 <body>
@@ -32,10 +56,56 @@
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search for...">
 						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Go!</button>
+							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" data-backdrop="false">Go!</button>
 						</span>
 					</div>
 				</form>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">提问</h4>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label for="recipient-name" class="control-label">问题：</label>
+										<input type="text" class="form-control" id="recipient-name" placeholder="写下你的问题">
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">问题说明（可选）：</label>
+										
+										<div class="editor">
+											<textarea id="myEditor"></textarea>
+										</div>
+
+										<script>
+										$(function() {
+											var myEditor = new Editor();
+											myEditor.render('#myEditor');
+										});
+										</script>
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">选择话题：</label>
+										<input type="text" class="form-control" id="recipient-name" placeholder="搜索话题">
+										<span class="help-block">话题越精准，越容易让相关领域专业人士看到你的问题</span>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<label style="float:left;">
+									<input type="checkbox"> 匿名
+								</label>
+								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-primary">发布</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<ul class="nav navbar-nav">
 					<li class="active">
@@ -71,7 +141,7 @@
     <div class="container">
 
       	<!-- main content -->
-		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
@@ -343,8 +413,5 @@
 
 	</div><!-- end container -->
 
-	<script src="./js/jquery-1.11.2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/bootswatch.js"></script>
 	</body>
 </html>
