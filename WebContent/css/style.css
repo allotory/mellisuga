@@ -352,5 +352,21 @@ del {
 .left-main-content-wrap2 {
 	border-bottom: 1px solid #eee;
 	padding-bottom: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 } 
+
+/* ------ inbox msg page ------ */
+.inbox-back {
+	margin-bottom: 10px;
+}
+
+.inbox-msg-title {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.send-msg {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
