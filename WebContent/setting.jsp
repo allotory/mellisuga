@@ -167,7 +167,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+												<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
 												允许所有人给我发私信
 											</label>
 											<label>
@@ -190,7 +190,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios2" id="optionsRadios3" value="option3" checked="">
+												<input type="radio" name="optionsRadios2" id="optionsRadios3" value="option3" checked>
 												接收所有人的消息
 											</label>
 											<label>
@@ -211,7 +211,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios3" id="optionsRadios5" value="option5" checked="">
+												<input type="radio" name="optionsRadios3" id="optionsRadios5" value="option5" checked>
 												接收所有人的消息
 											</label>
 											<label>
@@ -237,7 +237,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios4" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios4" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">
@@ -262,7 +262,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios5" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios5" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">
@@ -287,7 +287,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios6" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios6" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">
@@ -312,7 +312,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios7" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios7" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">
@@ -337,7 +337,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios8" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios8" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">
@@ -362,7 +362,7 @@
 									<div class="col-lg-10">
 										<div class="radio">
 											<label class="setting-margin">
-												<input type="radio" name="optionsRadios9" id="optionsRadios7" value="option7" checked="">
+												<input type="radio" name="optionsRadios9" id="optionsRadios7" value="option7" checked>
 												接收所有人的消息
 											</label>
 											<label class="setting-margin">

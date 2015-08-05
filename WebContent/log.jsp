@@ -126,13 +126,13 @@
 
 								<div class="row">
 									<div class="meta-panel">
-										<a href="#" class="meta-item" name="favo">
+										<a href="#" class="meta-item">
 											#56674165
 										</a>
 										<span class="bull">•</span>
-										<a href="#" name="nohelp" class="meta-item">撤消</a>
+										<a href="#" class="meta-item">撤消</a>
 										<span class="bull">•</span>
-										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 											举报恶意编辑
 										</a>
 										<span class="bull">•</span>

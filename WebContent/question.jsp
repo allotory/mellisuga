@@ -167,17 +167,18 @@
 									</a>
 								</div>
 								<div class="row">
-									<a href="#">
-										<div class="vote-text-center vote-number">
+									<div class="vote-text-center vote-number">
+										<a href="#">
 											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
 											<span style="display:block;">122</span>
-										</div>
-									</a>
-									<a href="#">
-										<div class="vote-text-center vote-number">
+										</a>
+									</div>
+									
+									<div class="vote-text-center vote-number">
+										<a href="#">
 											<span class="glyphicon glyphicon-chevron-down"></span>
-										</div>
-									</a>
+										</a>
+									</div>
 								</div>
 							</div><!-- end avatar and upvote col -->
 
@@ -228,26 +229,26 @@
 										<a class="meta-item" href="javascript:;">
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
-										<a href="#" name="addcomment" class="meta-item">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-comment"></span> 添加评论
 										</a>
-										<a href="#" class="meta-item" name="thanks" data-thanked="false">
+										<a href="#" class="meta-item" data-thanked="false">
 											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
 										</a>
-										<a href="#" class="meta-item" name="share">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-share-alt"></span> 分享
 										</a>
-										<a href="#" class="meta-item" name="favo">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-bookmark"></span> 收藏
 										</a>
 										<span class="bull">•</span>
-										<a href="#" name="nohelp" class="meta-item">没有帮助</a>
+										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 											举报
 										</a>
 										<span class="copyright"></span>
-										<a href="#" name="collapse" class="answer-collapse meta-item">
+										<a href="#" class="answer-collapse meta-item">
 											<span class="glyphicon glyphicon-open"></span> 收起
 										</a>
 									</div>
@@ -274,17 +275,18 @@
 									</a>
 								</div>
 								<div class="row">
-									<a href="#">
-										<div class="vote-text-center vote-number">
+									<div class="vote-text-center vote-number">
+										<a href="#">
 											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
 											<span style="display:block;">122</span>
-										</div>
-									</a>
-									<a href="#">
-										<div class="vote-text-center vote-number">
+										</a>
+									</div>
+									
+									<div class="vote-text-center vote-number">
+										<a href="#">
 											<span class="glyphicon glyphicon-chevron-down"></span>
-										</div>
-									</a>
+										</a>
+									</div>
 								</div>
 							</div><!-- end avatar and upvote col -->
 
@@ -335,26 +337,26 @@
 										<a class="meta-item" href="javascript:;">
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
-										<a href="#" name="addcomment" class="meta-item">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-comment"></span> 添加评论
 										</a>
-										<a href="#" class="meta-item" name="thanks" data-thanked="false">
+										<a href="#" class="meta-item" data-thanked="false">
 											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
 										</a>
-										<a href="#" class="meta-item" name="share">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-share-alt"></span> 分享
 										</a>
-										<a href="#" class="meta-item" name="favo">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-bookmark"></span> 收藏
 										</a>
 										<span class="bull">•</span>
-										<a href="#" name="nohelp" class="meta-item">没有帮助</a>
+										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 											举报
 										</a>
 										<span class="copyright"></span>
-										<a href="#" name="collapse" class="answer-collapse meta-item">
+										<a href="#" class="answer-collapse meta-item">
 											<span class="glyphicon glyphicon-open"></span> 收起
 										</a>
 									</div>
