@@ -7,12 +7,12 @@
 	<title>Mellisuga</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="./css/style.css" media="screen">
+	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="../css/style.css" media="screen">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-		<script src="./js/html5shiv.js"></script>
-		<script src="./js/respond.min.js"></script>
+		<script src="../js/html5shiv.js"></script>
+		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
 </head>
@@ -22,7 +22,7 @@
 			<!-- left main content wrap  -->
 
 			<div class="login-logo col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-2">
-				<img src="./images/logo.png">
+				<img src="../images/logo.png">
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 				
@@ -72,8 +72,8 @@
 
 
 
-	<script src="./js/jquery-1.11.2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/bootswatch.js"></script>
+	<script src="../js/jquery-1.11.2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootswatch.js"></script>
 </body>
 </html>

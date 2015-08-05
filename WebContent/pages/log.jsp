@@ -7,13 +7,13 @@
 	<title>Mellisuga</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="./css/style.css" media="screen">
-	<link rel="stylesheet" href="./css/bootswatch.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="../css/style.css" media="screen">
+	<link rel="stylesheet" href="../css/bootswatch.min.css">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-		<script src="./js/html5shiv.js"></script>
-		<script src="./js/respond.min.js"></script>
+		<script src="../js/html5shiv.js"></script>
+		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
 </head>
@@ -194,8 +194,8 @@
 
 	</div><!-- end container -->
 
-	<script src="./js/jquery-1.11.2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/bootswatch.js"></script>
+	<script src="../js/jquery-1.11.2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootswatch.js"></script>
 	</body>
 </html>
