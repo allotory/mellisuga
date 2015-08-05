@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -262,7 +264,7 @@
 										<a class="meta-item" href="javascript:;">
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
-										<a href="#" name="addcomment" class="meta-item">
+										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-comment"></span> 添加评论
 										</a>
 										<a href="#" class="meta-item" name="thanks" data-thanked="false">

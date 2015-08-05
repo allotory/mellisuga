@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,16 +149,25 @@
 
 					<!--left main title row-->
 					<div class="row">
-						<div class="inbox-title">
-							<strong>我的私信</strong>
-							<span class="module-right">
-								<a href="#" class="btn btn-primary btn-xs">写私信</a>
+						<div class="left-main-title">
+							<span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
+							<span class="news-setting">
+								<a href="#">
+									<span class="glyphicon glyphicon-cog"></span>设置
+								</a>
 							</span>
 						</div><!-- end left main title -->
 					</div><!-- end left main title row -->
 
+					<!-- loding btn row  -->
+					<div class="row">
+						<div class="loding-btn">
+							<a href="#" class="btn btn-default btn-block">15条新动态</a>
+						</div>
+					</div><!-- end loding btn row  -->
+
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap2">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -166,28 +177,90 @@
 										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
+								<div class="row">
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<span style="display:block;">122</span>
+										</div>
+									</a>
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span class="glyphicon glyphicon-chevron-down"></span>
+										</div>
+									</a>
+								</div>
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
 							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
 
 								<div class="row">
+									<div class="content-source">
+										<a href="#">空明流转</a> 赞同该回答
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-link">
+										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="author-info">
+										<a href="#"><strong>空明</strong></a>,
+										<span>RednaxelaFX</span>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											<a href="#">知乎管理员</a>：
-											你举报的 <a href="#">sdfsdfsdf</a> 在问题 
-											<a href="#">律助该怎样跟公检法打交道，不被刁难？</a> 中 
-											<a href="#">徐斌</a> 的回答下的评论已被删除，
-											感谢你的举报。如果该作者有更多违规内容被处理，我们会对其帐号进行处罚。
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">7月16日 12:01</a>
-												<a href="#" class="module-right">共6条对话</a>
-												<span class="bull module-right"> | </span>
-												<a href="#" class="module-right">回复</a>
-												<span class="bull module-right"> | </span>
-												<a href="#" class="module-right">删除</a>
+												<a target="_blank" href="#">发布于 14:36</a>
 											</span>
 										</div>
+										<div class="summary-content clearfix" style="display: none;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="meta-panel">
+										<a class="meta-item" href="javascript:;">
+											<span class="glyphicon glyphicon-plus"></span> 关注问题
+										</a>
+										<a href="#" name="addcomment" class="meta-item">
+											<span class="glyphicon glyphicon-comment"></span> 添加评论
+										</a>
+										<a href="#" class="meta-item" name="thanks" data-thanked="false">
+											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+										</a>
+										<a href="#" class="meta-item" name="share">
+											<span class="glyphicon glyphicon-share-alt"></span> 分享
+										</a>
+										<a href="#" class="meta-item" name="favo">
+											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+										</a>
+										<span class="bull">•</span>
+										<a href="#" name="nohelp" class="meta-item">没有帮助</a>
+										<span class="bull">•</span>
+										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+											举报
+										</a>
+										<span class="copyright"></span>
+										<a href="#" name="collapse" class="answer-collapse meta-item">
+											<span class="glyphicon glyphicon-open"></span> 收起
+										</a>
 									</div>
 								</div>
 
@@ -195,9 +268,11 @@
 														
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
-					
+					<div class="row">
+						<hr/>
+					</div>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap2">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -207,28 +282,90 @@
 										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
+								<div class="row">
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<span style="display:block;">122</span>
+										</div>
+									</a>
+									<a href="#">
+										<div class="vote-text-center vote-number">
+											<span class="glyphicon glyphicon-chevron-down"></span>
+										</div>
+									</a>
+								</div>
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
 							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
 
 								<div class="row">
+									<div class="content-source">
+										<a href="#">空明流转</a> 赞同该回答
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-link">
+										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="author-info">
+										<a href="#"><strong>空明</strong></a>,
+										<span>RednaxelaFX</span>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											<a href="#">知乎管理员</a>：
-											你举报的 <a href="#">sdfsdfsdf</a> 在问题 
-											<a href="#">律助该怎样跟公检法打交道，不被刁难？</a> 中 
-											<a href="#">徐斌</a> 的回答下的评论已被删除，
-											感谢你的举报。如果该作者有更多违规内容被处理，我们会对其帐号进行处罚。
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">7月16日 12:01</a>
-												<a href="#" class="module-right">共6条对话</a>
-												<span class="bull module-right"> | </span>
-												<a href="#" class="module-right">回复</a>
-												<span class="bull module-right"> | </span>
-												<a href="#" class="module-right">删除</a>
+												<a target="_blank" href="#">发布于 14:36</a>
 											</span>
 										</div>
+										<div class="summary-content clearfix" style="display: none;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="meta-panel">
+										<a class="meta-item" href="javascript:;">
+											<span class="glyphicon glyphicon-plus"></span> 关注问题
+										</a>
+										<a href="#" name="addcomment" class="meta-item">
+											<span class="glyphicon glyphicon-comment"></span> 添加评论
+										</a>
+										<a href="#" class="meta-item" name="thanks" data-thanked="false">
+											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+										</a>
+										<a href="#" class="meta-item" name="share">
+											<span class="glyphicon glyphicon-share-alt"></span> 分享
+										</a>
+										<a href="#" class="meta-item" name="favo">
+											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+										</a>
+										<span class="bull">•</span>
+										<a href="#" name="nohelp" class="meta-item">没有帮助</a>
+										<span class="bull">•</span>
+										<a href="#" name="report" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+											举报
+										</a>
+										<span class="copyright"></span>
+										<a href="#" name="collapse" class="answer-collapse meta-item">
+											<span class="glyphicon glyphicon-open"></span> 收起
+										</a>
 									</div>
 								</div>
 
@@ -247,11 +384,30 @@
 				</div><!-- end left main-->
 
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
-				
-				<div class="alert alert-dismissible alert-success">
-					担心骚扰？可以 <a href="#" class="alert-link">设置</a> 为「只允许我关注的人给我发私信」。
-				</div>
 					
+					<div class="list-group">
+						<a href="#" class="list-group-item glyphicon glyphicon-file">
+							我的草稿<span class="badge">14</span>
+						</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-bookmark">
+							我的收藏<span class="badge">8</span>
+						</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-heart">
+							我关注的问题<span class="badge">164</span>
+						</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-check">
+							邀请我回答的问题<span class="badge">85</span>
+						</a>
+					</div>
+
+					<div class="list-group">
+						<a href="#" class="list-group-item glyphicon glyphicon-duplicate"> 所有问题</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-th-large"> 话题广场</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-book"> 首场秀</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-edit"> 公共编辑动态</a> 
+						<a href="#" class="list-group-item glyphicon glyphicon-home"> 社区服务中心</a>
+					</div>
+	
 				</div><!-- end right sidebar -->
 
 			</div><!-- end main content row -->
