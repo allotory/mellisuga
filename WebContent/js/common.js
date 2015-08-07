@@ -1,7 +1,5 @@
-/**
- * 数据校验
- */
 
+//登录注册div切换
 function loginManager() {
 	
 	//登录div
@@ -35,27 +33,65 @@ function loginManager() {
 		login_form.style.display = "none";
 	}
 	
-	
-//	if (login_btn.style.display=="none"){
-//		login_btn.style.display="none";
-//		
-//	} else {
-//	    target.style.display="block";
-//	    clicktext.innerText='关闭详细信息信息';
-//	}
-	
 }
 
-function showError(id) {
-	var alertDiv = document.getElementById(id);
-	alertDiv.setAttribute("style", "display:block");
+//校验邮箱
+function validateEmail() {
+	var email = document.getElementById("email").value.trim();
+	var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
+	if (!reg.test(email)) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
-function hideError(id){
-	var alertDiv = document.getElementById(id);
-	alertDiv.setAttribute("style", "display:none");
+//校验密码
+function validatePass() {
+	var password = document.getElementById("password").value.trim();
+	var reg = /^[a-zA-Z][a-zA-Z0-9_]{5,127}$/;
+	if (!reg.test(password)) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
-function validateUsername() {
+//登录提交检验
+function validateSubmit() {
+	var isEmailChecked = validateEmail();
+	var isPassChecked = validatePass();
 	
+	var error = document.getElementById("alert_error");
+	var email_error = document.getElementById("email_error");
+	var pass_error = document.getElementById("pass_error");
+	
+	if(!(isEmailChecked && isPassChecked)) {
+		if(!isEmailChecked) {
+			error.style.display = "block";
+			email_error.style.display = "block";
+		}else {
+			email_error.style.display = "none";
+		}
+		
+		if(!isPassChecked) {
+			error.style.display = "block";
+			pass_error.style.display = "block";
+		}else {
+			pass_error.style.display = "none";
+		}
+		
+		return false;
+	}else {
+		error.style.display = "none";
+		email_error.style.display = "none";
+		pass_error.style.display = "none";
+		return true;
+	}
 }
+
+
+
+
+
+
