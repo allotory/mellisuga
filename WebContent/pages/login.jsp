@@ -28,22 +28,22 @@
 				
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-8">
 					<div class="sign-in-up">
-						<span id="register_title" style="display:none">注册帐号</span>
-						<span id="login_title" style="display:inline">登录</span>
+						<span id="register_title" style="display:inline">注册帐号</span>
+						<span id="login_title" style="display:none">登录</span>
 						<span class="sign-in-title">
-							<a id="login_btn" href="#" style="display:none" onclick="loginManager()">登录</a>
-							<a id="register_btn" href="#" style="display:inline" onclick="loginManager()">注册</a>
+							<a id="login_btn" href="#" style="display:inline" onclick="loginManager()">登录</a>
+							<a id="register_btn" href="#" style="display:none" onclick="loginManager()">注册</a>
 							<span class="glyphicon glyphicon-circle-arrow-right"></span>
 						</span>
 					</div>
 					
-					<form id="login_form" class="form-horizontal" style="display:inline">
+					<form id="login_form" class="form-horizontal" style="display:none">
 						<fieldset>
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" placeholder="邮箱" onblur="validateEmail()">
+								<input type="text" class="form-control" id="email" placeholder="邮箱">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="password" placeholder="密码" onblur="validatePass()">
+								<input type="password" class="form-control" id="password" placeholder="密码">
 							</div>
 							<div class="form-group">
 								<div id="alert_error" class="alert alert-dismissible alert-danger" style="display:none">
@@ -56,7 +56,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" onClick="return validateSubmit();" class="btn btn-primary btn-block">提交</button>
+								<button type="submit" onClick="return validateLoginSubmit();" class="btn btn-primary btn-block">提交</button>
 								<div class="checkbox">
 									<label>
 										<input type="checkbox"> 记住我
@@ -66,24 +66,32 @@
 						</fieldset>
 					</form>
 					
-					<form id="register_form" class="form-horizontal" style="display:none">
+					<form id="register_form" class="form-horizontal" style="display:inline">
 						<fieldset>
 							<div class="form-group">
-								<input type="text" class="form-control" id="inputName" placeholder="姓名">
+								<input type="text" class="form-control" id="rusername" placeholder="姓名">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="inputName" placeholder="邮箱">
+								<input type="text" class="form-control" id="remail" placeholder="邮箱">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="inputName" placeholder="密码">
+								<input type="password" class="form-control" id="rpassword" placeholder="密码（不少于6位）">
 							</div>
 							<div class="form-group">
-								<div id="alert_error" class="alert alert-dismissible alert-danger" style="display:block">
-									<div id="name_null" ><span class="glyphicon glyphicon-warning-sign"></span> and try submitting again.<br></div>
+								<div id="ralert_error" class="alert alert-dismissible alert-danger" style="display:none">
+									<div id="rusername_error" style="display:none">
+										<span class="glyphicon glyphicon-warning-sign"></span> 姓名需在2-10个汉字之间.
+									</div>
+									<div id="remail_error" style="display:none">
+										<span class="glyphicon glyphicon-warning-sign"></span> 邮箱地址不正确.
+									</div>
+									<div id="rpass_error" style="display:none">
+										<span class="glyphicon glyphicon-warning-sign"></span> 请输入6-128位的密码.
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">提交</button>
+								<button type="submit" onClick="return validateRegSubmit();" class="btn btn-primary btn-block">注册</button>
 							</div>
 						</fieldset>
 					</form>
