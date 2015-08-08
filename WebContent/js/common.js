@@ -157,6 +157,15 @@ function validateRegSubmit() {
 	}
 }
 
+//组件显示
+function showItem(id) {
+	var item = document.getElementById(id);
+	item.style.display = "inline";
+}
+function hiddenItem(id) {
+	var item = document.getElementById(id);
+	item.style.display = "none";
+}
 
 
 

@@ -12,6 +12,7 @@
 
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="../js/html5shiv.js"></script>
@@ -167,7 +168,7 @@
 					</div><!-- end loding btn row  -->
 
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap">
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -241,25 +242,26 @@
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<span class="glyphicon glyphicon-comment"></span> 12条评论
 										</a>
-										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
-										</a>
-										<a href="#" class="meta-item" >
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-											举报
-										</a>
-										<span class="copyright"></span>
-										<a href="#" class="answer-collapse meta-item">
+										<span id="hidden-item" style="display:none">
+											<a href="#" class="meta-item" data-thanked="false">
+												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											</a>
+											<a href="#" class="meta-item" >
+												<span class="glyphicon glyphicon-share-alt"></span> 分享
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item">没有帮助</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												举报
+											</a>
+										</span>
+										<a href="#" class="answer-collapse meta-item" style="display:none">
 											<span class="glyphicon glyphicon-open"></span> 收起
 										</a>
 									</div>

@@ -48,10 +48,10 @@
 							<div class="form-group">
 								<div id="alert_error" class="alert alert-dismissible alert-danger" style="display:none">
 									<div id="email_error" style="display:none">
-										<span class="glyphicon glyphicon-warning-sign"></span> 邮箱地址不正确.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 邮箱地址不正确.
 									</div>
 									<div id="pass_error" style="display:none">
-										<span class="glyphicon glyphicon-warning-sign"></span> 请输入6-128位的密码.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
 									</div>
 								</div>
 							</div>
@@ -80,13 +80,13 @@
 							<div class="form-group">
 								<div id="ralert_error" class="alert alert-dismissible alert-danger" style="display:none">
 									<div id="rusername_error" style="display:none">
-										<span class="glyphicon glyphicon-warning-sign"></span> 姓名需在2-10个汉字之间.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 姓名需在2-10个汉字之间.
 									</div>
 									<div id="remail_error" style="display:none">
-										<span class="glyphicon glyphicon-warning-sign"></span> 邮箱地址不正确.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 邮箱地址不正确.
 									</div>
 									<div id="rpass_error" style="display:none">
-										<span class="glyphicon glyphicon-warning-sign"></span> 请输入6-128位的密码.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
 									</div>
 								</div>
 							</div>
