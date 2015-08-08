@@ -114,6 +114,10 @@
 	float: right;
 }
 
+.comment {
+	margin-top: 10px;
+}
+
 /* ------ question page ------ */
 .question-detail {
 	padding-bottom: 10px;
