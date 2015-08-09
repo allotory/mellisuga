@@ -241,7 +241,7 @@
 										<a class="meta-item" href="javascript:;">
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
-										<a href="#" class="meta-item">
+										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<span class="glyphicon glyphicon-comment"></span> 12条评论
 										</a>
 										<span id="hidden-item" style="display:none">
@@ -268,7 +268,7 @@
 								</div>
 								
 								<!-- comment -->
-								<div class="row comment">
+								<div id="comment" class="row comment collapse">
 									<div class="panel panel-default">
 										<div class="panel-body">
 											<!-- avatar and upvote col -->
