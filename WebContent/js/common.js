@@ -167,6 +167,11 @@ function hiddenItem(id) {
 	item.style.display = "none";
 }
 
+//赞成
+function voteUp() {
+	
+}
+
 
 
 
