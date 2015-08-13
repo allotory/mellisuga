@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="sitename.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Mellisuga</title>
+	<title>私信 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
@@ -110,8 +111,8 @@
 				</div>
 
 				<ul class="nav navbar-nav">
-					<li class="active">
-						<a href="#">首页 <span class="sr-only">(current)</span></a>
+					<li>
+						<a href="#">首页</a>
 					</li>
 					<li>
 						<a href="#">话题</a>
