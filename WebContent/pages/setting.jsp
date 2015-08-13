@@ -11,18 +11,43 @@
 	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
 	<link rel="stylesheet" href="../css/style.css" media="screen">
 	<link rel="stylesheet" href="../css/bootswatch.min.css">
+	
+	<script src="../js/jquery-1.11.2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="../js/html5shiv.js"></script>
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
+	<!-- modal -->
+	<script type="text/javascript">
+	$('#myModal').on('shown.bs.modal', function () {
+		$('#myInput').focus()
+	})
+	</script>
+
+	<!-- bacheditor -->
+	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
+	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
+	<link rel="stylesheet" href="../plugin/BachEditor/css/codemirror.min.css">
+	<link rel="stylesheet" href="../plugin/BachEditor/css/default.min.css">
+	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.min.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/marked.min.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/codemirror.min.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/fileupload.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
+	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="../" class="navbar-brand">Mellisuga</a>
+				<a href="../" class="navbar-brand"><%=sitename %></a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -31,14 +56,8 @@
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-main">
 
-				<form class="navbar-form navbar-left" role="search">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for...">
-						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Go!</button>
-						</span>
-					</div>
-				</form>
+				<!-- search modal -->
+				<%@include file="modal.jsp"%>
 
 				<ul class="nav navbar-nav">
 					<li>
@@ -519,8 +538,5 @@
 
 	</div><!-- end container -->
 
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/bootswatch.js"></script>
 	</body>
 </html>

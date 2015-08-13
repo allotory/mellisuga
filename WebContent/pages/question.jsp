@@ -17,6 +17,13 @@
 	<![endif]-->
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	
+	<!-- modal -->
+	<script type="text/javascript">
+		$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').focus()
+		})
+	</script>
 
 	<!-- bacheditor -->
 	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
@@ -38,7 +45,7 @@
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="../" class="navbar-brand">Mellisuga</a>
+				<a href="../" class="navbar-brand"><%=sitename %></a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -51,7 +58,8 @@
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search for...">
 						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Go!</button>
+							<button class="btn btn-primary" type="button" data-toggle="modal" 
+									data-target="#myModal" data-backdrop="false">提问</button>
 						</span>
 					</div>
 				</form>
@@ -392,10 +400,10 @@
 								</div>
 
 								<script>
-								$(function() {
-									var myEditor = new Editor();
-									myEditor.render('#myEditor');
-								});
+									$(function() {
+										var myEditor = new Editor();
+										myEditor.render('#myEditor');
+									});
 								</script>
 
 								<div class="checkbox post-module">
