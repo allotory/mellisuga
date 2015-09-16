@@ -6,22 +6,40 @@
 	<properties resource="config.properties"/>
 
     <typeAliases> 
-        <typeAlias alias="User" type="com.mellisuga.model.User"/> 
+        <typeAlias alias="RemoteUser" type="com.mellisuga.remote.model.User"/> 
+        <typeAlias alias="RemoteRole" type="com.mellisuga.remote.model.Role"/> 
+        <typeAlias alias="RemoteRoleUser" type="com.mellisuga.remote.model.RoleUser"/> 
+        <typeAlias alias="RemotePermission" type="com.mellisuga.remote.model.Permission"/> 
+        <typeAlias alias="RemoteRolePermission" type="com.mellisuga.remote.model.RolePermission"/> 
     </typeAliases> 
 
     <environments default="development">
         <environment id="development">
-        <transactionManager type="JDBC"/>
+        	<transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-				<property name="driver" value="${driver}"/>
-				<property name="url" value="${url}"/>
-				<property name="username" value="${username}"/>
-				<property name="password" value="${password}"/>
+				<property name="driver" value="${mellisuga.driver}"/>
+				<property name="url" value="${mellisuga.url}"/>
+				<property name="username" value="${mellisuga.username}"/>
+				<property name="password" value="${mellisuga.password}"/>
+			</dataSource>
+        </environment>
+        
+        <environment id="florisuga">
+        	<transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+				<property name="driver" value="${florisuga.driver}"/>
+				<property name="url" value="${florisuga.url}"/>
+				<property name="username" value="${florisuga.username}"/>
+				<property name="password" value="${florisuga.password}"/>
 			</dataSource>
         </environment>
     </environments>
     
     <mappers>
-        <mapper resource="com/mellisuga/model/User.xml"/>
+        <mapper resource="com/mellisuga/remote/model/User.xml"/>
+        <mapper resource="com/mellisuga/remote/model/Role.xml"/>
+        <mapper resource="com/mellisuga/remote/model/RoleUser.xml"/>
+        <mapper resource="com/mellisuga/remote/model/Permission.xml"/>
+        <mapper resource="com/mellisuga/remote/model/RolePermission.xml"/>
     </mappers>
 </configuration>

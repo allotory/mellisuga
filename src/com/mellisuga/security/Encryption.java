@@ -1,38 +1,108 @@
 package com.mellisuga.security;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Javaå¸¸ç”¨çš„å¯¹å¯†ç åŠ å¯†çš„æ–¹æ³•
+ * å¯¹æ‘˜è¦ä¿¡æ¯è¿›è¡ŒåŠ å¯†ç¼–ç 
+ */
 public class Encryption {
-
-	public String encryptionPwd(String data, String algorithm) {
-		byte resultData[] = null;
-		MessageDigest m = null;
+	
+	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5",
+		"6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+	
+	/**
+	 * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸º16è¿›åˆ¶çš„å­—ç¬¦ä¸²
+	 * @param byteArray å­—èŠ‚æ•°ç»„
+	 * @return 16è¿›åˆ¶çš„å­—ç¬¦ä¸²
+	 */
+	private String byteArrayToHexString(byte[] byteArray){
+		StringBuffer sb = new StringBuffer();
+		for(byte byt:byteArray){
+			sb.append(byteToHexString(byt));
+		}
+		return sb.toString();
+	}
+	
+	/**
+	 * å°†å­—èŠ‚è½¬æ¢ä¸º16è¿›åˆ¶å­—ç¬¦ä¸²
+	 * @param byt å­—èŠ‚
+	 * @return 16è¿›åˆ¶å­—ç¬¦ä¸²
+	 */
+	private String byteToHexString(byte byt) {
+		int n = byt;
+		if (n < 0)
+			n = 256 + n;
+		return hexDigits[n/16] + hexDigits[n%16];
+	}
+	
+	/**
+	 * å°†æ‘˜è¦ä¿¡æ¯è½¬æ¢ä¸ºç›¸åº”çš„ç¼–ç 
+	 * @param code ç¼–ç ç±»å‹
+	 * @param message æ‘˜è¦ä¿¡æ¯
+	 * @return ç›¸åº”çš„ç¼–ç å­—ç¬¦ä¸²
+	 */
+	private String Encode(String code,String message){
+		MessageDigest md;
+		String encode = null;
 		try {
-			//´´½¨  MessageDigest ¶ÔÏó, µ÷ÓÃ MessageDigest ÀàÖĞµÄ getInstance
-			//¾²Ì¬ factory ·½·¨,Ëã·¨Ãû²»Çø·Ö´óĞ¡Ğ´
-			m = MessageDigest.getInstance(algorithm);
-			//ÏòMessageDigest´«ËÍÒª¼ÆËãµÄÊı¾İ,update´«ÈëµÄ²ÎÊıÊÇ×Ö½ÚÀàĞÍ»ò×Ö½ÚÀàĞÍÊı×é£¬
-			//¶ÔÓÚ×Ö·û´®£¬ĞèÒªÏÈÊ¹ÓÃgetBytes( )·½·¨Éú³É×Ö·û´®Êı×é¡£
-			m.update(data.getBytes("UTF8"));
-			//¼ÆËãÕªÒª,Éú³ÉÉ¢ÁĞÂë
-			resultData = m.digest();
+			md = MessageDigest.getInstance(code);
+			encode = byteArrayToHexString(md.digest(message
+					.getBytes()));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 		}
-
-		return convertToHexString(resultData);
+		return encode;
 	}
-
-	//½«¼ÆËã½á¹û(byteÊı×é)×ª»»Îª×Ö·û´®
-	static String convertToHexString(byte data[]) {
-		StringBuffer strBuffer = new StringBuffer();
-		for (int i = 0; i < data.length; i++) {
-			strBuffer.append(Integer.toHexString(0xff & data[i]));
+	
+	/**
+	 * å°†æ‘˜è¦ä¿¡æ¯è½¬æ¢æˆMD5ç¼–ç 
+	 * @param message æ‘˜è¦ä¿¡æ¯
+	 * @return MD5ç¼–ç ä¹‹åçš„å­—ç¬¦ä¸²
+	 */
+	public String md5Encode(String message){
+		return Encode("MD5",message);
+	}
+	
+	/**
+	 * å°†æ‘˜è¦ä¿¡æ¯è½¬æ¢æˆSHAç¼–ç 
+	 * @param message æ‘˜è¦ä¿¡æ¯
+	 * @return SHAç¼–ç ä¹‹åçš„å­—ç¬¦ä¸²
+	 */
+	public String shaEncode(String message){
+		return Encode("SHA",message);
+	}
+	
+	/**
+	 * å°†æ‘˜è¦ä¿¡æ¯è½¬æ¢æˆSHA-256ç¼–ç 
+	 * @param message æ‘˜è¦ä¿¡æ¯
+	 * @return SHA-256ç¼–ç ä¹‹åçš„å­—ç¬¦ä¸²
+	 */
+	public String sha256Encode(String message){
+		return Encode("SHA-256",message);
+	}
+	
+	/**
+	 * å°†æ‘˜è¦ä¿¡æ¯è½¬æ¢æˆSHA-512ç¼–ç 
+	 * @param message æ‘˜è¦ä¿¡æ¯
+	 * @return SHA-512ç¼–ç ä¹‹åçš„å­—ç¬¦ä¸²
+	 */
+	public String sha512Encode(String message){
+		return Encode("SHA-512",message);
+	}
+	
+	public static void main(String[] args) {
+		Encryption cu = new Encryption();
+		
+		//ä¸‹é¢æ˜¾ç¤ºMD5 SHA SHA-256 SHA-512æ‰€ç”Ÿæˆçš„é•¿åº¦
+		System.out.println("--MD5--:"+cu.md5Encode("test"));
+		System.out.println("--SHA--:"+cu.shaEncode("test"));
+		System.out.println("SHA-256:"+cu.sha256Encode("test"));
+		System.out.println("SHA-512:"+cu.sha512Encode("test"));
+		
+		if(cu.sha256Encode("test").equals("9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08")) {
+			System.out.println(true);
 		}
-		return strBuffer.toString();
 	}
 }

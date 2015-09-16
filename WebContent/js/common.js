@@ -35,7 +35,18 @@ function loginManager() {
 	
 }
 
-//校验邮箱
+//校验用户姓名
+function validateUsername(id) {
+	var username = document.getElementById(id).value.trim();
+	var reg = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){5,19}$/;
+	if (!reg.test(username)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+// 校验邮箱
 function validateEmail(id) {
 	var email = document.getElementById(id).value.trim();
 	var reg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
@@ -46,7 +57,7 @@ function validateEmail(id) {
 	}
 }
 
-//校验密码
+// 校验密码
 function validatePass(id) {
 	var password = document.getElementById(id).value.trim();
 	var reg = /^[a-zA-Z][a-zA-Z0-9_]{5,127}$/;
@@ -90,28 +101,6 @@ function validateLoginSubmit() {
 		return true;
 	}
 }
-
-//校验用户姓名
-function validateUsername(id) {
-	var username = document.getElementById(id).value.trim();
-	var len = strLen(username);
-	if(len < 4 || len > 20) {
-		return false;
-	}
-	return true;
-}
-//判断用户名长度
-function strLen(str) {  
-    var len = 0;  
-    for (var i=0; i<str.length; i++) {  
-        if (str.charCodeAt(i)>127 || str.charCodeAt(i)==94) {  
-             len += 2;  
-         } else {  
-             len ++;  
-         }  
-     }  
-    return len;  
-}  
 
 //注册提交校验
 function validateRegSubmit() {

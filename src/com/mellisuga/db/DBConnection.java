@@ -1,26 +1,38 @@
 package com.mellisuga.db;
 
-import java.io.Reader;
-
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DBConnection {
 
-	private static SqlSessionFactory sqlSessionFactory;
-	private static Reader reader;
-
+	// 当前sessionFactory
+	private static SqlSessionFactory defaultSessionFactory;
+	// 远程sessionFactory
+	private static SqlSessionFactory remoteSessionFactory;
+	
 	static {
 		try {
-			reader = Resources.getResourceAsReader("Configuration.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+			defaultSessionFactory = new SqlSessionFactoryBuilder().build(
+					Resources.getResourceAsReader("Configuration.xml"));
+			remoteSessionFactory = new SqlSessionFactoryBuilder().build(
+					Resources.getResourceAsReader("Configuration.xml"), "florisuga");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static SqlSessionFactory getSession() {
-		return sqlSessionFactory;
+	public static SqlSession openDefaultSession() {
+		return defaultSessionFactory.openSession();
 	}
+	
+	public static SqlSession openRemoteSession() {
+		return remoteSessionFactory.openSession();
+	}
+	
+	public static void closeSession(SqlSession sqlSession){  
+        if(null != sqlSession)  
+            sqlSession.close();  
+    } 
 }

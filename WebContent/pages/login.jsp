@@ -16,6 +16,21 @@
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
+	<script src="../js/jquery-1.11.2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common.js"></script>
+
+<%
+	String flag = (String) request.getSession().getAttribute("flag");
+	System.out.println(flag);
+	if("regsuccess".equals(flag)) {
+%>
+	<script type="text/javascript">
+		window.onload = loginManager;
+	</script>
+<%
+	}
+%>
 </head>
 <body style="background: #f1f5f8">
 	<div class="container-fluid login-main">
@@ -67,21 +82,21 @@
 						</fieldset>
 					</form>
 					
-					<form id="register_form" class="form-horizontal" style="display:inline">
+					<form id="register_form" action="../RemoteRegisterServlet" method="post" class="form-horizontal" style="display:inline">
 						<fieldset>
 							<div class="form-group">
-								<input type="text" class="form-control" id="rusername" placeholder="姓名">
+								<input type="text" class="form-control" id="rusername" name="rusername" placeholder="用户名">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="remail" placeholder="邮箱">
+								<input type="text" class="form-control" id="remail" name="remail" placeholder="邮箱">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="rpassword" placeholder="密码（不少于6位）">
+								<input type="password" class="form-control" id="rpassword" name="rpassword" placeholder="密码（不少于6位）">
 							</div>
 							<div class="form-group">
 								<div id="ralert_error" class="alert alert-dismissible alert-danger" style="display:none">
 									<div id="rusername_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 姓名需在2-10个汉字之间.
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 用户名需在6-20个字符之间.
 									</div>
 									<div id="remail_error" style="display:none">
 										<span class="glyphicon glyphicon-exclamation-sign"></span> 邮箱地址不正确.
@@ -109,9 +124,5 @@
 		<!-- TODO nothing -->
 		</div>
 	</div><!-- end container -->
-
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
 </body>
 </html>
