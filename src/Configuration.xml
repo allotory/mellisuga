@@ -11,6 +11,12 @@
         <typeAlias alias="RemoteRoleUser" type="com.mellisuga.remote.model.RoleUser"/> 
         <typeAlias alias="RemotePermission" type="com.mellisuga.remote.model.Permission"/> 
         <typeAlias alias="RemoteRolePermission" type="com.mellisuga.remote.model.RolePermission"/> 
+        
+        <typeAlias alias="Member" type="com.mellisuga.model.Member"/>
+        <typeAlias alias="Role" type="com.mellisuga.model.Role"/>
+        <typeAlias alias="Permission" type="com.mellisuga.model.Permission"/>
+        <typeAlias alias="RolePermission" type="com.mellisuga.model.RolePermission"/>
+        <typeAlias alias="RoleMember" type="com.mellisuga.model.RoleMember"/>
     </typeAliases> 
 
     <environments default="development">
@@ -41,5 +47,11 @@
         <mapper resource="com/mellisuga/remote/model/RoleUser.xml"/>
         <mapper resource="com/mellisuga/remote/model/Permission.xml"/>
         <mapper resource="com/mellisuga/remote/model/RolePermission.xml"/>
+        
+        <mapper resource="com/mellisuga/model/Member.xml"/>
+        <mapper resource="com/mellisuga/model/Role.xml"/>
+        <mapper resource="com/mellisuga/model/Permission.xml"/>
+        <mapper resource="com/mellisuga/model/RolePermission.xml"/>
+        <mapper resource="com/mellisuga/model/RoleMember.xml"/>
     </mappers>
 </configuration>

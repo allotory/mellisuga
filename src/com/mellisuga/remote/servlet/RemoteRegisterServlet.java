@@ -81,8 +81,8 @@ public class RemoteRegisterServlet extends HttpServlet {
 			
 			// 查询user id
 			User u = userDAO.queryUserByName(user);
-			System.out.println(u.getId());
-			System.out.println(u.getUsername());
+			//System.out.println(u.getId());
+			//System.out.println(u.getUsername());
 			
 			// 用户角色
 			RoleUserDAO roleUserDAO = session.getMapper(RoleUserDAO.class);

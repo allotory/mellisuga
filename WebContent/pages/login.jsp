@@ -22,7 +22,6 @@
 
 <%
 	String flag = (String) request.getSession().getAttribute("flag");
-	System.out.println(flag);
 	if("regsuccess".equals(flag)) {
 %>
 	<script type="text/javascript">
@@ -105,6 +104,17 @@
 										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
 									</div>
 								</div>
+								<%
+									if("regsuccess".equals(flag)) {
+								%>
+								<div id="login_info" class="alert alert-dismissible alert-danger">
+									<div id="login_infos">
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 注册成功，请登录.
+									</div>
+								</div>
+								<%
+									}
+								%>
 							</div>
 							<div class="form-group">
 								<button type="submit" onClick="return validateRegSubmit();" class="btn btn-primary btn-block">注册</button>
