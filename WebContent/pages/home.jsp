@@ -122,7 +122,7 @@
 										</div>
 
 										<div class="user-info">
-											<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 
+											<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 
 											<span class="company">公司</span>
 											<span class="work">程序猿</span>
 											<a href="#" class="item-edit">
