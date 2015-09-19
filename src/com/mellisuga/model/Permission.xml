@@ -10,6 +10,11 @@
     	insert into permission(name, title, status, remark, sort, pid, level) 
     	values(#{name}, #{title}, #{status}, #{remark}, #{sort}, #{pid}, #{level})
     </insert>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryPermissionByName" parameterType="Permission" resultType="Permission">
+        select * from permission where name = #{name}
+    </select>
 </mapper>
 
 

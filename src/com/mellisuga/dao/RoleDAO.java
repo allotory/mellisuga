@@ -5,4 +5,6 @@ import com.mellisuga.model.Role;
 public interface RoleDAO {
 
 	public void insertRole(Role role);
+	
+	public Role queryRoleByName(Role role);
 }

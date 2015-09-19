@@ -9,6 +9,11 @@
     <insert id="insertRole" parameterType="Role" useGeneratedKeys="true" keyProperty="id">
     	insert into role(rolename, pid, status, remark) values(#{rolename}, #{pid}, #{status}, #{remark})
     </insert>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryRoleByName" parameterType="Role" resultType="Role">
+        select * from role where rolename = #{rolename}
+    </select>
 </mapper>
 
 
