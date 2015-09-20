@@ -4,7 +4,10 @@ import com.mellisuga.model.Member;
 
 public interface MemberDAO {
 
+	// 插入成员
 	public void insertMember(Member member);
 	
-	public Member queryMemberByName(Member member);
+	// 通过
+	public Member queryMemberByUserID(int user_id);
 }
+ 

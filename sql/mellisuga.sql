@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS member (
   	education varchar(128) DEFAULT NULL,		/* 学校或教育机构 */
   	major varchar(128) DEFAULT NULL,			/* 专业 */
   	description varchar(256) DEFAULT NULL,		/* 个人描述 */
-	PRIMARY KEY (id)
+	user_id int NOT NULL DEFAULT '0',			/* 用户ID */
+  	PRIMARY KEY (id)
 );
 
 /*

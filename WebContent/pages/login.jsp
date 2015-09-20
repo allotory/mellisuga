@@ -22,7 +22,7 @@
 
 <%
 	String flag = (String) request.getSession().getAttribute("flag");
-	if("regsuccess".equals(flag)) {
+	if("regsuccess".equals(flag) || "notexist".equals(flag)) {
 %>
 	<script type="text/javascript">
 		window.onload = loginManager;
@@ -52,13 +52,13 @@
 						</span>
 					</div>
 					
-					<form id="login_form" class="form-horizontal" style="display:none">
+					<form id="login_form" class="form-horizontal" action="../LoginServlet" method="post" style="display:none">
 						<fieldset>
 							<div class="form-group">
-								<input type="text" class="form-control" id="email" placeholder="邮箱">
+								<input type="text" class="form-control" name="email" id="email" placeholder="邮箱">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="password" placeholder="密码">
+								<input type="password" class="form-control" name="password" id="password" placeholder="密码">
 							</div>
 							<div class="form-group">
 								<div id="alert_error" class="alert alert-dismissible alert-danger" style="display:none">
@@ -69,12 +69,23 @@
 										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
 									</div>
 								</div>
+								<%
+									if("notexist".equals(flag)) {
+								%>
+								<div id="login_info" class="alert alert-dismissible alert-danger">
+									<div id="login_infos">
+										<span class="glyphicon glyphicon-exclamation-sign"></span> 用户名或密码错误.
+									</div>
+								</div>
+								<%
+									}
+								%>
 							</div>
 							<div class="form-group">
 								<button type="submit" onClick="return validateLoginSubmit();" class="btn btn-primary btn-block">提交</button>
 								<div class="checkbox">
 									<label>
-										<input type="checkbox"> 记住我
+										<input type="checkbox" name="remember_me" value="yes"> 记住我
 									</label>
 								</div>
 							</div>

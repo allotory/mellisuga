@@ -16,6 +16,11 @@
         select * from user where username = #{username}
     </select>
     
+    <!-- 查询单一数据 -->
+    <select id="queryUserByEmail" parameterType="RemoteUser" resultType="RemoteUser">
+        select * from user where email = #{email}
+    </select>
+    
 </mapper>
 
 

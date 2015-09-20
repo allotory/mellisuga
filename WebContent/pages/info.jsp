@@ -19,7 +19,10 @@
 		<script src="../js/html5shiv.js"></script>
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
-
+<%
+	int user_id = (int) request.getSession().getAttribute("user_id"); 
+	System.out.println(user_id);
+%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -47,9 +50,11 @@
 				<form class="form-horizontal">
 					<fieldset>
 						<div class="form-group">
-							<label for="inputName" class="col-lg-2 control-label">姓名</label>
+							<label for="inputName" class="col-lg-2 control-label">
+								<span class="glyphicon glyphicon-user"></span>
+							</label>
 							<div class="col-lg-5">
-								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="Ellery">
+								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="用户全名">
 								<span class="help-block">137 天后可以修改姓名.</span>
 							</div>
 						</div>
