@@ -71,6 +71,7 @@ public class InitServlet extends HttpServlet {
 			session.commit();
 			
 			// 跳转首页
+			// TODO 各种首页查询啊。。。
 			request.getSession().setAttribute("member", m);
 			response.sendRedirect(request.getContextPath()
 					+ "/pages/index.jsp");

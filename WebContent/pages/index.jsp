@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mellisuga.model.*" %>
 <%@include file="sitename.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,9 @@
 	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
 	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
 	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
-
+<%
+	Member m = (Member) request.getSession().getAttribute("member"); 
+%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -76,7 +79,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ellery <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=m.getFullname() %> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#" class="glyphicon glyphicon-user"> 我的主页</a></li>
 							<li><a href="#" class="glyphicon glyphicon-envelope"> 私信</a></li>

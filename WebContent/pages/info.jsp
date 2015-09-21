@@ -48,7 +48,6 @@
 			</div>
 			<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-12">
 				<form class="form-horizontal" method="post">
-					
 					<fieldset>
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">
@@ -66,15 +65,15 @@
 							<div class="col-lg-10">
 								<div class="radio">
 									<label class="setting-margin">
-										<input type="radio" name="male" id="male" value="male" checked>
+										<input type="radio" name="gender" id="male" value="male" checked>
 										男
 									</label>
 									<label class="setting-margin">
-										<input type="radio" name="female" id="female" value="female">
+										<input type="radio" name="gender" id="female" value="female">
 										女
 									</label>
 									<label>
-										<input type="radio" name="other" id="other" value="other">
+										<input type="radio" name="gender" id="other" value="other">
 										其他
 									</label>
 								</div>
@@ -114,11 +113,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="education" class="col-lg-2 control-label">
+							<label for="description" class="col-lg-2 control-label">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</label>
 							<div class="col-lg-10">
-								<textarea class="form-control" rows="5" cols="20" placeholder="描述"></textarea>
+								<textarea class="form-control" name="description" rows="5" cols="20" placeholder="描述"></textarea>
 							</div>
 						</div>
 						

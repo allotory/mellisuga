@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 
 				// 判断是否记住密码
 				if (rememberMe != null && "yes".equals(rememberMe)) {
-					// TODO
+					// TODO cookie
 				}
 
 				// 查询个人资料
@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 				} else {
 					// 用户存在，资料已初始化，正常登录
 					
-					// TODO 
+					// TODO 各种首页查询。。。
 					
 					response.sendRedirect(request.getContextPath()
 							+ "/pages/index.jsp");
