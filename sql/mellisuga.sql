@@ -146,8 +146,9 @@ CREATE TABLE IF NOT EXISTS comment (
  * 问题标签表
  */
 CREATE TABLE IF NOT EXISTS topic (
-	id int(11) NOT NULL AUTO_INCREMENT, 	/* 标签ID（唯一标识） */
-	tagname varchar(50) NOT NULL, 			/* 标签内容 */
+	id int(11) NOT NULL AUTO_INCREMENT, 			/* 标签ID（唯一标识） */
+	tagname varchar(50) NOT NULL, 					/* 标签内容 */
+	question_id int(11) NOT NULL DEFAULT '0',		/* 标签的问题ID（唯一标识） */	
 	PRIMARY KEY (id)	
 );
 
