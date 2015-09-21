@@ -7,7 +7,7 @@ public interface MemberDAO {
 	// 插入成员
 	public void insertMember(Member member);
 	
-	// 通过
+	// 通过用户ID查询成员信息
 	public Member queryMemberByUserID(int user_id);
 }
  

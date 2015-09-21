@@ -78,11 +78,14 @@ public class LoginServlet extends HttpServlet {
 				// 用户存在，判断是否已初始化
 				if (member == null) {
 					// 用户存在，但尚未初始化，跳转到info页面
-					request.getSession().setAttribute("user_id", u.getId());
+					request.getSession().setAttribute("user", u);
 					response.sendRedirect(request.getContextPath()
 							+ "/pages/info.jsp");
 				} else {
 					// 用户存在，资料已初始化，正常登录
+					
+					// TODO 
+					
 					response.sendRedirect(request.getContextPath()
 							+ "/pages/index.jsp");
 				}

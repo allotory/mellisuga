@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mellisuga.remote.model.User" %>
 <%@include file="sitename.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +21,7 @@
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 <%
-	int user_id = (int) request.getSession().getAttribute("user_id"); 
-	System.out.println(user_id);
+	User u = (User) request.getSession().getAttribute("user"); 
 %>
 </head>
 <body>
@@ -47,15 +47,16 @@
 				</div>
 			</div>
 			<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-12">
-				<form class="form-horizontal">
+				<form class="form-horizontal" method="post">
+					
 					<fieldset>
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">
 								<span class="glyphicon glyphicon-user"></span>
 							</label>
 							<div class="col-lg-5">
-								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="用户全名">
-								<span class="help-block">137 天后可以修改姓名.</span>
+								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="<%=u.getUsername() %>">
+								<span class="help-block">每180天只能修改一次，默认为用户名（不建议使用）.</span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -123,8 +124,8 @@
 						
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2">
-								<button type="reset" class="btn btn-default">不，暂不添加</button>
-								<button type="submit" class="btn btn-primary">提交</button>
+								<button onclick="this.form.action='../InitServlet';this.form.submit()" class="btn btn-default">不，暂不添加</button>
+								<button onclick="this.form.action='../InitInfo';this.form.submit()" class="btn btn-primary">提交</button>
 							</div>
 						</div>
 					</fieldset>
