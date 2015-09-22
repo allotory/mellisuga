@@ -18,7 +18,7 @@ public class Question {
 	
 	private int scan_num;
 	
-	private int replay_num;
+	private int reply_num;
 
 	public int getId() {
 		return id;
@@ -76,12 +76,12 @@ public class Question {
 		this.scan_num = scan_num;
 	}
 
-	public int getReplay_num() {
-		return replay_num;
+	public int getReply_num() {
+		return reply_num;
 	}
 
-	public void setReplay_num(int replay_num) {
-		this.replay_num = replay_num;
+	public void setReply_num(int reply_num) {
+		this.reply_num = reply_num;
 	}
 	
 }

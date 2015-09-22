@@ -72,5 +72,24 @@
         <mapper resource="com/mellisuga/model/Permission.xml"/>
         <mapper resource="com/mellisuga/model/RolePermission.xml"/>
         <mapper resource="com/mellisuga/model/RoleMember.xml"/>
+        <mapper resource="com/mellisuga/model/Answers.xml"/>
+        <mapper resource="com/mellisuga/model/Block.xml"/>
+        <mapper resource="com/mellisuga/model/Collection.xml"/>
+        <mapper resource="com/mellisuga/model/CollectionFolder.xml"/>
+        <mapper resource="com/mellisuga/model/CollectionFolderFollow.xml"/>
+        <mapper resource="com/mellisuga/model/Comment.xml"/>
+        <mapper resource="com/mellisuga/model/Favour.xml"/>
+        <mapper resource="com/mellisuga/model/Follow.xml"/>
+        <mapper resource="com/mellisuga/model/MessageText.xml"/>
+        <mapper resource="com/mellisuga/model/NoHelp.xml"/>
+        <mapper resource="com/mellisuga/model/Qlog.xml"/>
+        <mapper resource="com/mellisuga/model/Question.xml"/>
+        <mapper resource="com/mellisuga/model/Relationship.xml"/>
+        <mapper resource="com/mellisuga/model/SystemMessage.xml"/>
+        <mapper resource="com/mellisuga/model/Thanks.xml"/>
+        <mapper resource="com/mellisuga/model/Topic.xml"/>
+        <mapper resource="com/mellisuga/model/UserMessage.xml"/>
+        <mapper resource="com/mellisuga/model/UserSystemMsg.xml"/>
+        <mapper resource="com/mellisuga/model/Vote.xml"/>
     </mappers>
 </configuration>
