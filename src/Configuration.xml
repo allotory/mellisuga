@@ -17,6 +17,25 @@
         <typeAlias alias="Permission" type="com.mellisuga.model.Permission"/>
         <typeAlias alias="RolePermission" type="com.mellisuga.model.RolePermission"/>
         <typeAlias alias="RoleMember" type="com.mellisuga.model.RoleMember"/>
+        <typeAlias alias="Answers" type="com.mellisuga.model.Answers"/>
+        <typeAlias alias="Block" type="com.mellisuga.model.Block"/>
+        <typeAlias alias="Collection" type="com.mellisuga.model.Collection"/>
+        <typeAlias alias="CollectionFolder" type="com.mellisuga.model.CollectionFolder"/>
+        <typeAlias alias="CollectionFolderFollow" type="com.mellisuga.model.CollectionFolderFollow"/>
+        <typeAlias alias="Comment" type="com.mellisuga.model.Comment"/>
+        <typeAlias alias="Favour" type="com.mellisuga.model.Favour"/>
+        <typeAlias alias="Follow" type="com.mellisuga.model.Follow"/>
+        <typeAlias alias="MessageText" type="com.mellisuga.model.MessageText"/>
+        <typeAlias alias="NoHelp" type="com.mellisuga.model.NoHelp"/>
+        <typeAlias alias="Qlog" type="com.mellisuga.model.Qlog"/>
+        <typeAlias alias="Question" type="com.mellisuga.model.Question"/>
+        <typeAlias alias="Relationship" type="com.mellisuga.model.Relationship"/>
+        <typeAlias alias="SystemMessage" type="com.mellisuga.model.SystemMessage"/>
+        <typeAlias alias="Thanks" type="com.mellisuga.model.Thanks"/>
+        <typeAlias alias="Topic" type="com.mellisuga.model.Topic"/>
+        <typeAlias alias="UserMessage" type="com.mellisuga.model.UserMessage"/>
+        <typeAlias alias="UserSystemMsg" type="com.mellisuga.model.UserSystemMsg"/>
+        <typeAlias alias="Vote" type="com.mellisuga.model.Vote"/>
     </typeAliases> 
 
     <environments default="development">
