@@ -1,14 +1,12 @@
 package com.mellisuga.model;
 
-public class Vote {
+public class Thanks {
 
 	private int id;
 	
 	private int answer_id;
 	
-	private int voter_id;
-	
-	private String voted;
+	private int thanker_id;
 
 	public int getId() {
 		return id;
@@ -26,20 +24,12 @@ public class Vote {
 		this.answer_id = answer_id;
 	}
 
-	public int getVoter_id() {
-		return voter_id;
+	public int getThanker_id() {
+		return thanker_id;
 	}
 
-	public void setVoter_id(int voter_id) {
-		this.voter_id = voter_id;
-	}
-
-	public String getVoted() {
-		return voted;
-	}
-
-	public void setVoted(String voted) {
-		this.voted = voted;
+	public void setThanker_id(int thanker_id) {
+		this.thanker_id = thanker_id;
 	}
 	
 }

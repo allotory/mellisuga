@@ -181,9 +181,8 @@ CREATE TABLE IF NOT EXISTS favour (
 CREATE TABLE IF NOT EXISTS vote (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 投票ID（唯一标识） */
 	answer_id int(11) NOT NULL,					/* 答案ID（唯一标识） */
-	vote_up int(11) NOT NULL DEFAULT '0',		/* 支持数 */
-	vote_down int(11) NOT NULL DEFAULT '0',	/* 反对数 */
 	voter_id int(11) NOT NULL,					/* 投票用户ID */
+	voted varchar(16) NOT NULL,				/* 投票 up、down、unconcern */
 	PRIMARY KEY (id) 
 );
 
