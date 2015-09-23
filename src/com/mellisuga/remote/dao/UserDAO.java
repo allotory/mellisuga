@@ -12,4 +12,7 @@ public interface UserDAO {
 	
 	// 通过email查询用户
 	public User queryUserByEmail(User user);
+	
+	// 更新用户
+	public void updateUser(User user);
 }

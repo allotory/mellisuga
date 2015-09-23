@@ -21,6 +21,11 @@
         select * from user where email = #{email}
     </select>
     
+    <!-- 更新 -->
+    <update id="updateUser" parameterType="RemoteUser">
+    	update user set last_login_ip=#{last_login_ip} , last_login_time=#{last_login_time} where id=#{id}
+    </update>
+    
 </mapper>
 
 

@@ -1,6 +1,9 @@
 package com.mellisuga.servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +19,7 @@ import com.mellisuga.model.Member;
 import com.mellisuga.remote.dao.UserDAO;
 import com.mellisuga.remote.model.User;
 import com.mellisuga.security.Encryption;
+import com.mellisuga.utils.IPUtils;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -69,6 +73,9 @@ public class LoginServlet extends HttpServlet {
 				// 判断是否记住密码
 				if (rememberMe != null && "yes".equals(rememberMe)) {
 					// TODO cookie
+					// TODO cookie
+					// TODO cookie
+					// TODO cookie
 				}
 
 				// 查询个人资料
@@ -84,8 +91,26 @@ public class LoginServlet extends HttpServlet {
 				} else {
 					// 用户存在，资料已初始化，正常登录
 					
-					// TODO 各种首页查询。。。
+					//更新IP
+					String last_login_ip = IPUtils.getIP(request);
+
+					// 更新日期
+					Date date = new Date();
+					String dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date); 
+					Timestamp now = Timestamp.valueOf(dateFormate);
+
+					u.setLast_login_ip(last_login_ip);
+					u.setLast_login_time(now);
+					userDAO.updateUser(u);
 					
+					remoteSession.commit();
+					
+					// TODO 各种首页查询。。。
+					// TODO 各种首页查询。。。
+					// TODO 各种首页查询。。。
+					// TODO 各种首页查询。。。
+
+					request.getSession().setAttribute("member", member);
 					response.sendRedirect(request.getContextPath()
 							+ "/pages/index.jsp");
 				}
@@ -100,6 +125,7 @@ public class LoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			DBConnection.closeSession(defaultSession);
 			DBConnection.closeSession(remoteSession);
 		}
 

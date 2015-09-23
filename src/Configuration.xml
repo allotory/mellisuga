@@ -19,7 +19,7 @@
         <typeAlias alias="RoleMember" type="com.mellisuga.model.RoleMember"/>
         <typeAlias alias="Answers" type="com.mellisuga.model.Answers"/>
         <typeAlias alias="Block" type="com.mellisuga.model.Block"/>
-        <typeAlias alias="Collection" type="com.mellisuga.model.Collection"/>
+        <typeAlias alias="Collections" type="com.mellisuga.model.Collection"/>
         <typeAlias alias="CollectionFolder" type="com.mellisuga.model.CollectionFolder"/>
         <typeAlias alias="CollectionFolderFollow" type="com.mellisuga.model.CollectionFolderFollow"/>
         <typeAlias alias="Comment" type="com.mellisuga.model.Comment"/>
