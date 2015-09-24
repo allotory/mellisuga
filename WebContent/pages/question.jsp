@@ -17,6 +17,10 @@
 	<![endif]-->
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+
+	<!-- Taginput -->
+	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
 	
 	<!-- modal -->
 	<script type="text/javascript">

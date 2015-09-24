@@ -10,7 +10,7 @@ public class Question {
 	
 	private String question_content;
 	
-	private int answer_num;
+	private int answers_num;
 	
 	private int followers_num;
 	
@@ -19,6 +19,10 @@ public class Question {
 	private int scan_num;
 	
 	private int reply_num;
+	
+	private int is_anonymous;
+	
+	private int member_id;
 
 	public int getId() {
 		return id;
@@ -44,12 +48,12 @@ public class Question {
 		this.question_content = question_content;
 	}
 
-	public int getAnswer_num() {
-		return answer_num;
+	public int getAnswers_num() {
+		return answers_num;
 	}
 
-	public void setAnswer_num(int answer_num) {
-		this.answer_num = answer_num;
+	public void setAnswers_num(int answers_num) {
+		this.answers_num = answers_num;
 	}
 
 	public int getFollowers_num() {
@@ -82,6 +86,22 @@ public class Question {
 
 	public void setReply_num(int reply_num) {
 		this.reply_num = reply_num;
+	}
+
+	public int getIs_anonymous() {
+		return is_anonymous;
+	}
+
+	public void setIs_anonymous(int is_anonymous) {
+		this.is_anonymous = is_anonymous;
+	}
+
+	public int getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
 	}
 	
 }

@@ -7,9 +7,14 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
     <insert id="insertQuestion" parameterType="Question" useGeneratedKeys="true" keyProperty="id">
-    	insert into question(question_title, question_content, answers_num, followers_num, last_updated, scan_num, reply_num) 
-    	values(#{question_title}, #{question_content}, #{answers_num}, #{followers_num}, #{last_updated}, #{scan_num}, #{reply_num})
+    	insert into question(question_title, question_content, answers_num, followers_num, last_updated, scan_num, reply_num, is_anonymous, member_id) 
+    	values(#{question_title}, #{question_content}, #{answers_num}, #{followers_num}, #{last_updated}, #{scan_num}, #{reply_num}, #{is_anonymous}, #{member_id})
     </insert>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryQuestionByQUid" parameterType="Question" resultType="Question">
+        select * from question where question_title = #{question_title} and member_id = #{member_id}
+    </select>
 </mapper>
 
 

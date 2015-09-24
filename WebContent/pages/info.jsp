@@ -20,6 +20,11 @@
 		<script src="../js/html5shiv.js"></script>
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- Taginput -->
+	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	
 <%
 	User u = (User) request.getSession().getAttribute("user"); 
 %>

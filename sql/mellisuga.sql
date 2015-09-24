@@ -99,6 +99,8 @@ CREATE TABLE IF NOT EXISTS question (
 	last_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 更新时间 */
 	scan_num int(11) NOT NULL DEFAULT '0',			/* 浏览数 */
 	reply_num int(11) NOT NULL,						/* 评论数 */
+	is_anonymous int(11) NOT NULL DEFAULT '0',		/* 是否匿名 1：是， 0：否 */
+	member_id int(11) NOT NULL,						/* 提问用户 */
 	PRIMARY KEY (id)
 );
 

@@ -41,7 +41,7 @@
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">选择话题：</label>
-						<input type="text" class="form-control" id="recipient-name" placeholder="搜索话题">
+						<input type="text" class="form-control" id="recipient-name" data-role="tagsinput"  placeholder="搜索话题">
 						<span class="help-block">话题越精准，越容易让相关领域专业人士看到你的问题</span>
 					</div>
 				</form>

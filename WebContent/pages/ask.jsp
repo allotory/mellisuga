@@ -97,11 +97,11 @@
       	<!-- main content -->
 		<div class="question-main-content col-lg-10 col-md-10 col-sm-10 col-xs-10">
 			<div class="row">
-				<form class="form-horizontal">
+				<form class="form-horizontal" action="../AskServlet" method="post">
 					<fieldset>
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
-								<input type="text" class="form-control" id="inputName" placeholder="写下你的问题">
+								<input type="text" class="form-control" name="question_title" id="question_title" placeholder="写下你的问题">
 							</div>
 						</div>
 						<div class="form-group">
@@ -112,7 +112,7 @@
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
 								<div class="editor">
-									<textarea id="myEditor"></textarea>
+									<textarea id="myEditor" name="question_content"></textarea>
 								</div>
 
 								<script>
@@ -130,7 +130,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
-								<input type="text" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="搜索话题">
+								<input type="text" class="form-control" name="tags" id="tokenfield" data-role="tagsinput" placeholder="搜索话题">
 								<span class="help-block">话题越精准，越容易让相关领域专业人士看到你的问题</span>
 							</div>
 						</div>
@@ -138,7 +138,7 @@
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox">匿名
+										<input type="checkbox" name="is_anonymous" value="0">匿名
 									</label>
 								</div>
 							</div>

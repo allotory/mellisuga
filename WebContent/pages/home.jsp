@@ -20,13 +20,17 @@
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
+	<!-- Taginput -->
+	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	
 	<!-- modal -->
 	<script type="text/javascript">
 		$('#myModal').on('shown.bs.modal', function () {
 		  $('#myInput').focus()
 		})
 	</script>
-
+	
 	<!-- bacheditor -->
 	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
 	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
