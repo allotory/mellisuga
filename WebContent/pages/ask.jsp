@@ -18,6 +18,10 @@
 
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	
+	<!-- Taginput -->
+ 	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
 
 	<!-- bacheditor -->
 	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
@@ -126,7 +130,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
-								<input type="text" class="form-control" id="inputName" placeholder="搜索话题">
+								<input type="text" class="form-control" id="tokenfield" data-role="tagsinput" placeholder="搜索话题">
 								<span class="help-block">话题越精准，越容易让相关领域专业人士看到你的问题</span>
 							</div>
 						</div>
