@@ -1,26 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mellisuga.model.*" %>
 <%@include file="sitename.jsp"%>
+<%
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;
+
+Member m = (Member) request.getSession().getAttribute("member");
+Question question = (Question) request.getAttribute("question");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>有哪些免费的游戏可用IP？ - <%=sitename %></title>
+	<base href="<%=basePath %>">
+	<title><%=question.getQuestion_title() %> - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="../css/style.css" media="screen">
+	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="./css/style.css" media="screen">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-		<script src="../js/respond.min.js"></script>
+		<script src="./js/html5shiv.js"></script>
+		<script src="./js/respond.min.js"></script>
 	<![endif]-->
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 
 	<!-- Taginput -->
-	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	<script type="text/javascript" src="./plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="./plugin/Taginput/bootstrap-tagsinput.css">
 	
 	<!-- modal -->
 	<script type="text/javascript">
@@ -30,19 +40,19 @@
 	</script>
 
 	<!-- bacheditor -->
-	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/codemirror.min.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/default.min.css">
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/marked.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/codemirror.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/ZeroClipboard.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/fileupload.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
+	<link rel="stylesheet" href="./plugin/BachEditor/css/pygment_trac.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/editor.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/codemirror.min.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/default.min.css">
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/marked.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/codemirror.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/fileupload.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/modal.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/MIDI.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/bacheditor.js"></script>
 
 </head>
 <body>
@@ -85,7 +95,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ellery <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=m.getFullname() %> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#" class="glyphicon glyphicon-user"> 我的主页</a></li>
 							<li><a href="#" class="glyphicon glyphicon-envelope"> 私信</a></li>
@@ -122,15 +132,14 @@
 								</a>
 							</div>
 							<div class="question-title">
-								<strong>为什么腾讯这么大的公司都不提供宿舍？</strong>
+								<strong><%=question.getQuestion_title() %></strong>
 								<a href="#" class="item-edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
 									修改
 								</a>
 							</div>
 							<div class="question-contents">
-								住宿是可以产生规模化效应的，4人住一个宿舍，空调费还可以平摊。<br/>
-								如果在离公司较近的地方租一幢房子，显然比员工单独租房划算吧？
+								<%=question.getQuestion_content() %>
 								<a href="#" class="item-edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
 									修改
@@ -176,7 +185,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -284,7 +293,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -463,7 +472,7 @@
 					<div class="sidebar-group">
 						<span class="sidebar-group-title"><strong>问题状态</strong></span>
 						<div class="similar-question">
-							最近活动于 10:02 • <a>查看问题日志</a><br>
+							最近活动于 10:02 • <a href="../LogServlet">查看问题日志</a><br>
 							被浏览 6800 次，相关话题关注者 617946 人 9 个回答
 						</div>
 					</div>

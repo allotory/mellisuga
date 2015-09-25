@@ -36,26 +36,27 @@ public class AskServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
-		Member m = (Member) request.getSession().getAttribute("member"); 
-		
+
+		Member m = (Member) request.getSession().getAttribute("member");
+
 		String question_title = request.getParameter("question_title");
 		String question_content = request.getParameter("question_content");
 		String tags = request.getParameter("tags");
 		String is_anonymous = request.getParameter("is_anonymous");
-		
+
 		// 更新日期
 		Date date = new Date();
-		String dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date); 
+		String dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+				.format(date);
 		Timestamp now = Timestamp.valueOf(dateFormate);
-		
+
 		SqlSession session = null;
 		try {
 			session = DBConnection.openDefaultSession();
-			
+
 			// 添加问题
 			QuestionDAO questionDAO = session.getMapper(QuestionDAO.class);
-			
+
 			Question question = new Question();
 			question.setQuestion_title(question_title);
 			question.setQuestion_content(question_content);
@@ -64,46 +65,48 @@ public class AskServlet extends HttpServlet {
 			question.setLast_updated(now);
 			question.setScan_num(0);
 			question.setReply_num(0);
-			if(is_anonymous != null) {
+			if (is_anonymous != null) {
 				question.setIs_anonymous(0);
-			}else {
+			} else {
 				question.setIs_anonymous(1);
 			}
 			question.setMember_id(m.getId());
-			questionDAO.insertQuestion(question);
-			
-			session.commit();
-			
+			//questionDAO.insertQuestion(question);
+
+			//session.commit();
+
 			// 查询问题
 			Question q = questionDAO.queryQuestionByQUid(question);
-			
+
 			// 添加话题
 			TagDAO topicDAO = session.getMapper(TagDAO.class);
-			if(tags != null) {
-			    String[] tag_array = tags.split(",");
-			    for(int i = 0; i < tag_array.length; i++) {
-			    	System.out.println(tag_array[i]);
-			    	Tag tag = new Tag();
-			    	tag.setTagname(tag_array[i]);
-			    	tag.setQuestion_id(q.getId());
-			    	topicDAO.insertTag(tag);
-			    }
+			if (tags != null) {
+				String[] tag_array = tags.split(",");
+				for (int i = 0; i < tag_array.length; i++) {
+					Tag tag = new Tag();
+					tag.setTagname(tag_array[i]);
+					tag.setQuestion_id(q.getId());
+					//topicDAO.insertTag(tag);
+				}
 			}
-			session.commit();
-			
-			
+			//session.commit();
+
 			// 添加日志
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
-			
-		} catch(Exception e) {
+
+			request.setAttribute("question", question);
+			request.getRequestDispatcher("/pages/question.jsp")
+					.forward(request, response);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBConnection.closeSession(session);
 		}
-		
+
 	}
 
 }

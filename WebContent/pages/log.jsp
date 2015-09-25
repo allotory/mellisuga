@@ -1,29 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="sitename.jsp"%>
+<%   
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;   
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>问题日志 - 有哪些免费的游戏可用IP？ - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="../css/style.css" media="screen">
-	<link rel="stylesheet" href="../css/bootswatch.min.css">
 	
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
+	
+	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="./css/style.css" media="screen">
+	<link rel="stylesheet" href="./css/bootswatch.min.css">
+	
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/common.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-		<script src="../js/respond.min.js"></script>
+		<script src="./js/html5shiv.js"></script>
+		<script src="./js/respond.min.js"></script>
 	<![endif]-->
 
 	<!-- Taginput -->
-	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	<script type="text/javascript" src="./plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="./plugin/Taginput/bootstrap-tagsinput.css">
 	
 	<!-- modal -->
 	<script type="text/javascript">
@@ -33,19 +41,19 @@
 	</script>
 
 	<!-- bacheditor -->
-	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/codemirror.min.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/default.min.css">
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/marked.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/codemirror.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/ZeroClipboard.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/fileupload.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
+	<link rel="stylesheet" href="./plugin/BachEditor/css/pygment_trac.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/editor.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/codemirror.min.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/default.min.css">
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/marked.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/codemirror.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/fileupload.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/modal.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/MIDI.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/bacheditor.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
