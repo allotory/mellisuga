@@ -7,8 +7,20 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
     <insert id="insertCollectionFolder" parameterType="CollectionFolder" useGeneratedKeys="true" keyProperty="id">
-    	insert into collection_folder(foldername, owner_id, answers_num, followers_num) 
-    	values(#{foldername}, #{owner_id}, #{answers_num}, #{followers_num})
+    	insert into collection_folder(
+    		foldername, 
+    		description, 
+    		owner_id, 
+    		answers_num, 
+    		followers_num, 
+    		is_public) 
+    	values(
+    		#{foldername},
+    		#{description}, 
+    		#{owner_id}, 
+    		#{answers_num}, 
+    		#{followers_num}, 
+    		#{is_public})
     </insert>
 </mapper>
 

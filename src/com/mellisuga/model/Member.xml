@@ -7,8 +7,46 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
     <insert id="insertMember" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
-    	insert into member(fullname, gender, avatar_path, location, business, employment, position, education, major, description, user_id) 
-    	values(#{fullname}, #{gender}, #{avatar_path}, #{location}, #{business}, #{employment}, #{position}, #{education}, #{major}, #{description}, #{user_id})
+    	insert into member(
+    		fullname, 
+    		gender, 
+    		avatar_path, 
+    		location, 
+    		business, 
+    		employment, 
+    		position, 
+    		education, 
+    		major, 
+    		description,
+    		autograph,
+    		approve_num,
+    		thank_num,
+    		question_num,
+    		answer_num,
+    		collect_num,
+    		personality_url,
+    		is_emailactive,
+    		user_id) 
+    	values(
+	    	#{fullname}, 
+	    	#{gender}, 
+	    	#{avatar_path}, 
+	    	#{location}, 
+	    	#{business}, 
+	    	#{employment}, 
+	    	#{position}, 
+	    	#{education}, 
+	    	#{major}, 
+	    	#{description},
+	    	#{autograph},
+	    	#{approve_num},
+	    	#{thank_num},
+	    	#{question_num},
+	    	#{answer_num},
+	    	#{collect_num},
+	    	#{personality_url},
+	    	#{is_emailactive},
+	    	#{user_id})
     </insert>
     
     <!-- 查询单一数据 -->

@@ -1,6 +1,6 @@
 package com.mellisuga.model;
 
-public class Topic {
+public class Tag {
 
 	private int id;
 	

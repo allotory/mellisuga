@@ -6,11 +6,15 @@ public class CollectionFolder {
 	
 	private String foldername;
 	
+	private String description;
+	
 	private int owner_id;
 	
 	private int answers_num;
 	
 	private int followers_num;
+	
+	private int is_public;
 
 	public int getId() {
 		return id;
@@ -50,6 +54,22 @@ public class CollectionFolder {
 
 	public void setFollowers_num(int followers_num) {
 		this.followers_num = followers_num;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getIs_public() {
+		return is_public;
+	}
+
+	public void setIs_public(int is_public) {
+		this.is_public = is_public;
 	}
 	
 }

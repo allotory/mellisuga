@@ -32,10 +32,13 @@
         <typeAlias alias="Relationship" type="com.mellisuga.model.Relationship"/>
         <typeAlias alias="SystemMessage" type="com.mellisuga.model.SystemMessage"/>
         <typeAlias alias="Thanks" type="com.mellisuga.model.Thanks"/>
-        <typeAlias alias="Topic" type="com.mellisuga.model.Topic"/>
+        <typeAlias alias="Tag" type="com.mellisuga.model.Tag"/>
         <typeAlias alias="UserMessage" type="com.mellisuga.model.UserMessage"/>
         <typeAlias alias="UserSystemMsg" type="com.mellisuga.model.UserSystemMsg"/>
         <typeAlias alias="Vote" type="com.mellisuga.model.Vote"/>
+        <typeAlias alias="Invite" type="com.mellisuga.model.Invite"/>
+        <typeAlias alias="Draft" type="com.mellisuga.model.Draft"/>
+        
     </typeAliases> 
 
     <environments default="development">
@@ -87,9 +90,11 @@
         <mapper resource="com/mellisuga/model/Relationship.xml"/>
         <mapper resource="com/mellisuga/model/SystemMessage.xml"/>
         <mapper resource="com/mellisuga/model/Thanks.xml"/>
-        <mapper resource="com/mellisuga/model/Topic.xml"/>
+        <mapper resource="com/mellisuga/model/Tag.xml"/>
         <mapper resource="com/mellisuga/model/UserMessage.xml"/>
         <mapper resource="com/mellisuga/model/UserSystemMsg.xml"/>
         <mapper resource="com/mellisuga/model/Vote.xml"/>
+        <mapper resource="com/mellisuga/model/Invite.xml"/>
+        <mapper resource="com/mellisuga/model/Draft.xml"/>
     </mappers>
 </configuration>

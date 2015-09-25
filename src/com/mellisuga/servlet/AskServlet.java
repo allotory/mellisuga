@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.QuestionDAO;
-import com.mellisuga.dao.TopicDAO;
+import com.mellisuga.dao.TagDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
-import com.mellisuga.model.Topic;
+import com.mellisuga.model.Tag;
 
 @WebServlet("/AskServlet")
 public class AskServlet extends HttpServlet {
@@ -78,15 +78,15 @@ public class AskServlet extends HttpServlet {
 			Question q = questionDAO.queryQuestionByQUid(question);
 			
 			// 添加话题
-			TopicDAO topicDAO = session.getMapper(TopicDAO.class);
+			TagDAO topicDAO = session.getMapper(TagDAO.class);
 			if(tags != null) {
-			    String[] tag = tags.split(",");
-			    for(int i = 0; i < tag.length; i++) {
-			    	System.out.println(tag[i]);
-			    	Topic topic = new Topic();
-			    	topic.setTagname(tag[i]);
-			    	topic.setQuestion_id(q.getId());
-			    	topicDAO.insertTopic(topic);
+			    String[] tag_array = tags.split(",");
+			    for(int i = 0; i < tag_array.length; i++) {
+			    	System.out.println(tag_array[i]);
+			    	Tag tag = new Tag();
+			    	tag.setTagname(tag_array[i]);
+			    	tag.setQuestion_id(q.getId());
+			    	topicDAO.insertTag(tag);
 			    }
 			}
 			session.commit();

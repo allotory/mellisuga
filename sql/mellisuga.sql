@@ -6,18 +6,26 @@ use mellisuga;
  * 成员信息表
  */
 CREATE TABLE IF NOT EXISTS member (
-	id int(11) NOT NULL AUTO_INCREMENT,			/* 成员ID（唯一标识） */
-	fullname varchar(64) NOT NULL,				/* 全名 */
-	gender int(11) NOT NULL,					/* 性别  1:male , 2:female , 3: other */
-	avatar_path varchar(128) DEFAULT NULL,		/* 头像路径 */
-  	location varchar(128) DEFAULT NULL,		/* 居住位置 */
-  	business varchar(128) DEFAULT NULL,		/* 行业 */
-  	employment varchar(128) DEFAULT NULL,		/* 公司或组织名称 */
-  	position varchar(128) DEFAULT NULL,		/* 职位 */
-  	education varchar(128) DEFAULT NULL,		/* 学校或教育机构 */
-  	major varchar(128) DEFAULT NULL,			/* 专业 */
-  	description varchar(256) DEFAULT NULL,		/* 个人描述 */
-	user_id int NOT NULL DEFAULT '0',			/* 用户ID */
+	id int(11) NOT NULL AUTO_INCREMENT,				/* 成员ID（唯一标识） */
+	fullname varchar(64) NOT NULL,					/* 全名 */
+	gender int(11) NOT NULL DEFAULT '0',						/* 性别  1:male , 2:female , 3: other */
+	avatar_path varchar(128) DEFAULT NULL,			/* 头像路径 */
+  	location varchar(128) DEFAULT NULL,			/* 居住位置 */
+  	business varchar(128) DEFAULT NULL,			/* 行业 */
+  	employment varchar(128) DEFAULT NULL,			/* 公司或组织名称 */
+  	position varchar(128) DEFAULT NULL,			/* 职位 */
+  	education varchar(128) DEFAULT NULL,			/* 学校或教育机构 */
+  	major varchar(128) DEFAULT NULL,				/* 专业 */
+  	description varchar(256) DEFAULT NULL,			/* 个人描述 */
+	autograph varchar(128) DEFAULT NULL,			/* 签名 */
+	approve_num int(11) NOT NULL DEFAULT '0',		/* 获得赞同数 */
+	thank_num int(11) NOT NULL DEFAULT '0',		/* 获得感谢数 */
+	question_num int(11) NOT NULL DEFAULT '0',		/* 提问数 */
+	answer_num int(11) NOT NULL DEFAULT '0',		/* 回答数 */
+	collect_num int(11) NOT NULL DEFAULT '0',		/* 收藏夹数 */
+	personality_url varchar(64) DEFAULT NULL,		/* 个性网址 */
+	is_emailactive int(11) NOT NULL DEFAULT '0',	/* 邮箱是否激活 0：否， 1：是 */
+	user_id int NOT NULL DEFAULT '0',				/* 用户ID */
   	PRIMARY KEY (id)
 );
 
@@ -104,6 +112,19 @@ CREATE TABLE IF NOT EXISTS question (
 	PRIMARY KEY (id)
 );
 
+/**
+ * 草稿表
+ */
+CREATE TABLE IF NOT EXISTS draft (
+	id int(11) NOT NULL AUTO_INCREMENT,				/* 草稿问题ID（唯一标识） */
+	draft_title varchar(256) NOT NULL,				/* 草稿问题标题 */
+	draft_content text NOT NULL,					/* 草稿问题内容 */
+	last_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 草稿更新时间 */
+	is_anonymous int(11) NOT NULL DEFAULT '0',		/* 草稿是否匿名 1：是， 0：否 */
+	member_id int(11) NOT NULL,						/* 草稿提问用户 */
+	PRIMARY KEY (id)
+);
+
 /* 
  * 问题关注表
  */
@@ -147,7 +168,7 @@ CREATE TABLE IF NOT EXISTS comment (
 /* 
  * 问题标签表
  */
-CREATE TABLE IF NOT EXISTS topic (
+CREATE TABLE IF NOT EXISTS tag (
 	id int(11) NOT NULL AUTO_INCREMENT, 			/* 标签ID（唯一标识） */
 	tagname varchar(50) NOT NULL, 					/* 标签内容 */
 	question_id int(11) NOT NULL DEFAULT '0',		/* 标签的问题ID（唯一标识） */	
@@ -188,6 +209,17 @@ CREATE TABLE IF NOT EXISTS vote (
 	PRIMARY KEY (id) 
 );
 
+/**
+ * 邀请表
+ */
+CREATE TABLE IF NOT EXISTS invite(
+	id int(11) NOT NULL AUTO_INCREMENT,		/* 邀请ID（唯一标识） */
+	question_id int(11) NOT NULL,			/* 问题ID */
+	inviter_id int(11) NOT NULL,			/* 邀请人ID */
+	invitee_id int(11) NOT NULL,			/* 被邀请人ID */
+	PRIMARY KEY (id) 
+);
+
 /* 
  * 答案感谢表 
  */
@@ -204,9 +236,11 @@ CREATE TABLE IF NOT EXISTS thanks (
 CREATE TABLE IF NOT EXISTS collection_folder (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 收藏夹ID（唯一标识） */
 	foldername varchar(256) NOT NULL,			/* 收藏夹名称 */
+	description varchar(256) DEFAULT NULL,		/* 收藏夹描述 */
 	owner_id int(11) NOT NULL,					/* 创建者ID */
 	answers_num int(11) NOT NULL,				/* 包含答案数量 */
 	followers_num int(11) NOT NULL,				/* 关注者数量 */
+	is_public int(11) NOT NULL DEFAULT '1',	/* 是否公开 0：否， 1：是 */
 	PRIMARY KEY (id)
 );
 
