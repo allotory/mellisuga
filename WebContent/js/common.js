@@ -1,29 +1,28 @@
-
 //登录注册div切换
 function loginManager() {
-	
+
 	//登录div
 	var register_title = document.getElementById("register_title");
 	var login_btn = document.getElementById("login_btn");
-	
+
 	//注册div
 	var login_title = document.getElementById("login_title");
 	var register_btn = document.getElementById("register_btn");
-	
+
 	//form
 	var login_form = document.getElementById("login_form");
 	var register_form = document.getElementById("register_form");
-	
-	if(register_btn.style.display == "none") {
+
+	if (register_btn.style.display == "none") {
 		register_btn.style.display = "inline";
 		login_title.style.display = "inline";
 		login_btn.style.display = "none";
 		register_title.style.display = "none";
-		
+
 		login_form.style.display = "inline";
 		register_form.style.display = "none";
-		
-	}else {
+
+	} else {
 		login_btn.style.display = "inline";
 		register_title.style.display = "inline";
 		register_btn.style.display = "none";
@@ -32,7 +31,7 @@ function loginManager() {
 		register_form.style.display = "inline";
 		login_form.style.display = "none";
 	}
-	
+
 }
 
 //校验用户姓名
@@ -72,32 +71,32 @@ function validatePass(id) {
 function validateLoginSubmit() {
 	var isEmailChecked = validateEmail("email");
 	var isPassChecked = validatePass("password");
-	
+
 	var error = document.getElementById("alert_error");
 	var email_error = document.getElementById("email_error");
 	var pass_error = document.getElementById("pass_error");
-	
-	if(!(isEmailChecked && isPassChecked)) {
-		if(!isEmailChecked) {
+
+	if (!(isEmailChecked && isPassChecked)) {
+		if (!isEmailChecked) {
 			error.style.display = "block";
 			email_error.style.display = "block";
-		}else {
+		} else {
 			email_error.style.display = "none";
 		}
-		
-		if(!isPassChecked) {
+
+		if (!isPassChecked) {
 			error.style.display = "block";
 			pass_error.style.display = "block";
-		}else {
+		} else {
 			pass_error.style.display = "none";
 		}
-		
+
 		return false;
-	}else {
+	} else {
 		error.style.display = "none";
 		email_error.style.display = "none";
 		pass_error.style.display = "none";
-		
+
 		return true;
 	}
 }
@@ -107,41 +106,41 @@ function validateRegSubmit() {
 	var isUsernameChecked = validateUsername("rusername");
 	var isEmailChecked = validateEmail("remail");
 	var isPassChecked = validatePass("rpassword");
-	
+
 	var error = document.getElementById("ralert_error");
 	var username_error = document.getElementById("rusername_error");
 	var email_error = document.getElementById("remail_error");
 	var pass_error = document.getElementById("rpass_error");
-	
-	if(!(isEmailChecked && isPassChecked && isUsernameChecked)) {
-		if(!isUsernameChecked) {
+
+	if (!(isEmailChecked && isPassChecked && isUsernameChecked)) {
+		if (!isUsernameChecked) {
 			error.style.display = "block";
 			username_error.style.display = "block";
-		}else {
+		} else {
 			username_error.style.display = "none";
 		}
-		
-		if(!isEmailChecked) {
+
+		if (!isEmailChecked) {
 			error.style.display = "block";
 			email_error.style.display = "block";
-		}else {
+		} else {
 			email_error.style.display = "none";
 		}
-		
-		if(!isPassChecked) {
+
+		if (!isPassChecked) {
 			error.style.display = "block";
 			pass_error.style.display = "block";
-		}else {
+		} else {
 			pass_error.style.display = "none";
 		}
-		
+
 		return false;
-	}else {
+	} else {
 		error.style.display = "none";
 		username_error.style.display = "none";
 		email_error.style.display = "none";
 		pass_error.style.display = "none";
-		
+
 		return true;
 	}
 }
@@ -158,10 +157,26 @@ function hiddenItem(id) {
 
 //赞成
 function voteUp() {
-	
+
 }
 
-
-
-
-
+var xmlhttp;
+function loadXMLDoc(url, callback) {
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = callback;
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
+function answer(parameter) {
+	loadXMLDoc("AnswerServlet?username=" + parameter, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("answers").innerHTML = xmlhttp.responseText;
+		}
+	});
+}

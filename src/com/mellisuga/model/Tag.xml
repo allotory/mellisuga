@@ -10,6 +10,16 @@
     	insert into tag(tagname, question_id) 
     	values(#{tagname}, #{question_id})
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="TagList" type="Tag">
+    	<id column="id" property="id"/>
+    	<result column="tagname" property="tagname"/>
+    	<result column="question_id" property="question_id"/>
+    </resultMap>
+    <select id="queryTagByQuestionId" parameterType="Question" resultMap="TagList">
+        select * from tag where question_id = #{id}
+    </select>
 </mapper>
 
 

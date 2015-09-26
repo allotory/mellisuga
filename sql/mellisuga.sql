@@ -146,6 +146,7 @@ CREATE TABLE IF NOT EXISTS answers (
 	answer_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,		/* 回答或更新时间 */
 	reply_num int(11) NOT NULL,							/* 评论数 */
 	is_top_answer int(11) NOT NULL DEFAULT '0', 		/* 是否是精华答案 */
+	is_anonymous int(11) NOT NULL DEFAULT '0',			/* 是否匿名 1：是， 0：否 */
 	PRIMARY KEY (id)
 );
 

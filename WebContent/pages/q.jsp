@@ -1,30 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
+<%@ page import="java.util.List" %>
 <%@include file="sitename.jsp"%>
+<%
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>首页 - <%=sitename %></title>
+	<base href="<%=basePath %>">
+	<title> - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="../css/style.css" media="screen">
-
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
+	<link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="./css/style.css" media="screen">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-		<script src="../js/respond.min.js"></script>
+		<script src="./js/html5shiv.js"></script>
+		<script src="./js/respond.min.js"></script>
 	<![endif]-->
-	
-	<!-- Taginput -->
- 	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	<script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
 
+	<!-- Taginput -->
+	<script type="text/javascript" src="./plugin/Taginput/bootstrap-tagsinput.js"></script>
+	<link rel="stylesheet" href="./plugin/Taginput/bootstrap-tagsinput.css">
+	
 	<!-- modal -->
 	<script type="text/javascript">
 		$('#myModal').on('shown.bs.modal', function () {
@@ -33,22 +39,20 @@
 	</script>
 
 	<!-- bacheditor -->
-	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/codemirror.min.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/default.min.css">
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/marked.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/codemirror.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/ZeroClipboard.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/fileupload.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
-<%
-	Member m = (Member) request.getSession().getAttribute("member"); 
-%>
+	<link rel="stylesheet" href="./plugin/BachEditor/css/pygment_trac.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/editor.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/codemirror.min.css">
+	<link rel="stylesheet" href="./plugin/BachEditor/css/default.min.css">
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/marked.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/codemirror.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/ZeroClipboard.min.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/highlight.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/fileupload.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/modal.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/MIDI.js"></script>
+	<script type="text/javascript" src="./plugin/BachEditor/js/bacheditor.js"></script>
+
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -62,9 +66,16 @@
 				</button>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-main">
-			
-				<!-- search modal -->
-				<%@include file="modal.jsp"%>
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button" data-toggle="modal" 
+									data-target="#myModal" data-backdrop="false">提问</button>
+						</span>
+					</div>
+				</form>
 
 				<ul class="nav navbar-nav">
 					<li>
@@ -74,7 +85,7 @@
 						<a href="#">话题</a>
 					</li>
 					<li>
-						<a href="ask.jsp">发现</a>
+						<a href="#">发现</a>
 					</li>
 					<li>
 						<a href="#">消息</a>
@@ -83,7 +94,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=m.getFullname() %> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#" class="glyphicon glyphicon-user"> 我的主页</a></li>
 							<li><a href="#" class="glyphicon glyphicon-envelope"> 私信</a></li>
@@ -106,208 +117,66 @@
 
 					<!--left main title row-->
 					<div class="row">
-						<div class="left-main-title">
-							<span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
-							<span class="news-setting">
-								<a href="#">
-									<span class="glyphicon glyphicon-cog"></span>设置
+						<div class="question-detail">
+							<div class="question-tag">
+							<%
+								//for(Tag t : tagList) {
+							%>
+								<span class="label label-primary"></span>
+							<%
+								//}
+							%>
+								<a href="#" class="item-edit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									修改
 								</a>
-							</span>
-						</div><!-- end left main title -->
-					</div><!-- end left main title row -->
-
-					<!-- loding btn row  -->
-					<div class="row">
-						<div class="loding-btn">
-							<a href="#" class="btn btn-default btn-block">15条新动态</a>
-						</div>
-					</div><!-- end loding btn row  -->
-
-					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
-						<div class="left-main-content">
-
-							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div class="row">
-									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-									</a>
-								</div>
-								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
-											<span id="voteupnum" style="display:block;">123</span>
-										</a>
-									</div>
-									
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
-										</a>
-									</div>
-								</div>
-							</div><!-- end avatar and upvote col -->
-
-							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
-
-								<div class="row">
-									<div class="content-source">
-										<a href="#">空明流转</a> 赞同该回答
-										<span class="source-time">3小时前</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-content">
-										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
-											</span>
-										</div>
-										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
-										</a>
-										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<span class="glyphicon glyphicon-comment"></span> 12条评论
-										</a>
-										<span id="hidden-item" style="display:none">
-											<a href="#" class="meta-item" data-thanked="false">
-												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
-											</a>
-											<a href="#" class="meta-item" >
-												<span class="glyphicon glyphicon-share-alt"></span> 分享
-											</a>
-											<a href="#" class="meta-item">
-												<span class="glyphicon glyphicon-bookmark"></span> 收藏
-											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												举报
-											</a>
-										</span>
-										<a href="#" class="answer-collapse meta-item" style="display:none">
-											<span class="glyphicon glyphicon-open"></span> 收起
-										</a>
-									</div>
-								</div>
+							</div>
+							<div class="question-title">
+								<strong></strong>
+								<a href="#" class="item-edit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									修改
+								</a>
+							</div>
+							<div class="question-contents">
 								
-								<!-- comment -->
-								<div id="comment" class="row comment collapse">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
-										</div>
-										<div class="panel-body">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
-										</div>
-										<div class="panel-body">
-											<div class="form-group">
-												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
-											</div>
-											<div class="form-group module-right">
-												<button class="btn btn-default btn-sm">取消</button>
-												<button type="submit" class="btn btn-primary btn-sm">评论</button>
-											</div>
-										</div>
-										
-									</div>
-								</div><!--end comment -->
+								<a href="#" class="item-edit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									修改
+								</a>
+							</div>
+							<div class="q-meta-panel">
+								<a href="#" class="q-meta-item">
+									<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+									添加评论
+								</a>
+								<a href="#" class="q-meta-item">
+									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+									分享
+								</a> 
+								<span class="zg-bull">•</span> 
+								<a href="#" class="q-meta-item">邀请回答</a>
+								<a href="#" class="q-meta-item-right">
+									<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+									举报
+								</a>
+							</div>
+						</div><!-- end question detail -->
 
-							</div><!-- end content-details -->
-														
-						</div><!-- end left main content -->
-					</div><!--end left main content wrap  -->
-					<div class="row">
-						<hr/>
-					</div>
+						<div class="answer-info">
+							<span>19个回答</span>
+							<div class="btn-group answer-sort">
+								<a href="#" class="btn btn-default btn-xs">按票数排序</a> 
+								<a href="#" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">按时间排序</a></li>
+								</ul>
+							</div>
+						</div><!-- end answer info -->
+					</div><!-- end question title row -->
+
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
@@ -316,7 +185,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -376,6 +245,114 @@
 										</div>
 									</div>
 								</div>
+
+								<div class="row">
+									<div class="meta-panel">
+										<a class="meta-item" href="javascript:;">
+											<span class="glyphicon glyphicon-plus"></span> 关注问题
+										</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-comment"></span> 添加评论
+										</a>
+										<a href="#" class="meta-item" data-thanked="false">
+											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+										</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-share-alt"></span> 分享
+										</a>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+										</a>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">没有帮助</a>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+											举报
+										</a>
+										<span class="copyright"></span>
+										<a href="#" class="answer-collapse meta-item">
+											<span class="glyphicon glyphicon-open"></span> 收起
+										</a>
+									</div>
+								</div>
+
+							</div><!-- end content-details -->
+														
+						</div><!-- end left main content -->
+					</div><!--end left main content wrap  -->
+
+					<div class="row">
+						<hr/>
+					</div>
+
+					<!-- left main content wrap  -->
+					<div class="row left-main-content-wrap">
+						<div class="left-main-content">
+
+							<!-- avatar and upvote col -->
+							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="#">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
+									<div class="vote-text-center vote-number">
+										<a href="#">
+											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<span style="display:block;">122</span>
+										</a>
+									</div>
+									
+									<div class="vote-text-center vote-number">
+										<a href="#">
+											<span class="glyphicon glyphicon-chevron-down"></span>
+										</a>
+									</div>
+								</div>
+							</div><!-- end avatar and upvote col -->
+
+							<!-- content-details -->
+							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+
+								<div class="row">
+									<div class="content-source">
+										<a href="#">空明流转</a> 赞同该回答
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-link">
+										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="author-info">
+										<a href="#"><strong>空明</strong></a>,
+										<span>RednaxelaFX</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-content">
+										<div id="answers" class="editable-content" style="display: block;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+											<span class="answer-date" style="display: block;">
+												<a target="_blank" href="#">发布于 14:36</a>
+											</span>
+										</div>
+										<div class="summary-content clearfix" style="display: none;">
+											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能退、不能改签应该是常识啊
+										</div>
+									</div>
+								</div>
 								
 								<div class="row">
 									<div class="meta-panel">
@@ -419,33 +396,87 @@
 						</div>
 					</div><!-- end loding more btn row  -->
 
+					<div class="row">
+						<hr/>
+					</div>
+
+					<!-- post editor -->
+					<div class="row">
+						<div class="post-main">
+							<div class="post-source">
+								<a href="#" target="_blank">Kenneth</a>
+							</div>
+							<div class="content">
+								<!--<textarea class="form-control" rows="5" id="editor"></textarea>-->
+								<div class="editor">
+									<textarea id="myEditor" name="answers"></textarea>
+								</div>
+
+								<script>
+									$(function() {
+										var myEditor = new Editor();
+										myEditor.render('#myEditor');
+									});
+								</script>
+
+								<div class="checkbox post-module">
+									<label> 
+										<input type="checkbox" name="is_anonymous" value="1">匿名
+									</label>
+									<button class="btn btn-default">取消</button>
+									<button type="button" onclick="answer('haha')" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</div>
+					</div><!-- end post editor -->
+
 				</div><!-- end left main-->
 
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
-					
-					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-file">
-							我的草稿<span class="badge">14</span>
-						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-bookmark">
-							我的收藏<span class="badge">8</span>
-						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-heart">
-							我关注的问题<span class="badge">164</span>
-						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-check">
-							邀请我回答的问题<span class="badge">85</span>
-						</a>
+										
+					<div class="follow-btn">
+						<a href="#" class="btn btn-primary">关注问题</a>
+						<div class="btn-group">
+							<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></a> 
+							<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">使用匿名身份</a></li>
+								<li><a href="#">问题重定向</a></li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-duplicate"> 所有问题</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-th-large"> 话题广场</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-book"> 首场秀</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-edit"> 公共编辑动态</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-home"> 社区服务中心</a>
+					<div class="sidebar-group">
+						<span><a href="#">155</a> 人关注该问题</span>
 					</div>
-	
+
+					<div class="sidebar-group">
+						<span class="sidebar-group-title"><strong>相关问题</strong></span>
+						<div class="similar-question-group">
+							<div class="similar-question">
+								<a href="#">起草劳动合同容易犯的错误有哪些，能否举例说明？</a> 9 个回答
+							</div>
+							<div class="similar-question">
+								<a href="#">起草劳动合同容易犯的错误有哪些，能否举例说明？</a> 9 个回答
+							</div>
+							<div class="similar-question">
+								<a href="#">起草劳动合同容易犯的错误有哪些，能否举例说明？</a> 9 个回答
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="sidebar-group">
+						<span class="sidebar-group-title"><strong>问题状态</strong></span>
+						<div class="similar-question">
+							最近活动于 10:02 • <a href="../LogServlet">查看问题日志</a><br>
+							被浏览 6800 次，相关话题关注者 617946 人 9 个回答
+						</div>
+					</div>
+
 				</div><!-- end right sidebar -->
 
 			</div><!-- end main content row -->

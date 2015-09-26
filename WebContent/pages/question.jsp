@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
+<%@ page import="java.util.List" %>
 <%@include file="sitename.jsp"%>
 <%
 String path = request.getContextPath();   
@@ -9,6 +10,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 Member m = (Member) request.getSession().getAttribute("member");
 Question question = (Question) request.getAttribute("question");
+@SuppressWarnings("unchecked")
+List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,12 +123,13 @@ Question question = (Question) request.getAttribute("question");
 					<div class="row">
 						<div class="question-detail">
 							<div class="question-tag">
-								<span class="label label-primary">Default</span>
-								<span class="label label-primary">Primary</span>
-								<span class="label label-primary">Success</span>
-								<span class="label label-primary">Warning</span>
-								<span class="label label-primary">Danger</span>
-								<span class="label label-primary">Info</span>
+							<%
+								for(Tag t : tagList) {
+							%>
+								<span class="label label-primary"><%=t.getTagname() %></span>
+							<%
+								}
+							%>
 								<a href="#" class="item-edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
 									修改
@@ -337,7 +341,7 @@ Question question = (Question) request.getAttribute("question");
 
 								<div class="row">
 									<div class="question-content">
-										<div class="editable-content" style="display: block;">
+										<div id="answers" class="editable-content" style="display: block;">
 											这个廉价的东西不能退、不能改签应该是常识啊
 											这个廉价的东西不能退、不能改签应该是常识啊
 											这个廉价的东西不能退、不能改签应该是常识啊
@@ -409,7 +413,7 @@ Question question = (Question) request.getAttribute("question");
 							<div class="content">
 								<!--<textarea class="form-control" rows="5" id="editor"></textarea>-->
 								<div class="editor">
-									<textarea id="myEditor"></textarea>
+									<textarea id="myEditor" name="answers"></textarea>
 								</div>
 
 								<script>
@@ -421,10 +425,10 @@ Question question = (Question) request.getAttribute("question");
 
 								<div class="checkbox post-module">
 									<label> 
-										<input type="checkbox">匿名
+										<input type="checkbox" name="is_anonymous" value="1">匿名
 									</label>
 									<button class="btn btn-default">取消</button>
-									<button type="submit" class="btn btn-primary">提交</button>
+									<button type="button" onclick="answer('haha')" class="btn btn-primary">提交</button>
 								</div>
 							</div>
 						</div>

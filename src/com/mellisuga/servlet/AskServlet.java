@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,33 +72,37 @@ public class AskServlet extends HttpServlet {
 				question.setIs_anonymous(1);
 			}
 			question.setMember_id(m.getId());
-			//questionDAO.insertQuestion(question);
+			questionDAO.insertQuestion(question);
 
-			//session.commit();
+			session.commit();
 
 			// 查询问题
 			Question q = questionDAO.queryQuestionByQUid(question);
 
 			// 添加话题
-			TagDAO topicDAO = session.getMapper(TagDAO.class);
+			TagDAO tagDAO = session.getMapper(TagDAO.class);
 			if (tags != null) {
 				String[] tag_array = tags.split(",");
 				for (int i = 0; i < tag_array.length; i++) {
 					Tag tag = new Tag();
 					tag.setTagname(tag_array[i]);
 					tag.setQuestion_id(q.getId());
-					//topicDAO.insertTag(tag);
+					tagDAO.insertTag(tag);
 				}
 			}
-			//session.commit();
+			session.commit();
 
 			// 添加日志
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
-
+			
+			// 查询标签
+			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);
+			
 			request.setAttribute("question", question);
+			request.setAttribute("tagList", tagList);
 			request.getRequestDispatcher("/pages/question.jsp")
 					.forward(request, response);
 

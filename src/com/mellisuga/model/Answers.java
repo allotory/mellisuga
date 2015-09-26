@@ -17,6 +17,8 @@ public class Answers {
 	private int reply_num;
 	
 	private int is_top_answer;
+	
+	private int is_anonymous;
 
 	public int getId() {
 		return id;
@@ -73,5 +75,12 @@ public class Answers {
 	public void setIs_top_answer(int is_top_answer) {
 		this.is_top_answer = is_top_answer;
 	}
-	
+
+	public int getIs_anonymous() {
+		return is_anonymous;
+	}
+
+	public void setIs_anonymous(int is_anonymous) {
+		this.is_anonymous = is_anonymous;
+	}
 }
