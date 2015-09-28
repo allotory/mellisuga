@@ -28,8 +28,9 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 		<script src="./js/html5shiv.js"></script>
 		<script src="./js/respond.min.js"></script>
 	<![endif]-->
-	<script src="./js/jquery-1.11.2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
 
 	<!-- Taginput -->
 	<script type="text/javascript" src="./plugin/Taginput/bootstrap-tagsinput.js"></script>
@@ -393,6 +394,14 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
 
+					<div class="row">
+						<hr/>
+					</div>
+		
+					<!-- new answer div -->
+					<div id="newAnswer">
+					</div>
+
 					<!-- loding more btn row  -->
 					<div class="row">
 						<div class="loding-btn">
@@ -428,7 +437,7 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 										<input type="checkbox" name="is_anonymous" value="1">匿名
 									</label>
 									<button class="btn btn-default">取消</button>
-									<button type="button" onclick="answer('haha')" class="btn btn-primary">提交</button>
+									<button type="button" onclick="newAnswer('haha222')" class="btn btn-primary">提交</button>
 								</div>
 							</div>
 						</div>

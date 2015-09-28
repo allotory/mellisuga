@@ -173,10 +173,10 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
-function answer(parameter) {
+function newAnswer(parameter) {
 	loadXMLDoc("AnswerServlet?username=" + parameter, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("answers").innerHTML = xmlhttp.responseText;
+			document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
 		}
 	});
 }
