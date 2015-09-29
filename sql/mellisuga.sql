@@ -129,8 +129,13 @@ CREATE TABLE IF NOT EXISTS draft (
  * 动态表
  */
 CREATE TABLE IF NOT EXISTS trends (
-	id int(11) NOT NULL AUTO_INCREMENT,			/*  */
-	
+	id int(11) NOT NULL AUTO_INCREMENT,			/* 动态ID */
+	trends_id int(11) NOT NULL,					/* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
+	trends_type varchar(64) NOT NULL,			/* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
+	p_trends_id int(11) NOT NULL,				/* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
+	p_trends_type varchar(64) NOT NULL,		/* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
+	trends_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,		/* 动态时间 */
+	trends_member int(11) NOT NULL,				/* 动态发起人 */
 	PRIMARY KEY (id)
 );
 
@@ -138,9 +143,9 @@ CREATE TABLE IF NOT EXISTS trends (
  * 问题关注表
  */
 CREATE TABLE IF NOT EXISTS follow (
-	id int(11) NOT NULL AUTO_INCREMENT,		/* 问题关注ID（唯一标识）*/
-	question_id int(11) NOT NULL,			/* 被关注的问题ID（唯一标识） */
-	follower_id int(11) NOT NULL,			/* 问题关注人ID（唯一标识）*/
+	id int(11) NOT NULL AUTO_INCREMENT,			/* 问题关注ID（唯一标识）*/
+	question_id int(11) NOT NULL,				/* 被关注的问题ID（唯一标识） */
+	follower_id int(11) NOT NULL,				/* 问题关注人ID（唯一标识）*/
 	PRIMARY KEY (id)
 );
 
@@ -190,10 +195,10 @@ CREATE TABLE IF NOT EXISTS tag (
  *
  ** event包括 添加了问题，添加了话题，编辑了问题，编辑了补充说明，移除了补充说明，移除了话题等*/
 CREATE TABLE IF NOT EXISTS qlog (
-	id int(11) NOT NULL AUTO_INCREMENT,		/* 日志ID（唯一标识） */
-	question_id int(11) NOT NULL,			/* 问题ID（唯一标识） */
-	member_id int(11) NOT NULL,				/* 用户ID（唯一标识） */
-	event varchar(20) NOT NULL,			/* 日志事件 */
+	id int(11) NOT NULL AUTO_INCREMENT,			/* 日志ID（唯一标识） */
+	question_id int(11) NOT NULL,				/* 问题ID（唯一标识） */
+	member_id int(11) NOT NULL,					/* 用户ID（唯一标识） */
+	event varchar(20) NOT NULL,				/* 日志事件 */
 	log_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 日志记录时间 */
 	PRIMARY KEY (id) 
 );

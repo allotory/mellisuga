@@ -5,7 +5,7 @@
 <mapper namespace="com.mellisuga.dao.QlogDAO">
     <!-- 插入 -->
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
-    	 keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
+    	 keyProperty="id"指定把获取到的主键值注入到Qlog的id属性--> 
     <insert id="insertQlog" parameterType="Qlog" useGeneratedKeys="true" keyProperty="id">
     	insert into qlog(question_id, member_id, event, log_date) 
     	values(#{question_id}, #{member_id}, #{event}, #{log_date})

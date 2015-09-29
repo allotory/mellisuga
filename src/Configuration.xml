@@ -38,6 +38,7 @@
         <typeAlias alias="Vote" type="com.mellisuga.model.Vote"/>
         <typeAlias alias="Invite" type="com.mellisuga.model.Invite"/>
         <typeAlias alias="Draft" type="com.mellisuga.model.Draft"/>
+        <typeAlias alias="Trends" type="com.mellisuga.model.Trends"/>
         
     </typeAliases> 
 
@@ -96,5 +97,6 @@
         <mapper resource="com/mellisuga/model/Vote.xml"/>
         <mapper resource="com/mellisuga/model/Invite.xml"/>
         <mapper resource="com/mellisuga/model/Draft.xml"/>
+        <mapper resource="com/mellisuga/model/Trends.xml"/>
     </mappers>
 </configuration>

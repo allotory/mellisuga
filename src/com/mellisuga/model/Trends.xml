@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mellisuga.dao.TrendsDAO">
+    <!-- 插入 -->
+    <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
+    	 keyProperty="id"指定把获取到的主键值注入到Trends的id属性--> 
+    <insert id="insertTrends" parameterType="Trends" useGeneratedKeys="true" keyProperty="id">
+    	insert into trends(trends_id, trends_type, p_trends_id, p_trends_type, trends_time, trends_member) 
+    	values(#{trends_id}, #{trends_type}, #{p_trends_id}, #{p_trends_type}, #{trends_time}, #{trends_member})
+    </insert>
+</mapper>
+
+

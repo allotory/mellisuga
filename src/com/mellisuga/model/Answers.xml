@@ -5,7 +5,7 @@
 <mapper namespace="com.mellisuga.dao.AnswersDAO">
     <!-- 插入 -->
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
-    	 keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
+    	 keyProperty="id"指定把获取到的主键值注入到Answers的id属性--> 
     <insert id="insertAnswer" parameterType="Answers" useGeneratedKeys="true" keyProperty="id">
     	insert into answers(question_id, author_id, answers, answer_date, replay_num, is_top_answer, is_anonymous) 
     	values(#{question_id}, #{author_id}, #{answers}, #{answer_date}, #{replay_num}, #{is_top_answer}, #{is_anonymous})
