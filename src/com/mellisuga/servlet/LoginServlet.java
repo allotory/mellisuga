@@ -106,9 +106,6 @@ public class LoginServlet extends HttpServlet {
 					remoteSession.commit();
 					
 					// TODO 各种首页查询。。。
-					// TODO 各种首页查询。。。
-					// TODO 各种首页查询。。。
-					// TODO 各种首页查询。。。
 
 					request.getSession().setAttribute("member", member);
 					response.sendRedirect(request.getContextPath()

@@ -125,6 +125,15 @@ CREATE TABLE IF NOT EXISTS draft (
 	PRIMARY KEY (id)
 );
 
+/**
+ * 动态表
+ */
+CREATE TABLE IF NOT EXISTS trends (
+	id int(11) NOT NULL AUTO_INCREMENT,			/*  */
+	
+	PRIMARY KEY (id)
+);
+
 /* 
  * 问题关注表
  */

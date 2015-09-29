@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<!-- search -->
 <form class="navbar-form navbar-left" role="search">
 	<div class="input-group">
 		<input type="text" class="form-control" placeholder="Search for...">
 		<span class="input-group-btn">
 			<button class="btn btn-primary" type="button" data-toggle="modal" 
-					data-target="#myModal" data-backdrop="false">提问</button>
+					data-target="#myModal" data-backdrop="false">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
 		</span>
 	</div>
 </form>

@@ -8,36 +8,9 @@
 	<title>提问 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="../css/style.css" media="screen">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-		<script src="../js/respond.min.js"></script>
-	<![endif]-->
 
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	
-	<!-- Taginput -->
- 	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
-
-	<!-- bacheditor -->
-	<link rel="stylesheet" href="../plugin/BachEditor/css/pygment_trac.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/editor.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/codemirror.min.css">
-	<link rel="stylesheet" href="../plugin/BachEditor/css/default.min.css">
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/marked.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/codemirror.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/ZeroClipboard.min.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/highlight.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/fileupload.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/modal.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/MIDI.js"></script>
-	<script type="text/javascript" src="../plugin/BachEditor/js/bacheditor.js"></script>
-
+	<!-- js css plugin include -->
+	<%@include file="include.jsp"%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -52,42 +25,21 @@
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-main">
 
+				<!-- search -->
 				<form class="navbar-form navbar-left" role="search">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search for...">
 						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button">Go!</button>
+							<button class="btn btn-primary" type="button" data-toggle="modal" 
+									data-target="#myModal" data-backdrop="false">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
 						</span>
 					</div>
 				</form>
 
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="#">首页</a>
-					</li>
-					<li>
-						<a href="#">话题</a>
-					</li>
-					<li>
-						<a href="#">发现</a>
-					</li>
-					<li>
-						<a href="#">消息</a>
-					</li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ellery <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" class="glyphicon glyphicon-user"> 我的主页</a></li>
-							<li><a href="#" class="glyphicon glyphicon-envelope"> 私信</a></li>
-							<li><a href="#" class="glyphicon glyphicon-cog"> 设置</a></li>
-							<li class="divider"></li>
-							<li><a href="#" class="glyphicon glyphicon-off"> 退出</a></li>
-						</ul>
-					</li>
-				</ul>
+				<!-- navbar -->
+				<%@include file="navbar.jsp" %>
 			</div>
 		</div>
 	</div>
