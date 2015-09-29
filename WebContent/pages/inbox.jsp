@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="sitename.jsp"%>
+<%   
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;   
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>私信 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -59,7 +65,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 							</div><!-- end avatar and upvote col -->
@@ -100,7 +106,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 							</div><!-- end avatar and upvote col -->

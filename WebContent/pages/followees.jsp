@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="sitename.jsp"%>
+<%   
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;   
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>Ellery关注的人 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -50,7 +56,7 @@
 								</div>
 								<div class="row user-infos">
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded">
 									</div>
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
@@ -173,11 +179,11 @@
 							<strong>关注了<a href="#">36</a> 个话题</strong>
 						</span><br>
 
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
 					</div>
 					<hr>
 					<div class="sidebar-group">
@@ -185,11 +191,11 @@
 							<strong>关注了<a href="#">36</a> 个专栏</strong>
 						</span><br>
 
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
-						<img src="../images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
+						<img src="./images/topic/zh.jpg" class="topic-img">
 					</div>
 					<hr>
 					<div class="sidebar-group">
@@ -206,9 +212,5 @@
 		</div><!-- main content -->
 
 	</div><!-- end container -->
-
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/bootswatch.js"></script>
 	</body>
 </html>

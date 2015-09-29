@@ -43,7 +43,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
     <div class="container">
 
       	<!-- main content -->
-		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
 

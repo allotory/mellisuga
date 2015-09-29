@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="sitename.jsp"%>
+<%   
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;   
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>帐号设置 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,7 +43,7 @@
     <div class="container">
 
 		<!-- main content -->
-		<div class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 				<ul class="nav nav-tabs">
 					<li><a href="#account" data-toggle="tab">帐号</a></li>
@@ -47,7 +53,7 @@
 					<li class="active"><a href="#lab" data-toggle="tab">实验室</a></li>
 				</ul>
 
-				<div id="myTabContent" class="tab-content">
+				<div id="myTabContent" class="tab-content" style="margin-top: 25px;">
 					<div class="tab-pane fade col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
 						<form class="form-horizontal">
 							<fieldset>
