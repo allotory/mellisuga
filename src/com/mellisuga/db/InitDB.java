@@ -16,6 +16,8 @@ public class InitDB {
 		try {
 			session = DBConnection.openDefaultSession();
 			
+			System.out.println("正在初始化数据库...");
+			
 			// 角色
 			RoleDAO roleDAO = session.getMapper(RoleDAO.class);
 			
@@ -176,6 +178,8 @@ public class InitDB {
 			rolePermissionDAO.insertRolePermission(rolePermissionLU30);
 			
 			session.commit();
+			
+			System.out.println("数据库初始化完成.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

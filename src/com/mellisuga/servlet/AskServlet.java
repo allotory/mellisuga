@@ -16,10 +16,12 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
+import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Tag;
+import com.mellisuga.model.Trends;
 
 @WebServlet("/AskServlet")
 public class AskServlet extends HttpServlet {
@@ -90,13 +92,24 @@ public class AskServlet extends HttpServlet {
 					tagDAO.insertTag(tag);
 				}
 			}
-			session.commit();
+			
+			// 添加动态
+			TrendsDAO trendsDAO = session.getMapper(TrendsDAO.class);
+			Trends trends = new Trends();
+			trends.setTrends_id(q.getId());
+			// 动态类型—— FollowingQuestion, AgreeWithThisAnswer, AnswerThisQuestion, AskAQuestion
+			trends.setTrends_type("AskAQuestion");
+			trends.setTrends_time(now);
+			trends.setTrends_member(m.getId());
+			trendsDAO.insertTrends(trends);
 
 			// 添加日志
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
+			
+			session.commit();
 			
 			// 查询标签
 			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);

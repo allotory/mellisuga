@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS relationship (
 CREATE TABLE IF NOT EXISTS question (
 	id int(11) NOT NULL AUTO_INCREMENT,				/* 问题ID（唯一标识） */
 	question_title varchar(256) NOT NULL,			/* 问题标题 */
-	question_content text NOT NULL,					/* 问题内容 */
+	question_content text DEFAULT NULL,			/* 问题内容 */
 	answers_num int(11) NOT NULL DEFAULT '0',		/* 回答数 */
 	followers_num int(11) NOT NULL DEFAULT '0',	/* 关注人数 */
 	last_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 更新时间 */
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS trends (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 动态ID */
 	trends_id int(11) NOT NULL,					/* 动态类型所对应的ID,如关注和提出问题对应的是问题ID，赞同答案和回答问题对应的是答案ID */
 	trends_type varchar(64) NOT NULL,			/* 动态类型 1：关注该问题，2：赞同该回答，3：回答了该问题，4：提了一个问题*/
-	p_trends_id int(11) NOT NULL,				/* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
-	p_trends_type varchar(64) NOT NULL,		/* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
+	p_trends_id int(11) NOT NULL DEFAULT '0',	/* 父动态类型所对应的ID，赞同答案和回答问题对应的是问题ID */
+	p_trends_type varchar(64) DEFAULT NULL,	/* 父动态类型 1：赞同该回答——对应问题，2：回答了该问题——对应问题*/
 	trends_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,		/* 动态时间 */
 	trends_member int(11) NOT NULL,				/* 动态发起人 */
 	PRIMARY KEY (id)

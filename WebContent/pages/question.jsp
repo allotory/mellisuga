@@ -154,7 +154,7 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">
@@ -262,7 +262,7 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">

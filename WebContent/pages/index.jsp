@@ -2,10 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
 <%@include file="sitename.jsp"%>
+<%
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>首页 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -73,7 +79,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -93,7 +99,7 @@
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">
@@ -173,13 +179,13 @@
 											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 												<div class="row">
 													<a href="#">
-														<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 													</a>
 												</div>
 											</div><!-- end avatar and upvote col -->
 											
 											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 												<div class="row">
 													<div class="author-info">
 														<a href="#"><strong>空明</strong></a>
@@ -204,13 +210,13 @@
 											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 												<div class="row">
 													<a href="#">
-														<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 													</a>
 												</div>
 											</div><!-- end avatar and upvote col -->
 											
 											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 												<div class="row">
 													<div class="author-info">
 														<a href="#"><strong>空明</strong></a>
@@ -258,7 +264,7 @@
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="../images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -278,7 +284,7 @@
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">

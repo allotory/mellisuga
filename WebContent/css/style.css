@@ -392,3 +392,11 @@ del {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.avatar-vote {
+	width: 40px;
+}
+
+.content-details {
+	padding-right: 0px;
+}

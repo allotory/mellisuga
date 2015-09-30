@@ -132,7 +132,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">
@@ -157,11 +157,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											这个廉价的东西不能ffffffffffffffffffffffffffffffffffffffff
+											ffffffffffffffff
+											ffffff
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 14:36</a>
 											</span>
@@ -233,7 +231,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
 									<div class="content-source">

@@ -12,7 +12,7 @@
 		<a href="#">话题</a>
 	</li>
 	<li>
-		<a href="ask.jsp">提问</a>
+		<a href="./pages/ask.jsp">提问</a>
 	</li>
 	<li>
 		<a href="#">发现</a>
