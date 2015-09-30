@@ -46,6 +46,10 @@ a:active {
 	color: #999;
 }
 
+.loding-btn-top {
+	margin-bottom: 10px;
+}
+
 .loding-btn {
 	margin-top: 10px;
 	margin-bottom: 10px;

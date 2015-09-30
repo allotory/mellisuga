@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
+<%@ page import="com.mellisuga.bean.*" %>
 <%@ page import="java.util.List" %>
 <%@include file="sitename.jsp"%>
 <%
@@ -9,16 +10,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 	+ request.getServerPort() + path + "/" ;
 
 Member m = (Member) request.getSession().getAttribute("member");
-Question question = (Question) request.getAttribute("question");
-@SuppressWarnings("unchecked")
-List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
+QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<base href="<%=basePath %>">
-	<title><%=question.getQuestion_title() %> - <%=sitename %></title>
+	<title><%=questionBean.getQuestion().getQuestion_title() %> - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -69,10 +68,12 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 						<div class="question-detail">
 							<div class="question-tag">
 							<%
-								for(Tag t : tagList) {
+								if(questionBean.getTagList() != null && !questionBean.getTagList().isEmpty()) {
+									for(Tag t : questionBean.getTagList()) {
 							%>
 								<span class="label label-primary"><%=t.getTagname() %></span>
 							<%
+									}
 								}
 							%>
 								<a href="#" class="item-edit">
@@ -81,14 +82,14 @@ List<Tag> tagList = (List<Tag>) request.getAttribute("tagList");
 								</a>
 							</div>
 							<div class="question-title">
-								<strong><%=question.getQuestion_title() %></strong>
+								<strong><%=questionBean.getQuestion().getQuestion_title() %></strong>
 								<a href="#" class="item-edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
 									修改
 								</a>
 							</div>
 							<div class="question-contents">
-								<%=question.getQuestion_content() %>
+								<%=questionBean.getQuestion().getQuestion_content() %>
 								<a href="#" class="item-edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
 									修改

@@ -24,14 +24,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 	Member m = (Member) request.getSession().getAttribute("member"); 
 	@SuppressWarnings("unchecked")
 	List<TrendsBean> trendsBeanList = (List<TrendsBean>) request.getAttribute("trendsBeanList");
-	if(!(trendsBeanList == null || trendsBeanList.isEmpty())) {
+	/* if(!(trendsBeanList == null || trendsBeanList.isEmpty())) {
 		for (TrendsBean trendsBean : trendsBeanList) {
 			if("AskAQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 				System.out.println(trendsBean.getTrends().getTrends_type());
 				System.out.println(trendsBean.getQuestion().getQuestion_title());
 			}
 		}
-	}
+	} */
 %>
 </head>
 <body>
@@ -74,6 +74,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</span>
 						</div><!-- end left main title -->
 					</div><!-- end left main title row -->
+
+					<!-- loding btn row  -->
+					<!--<div class="row">
+						<div class="loding-btn-top">
+							<a href="#" class="btn btn-default btn-block">15条新动态</a>
+						</div>
+					</div>--><!-- end loding btn row  -->
 					
 					<%
 						if(trendsBeanList == null || trendsBeanList.isEmpty()) {
@@ -90,7 +97,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								if("AskAQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
+							onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -114,7 +122,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="question-link">
-										<h5><a href="#"><%=trendsBean.getQuestion().getQuestion_title() %></a></h5>
+										<h5>
+											<a href="./QuestionDetails?id=<%=trendsBean.getQuestion().getId() %>">
+												<%=trendsBean.getQuestion().getQuestion_title() %>
+											</a>
+										</h5>
 									</div>
 								</div>
 
@@ -126,7 +138,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<span class="glyphicon glyphicon-comment"></span> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
-										<span id="hidden-item" style="display:none">
+										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
 												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
 											</a>
@@ -235,22 +247,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 														
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
+					
 					<div class="row">
-						<hr/>
-					</div>					
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
+					</div>
 					<%
 								}
 							}
 						}
 					%>
-
-					<!-- loding btn row  -->
-					<div class="row">
-						<div class="loding-btn">
-							<a href="#" class="btn btn-default btn-block">15条新动态</a>
-						</div>
-					</div><!-- end loding btn row  -->
-
 
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap">
