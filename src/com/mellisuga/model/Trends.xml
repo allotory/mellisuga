@@ -10,6 +10,20 @@
     	insert into trends(trends_id, trends_type, p_trends_id, p_trends_type, trends_time, trends_member) 
     	values(#{trends_id}, #{trends_type}, #{p_trends_id}, #{p_trends_type}, #{trends_time}, #{trends_member})
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="TrendsList" type="Trends">
+    	<id column="id" property="id"/>
+    	<result column="trends_id" property="trends_id"/>
+    	<result column="trends_type" property="trends_type"/>
+    	<result column="p_trends_id" property="p_trends_id"/>
+    	<result column="p_trends_type" property="p_trends_type"/>
+    	<result column="trends_time" property="trends_time"/>
+    	<result column="trends_member" property="trends_member"/>
+    </resultMap>
+    <select id="queryAllTrends" resultMap="TrendsList">
+        select * from trends;
+    </select>
 </mapper>
 
 

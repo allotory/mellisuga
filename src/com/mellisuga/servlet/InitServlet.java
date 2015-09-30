@@ -47,6 +47,7 @@ public class InitServlet extends HttpServlet {
 			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 			Member member = new Member();
 			member.setFullname(u.getUsername());
+			member.setAvatar_path("./images/avatar/default.jpg");
 			member.setUser_id(u.getId());
 			
 			memberDAO.insertMember(member);

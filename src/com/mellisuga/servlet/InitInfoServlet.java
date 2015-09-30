@@ -77,6 +77,7 @@ public class InitInfoServlet extends HttpServlet {
 					break;
 			}
 			
+			member.setAvatar_path("./images/avatar/default.jpg");
 			member.setLocation(location);
 			member.setBusiness(business);
 			member.setEmployment(employment);

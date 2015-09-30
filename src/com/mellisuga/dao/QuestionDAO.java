@@ -9,4 +9,7 @@ public interface QuestionDAO {
 	
 	// 通过问题和用户ID查询问题详情
 	public Question queryQuestionByQUid(Question question);
+	
+	// 通过问题ID查询问题
+	public Question queryQuestionById(Question question);
 }

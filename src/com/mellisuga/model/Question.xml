@@ -15,6 +15,11 @@
     <select id="queryQuestionByQUid" parameterType="Question" resultType="Question">
         select * from question where question_title = #{question_title} and member_id = #{member_id}
     </select>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryQuestionById" parameterType="Question" resultType="Question">
+        select * from question where id = #{id}
+    </select>
 </mapper>
 
 

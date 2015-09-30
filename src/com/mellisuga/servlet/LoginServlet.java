@@ -3,7 +3,9 @@ package com.mellisuga.servlet;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.QuestionDAO;
+import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.Question;
+import com.mellisuga.model.Trends;
 import com.mellisuga.remote.dao.UserDAO;
 import com.mellisuga.remote.model.User;
 import com.mellisuga.security.Encryption;
@@ -105,11 +112,49 @@ public class LoginServlet extends HttpServlet {
 					
 					remoteSession.commit();
 					
-					// TODO 各种首页查询。。。
-
+					// 首页动态查询
+					TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
+					List<Trends> trendsList = trendsDAO.queryAllTrends();
+					List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
+					
+					QuestionDAO questionDAO = defaultSession.getMapper(QuestionDAO.class);
+					
+					if(trendsList != null) {
+						for(Trends t : trendsList) {
+							
+							TrendsBean trendsBean = null;
+							
+							// 动态类型—— FollowingQuestion, AgreeWithThisAnswer, AnswerThisQuestion, AskAQuestion
+							if("FollowingQuestion".equals(t.getTrends_type())) {
+								// 1：关注该问题
+								
+							} else if("AgreeWithThisAnswer".equals(t.getTrends_type())) {
+								// 2：赞同该回答
+								
+							} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
+								// 3：回答了该问题
+								
+							} else if("AskAQuestion".equals(t.getTrends_type())) {
+								// 4：提了一个问题
+								trendsBean = new TrendsBean();
+								trendsBean.setTrends(t);
+								
+								// 查询所提问题信息
+								Question question = new Question();
+								question.setId(t.getTrends_id());
+								Question q = questionDAO.queryQuestionById(question);
+								trendsBean.setQuestion(q);
+								
+								trendsBean.setMember(member);
+							}
+							trendsBeanList.add(trendsBean);
+						}
+					}
+					
 					request.getSession().setAttribute("member", member);
-					response.sendRedirect(request.getContextPath()
-							+ "/pages/index.jsp");
+					request.setAttribute("trendsBeanList", trendsBeanList);
+					request.getRequestDispatcher("/pages/index.jsp")
+							.forward(request, response);
 				}
 
 			} else {
