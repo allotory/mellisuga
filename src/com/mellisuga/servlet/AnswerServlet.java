@@ -17,10 +17,12 @@ import org.apache.ibatis.session.SqlSession;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
+import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
+import com.mellisuga.model.Trends;
 
 @WebServlet("/AnswerServlet")
 public class AnswerServlet extends HttpServlet {
@@ -63,7 +65,6 @@ public class AnswerServlet extends HttpServlet {
 			q.setFollowers_num(q.getFollowers_num() + 1);
 			q.setLast_updated(now);
 			q.setScan_num(q.getScan_num() + 1);
-			q.setReply_num(q.getReply_num() + 1);
 			questionDAO.updateQuestion(q);
 			
 			// 插入答案
@@ -82,10 +83,28 @@ public class AnswerServlet extends HttpServlet {
 			}
 			answersDAO.insertAnswer(answers);
 			
+			session.commit();
+			
+			// 查询答案
+			answers = answersDAO.queryAnswerByQUid(answers);
+			System.out.println("=="+answers.getId());
+			
 			// 更新用户信息（回答数）
 			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 			m.setAnswer_num(m.getAnswer_num() + 1);
 			memberDAO.updateMember(m);
+			
+			// 更新动态
+			TrendsDAO trendsDAO = session.getMapper(TrendsDAO.class);
+			Trends trends = new Trends();
+			trends.setTrends_id(answers.getId());
+			// 动态类型—— FollowingQuestion, AgreeWithThisAnswer, AnswerThisQuestion, AskAQuestion
+			trends.setTrends_type("AnswerThisQuestion");
+			trends.setP_trends_id(q.getId());
+			trends.setP_trends_type(q.getQuestion_title());
+			trends.setTrends_time(now);
+			trends.setTrends_member(m.getId());
+			trendsDAO.insertTrends(trends);
 			
 			session.commit();
 			
@@ -131,11 +150,11 @@ public class AnswerServlet extends HttpServlet {
 			out.print("<div class='row'>");
 			out.print("<div class='question-content'>");
 			out.print("<div id='answers' class='editable-content' style='display: block;'>");
-			out.print(answers.getAnswers());
+			out.print("<div style='margin-top:12px; margin-bottom:12px;'>" + answers.getAnswers() + "</div>");
 			out.print("<span class='answer-date' style='display: block;'><a target='_blank' href='#'>发布于" + now + "</a></span>");
 			out.print("</div>");
 			out.print("<div class='summary-content clearfix' style='display: none;'>");
-			out.print(answers.getAnswers());
+			out.print("<div style='margin-top:12px; margin-bottom:12px;'>" + answers.getAnswers() + "</div>");
 			out.print("</div>");
 			out.print("</div>");
 			out.print("</div>");

@@ -12,4 +12,10 @@ public interface AnswersDAO {
 	
 	// 由问题ID查询答案
 	public List<Answers> queryAnswerByQuestionId(Question question);
+	
+	// 由问题ID和用户ID查询答案
+	public Answers queryAnswerByQUid(Answers answers);
+	
+	// 由答案ID查询答案
+	public Answers queryAnswerById(Answers answers);
 }

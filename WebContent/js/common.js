@@ -185,5 +185,6 @@ function newAnswer(question_id) {
 				document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
 			}
 		});
+		document.getElementById('answers').value = "";
 	}
 }

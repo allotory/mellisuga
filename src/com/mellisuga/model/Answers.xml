@@ -25,6 +25,16 @@
     <select id="queryAnswerByQuestionId" parameterType="Question" resultMap="AnswersList">
         select * from answers where question_id = #{id}
     </select>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryAnswerByQUid" parameterType="Answers" resultType="Answers">
+        select * from answers where question_id = #{question_id} and author_id = #{author_id}
+    </select>
+    
+    <!-- 查询单一数据 -->
+    <select id="queryAnswerById" parameterType="Answers" resultType="Answers">
+        select * from answers where id = #{id}
+    </select>
 </mapper>
 
 

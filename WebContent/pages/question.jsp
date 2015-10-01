@@ -141,7 +141,8 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							for(AnswerBean ab : questionBean.getAnswerBeanList()) {
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap">
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=ab.getAnswer().getId() %>')" 
+							onmouseleave="hiddenItem('hidden-item-<%=ab.getAnswer().getId() %>')">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -180,14 +181,15 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<div class="row">
 									<div class="content-source">
 										<a href="#">空明流转</a> 赞同该回答
-										<span class="source-time">3小时前</span>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											<%=ab.getAnswer().getAnswers() %>
+											<div style="margin-top:12px; margin-bottom:12px;">
+												<%=ab.getAnswer().getAnswers() %>
+											</div>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 <%=ab.getAnswer().getAnswer_date() %></a>
 											</span>
@@ -219,24 +221,26 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										<%
 											}
 										%>
-										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-											举报
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">作者保留权利</a>
-										<span class="copyright"></span>
+										<span id="hidden-item-<%=ab.getAnswer().getId() %>" style="display:none">
+											<a href="#" class="meta-item" data-thanked="false">
+												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-share-alt"></span> 分享
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item">没有帮助</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												举报
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item">作者保留权利</a>
+											<span class="copyright"></span>
+										</span>
 										<a href="#" class="answer-collapse meta-item">
 											<span class="glyphicon glyphicon-open"></span> 收起
 										</a>

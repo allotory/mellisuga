@@ -252,6 +252,193 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 					<%
+								} else if("AnswerThisQuestion".equals(trendsBean.getTrends().getTrends_type())) {
+					%>
+					<!-- left main content wrap  -->
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
+							onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
+						<div class="left-main-content">
+
+							<!-- avatar and upvote col -->
+							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="#">
+										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
+									<div class="vote-text-center vote-number">
+										<a href="#">
+											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<span style="display:block;">122</span>
+										</a>
+									</div>
+									
+									<div class="vote-text-center vote-number">
+										<a href="#">
+											<span class="glyphicon glyphicon-chevron-down"></span>
+										</a>
+									</div>
+								</div>
+							</div><!-- end avatar and upvote col -->
+
+							<!-- content-details -->
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+
+								<div class="row">
+									<div class="content-source">
+										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 回答了该问题
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="question-link">
+										<h5>
+											<a href="./QuestionDetails?id=<%=trendsBean.getQuestion().getId() %>">
+												<%=trendsBean.getQuestion().getQuestion_title() %>
+											</a>
+										</h5>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-content">
+										<div class="editable-content" style="display: block;">
+											<%=trendsBean.getAnswer().getAnswers() %>
+											<span class="answer-date" style="display: block;">
+												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
+											</span>
+										</div>
+										<div class="summary-content clearfix" style="display: none;">
+											<%=trendsBean.getAnswer().getAnswers() %>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="meta-panel">
+										<a class="meta-item" href="javascript:;">
+											<span class="glyphicon glyphicon-plus"></span> 关注问题
+										</a>
+										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<span class="glyphicon glyphicon-comment"></span> <%=trendsBean.getQuestion().getReply_num() %>条评论
+										</a>
+										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+											<a href="#" class="meta-item" data-thanked="false">
+												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											</a>
+											<a href="#" class="meta-item" >
+												<span class="glyphicon glyphicon-share-alt"></span> 分享
+											</a>
+											<a href="#" class="meta-item">
+												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item">没有帮助</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												举报
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												作者保留权利
+											</a>
+										</span>
+										<a href="#" class="answer-collapse meta-item" style="display:none">
+											<span class="glyphicon glyphicon-open"></span> 收起
+										</a>
+									</div>
+								</div>
+								
+								<!-- comment -->
+								<div id="comment" class="row comment collapse">
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<!-- avatar and upvote col -->
+											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="row">
+													<a href="#">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+													</a>
+												</div>
+											</div><!-- end avatar and upvote col -->
+											
+											<!-- comment-details -->
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+												<div class="row">
+													<div class="author-info">
+														<a href="#"><strong>空明</strong></a>
+													</div>
+												</div>
+				
+												<div class="row">
+													<div class="question-content">
+														<div class="editable-content" style="display: block;">
+															这个廉价的东西不能退、不能改签应该是常识啊
+															这个廉价的东西不能退、不能改签应该是常识啊
+															<span class="answer-date" style="display: block;">
+																<a target="_blank" href="#">发布于 14:36</a>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div><!-- end comment-details -->
+										</div>
+										<div class="panel-body">
+											<!-- avatar and upvote col -->
+											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="row">
+													<a href="#">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+													</a>
+												</div>
+											</div><!-- end avatar and upvote col -->
+											
+											<!-- comment-details -->
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+												<div class="row">
+													<div class="author-info">
+														<a href="#"><strong>空明</strong></a>
+													</div>
+												</div>
+				
+												<div class="row">
+													<div class="question-content">
+														<div class="editable-content" style="display: block;">
+															这个廉价的东西不能退、不能改签应该是常识啊
+															这个廉价的东西不能退、不能改签应该是常识啊
+															<span class="answer-date" style="display: block;">
+																<a target="_blank" href="#">发布于 14:36</a>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div><!-- end comment-details -->
+										</div>
+										<div class="panel-body">
+											<div class="form-group">
+												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+											</div>
+											<div class="form-group module-right">
+												<button class="btn btn-default btn-sm">取消</button>
+												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+											</div>
+										</div>
+										
+									</div>
+								</div><!--end comment -->
+
+							</div><!-- end content-details -->
+														
+						</div><!-- end left main content -->
+					</div><!--end left main content wrap  -->
+					
+					<div class="row">
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
+					</div>
+					
+					<%
 								}
 							}
 						}
