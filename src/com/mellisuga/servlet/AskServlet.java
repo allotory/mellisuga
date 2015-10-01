@@ -3,6 +3,7 @@ package com.mellisuga.servlet;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,10 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.bean.AnswerBean;
+import com.mellisuga.bean.QuestionBean;
+import com.mellisuga.dao.AnswersDAO;
+import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Tag;
@@ -114,8 +120,28 @@ public class AskServlet extends HttpServlet {
 			// 查询标签
 			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);
 			
-			request.setAttribute("question", question);
-			request.setAttribute("tagList", tagList);
+			// 查询答案
+			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
+			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(q);
+			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
+			if(answersList != null && !answersList.isEmpty()) {
+				// 由答案查询答案作者
+				MemberDAO memberDAO = session.getMapper(MemberDAO.class);
+				for(Answers a : answersList) {
+					AnswerBean answerBean = new AnswerBean();
+					Member member = memberDAO.queryMemberByUserID(a.getAuthor_id());
+					answerBean.setAnswer(a);
+					answerBean.setMember(member);
+					answerBeanList.add(answerBean);
+				}
+			}
+			
+			QuestionBean questionBean = new QuestionBean();
+			questionBean.setQuestion(q);
+			questionBean.setTagList(tagList);
+			questionBean.setAnswerBeanList(answerBeanList);
+			
+			request.setAttribute("questionBean", questionBean);
 			request.getRequestDispatcher("/pages/question.jsp")
 					.forward(request, response);
 

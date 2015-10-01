@@ -113,8 +113,11 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							</div>
 						</div><!-- end question detail -->
 
+						<%
+							if(questionBean.getAnswerBeanList() != null && !questionBean.getAnswerBeanList().isEmpty()) {
+						%>
 						<div class="answer-info">
-							<span>19个回答</span>
+							<span><%=questionBean.getAnswerBeanList().size() %>个回答</span>
 							<div class="btn-group answer-sort">
 								<a href="#" class="btn btn-default btn-xs">按票数排序</a> 
 								<a href="#" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
@@ -125,8 +128,18 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								</ul>
 							</div>
 						</div><!-- end answer info -->
+						<%
+							}
+						%>
 					</div><!-- end question title row -->
 
+					
+					<%
+						// 有答案时显示全部答案
+						if(questionBean.getAnswerBeanList() != null 
+							&& !questionBean.getAnswerBeanList().isEmpty()) {
+							for(AnswerBean ab : questionBean.getAnswerBeanList()) {
+					%>
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
@@ -135,7 +148,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="<%=ab.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 								<div class="row">
@@ -158,40 +171,29 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
 
 								<div class="row">
+									<div class="author-info">
+										<a href="#"><strong><%=ab.getMember().getFullname() %></strong></a>,
+										<span><%=ab.getMember().getAutograph() %></span>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="content-source">
 										<a href="#">空明流转</a> 赞同该回答
 										<span class="source-time">3小时前</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=ab.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
+												<a target="_blank" href="#">发布于 <%=ab.getAnswer().getAnswer_date() %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=ab.getAnswer().getAnswers() %>
 										</div>
 									</div>
 								</div>
@@ -201,9 +203,22 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										<a class="meta-item" href="javascript:;">
 											<span class="glyphicon glyphicon-plus"></span> 关注问题
 										</a>
+										<%
+											if(ab.getAnswer().getReply_num() == 0) {
+										%>
 										<a href="#" class="meta-item">
 											<span class="glyphicon glyphicon-comment"></span> 添加评论
 										</a>
+										<%
+											} else {
+										%>
+										<a href="#" class="meta-item">
+											<span class="glyphicon glyphicon-comment"></span> 
+											<%=ab.getAnswer().getReply_num() %>条评论
+										</a>
+										<%
+											}
+										%>
 										<a href="#" class="meta-item" data-thanked="false">
 											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
 										</a>
@@ -219,6 +234,8 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 											举报
 										</a>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
 										<span class="copyright"></span>
 										<a href="#" class="answer-collapse meta-item">
 											<span class="glyphicon glyphicon-open"></span> 收起
@@ -230,139 +247,35 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 														
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
-
+					
 					<div class="row">
-						<hr/>
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
-
-					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap">
-						<div class="left-main-content">
-
-							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div class="row">
-									<a href="#">
-										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-									</a>
-								</div>
-								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
-											<span style="display:block;">122</span>
-										</a>
-									</div>
-									
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
-										</a>
-									</div>
-								</div>
-							</div><!-- end avatar and upvote col -->
-
-							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-
-								<div class="row">
-									<div class="content-source">
-										<a href="#">空明流转</a> 赞同该回答
-										<span class="source-time">3小时前</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-content">
-										<div id="answers" class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
-											</span>
-										</div>
-										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-										</div>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
-										</a>
-										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-											举报
-										</a>
-										<span class="copyright"></span>
-										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
-										</a>
-									</div>
-								</div>
-
-							</div><!-- end content-details -->
-														
-						</div><!-- end left main content -->
-					</div><!--end left main content wrap  -->
-
-					<div class="row">
-						<hr/>
-					</div>
+					<%
+							}
+						}
+					%>
 		
 					<!-- new answer div -->
 					<div id="newAnswer">
 					</div>
 
-					<!-- loding more btn row  -->
+					<!-- loding more btn row 
 					<div class="row">
 						<div class="loding-btn">
 							<a href="#" class="btn btn-default btn-block">加载更多</a>
 						</div>
-					</div><!-- end loding more btn row  -->
-
-					<div class="row">
-						<hr/>
 					</div>
 
+					<div class="row">
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
+					</div> -->
+					
 					<!-- post editor -->
 					<div class="row">
 						<div class="post-main">
 							<div class="post-source">
-								<a href="#" target="_blank">Kenneth</a>
+								<a href="#" target="_blank"><%=m.getFullname() %></a>
 							</div>
 							<div class="content">
 								<!--<textarea class="form-control" rows="5" id="editor"></textarea>-->
