@@ -7,8 +7,8 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到Answers的id属性--> 
     <insert id="insertAnswer" parameterType="Answers" useGeneratedKeys="true" keyProperty="id">
-    	insert into answers(question_id, author_id, answers, answer_date, replay_num, is_top_answer, is_anonymous) 
-    	values(#{question_id}, #{author_id}, #{answers}, #{answer_date}, #{replay_num}, #{is_top_answer}, #{is_anonymous})
+    	insert into answers(question_id, author_id, answers, answer_date, reply_num, is_top_answer, is_anonymous) 
+    	values(#{question_id}, #{author_id}, #{answers}, #{answer_date}, #{reply_num}, #{is_top_answer}, #{is_anonymous})
     </insert>
     
     <!-- 返回多列 -->
@@ -18,7 +18,7 @@
     	<result column="author_id" property="author_id"/>
     	<result column="answers" property="answers"/>
     	<result column="answer_date" property="answer_date"/>
-    	<result column="replay_num" property="replay_num"/>
+    	<result column="reply_num" property="reply_num"/>
     	<result column="is_top_answer" property="is_top_answer"/>
     	<result column="is_anonymous" property="is_anonymous"/>
     </resultMap>

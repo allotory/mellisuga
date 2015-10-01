@@ -115,7 +115,15 @@ public class AskServlet extends HttpServlet {
 			// TODO 数据库表想简单了～
 			// TODO 数据库表想简单了～
 			
+			// 更新用户信息（提问数）
+			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
+			m.setAnswer_num(m.getAnswer_num() + 1);
+			memberDAO.updateMember(m);
+			
 			session.commit();
+			
+			// 重新查询用户信息
+			m = memberDAO.queryMemberByUserID(m.getId());
 			
 			// 查询标签
 			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);
@@ -126,7 +134,6 @@ public class AskServlet extends HttpServlet {
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
 			if(answersList != null && !answersList.isEmpty()) {
 				// 由答案查询答案作者
-				MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 				for(Answers a : answersList) {
 					AnswerBean answerBean = new AnswerBean();
 					Member member = memberDAO.queryMemberByUserID(a.getAuthor_id());
@@ -142,6 +149,7 @@ public class AskServlet extends HttpServlet {
 			questionBean.setAnswerBeanList(answerBeanList);
 			
 			request.setAttribute("questionBean", questionBean);
+			request.getSession().setAttribute("member", m);
 			request.getRequestDispatcher("/pages/question.jsp")
 					.forward(request, response);
 

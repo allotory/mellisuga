@@ -107,7 +107,7 @@ $(function() {
 
     // 是否全屏
     Editor.isBig = false;
-    Editor.originHeight = 420;
+    Editor.originHeight = 120;
 
     /**
      * get the value of the Editor
@@ -575,7 +575,7 @@ $(function() {
 
         MIDI.loadPlugin({
             targetFormat: 'mp3',
-            soundfontUrl: '/BachEditor/js/',
+            soundfontUrl: 'plugin/BachEditor/js/',
             instrument: 'marimba',
             callback: function() {
                 MIDI.setVolume(0, 127);

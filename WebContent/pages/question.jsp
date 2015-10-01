@@ -275,27 +275,25 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 					<div class="row">
 						<div class="post-main">
 							<div class="post-source">
-								<a href="#" target="_blank"><%=m.getFullname() %></a>
+								<a href="#"><%=m.getFullname() %></a>
 							</div>
 							<div class="content">
-								<!--<textarea class="form-control" rows="5" id="editor"></textarea>-->
 								<div class="editor">
-									<textarea id="myEditor" name="answers"></textarea>
+									<textarea id="answers" name="answers"></textarea>
 								</div>
-
 								<script>
 									$(function() {
 										var myEditor = new Editor();
-										myEditor.render('#myEditor');
+										myEditor.render('#answers');
 									});
 								</script>
 
 								<div class="checkbox post-module">
 									<label> 
-										<input type="checkbox" name="is_anonymous" value="1">匿名
+										<input type="checkbox" id="is_anonymous" name="is_anonymous" value="1">匿名
 									</label>
 									<button class="btn btn-default">取消</button>
-									<button type="button" onclick="newAnswer('haha222')" class="btn btn-primary">提交</button>
+									<button type="button" onclick="newAnswer('<%=questionBean.getQuestion().getId() %>')" class="btn btn-primary">提交</button>
 								</div>
 							</div>
 						</div>
@@ -343,7 +341,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 					<div class="sidebar-group">
 						<span class="sidebar-group-title"><strong>问题状态</strong></span>
 						<div class="similar-question">
-							最近活动于 10:02 • <a href="../LogServlet">查看问题日志</a><br>
+							最近活动于 10:02 • <a href="./LogServlet">查看问题日志</a><br>
 							被浏览 6800 次，相关话题关注者 617946 人 9 个回答
 						</div>
 					</div>

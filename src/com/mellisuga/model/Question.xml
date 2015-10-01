@@ -20,6 +20,21 @@
     <select id="queryQuestionById" parameterType="Question" resultType="Question">
         select * from question where id = #{id}
     </select>
+    
+    <!-- 更新 -->
+    <update id="updateQuestion" parameterType="Question">
+    	update question set 
+    		question_title=#{question_title}, 
+    		question_content=#{question_content}, 
+    		answers_num=#{answers_num}, 
+    		followers_num=#{followers_num}, 
+    		last_updated=#{last_updated}, 
+    		scan_num=#{scan_num}, 
+    		reply_num=#{reply_num}, 
+    		is_anonymous=#{is_anonymous}, 
+    		member_id=#{member_id} 
+    	where id=#{id}
+    </update>
 </mapper>
 
 

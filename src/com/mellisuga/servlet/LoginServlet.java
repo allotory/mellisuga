@@ -145,7 +145,8 @@ public class LoginServlet extends HttpServlet {
 								Question q = questionDAO.queryQuestionById(question);
 								trendsBean.setQuestion(q);
 								
-								trendsBean.setMember(member);
+								Member m = memberDAO.queryMemberByUserID(q.getMember_id());
+								trendsBean.setMember(m);
 							}
 							trendsBeanList.add(trendsBean);
 						}

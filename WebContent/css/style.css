@@ -406,3 +406,7 @@ del {
 .content-details {
 	padding-right: 0px;
 }
+
+.answer-avatar {
+	width: 40px;
+}

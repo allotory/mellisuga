@@ -160,11 +160,11 @@
 
 .CodeMirror {
   height: auto;
-  min-height: 420px;
+  min-height: 120px;
   padding: 0; }
   .CodeMirror .CodeMirror-scroll {
     height: 100%;
-    min-height: 420px; }
+    min-height: 120px; }
   .CodeMirror .CodeMirror-cursor {
     height: 20px !important; }
 

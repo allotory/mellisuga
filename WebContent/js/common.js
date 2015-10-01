@@ -1,15 +1,15 @@
-//登录注册div切换
+// 登录注册div切换
 function loginManager() {
 
-	//登录div
+	// 登录div
 	var register_title = document.getElementById("register_title");
 	var login_btn = document.getElementById("login_btn");
 
-	//注册div
+	// 注册div
 	var login_title = document.getElementById("login_title");
 	var register_btn = document.getElementById("register_btn");
 
-	//form
+	// form
 	var login_form = document.getElementById("login_form");
 	var register_form = document.getElementById("register_form");
 
@@ -34,7 +34,7 @@ function loginManager() {
 
 }
 
-//校验用户姓名
+// 校验用户姓名
 function validateUsername(id) {
 	var username = document.getElementById(id).value.trim();
 	var reg = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){5,19}$/;
@@ -67,7 +67,7 @@ function validatePass(id) {
 	}
 }
 
-//登录提交检验
+// 登录提交检验
 function validateLoginSubmit() {
 	var isEmailChecked = validateEmail("email");
 	var isPassChecked = validatePass("password");
@@ -101,7 +101,7 @@ function validateLoginSubmit() {
 	}
 }
 
-//注册提交校验
+// 注册提交校验
 function validateRegSubmit() {
 	var isUsernameChecked = validateUsername("rusername");
 	var isEmailChecked = validateEmail("remail");
@@ -145,7 +145,7 @@ function validateRegSubmit() {
 	}
 }
 
-//组件显示
+// 组件显示
 function showItem(id) {
 	var item = document.getElementById(id);
 	item.style.display = "inline";
@@ -155,11 +155,12 @@ function hiddenItem(id) {
 	item.style.display = "none";
 }
 
-//赞成
+// 赞成
 function voteUp() {
 
 }
 
+// 提交答案
 var xmlhttp;
 function loadXMLDoc(url, callback) {
 	if (window.XMLHttpRequest) {
@@ -173,10 +174,16 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
-function newAnswer(parameter) {
-	loadXMLDoc("AnswerServlet?username=" + parameter, function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
-		}
-	});
+function newAnswer(question_id) {
+	var answers = document.getElementById('answers').value;
+	var is_anonymous = document.getElementById('is_anonymous');
+	if(answers == "") {
+		alert("答案不能为空！");
+	} else {
+		loadXMLDoc("AnswerServlet?question_id=" + question_id + "&answers=" + answers + "&is_anonymous=" + is_anonymous, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
+			}
+		});
+	}
 }

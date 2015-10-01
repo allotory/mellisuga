@@ -54,6 +54,31 @@
         select * from member where user_id = #{user_id}
     </select>
     
+    <!-- 更新 -->
+    <update id="updateMember" parameterType="Member">
+    	update member set 
+	    	fullname=#{fullname}, 
+	    	gender=#{gender}, 
+	    	avatar_path=#{avatar_path}, 
+	    	location=#{location}, 
+	    	business=#{business}, 
+	    	employment=#{employment}, 
+	    	position=#{position}, 
+	    	education=#{education}, 
+	    	major=#{major}, 
+	    	description=#{description},
+	    	autograph=#{autograph},
+	    	approve_num=#{approve_num},
+	    	thank_num=#{thank_num},
+	    	question_num=#{question_num},
+	    	answer_num=#{answer_num},
+	    	collect_num=#{collect_num},
+	    	personality_url=#{personality_url},
+	    	is_emailactive=#{is_emailactive},
+	    	user_id=#{user_id}
+	    where id=#{id}
+    </update>
+    
 </mapper>
 
 

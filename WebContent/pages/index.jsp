@@ -105,7 +105,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="#">
-										<img src="<%=m.getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
 							</div><!-- end avatar and upvote col -->
@@ -115,7 +115,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="content-source">
-										<a href="#"><%=m.getFullname() %></a> 提了一个问题
+										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 提了一个问题
 										<span class="source-time">3小时前</span>
 									</div>
 								</div>

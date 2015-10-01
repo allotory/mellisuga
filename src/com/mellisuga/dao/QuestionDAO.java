@@ -12,4 +12,7 @@ public interface QuestionDAO {
 	
 	// 通过问题ID查询问题
 	public Question queryQuestionById(Question question);
+	
+	// 更新问题
+	public void updateQuestion(Question question);
 }
