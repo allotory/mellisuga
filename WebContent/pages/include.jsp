@@ -38,3 +38,6 @@
 	<script type="text/javascript" src="./plugin/BachEditor/js/modal.js"></script>
 	<script type="text/javascript" src="./plugin/BachEditor/js/MIDI.js"></script>
 	<script type="text/javascript" src="./plugin/BachEditor/js/bacheditor.js"></script>
+	
+	<!-- font awesome -->
+	<link rel="stylesheet" href="./plugin/font-awesome/css/font-awesome.min.css"/>

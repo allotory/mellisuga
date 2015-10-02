@@ -16,10 +16,6 @@
 		<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- Taginput -->
-	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
-
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/common.js"></script>

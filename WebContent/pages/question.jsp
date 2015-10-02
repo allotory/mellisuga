@@ -44,7 +44,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 						<span class="input-group-btn">
 							<button class="btn btn-primary" type="button" data-toggle="modal" 
 									data-target="#myModal" data-backdrop="false">
-								<span class="glyphicon glyphicon-search"></span>
+								<i class="fa fa-search"></i>
 							</button>
 						</span>
 					</div>
@@ -77,37 +77,37 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								}
 							%>
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i>  
 									修改
 								</a>
 							</div>
 							<div class="question-title">
 								<strong><%=questionBean.getQuestion().getQuestion_title() %></strong>
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i> 
 									修改
 								</a>
 							</div>
 							<div class="question-contents">
 								<%=questionBean.getQuestion().getQuestion_content() %>
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i> 
 									修改
 								</a>
 							</div>
 							<div class="q-meta-panel">
 								<a href="#" class="q-meta-item">
-									<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+									<i class="fa fa-comment-o"></i> 
 									添加评论
 								</a>
 								<a href="#" class="q-meta-item">
-									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+									<i class="fa fa-share"></i> 
 									分享
 								</a> 
 								<span class="zg-bull">•</span> 
 								<a href="#" class="q-meta-item">邀请回答</a>
 								<a href="#" class="q-meta-item-right">
-									<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+									<i class="fa fa-flag-o"></i>  
 									举报
 								</a>
 							</div>
@@ -155,14 +155,14 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<div class="row">
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<i class="fa fa-caret-up"></i>
 											<span style="display:block;">122</span>
 										</a>
 									</div>
 									
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
+											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
@@ -203,19 +203,19 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
 											if(ab.getAnswer().getReply_num() == 0) {
 										%>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+										<a href="#comment-<%=ab.getAnswer().getId() %>" data-toggle="collapse" class="meta-item">
+											 <i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<%
 											} else {
 										%>
-										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 
+										<a href="#comment-<%=ab.getAnswer().getId() %>" data-toggle="collapse" class="meta-item">
+											<i class="fa fa-comment-o"></i> 
 											<%=ab.getAnswer().getReply_num() %>条评论
 										</a>
 										<%
@@ -223,18 +223,18 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										%>
 										<span id="hidden-item-<%=ab.getAnswer().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
-												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+												<i class="fa fa-heart-o"></i> 感谢
 											</a>
 											<a href="#" class="meta-item">
-												<span class="glyphicon glyphicon-share-alt"></span> 分享
+												<i class="fa fa-share"></i> 分享
 											</a>
 											<a href="#" class="meta-item">
-												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item">没有帮助</a>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+											<a href="#" class="meta-item goog-inline-block">
 												举报
 											</a>
 											<span class="bull">•</span>
@@ -242,10 +242,101 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											<span class="copyright"></span>
 										</span>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
+								
+								<!-- comment -->
+								<div id="comment-<%=ab.getAnswer().getId() %>" class="row comment collapse">
+									<div class="panel panel-default">
+										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;" 
+												onmouseenter="showItem('comment-hidden')" 
+												onmouseleave="hiddenItem('comment-hidden')">
+											<!-- avatar and upvote col -->
+											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="row">
+													<a href="#">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+													</a>
+												</div>
+											</div><!-- end avatar and upvote col -->
+											
+											<!-- comment-details -->
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+												<div class="row">
+													<div class="author-info">
+														<a href="#"><strong>空明</strong></a>
+													</div>
+												</div>
+				
+												<div class="row">
+													<div class="question-content">
+														<div class="editable-content" style="display: block;">
+															这个廉价的东西不能退、不能改签应该是常识啊
+															这个廉价的东西不能退、不能改签应该是常识啊
+															<span class="answer-date" style="display: block;">
+																<a target="_blank" href="#">发布于 14:36</a>
+																<span id="comment-hidden" style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+																<a href="#" class="split module-right">56赞</a>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div><!-- end comment-details -->
+										</div>
+										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
+											<!-- avatar and upvote col -->
+											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+												<div class="row">
+													<a href="#">
+														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
+													</a>
+												</div>
+											</div><!-- end avatar and upvote col -->
+											
+											<!-- comment-details -->
+											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+												<div class="row">
+													<div class="author-info">
+														<a href="#"><strong>空明</strong></a>
+													</div>
+												</div>
+				
+												<div class="row">
+													<div class="question-content">
+														<div class="editable-content" style="display: block;">
+															这个廉价的东西不能退、不能改签应该是常识啊
+															这个廉价的东西不能退、不能改签应该是常识啊
+															<span class="answer-date" style="display: block;">
+																<a target="_blank" href="#">发布于 14:36</a>
+																<span style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div><!-- end comment-details -->
+										</div>
+										<div class="panel-body">
+											<div class="form-group">
+												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+											</div>
+											<div class="form-group module-right">
+												<button class="btn btn-default btn-sm">取消</button>
+												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+											</div>
+										</div>
+										
+									</div>
+								</div><!--end comment -->
 
 							</div><!-- end content-details -->
 														
@@ -304,7 +395,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 					<div class="follow-btn">
 						<a href="#" class="btn btn-primary">关注问题</a>
 						<div class="btn-group">
-							<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></a> 
+							<a href="#" class="btn btn-default"><i class="fa fa-cog"></i></a> 
 							<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								<span class="caret"></span>
 							</a>
