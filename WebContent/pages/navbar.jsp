@@ -6,7 +6,7 @@
 %>
 <ul class="nav navbar-nav">
 	<li>
-		<a href="#">首页</a>
+		<a href="./IndexServlet">首页</a>
 	</li>
 	<li>
 		<a href="#">话题</a>
