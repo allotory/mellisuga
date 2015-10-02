@@ -282,21 +282,15 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<a href="#"><%=m.getFullname() %></a>
 							</div>
 							<div class="content">
-								<div class="editor">
-									<textarea id="answers" name="answers"></textarea>
+								<div id="answer-editor" class="">
+									<textarea class="form-control" id="answers" name="answers" rows="4" onfocus="renderAnswerEditor();"></textarea>
 								</div>
-								<script>
-									$(function() {
-										var myEditor = new Editor();
-										myEditor.render('#answers');
-									});
-								</script>
 
 								<div class="checkbox post-module">
 									<label> 
 										<input type="checkbox" id="is_anonymous" name="is_anonymous" value="1">匿名
 									</label>
-									<button class="btn btn-default">取消</button>
+									<button class="btn btn-default" onclick="showContent()">取消</button>
 									<button type="button" onclick="newAnswer('<%=questionBean.getQuestion().getId() %>')" class="btn btn-primary">提交</button>
 								</div>
 							</div>

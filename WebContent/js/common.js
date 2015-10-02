@@ -160,6 +160,37 @@ function voteUp() {
 
 }
 
+//动态显示回答编辑器
+function renderAnswerEditor() {
+	var answerdiv = document.getElementById('answer-editor');
+	answerdiv.className='editor';
+	
+	bacheditor = new Editor();
+	bacheditor.render('#answers','edit');
+}
+
+//动态显示提问编辑器
+function renderAskEditor() {
+	var askdiv = document.getElementById('ask-editor');
+	askdiv.className='editor';
+	
+	bacheditor2 = new Editor();
+	bacheditor2.render('#question_content','edit');
+}
+function getHtmlSubmit() {
+	var askdiv = document.getElementById('ask-editor');
+	
+	var input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('name', 'question_original_content');
+	input.setAttribute('value', bacheditor2.getHTML());
+	//alert(bacheditor2.getHTML());
+	
+	askdiv.appendChild(input);
+	
+	return true;
+}
+
 // 提交答案
 var xmlhttp;
 function loadXMLDoc(url, callback) {
@@ -175,7 +206,7 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.send();
 }
 function newAnswer(question_id) {
-	var answers = document.getElementById('answers').value;
+	var answers = bacheditor.getHTML();
 	var is_anonymous = document.getElementById('is_anonymous');
 	if(answers == "") {
 		alert("答案不能为空！");
@@ -185,6 +216,6 @@ function newAnswer(question_id) {
 				document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
 			}
 		});
-		document.getElementById('answers').value = "";
+		bacheditor.setVal('');
 	}
 }

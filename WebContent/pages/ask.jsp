@@ -69,16 +69,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						</div>
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
-								<div class="editor">
-									<textarea id="myEditor" name="question_content"></textarea>
+								<div id="ask-editor" class="">
+									<textarea class="form-control" id="question_content" 
+										name="question_content" rows="12" onfocus="renderAskEditor();"></textarea>
 								</div>
-
-								<script>
-								$(function() {
-									var myEditor = new Editor();
-									myEditor.render('#myEditor');
-								});
-								</script>
 							</div>
 						</div>
 						<div class="form-group">
@@ -103,8 +97,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						</div>
 						<div class="form-group">
 							<div class="col-lg-10 col-lg-offset-2 col-md-offset-2">
-								<button type="reset" class="btn btn-default">取消</button>
-								<button type="submit" class="btn btn-primary">提交</button>
+								<button type="button" class="btn btn-default">取消</button>
+								<button type="submit" onClick="return getHtmlSubmit();" class="btn btn-primary">提交</button>
 							</div>
 						</div>
 					</fieldset>

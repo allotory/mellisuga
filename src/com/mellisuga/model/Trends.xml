@@ -22,7 +22,7 @@
     	<result column="trends_member" property="trends_member"/>
     </resultMap>
     <select id="queryAllTrends" resultMap="TrendsList">
-        select * from trends;
+        select * from trends order by id desc;
     </select>
 </mapper>
 

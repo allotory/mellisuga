@@ -49,7 +49,7 @@ public class AskServlet extends HttpServlet {
 		Member m = (Member) request.getSession().getAttribute("member");
 
 		String question_title = request.getParameter("question_title");
-		String question_content = request.getParameter("question_content");
+		String question_content = request.getParameter("question_original_content");
 		String tags = request.getParameter("tags");
 		String is_anonymous = request.getParameter("is_anonymous");
 
