@@ -66,10 +66,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<!--left main title row-->
 					<div class="row">
 						<div class="left-main-title">
-							<span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
+							<i class="fa fa-list-ul"></i> 最新动态
 							<span class="news-setting">
 								<a href="#">
-									<span class="glyphicon glyphicon-cog"></span>设置
+									<i class="fa fa-cog"></i> 设置
 								</a>
 							</span>
 						</div><!-- end left main title -->
@@ -133,20 +133,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
+										<%
+											if(trendsBean.getQuestion().getReply_num() > 0) {
+										%>
 										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<span class="glyphicon glyphicon-comment"></span> <%=trendsBean.getQuestion().getReply_num() %>条评论
+											<i class="fa fa-comment-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-comment-o"></i> 添加评论
+										</a>
+										<%
+											}
+										%>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
-												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+												<i class="fa fa-heart-o"></i> 感谢
 											</a>
 											<a href="#" class="meta-item" >
-												<span class="glyphicon glyphicon-share-alt"></span> 分享
+												<i class="fa fa-share"></i> 分享
 											</a>
 											<a href="#" class="meta-item">
-												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item">没有帮助</a>
@@ -160,7 +172,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											</a>
 										</span>
 										<a href="#" class="answer-collapse meta-item" style="display:none">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
@@ -168,7 +180,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<!-- comment -->
 								<div id="comment" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body">
+										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
 											<!-- avatar and upvote col -->
 											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 												<div class="row">
@@ -193,6 +205,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 															这个廉价的东西不能退、不能改签应该是常识啊
 															<span class="answer-date" style="display: block;">
 																<a target="_blank" href="#">发布于 14:36</a>
+																<span id="comment-hidden" style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+																<a href="#" class="split module-right">56赞</a>
 															</span>
 														</div>
 													</div>
@@ -224,6 +242,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 															这个廉价的东西不能退、不能改签应该是常识啊
 															<span class="answer-date" style="display: block;">
 																<a target="_blank" href="#">发布于 14:36</a>
+																<span id="comment-hidden" style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+																<a href="#" class="split module-right">56赞</a>
 															</span>
 														</div>
 													</div>
@@ -269,14 +293,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<i class="fa fa-caret-up"></i>
 											<span style="display:block;">122</span>
 										</a>
 									</div>
 									
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
+											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
@@ -319,20 +343,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<span class="glyphicon glyphicon-comment"></span> <%=trendsBean.getQuestion().getReply_num() %>条评论
+											<i class="fa fa-comment-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
-												<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+												<i class="fa fa-heart-o"></i> 感谢
 											</a>
 											<a href="#" class="meta-item" >
-												<span class="glyphicon glyphicon-share-alt"></span> 分享
+												<i class="fa fa-share"></i> 分享
 											</a>
 											<a href="#" class="meta-item">
-												<span class="glyphicon glyphicon-bookmark"></span> 收藏
+												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item">没有帮助</a>
@@ -346,7 +370,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											</a>
 										</span>
 										<a href="#" class="answer-collapse meta-item" style="display:none">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
@@ -354,7 +378,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<!-- comment -->
 								<div id="comment" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body">
+										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
 											<!-- avatar and upvote col -->
 											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 												<div class="row">
@@ -379,13 +403,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 															这个廉价的东西不能退、不能改签应该是常识啊
 															<span class="answer-date" style="display: block;">
 																<a target="_blank" href="#">发布于 14:36</a>
+																<span id="comment-hidden" style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+																<a href="#" class="split module-right">56赞</a>
 															</span>
 														</div>
 													</div>
 												</div>
 											</div><!-- end comment-details -->
 										</div>
-										<div class="panel-body">
+										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
 											<!-- avatar and upvote col -->
 											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 												<div class="row">
@@ -410,6 +440,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 															这个廉价的东西不能退、不能改签应该是常识啊
 															<span class="answer-date" style="display: block;">
 																<a target="_blank" href="#">发布于 14:36</a>
+																<span id="comment-hidden" style="margin-left: 5px;">
+																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
+																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
+																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
+																</span>
+																<a href="#" class="split module-right">56赞</a>
 															</span>
 														</div>
 													</div>
@@ -458,14 +494,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<i class="fa fa-caret-up"></i>
 											<span style="display:block;">122</span>
 										</a>
 									</div>
 									
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
+											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
@@ -516,19 +552,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											<i class="fa fa-heart-o"></i> 感谢
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
+											<i class="fa fa-share"></i> 分享
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											<i class="fa fa-bookmark-o"></i> 收藏
 										</a>
 										<span class="bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a>
@@ -538,7 +574,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</a>
 										<span class="copyright"></span>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
@@ -560,26 +596,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 					
 					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-file">
-							我的草稿<span class="badge">14</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-file-o"></i> 我的草稿<span class="badge">14</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-bookmark">
-							我的收藏<span class="badge">8</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-bookmark-o"></i> 我的收藏<span class="badge">8</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-heart">
-							我关注的问题<span class="badge">164</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-check-square-o"></i> 我关注的问题<span class="badge">164</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-check">
-							邀请我回答的问题<span class="badge">85</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-file-text-o"></i> 邀请我回答的问题<span class="badge">85</span>
 						</a>
 					</div>
 
 					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-duplicate"> 所有问题</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-th-large"> 话题广场</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-book"> 首场秀</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-edit"> 公共编辑动态</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-home"> 社区服务中心</a>
+						<a href="#" class="list-group-item"><i class="fa fa-book"></i> 所有问题</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-th-large"></i> 话题广场</a>
+						<a href="#" class="list-group-item"><i class="fa fa-list"></i> 公共编辑动态</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-home"></i> 社区服务中心</a>
 					</div>
 	
 				</div><!-- end right sidebar -->

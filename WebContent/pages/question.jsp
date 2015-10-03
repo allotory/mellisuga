@@ -215,7 +215,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											} else {
 										%>
 										<a href="#comment-<%=ab.getAnswer().getId() %>" data-toggle="collapse" class="meta-item">
-											<i class="fa fa-comment-o"></i> 
+											<i class="fa fa-commentint-o"></i> 
 											<%=ab.getAnswer().getReply_num() %>条评论
 										</a>
 										<%
