@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 	<%@include file="include.jsp"%>
 	
 <%
-	//User u = (User) request.getSession().getAttribute("user"); 
+	User u = (User) request.getSession().getAttribute("user"); 
 %>
 </head>
 <body>
@@ -53,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<i class="fa fa-user"></i> 
 							</label>
 							<div class="col-lg-5">
-								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="<%//=u.getUsername() %>">
+								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="<%=u.getUsername() %>">
 								<span class="help-block">每180天只能修改一次，默认为用户名（不建议使用）.</span>
 							</div>
 						</div>

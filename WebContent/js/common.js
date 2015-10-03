@@ -219,3 +219,4 @@ function newAnswer(question_id) {
 		bacheditor.setVal('');
 	}
 }
+
