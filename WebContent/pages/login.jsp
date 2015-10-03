@@ -19,6 +19,9 @@
 	<script src="../js/jquery-1.11.2.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/common.js"></script>
+	
+	<!-- font awesome -->
+	<link rel="stylesheet" href="../plugin/font-awesome/css/font-awesome.min.css"/>
 
 <%
 	String flag = (String) request.getSession().getAttribute("flag");
@@ -48,7 +51,7 @@
 						<span class="sign-in-title">
 							<a id="login_btn" href="#" style="display:inline" onclick="loginManager()">登录</a>
 							<a id="register_btn" href="#" style="display:none" onclick="loginManager()">注册</a>
-							<span class="glyphicon glyphicon-circle-arrow-right"></span>
+							<i class="fa fa-arrow-circle-right"></i>
 						</span>
 					</div>
 					
@@ -63,10 +66,10 @@
 							<div class="form-group">
 								<div id="alert_error" class="alert alert-dismissible alert-danger" style="display:none">
 									<div id="email_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 邮箱地址不正确.
+										<i class="fa fa-warning"></i> 邮箱地址不正确.
 									</div>
 									<div id="pass_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
+										<i class="fa fa-warning"></i> 请输入6-128位的密码.
 									</div>
 								</div>
 								<%
@@ -74,7 +77,7 @@
 								%>
 								<div id="login_info" class="alert alert-dismissible alert-danger">
 									<div id="login_infos">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 用户名或密码错误.
+										<i class="fa fa-warning"></i> 用户名或密码错误.
 									</div>
 								</div>
 								<%
@@ -106,13 +109,13 @@
 							<div class="form-group">
 								<div id="ralert_error" class="alert alert-dismissible alert-danger" style="display:none">
 									<div id="rusername_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 用户名需在6-20个字符之间.
+										<i class="fa fa-warning"></i> 用户名需在6-20个字符之间.
 									</div>
 									<div id="remail_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 邮箱地址不正确.
+										<i class="fa fa-warning"></i> 邮箱地址不正确.
 									</div>
 									<div id="rpass_error" style="display:none">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 请输入6-128位的密码.
+										<i class="fa fa-warning"></i> 请输入6-128位的密码.
 									</div>
 								</div>
 								<%
@@ -120,7 +123,7 @@
 								%>
 								<div id="login_info" class="alert alert-dismissible alert-danger">
 									<div id="login_infos">
-										<span class="glyphicon glyphicon-exclamation-sign"></span> 注册成功，请登录.
+										<i class="fa fa-exclamation-circle"></i> 注册成功，请登录.
 									</div>
 								</div>
 								<%

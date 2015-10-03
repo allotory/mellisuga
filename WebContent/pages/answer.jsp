@@ -38,7 +38,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<span class="input-group-btn">
 							<button class="btn btn-primary" type="button" data-toggle="modal" 
 									data-target="#myModal" data-backdrop="false">
-								<span class="glyphicon glyphicon-search"></span>
+								<i class="fa fa-search"></i>
 							</button>
 						</span>
 					</div>
@@ -63,37 +63,37 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<div class="question-tag">
 								<span class="label label-primary">ddddd</span>
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i> 
 									修改
 								</a>
 							</div>
 							<div class="question-title">
 								<strong>为什么有的同学家境不是很好，还不用功读书？</strong>
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i> 
 									修改
 								</a>
 							</div>
 							<div class="question-contents">
 								因为安于平庸。
 								<a href="#" class="item-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+									<i class="fa fa-edit"></i> 
 									修改
 								</a>
 							</div>
 							<div class="q-meta-panel">
 								<a href="#" class="q-meta-item">
-									<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> 
+									<i class="fa fa-comment-o"></i> 
 									添加评论
 								</a>
 								<a href="#" class="q-meta-item">
-									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+									<i class="fa fa-share"></i> 
 									分享
 								</a> 
 								<span class="zg-bull">•</span> 
 								<a href="#" class="q-meta-item">邀请回答</a>
 								<a href="#" class="q-meta-item-right">
-									<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 
+									<i class="fa fa-flag-o"></i> 
 									举报
 								</a>
 							</div>
@@ -118,14 +118,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-up" style="display:block;"></span>
+											<i class="fa fa-caret-up"></i>
 											<span style="display:block;">122</span>
 										</a>
 									</div>
 									
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span class="glyphicon glyphicon-chevron-down"></span>
+											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
@@ -174,29 +174,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											<i class="fa fa-heart-o"></i> 感谢
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
+											<i class="fa fa-share"></i> 分享
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											<i class="fa fa-bookmark-o"></i> 收藏
 										</a>
 										<span class="bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block">
 											举报
 										</a>
-										<span class="copyright"></span>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
@@ -206,8 +207,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
 
-					<div class="row">
-						<hr/>
+					<div class="row more-awesome">
+						<span>更多回答</span>
 					</div>
 
 					<!-- left main content wrap  -->
@@ -255,7 +256,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="question-content">
-										<div id="answers" class="editable-content" style="display: block;">
+										<div id="answer" class="editable-content" style="display: block;">
 											这个廉价的东西不能退、不能改签应该是常识啊
 											这个廉价的东西不能退、不能改签应该是常识啊
 											这个廉价的东西不能退、不能改签应该是常识啊
@@ -275,29 +276,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											<i class="fa fa-heart-o"></i> 感谢
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
+											<i class="fa fa-share"></i> 分享
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											<i class="fa fa-bookmark-o"></i> 收藏
 										</a>
 										<span class="bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block">
 											举报
 										</a>
-										<span class="copyright"></span>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
@@ -334,16 +336,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div>
 							<div class="content">
 								<!--<textarea class="form-control" rows="5" id="editor"></textarea>-->
-								<div class="editor">
-									<textarea id="myEditor" name="answers"></textarea>
+								<div id="answer-editor" class="">
+									<textarea class="form-control" id="answers" name="answers" rows="4" onfocus="renderAnswerEditor();"></textarea>
 								</div>
-
-								<script>
-									$(function() {
-										var myEditor = new Editor();
-										myEditor.render('#myEditor');
-									});
-								</script>
 
 								<div class="checkbox post-module">
 									<label> 
@@ -363,7 +358,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<div class="follow-btn">
 						<a href="#" class="btn btn-primary">关注问题</a>
 						<div class="btn-group">
-							<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></a> 
+							<a href="#" class="btn btn-default"><i class="fa fa-cog"></i> </a> 
 							<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								<span class="caret"></span>
 							</a>
@@ -409,6 +404,5 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 		</div><!-- main content -->
 
 	</div><!-- end container -->
-
 	</body>
 </html>

@@ -61,36 +61,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
 										<div class="user-info">
-											<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 
+											<i class="fa fa-map-marker"></i> 
 											<span class="location">HaiLin</span>
 											<span class="business">互联网</span>
 											<span class="gender">男</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 										</div>
 
 										<div class="user-info">
-											<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 
+											<i class="fa fa-suitcase"></i> 
 											<span class="company">公司</span>
 											<span class="work">程序猿</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 										</div>
 
 										<div class="user-info-end">
-											<span class="glyphicon glyphicon-education" aria-hidden="true"></span> 
+											<i class="fa fa-graduation-cap"></i> 
 											<span class="education">大学</span>
 											<span class="specialty">专业</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 											<span class="user-info-detail">
-												<span class="glyphicon glyphicon-arrow-right"></span> 查看详细资料
+												<i class="fa fa-arrow-right"></i> 查看详细资料
 											</span>
 										</div>
 										<hr>
@@ -103,19 +103,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="achievement">
 									<span class="achieve">获得</span>
 									<span class="achieve">
-										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+										<i class="fa fa-thumbs-o-up"></i> 
 										<strong>133</strong>赞同
 									</span>
 									<span class="achieve">
-										<span class="glyphicon glyphicon-heart-empty"  aria-hidden="true"></span>  
+										<i class="fa fa-heart-o"></i> 
 										<strong>52</strong>感谢
 									</span>
-									<a href="#" class="achieve-right glyphicon glyphicon-pencil info-edit">编辑我的资料</a>
+									<a href="#" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 								</div>
 
 							</div>
 							<div class="panel-footer user-info-foot">
-								<a href="" class="info-item glyphicon glyphicon-home"></a>
+								<a href="" class="info-item"><i class="fa fa-home"></i> </a>
 								<a href="" class="info-item"><strong>提问</strong><span> 0</span></a>
 								<a href="" class="info-item"><strong>回答</strong><span> 0</span></a>
 								<a href="" class="info-item"><strong>专栏文章</strong><span> 0</span></a>

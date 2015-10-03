@@ -38,7 +38,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<span class="input-group-btn">
 							<button class="btn btn-primary" type="button" data-toggle="modal" 
 									data-target="#myModal" data-backdrop="false">
-								<span class="glyphicon glyphicon-search"></span>
+								<i class="fa fa-search"></i>
 							</button>
 						</span>
 					</div>

@@ -50,10 +50,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<!--left main title row-->
 					<div class="row">
 						<div class="left-main-title">
-							<span class="recent-news glyphicon glyphicon-th-list"></span>最新动态
+							<i class="fa fa-list-ul"></i> 我关注的问题（325）
 							<span class="news-setting">
 								<a href="#">
-									<span class="glyphicon glyphicon-cog"></span>设置
+									<i class="fa fa-cog"></i> 设置
 								</a>
 							</span>
 						</div><!-- end left main title -->
@@ -69,7 +69,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="vote-text-center vote-number">
 										<a href="#">
 											<span id="voteupnum" style="display:block;">123</span>
-											<span class="glyphicon glyphicon-eye-open" style="display:block;"></span>
+											<span class="" style="display:block;">浏览</span>
 										</a>
 									</div>
 								</div>
@@ -117,7 +117,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="vote-text-center vote-number">
 										<a href="#">
 											<span id="voteupnum" style="display:block;">123</span>
-											<span class="glyphicon glyphicon-eye-open" style="display:block;"></span>
+											<span class="" style="display:block;">浏览</span>
 										</a>
 									</div>
 								</div>
@@ -163,26 +163,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
 					
 					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-file">
-							我的草稿<span class="badge">14</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-file-o margin-icon"></i> 我的草稿<span class="badge">14</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-bookmark">
-							我的收藏<span class="badge">8</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-bookmark-o margin-icon"></i> 我的收藏<span class="badge">8</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-heart">
-							我关注的问题<span class="badge">164</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-check-square-o margin-icon"></i> 我关注的问题<span class="badge">164</span>
 						</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-check">
-							邀请我回答的问题<span class="badge">85</span>
+						<a href="#" class="list-group-item">
+							<i class="fa fa-clone margin-icon"></i> 邀请我回答的问题<span class="badge">85</span>
 						</a>
 					</div>
 
 					<div class="list-group">
-						<a href="#" class="list-group-item glyphicon glyphicon-duplicate"> 所有问题</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-th-large"> 话题广场</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-book"> 首场秀</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-edit"> 公共编辑动态</a> 
-						<a href="#" class="list-group-item glyphicon glyphicon-home"> 社区服务中心</a>
+						<a href="#" class="list-group-item"><i class="fa fa-book margin-icon"></i> 所有问题</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-th-large margin-icon"></i> 话题广场</a>
+						<a href="#" class="list-group-item"><i class="fa fa-list margin-icon"></i> 公共编辑动态</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-home margin-icon"></i> 社区服务中心</a>
 					</div>
 	
 				</div><!-- end right sidebar -->

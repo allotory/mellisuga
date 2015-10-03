@@ -61,36 +61,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
 										<div class="user-info">
-											<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 
+											<i class="fa fa-map-marker"></i> 
 											<span class="location">HaiLin</span>
 											<span class="business">互联网</span>
 											<span class="gender">男</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 										</div>
 
 										<div class="user-info">
-											<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 
+											<i class="fa fa-suitcase"></i> 
 											<span class="company">公司</span>
 											<span class="work">程序猿</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 										</div>
 
 										<div class="user-info-end">
-											<span class="glyphicon glyphicon-education" aria-hidden="true"></span> 
+											<i class="fa fa-graduation-cap"></i> 
 											<span class="education">大学</span>
 											<span class="specialty">专业</span>
 											<a href="#" class="item-edit">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+												<i class="fa fa-edit"></i> 
 												修改
 											</a>
 											<span class="user-info-detail">
-												<span class="glyphicon glyphicon-arrow-right"></span> 查看详细资料
+												<i class="fa fa-arrow-right"></i> 查看详细资料
 											</span>
 										</div>
 										<hr>
@@ -103,19 +103,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="achievement">
 									<span class="achieve">获得</span>
 									<span class="achieve">
-										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+										<i class="fa fa-thumbs-o-up"></i> 
 										<strong>133</strong>赞同
 									</span>
 									<span class="achieve">
-										<span class="glyphicon glyphicon-heart-empty"  aria-hidden="true"></span>  
+										<i class="fa fa-heart-o"></i> 
 										<strong>52</strong>感谢
 									</span>
-									<a href="#" class="achieve-right glyphicon glyphicon-pencil info-edit">编辑我的资料</a>
+									<a href="#" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 								</div>
 
 							</div>
 							<div class="panel-footer user-info-foot">
-								<a href="" class="info-item glyphicon glyphicon-home"></a>
+								<a href="" class="info-item"><i class="fa fa-home"></i> </a>
 								<a href="" class="info-item"><strong>提问</strong><span> 0</span></a>
 								<a href="" class="info-item"><strong>回答</strong><span> 0</span></a>
 								<a href="" class="info-item"><strong>专栏文章</strong><span> 0</span></a>
@@ -130,7 +130,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<strong>提问</strong>
-								<a href="#" class="more"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
 								<div class="ask-list">
@@ -167,7 +167,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<strong>回答</strong>
-								<a href="#" class="more"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
 								<div class="answer-list">
@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<strong>最新动态</strong>
-								<a href="#" class="more"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
 								
@@ -232,35 +232,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											<i class="fa fa-heart-o"></i> 感谢
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
+											<i class="fa fa-share"></i> 分享
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+											<i class="fa fa-bookmark-o"></i> 收藏
 										</a>
 										<span class="bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block">
 											举报
 										</a>
-										<span class="copyright"></span>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 									
 								</div><!-- end content-details -->
 
-								<hr>
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
 								<!-- content-details -->
 								<div class="content-details">
@@ -276,7 +277,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 								</div><!-- end content-details -->
 									
-								<hr>
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
 								<!-- content-details -->
 								<div class="content-details">
@@ -311,38 +312,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											这个廉价的东西不能退、不能改签应该是常识啊
 										</div>
 									</div>
-								
+									
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
-											<span class="glyphicon glyphicon-plus"></span> 关注问题
+											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<a href="#" class="meta-item">
-											<span class="glyphicon glyphicon-comment"></span> 添加评论
+											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<a href="#" class="meta-item" data-thanked="false">
-											<span class="glyphicon glyphicon-heart-empty"></span> 感谢
+											<i class="fa fa-heart-o"></i> 感谢
 										</a>
-										<a href="#" class="meta-item" >
-											<span class="glyphicon glyphicon-share-alt"></span> 分享
+										<a href="#" class="meta-item">
+											<i class="fa fa-share"></i> 分享
 										</a>
-										<a href="#" class="meta-item" >
-											<span class="glyphicon glyphicon-bookmark"></span> 收藏
+										<a href="#" class="meta-item">
+											<i class="fa fa-bookmark-o"></i> 收藏
 										</a>
 										<span class="bull">•</span>
 										<a href="#" class="meta-item">没有帮助</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+										<a href="#" class="meta-item goog-inline-block">
 											举报
 										</a>
-										<span class="copyright"></span>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
 										<a href="#" class="answer-collapse meta-item">
-											<span class="glyphicon glyphicon-open"></span> 收起
+											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 									
 								</div><!-- end content-details -->
 
-								<hr>
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
 								<!-- content-details -->
 								<div class="content-details">
@@ -358,7 +360,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 								</div><!-- end content-details -->
 
-								<hr>
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
 								<!-- content-details -->
 								<div class="content-details">

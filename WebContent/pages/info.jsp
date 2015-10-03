@@ -2,31 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.remote.model.User" %>
 <%@include file="sitename.jsp"%>
+<%
+String path = request.getContextPath();   
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" 
+	+ request.getServerPort() + path + "/" ;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<base href="<%=basePath %>">
 	<title>完善个人信息 - <%=sitename %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-	<link rel="stylesheet" href="../css/style.css" media="screen">
-
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="../js/html5shiv.js"></script>
-		<script src="../js/respond.min.js"></script>
-	<![endif]-->
-
-	<!-- Taginput -->
-	<script type="text/javascript" src="../plugin/Taginput/bootstrap-tagsinput.js"></script>
-	<link rel="stylesheet" href="../plugin/Taginput/bootstrap-tagsinput.css">
+	
+	<!-- js css plugin include -->
+	<%@include file="include.jsp"%>
 	
 <%
-	User u = (User) request.getSession().getAttribute("user"); 
+	//User u = (User) request.getSession().getAttribute("user"); 
 %>
 </head>
 <body>
@@ -56,37 +50,37 @@
 					<fieldset>
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-user"></span>
+								<i class="fa fa-user"></i> 
 							</label>
 							<div class="col-lg-5">
-								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="<%=u.getUsername() %>">
+								<input type="text" class="form-control" name="fullname" id="inputName" placeholder="<%//=u.getUsername() %>">
 								<span class="help-block">每180天只能修改一次，默认为用户名（不建议使用）.</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<i class="fa fa-venus-mars"></i>
 							</label>
 							<div class="col-lg-10">
 								<div class="radio">
 									<label class="setting-margin">
 										<input type="radio" name="gender" id="male" value="male" checked>
-										男
+										<i class="fa fa-mars"></i>
 									</label>
 									<label class="setting-margin">
 										<input type="radio" name="gender" id="female" value="female">
-										女
+										<i class="fa fa-venus"></i>
 									</label>
 									<label>
 										<input type="radio" name="gender" id="other" value="other">
-										其他
+										<i class="fa fa-neuter"></i>
 									</label>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="location" class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+								<i class="fa fa-map-marker"></i> 
 							</label>
 							<div class="col-lg-5">
 								<input type="text" class="form-control" name="location" id="location" placeholder="居住地">
@@ -97,7 +91,7 @@
 						</div>
 						<div class="form-group">
 							<label for="employment" class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+								<i class="fa fa-suitcase"></i> 
 							</label>
 							<div class="col-lg-5">
 								<input type="text" class="form-control" name="employment" id="employment" placeholder="公司或组织名称">
@@ -108,7 +102,7 @@
 						</div>
 						<div class="form-group">
 							<label for="education" class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+								<i class="fa fa-graduation-cap"></i> 
 							</label>
 							<div class="col-lg-5">
 								<input type="text" class="form-control" name="education" id="education" placeholder="学校或教育机构">
@@ -119,7 +113,7 @@
 						</div>
 						<div class="form-group">
 							<label for="description" class="col-lg-2 control-label">
-								<span class="glyphicon glyphicon-pencil"></span>
+								<i class="fa fa-pencil"></i>
 							</label>
 							<div class="col-lg-10">
 								<textarea class="form-control" name="description" rows="5" cols="20" placeholder="描述"></textarea>

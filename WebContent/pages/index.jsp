@@ -597,24 +597,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					
 					<div class="list-group">
 						<a href="#" class="list-group-item">
-							<i class="fa fa-file-o"></i> 我的草稿<span class="badge">14</span>
+							<i class="fa fa-file-o margin-icon"></i> 我的草稿<span class="badge">14</span>
 						</a> 
 						<a href="#" class="list-group-item">
-							<i class="fa fa-bookmark-o"></i> 我的收藏<span class="badge">8</span>
+							<i class="fa fa-bookmark-o margin-icon"></i> 我的收藏<span class="badge">8</span>
 						</a> 
 						<a href="#" class="list-group-item">
-							<i class="fa fa-check-square-o"></i> 我关注的问题<span class="badge">164</span>
+							<i class="fa fa-check-square-o margin-icon"></i> 我关注的问题<span class="badge">164</span>
 						</a> 
 						<a href="#" class="list-group-item">
-							<i class="fa fa-file-text-o"></i> 邀请我回答的问题<span class="badge">85</span>
+							<i class="fa fa-clone margin-icon"></i> 邀请我回答的问题<span class="badge">85</span>
 						</a>
 					</div>
 
 					<div class="list-group">
-						<a href="#" class="list-group-item"><i class="fa fa-book"></i> 所有问题</a> 
-						<a href="#" class="list-group-item"><i class="fa fa-th-large"></i> 话题广场</a>
-						<a href="#" class="list-group-item"><i class="fa fa-list"></i> 公共编辑动态</a> 
-						<a href="#" class="list-group-item"><i class="fa fa-home"></i> 社区服务中心</a>
+						<a href="#" class="list-group-item"><i class="fa fa-book margin-icon"></i> 所有问题</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-th-large margin-icon"></i> 话题广场</a>
+						<a href="#" class="list-group-item"><i class="fa fa-list margin-icon"></i> 公共编辑动态</a> 
+						<a href="#" class="list-group-item"><i class="fa fa-home margin-icon"></i> 社区服务中心</a>
 					</div>
 	
 				</div><!-- end right sidebar -->
