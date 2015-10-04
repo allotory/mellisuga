@@ -116,7 +116,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							<!-- comment -->
 							<div id="comment" class="row comment collapse" style="margin-left: 10px;margin-right:10px;">
 								<div class="panel panel-default">
-									<div class="panel-body" style="border-bottom: 1px solid #eeeeee;" 
+									<div class="panel-body q-comment" 
 											onmouseenter="showItem('comment-hidden')" 
 											onmouseleave="hiddenItem('comment-hidden')">
 										<!-- avatar and upvote col -->
@@ -155,7 +155,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											</div>
 										</div><!-- end comment-details -->
 									</div>
-									<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
+									<div class="panel-body q-comment">
 										<!-- avatar and upvote col -->
 										<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 											<div class="row">
@@ -191,13 +191,16 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											</div>
 										</div><!-- end comment-details -->
 									</div>
+									<div id="newQuestionComment">
+									
+									</div>
 									<div class="panel-body">
 										<div class="form-group">
 											<textarea class="form-control" rows="1" placeholder="请写下你的评论..."></textarea>
 										</div>
 										<div class="form-group module-right">
 											<button class="btn btn-default btn-sm">取消</button>
-											<button type="submit" class="btn btn-primary btn-sm">评论</button>
+											<button type="button" onclick="newQuestionComment('dhdhdhdh');" class="btn btn-primary btn-sm">评论</button>
 										</div>
 									</div>
 									

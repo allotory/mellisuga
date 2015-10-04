@@ -191,7 +191,6 @@ function getHtmlSubmit() {
 	return true;
 }
 
-// 提交答案
 var xmlhttp;
 function loadXMLDoc(url, callback) {
 	if (window.XMLHttpRequest) {
@@ -205,6 +204,8 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
+
+//提交答案
 function newAnswer(question_id) {
 	var answers = bacheditor.getHTML();
 	var is_anonymous = document.getElementById('is_anonymous');
@@ -220,3 +221,11 @@ function newAnswer(question_id) {
 	}
 }
 
+// 添加问题评论
+function newQuestionComment(question_id) {
+	loadXMLDoc("CommentQuestionServlet?question_id=" + question_id, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("newQuestionComment").innerHTML = xmlhttp.responseText;
+		}
+	});
+}
