@@ -84,10 +84,16 @@ public class AnswerServlet extends HttpServlet {
 			answersDAO.insertAnswer(answers);
 			
 			session.commit();
+
+			// TODO 同一个问题每个人只能回答一次！！！
+			// TODO 同一个问题每个人只能回答一次！！！
+			// TODO 同一个问题每个人只能回答一次！！！
+			// TODO 同一个问题每个人只能回答一次！！！
+			// TODO 同一个问题每个人只能回答一次！！！
 			
 			// 查询答案
 			answers = answersDAO.queryAnswerByQUid(answers);
-			System.out.println("=="+answers.getId());
+			//System.out.println("=="+answers.getId());
 			
 			// 更新用户信息（回答数）
 			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
@@ -123,10 +129,10 @@ public class AnswerServlet extends HttpServlet {
 			out.print("</div>");
 			out.print("<div class='row'>");
 			out.print("<div class='vote-text-center vote-number'>");
-			out.print("	<a href='#'><span class='glyphicon glyphicon-chevron-up' style='display:block;'></span><span style='display:block;'>122</span></a>");
+			out.print("	<a href='#'><i class='fa fa-caret-up'></i><span style='display:block;'>122</span></a>");
 			out.print("</div>");
 			out.print("<div class='vote-text-center vote-number'>");
-			out.print("	<a href='#'><span class='glyphicon glyphicon-chevron-down'></span></a>");
+			out.print("	<a href='#'><i class='fa fa-caret-down'></i></a>");
 			out.print("</div>");
 			out.print("</div>");
 			out.print("</div><!-- end avatar and upvote col -->");
@@ -160,17 +166,19 @@ public class AnswerServlet extends HttpServlet {
 			out.print("</div>");
 			out.print("<div class='row'>");
 			out.print("<div class='meta-panel'>");
-			//out.print("<a class='meta-item' href='javascript:;'><span class='glyphicon glyphicon-plus'></span> 关注问题</a>");
-			out.print("<a href='#' class='meta-item'><span class='glyphicon glyphicon-comment'></span> 添加评论</a>");
-			out.print("<a href='#' class='meta-item' data-thanked='false'><span class='glyphicon glyphicon-heart-empty'></span> 感谢</a>");
-			out.print("<a href='#' class='meta-item'><span class='glyphicon glyphicon-share-alt'></span> 分享</a>");
-			out.print("<a href='#' class='meta-item'><span class='glyphicon glyphicon-bookmark'></span> 收藏</a>");
-//			out.print("<span class='bull'>•</span>");
-//			out.print("<a href='#' class='meta-item'>没有帮助</a>");
-//			out.print("<span class='bull'>•</span>");
-//			out.print("<a href='#' class='meta-item goog-inline-block' style='-webkit-user-select: none;'>举报</a>");
-//			out.print("<span class='copyright'></span>");
-			out.print("<a href='#' class='answer-collapse meta-item'><span class='glyphicon glyphicon-open'></span> 收起</a>");
+			//out.print("<a class='meta-item' href='javascript:;'><i class="fa fa-plus"></i> 关注问题</a>");
+			out.print("<a href='#' class='meta-item'><i class='fa fa-comment-o'></i> 添加评论</a>");
+			out.print("<a href='#' class='meta-item' data-thanked='false'><i class='fa fa-heart-o'></i> 感谢</a>");
+			out.print("<a href='#' class='meta-item'><i class='fa fa-share'></i> 分享</a>");
+			out.print("<a href='#' class='meta-item'><i class='fa fa-bookmark-o'></i> 收藏</a>");
+			out.print("<span class='bull'>•</span>");
+			out.print("<a href='#' class='meta-item'>没有帮助</a>");
+			out.print("<span class='bull'>•</span>");
+			out.print("<a href='#' class='meta-item goog-inline-block'>举报</a>");
+			out.print("<span class='bull'>•</span>");
+			out.print("<a href='#' class='meta-item'>作者保留权利</a>");
+			out.print("<span class='copyright'></span>");
+			out.print("<a href='#' class='answer-collapse meta-item'><i class='fa fa-angle-double-up'></i> 收起</a>");
 			out.print("</div>");
 			out.print("</div>");
 			out.print("</div><!-- end content-details -->");
