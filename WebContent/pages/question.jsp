@@ -116,91 +116,16 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							<!-- comment -->
 							<div id="comment" class="row comment collapse" style="margin-left: 10px;margin-right:10px;">
 								<div class="panel panel-default">
-									<div class="panel-body q-comment" 
-											onmouseenter="showItem('comment-hidden')" 
-											onmouseleave="hiddenItem('comment-hidden')">
-										<!-- avatar and upvote col -->
-										<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-											<div class="row">
-												<a href="#">
-													<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-												</a>
-											</div>
-										</div><!-- end avatar and upvote col -->
-										
-										<!-- comment-details -->
-										<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-											<div class="row">
-												<div class="author-info">
-													<a href="#"><strong>空明</strong></a>
-												</div>
-											</div>
-			
-											<div class="row">
-												<div class="question-content">
-													<div class="editable-content" style="display: block;">
-														这个廉价的东西不能退、不能改签应该是常识啊
-														这个廉价的东西不能退、不能改签应该是常识啊
-														<span class="answer-date" style="display: block;">
-															<a target="_blank" href="#">发布于 14:36</a>
-															<span id="comment-hidden" style="margin-left: 5px;">
-																<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-															</span>
-															<a href="#" class="split module-right">56赞</a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div><!-- end comment-details -->
-									</div>
-									<div class="panel-body q-comment">
-										<!-- avatar and upvote col -->
-										<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-											<div class="row">
-												<a href="#">
-													<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-												</a>
-											</div>
-										</div><!-- end avatar and upvote col -->
-										
-										<!-- comment-details -->
-										<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-											<div class="row">
-												<div class="author-info">
-													<a href="#"><strong>空明</strong></a>
-												</div>
-											</div>
-			
-											<div class="row">
-												<div class="question-content">
-													<div class="editable-content" style="display: block;">
-														这个廉价的东西不能退、不能改签应该是常识啊
-														这个廉价的东西不能退、不能改签应该是常识啊
-														<span class="answer-date" style="display: block;">
-															<a target="_blank" href="#">发布于 14:36</a>
-															<span style="margin-left: 5px;">
-																<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-															</span>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div><!-- end comment-details -->
-									</div>
-									<div id="newQuestionComment">
+									<div id="newQuestionComments">
 									
 									</div>
 									<div class="panel-body">
 										<div class="form-group">
-											<textarea class="form-control" rows="1" placeholder="请写下你的评论..."></textarea>
+											<textarea class="form-control" id="qcomment" name="qcomment" rows="1" placeholder="请写下你的评论..."></textarea>
 										</div>
 										<div class="form-group module-right">
 											<button class="btn btn-default btn-sm">取消</button>
-											<button type="button" onclick="newQuestionComment('dhdhdhdh');" class="btn btn-primary btn-sm">评论</button>
+											<button type="button" onclick="newQuestionComment('<%=questionBean.getQuestion().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 										</div>
 									</div>
 									

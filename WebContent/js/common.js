@@ -223,9 +223,14 @@ function newAnswer(question_id) {
 
 // 添加问题评论
 function newQuestionComment(question_id) {
-	loadXMLDoc("CommentQuestionServlet?question_id=" + question_id, function() {
+	var qcomment = document.getElementById('qcomment');
+	loadXMLDoc("CommentQuestionServlet?question_id=" + question_id + "&&comment_content=" + qcomment.value, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("newQuestionComment").innerHTML = xmlhttp.responseText;
+			var commentDiv = document.createElement('div');
+			commentDiv.id = "newQuestionComment";
+			document.getElementById("newQuestionComments").appendChild(commentDiv);
+			commentDiv.innerHTML = xmlhttp.responseText;
 		}
 	});
+	qcomment.value = "";
 }

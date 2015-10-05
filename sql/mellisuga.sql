@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS comment (
 	answer_id int(11) NOT NULL DEFAULT '0',			/* 被评论的答案ID（唯一标识） */
 	reviewer_id int(11) NOT NULL DEFAULT '0',			/* 评论用户ID（唯一标识） */
 	parent_comment_id int(11) NOT NULL DEFAULT '0',	/* 被回复评论的ID（唯一标识） */
-	content text NOT NULL,					/* 评论内容 */
+	content text NOT NULL,								/* 评论内容 */
 	comment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 评论时间 */
 	favour_num int(11) NOT NULL DEFAULT '0',			/* 赞同数量 */
 	PRIMARY KEY (id)
