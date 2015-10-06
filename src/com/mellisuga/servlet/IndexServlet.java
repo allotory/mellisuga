@@ -36,7 +36,6 @@ public class IndexServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
-		System.out.println("hah3");		
 		//Member member = (Member) request.getSession().getAttribute("member");
 		SqlSession defaultSession = null;
 

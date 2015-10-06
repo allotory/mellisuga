@@ -45,7 +45,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
       	<!-- main content -->
 		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
-				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="left-main col-lg-7 col-md-7 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
 
 					<!--left main title row-->
 					<div class="row">
@@ -58,6 +58,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</span>
 						</div><!-- end left main title -->
 					</div><!-- end left main title row -->
+					
+					<div class="row">
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
+					</div>
 
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
@@ -104,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					</div><!--end left main content wrap  -->
 					
 					<div class="row">
-						<hr/>
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 					
 					<!-- left main content wrap  -->

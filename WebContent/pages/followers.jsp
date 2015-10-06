@@ -45,7 +45,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
       	<!-- main content -->
 		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
-				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="left-main col-lg-7 col-md-7 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
 
 					<!--left main title row-->
 					<div class="row">
@@ -93,7 +93,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<i class="fa fa-arrow-right"></i> 查看详细资料
 											</span>
 										</div>
-										<hr>
+										<hr style="margin-top:12px;margin-bottom:12px;"/>
 										
 										<p>从前有一只北极熊买了一副墨镜，他戴了墨镜之后沉思一会儿，说到：突然好想吃竹子哦～</p>
 									</div>
@@ -145,7 +145,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</div>
 									</div>
 								</div>
-								<hr>
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
 								<div class="ask-list">
 									<div class="ask-list-content">
 										<a href="" class="question-list">Tim Chen</a>
@@ -173,7 +173,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<span>关注者<a href="#">13</a> 人</span>
 						</strong>
 					</div>
-					<hr>
+					<hr style="margin-top:12px;margin-bottom:12px;"/>
 					<div class="sidebar-group">
 						<span class="sidebar-group-title">
 							<strong>关注了<a href="#">36</a> 个话题</strong>
@@ -185,7 +185,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<img src="./images/topic/zh.jpg" class="topic-img">
 						<img src="./images/topic/zh.jpg" class="topic-img">
 					</div>
-					<hr>
+					<hr style="margin-top:12px;margin-bottom:12px;"/>
 					<div class="sidebar-group">
 						<span class="sidebar-group-title">
 							<strong>关注了<a href="#">36</a> 个专栏</strong>
@@ -197,7 +197,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<img src="./images/topic/zh.jpg" class="topic-img">
 						<img src="./images/topic/zh.jpg" class="topic-img">
 					</div>
-					<hr>
+					<hr style="margin-top:12px;margin-bottom:12px;"/>
 					<div class="sidebar-group">
 						<span class="sidebar-group-title"><strong>主页状态</strong></span>
 						<div class="similar-question">

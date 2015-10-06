@@ -62,7 +62,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
       	<!-- main content -->
 		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
-				<div class="left-main col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="left-main col-lg-7 col-md-7 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
 
 					<!--left main title row-->
 					<div class="row">
@@ -427,7 +427,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 
 				</div><!-- end left main-->
 
-				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-md-offset-1">
+				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
 										
 					<div class="follow-btn">
 						<a href="#" class="btn btn-primary">关注问题</a>
