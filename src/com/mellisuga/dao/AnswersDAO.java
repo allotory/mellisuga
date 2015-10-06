@@ -18,4 +18,7 @@ public interface AnswersDAO {
 	
 	// 由答案ID查询答案
 	public Answers queryAnswerById(Answers answers);
+	
+	// 更新答案
+	public void updateAnswer(Answers answers);
 }

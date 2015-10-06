@@ -35,6 +35,19 @@
     <select id="queryAnswerById" parameterType="Answers" resultType="Answers">
         select * from answers where id = #{id}
     </select>
+    
+    <!-- 更新 -->
+    <update id="updateAnswer" parameterType="Answers">
+    	update answers set 
+    		question_id=#{question_id}, 
+    		author_id=#{author_id}, 
+    		answers=#{answers}, 
+    		answer_date=#{answer_date}, 
+    		reply_num=#{reply_num}, 
+    		is_top_answer=#{is_top_answer}, 
+    		is_anonymous=#{is_anonymous}
+    	where id=#{id}
+    </update>
 </mapper>
 
 

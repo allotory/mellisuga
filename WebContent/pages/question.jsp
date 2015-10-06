@@ -362,13 +362,16 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 												</div>
 											</div><!-- end comment-details -->
 										</div>
+										<div id="newAnswerComments">
+										
+										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" rows="1" id="commentsText" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="acomment" name="acomment" rows="1" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
-												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+												<button type="button" onclick="newAnswerComment('<%=ab.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 											</div>
 										</div>
 										
