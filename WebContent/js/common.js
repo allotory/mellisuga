@@ -234,3 +234,61 @@ function newQuestionComment(question_id) {
 	});
 	qcomment.value = "";
 }
+
+// 查询问题评论
+function queryQCommentList(question_id) {
+	
+	loadXMLDoc("QuestionCommentDetailsServlet?question_id=" + question_id, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var obj = JSON.parse(xmlhttp.responseText);
+			
+			for(var i = 0; i< obj.commentBeanList.length; i++) {
+				
+				var commentDiv = document.createElement('div');
+				commentDiv.id = "questionComment-" + obj.commentBeanList[i].comment.id;
+				document.getElementById("newQuestionComments").appendChild(commentDiv);
+				
+				var str = '<div class="panel-body q-comment"'
+						+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')"'
+						+ 'onmouseleave="hiddenItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')">'
+						+ '<!-- avatar and upvote col -->'
+						+ '<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">'
+						+ '<div class="row">'
+						+ '<a href="#">'
+						+ '<img src="'+ obj.commentBeanList[i].member.avatar_path +'" class="img-responsive img-rounded" alt="Responsive image">'
+						+ '</a>'
+						+ '</div>'
+						+ '</div><!-- end avatar and upvote col -->'
+					
+						+ '<!-- comment-details -->'
+						+ '<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">'
+						+ '<div class="row">'
+						+ '<div class="author-info">'
+						+ '<a href="#"><strong>' + obj.commentBeanList[i].member.fullname + '</strong></a>'
+						+ '</div>'
+						+ '</div>'
+
+						+ '<div class="row">'
+						+ '<div class="question-content">'
+						+ '<div class="editable-content" style="display: block;">'
+						+ obj.commentBeanList[i].comment.content
+						+ '<span class="answer-date" style="display: block;">'
+						+ '<a target="_blank" href="#">发布于 ' + obj.commentBeanList[i].comment.comment_date + '</a>'
+						+ '<span id="comment-hidden' + obj.commentBeanList[i].comment.id + '" style="display:none; margin-left: 5px;">'
+						+ '<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>'
+						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
+						+ '<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>'
+						+ '</span>'
+						+ '<a href="#" class="split module-right">' + obj.commentBeanList[i].comment.favour_num + '赞</a>'
+						+ '</span>'
+						+ '</div>'
+						+ '</div>'
+						+ '</div>'
+						+ '</div><!-- end comment-details -->'
+						+ '</div>';
+				
+				commentDiv.innerHTML = str;
+			}
+		}
+	});
+}

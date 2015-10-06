@@ -12,5 +12,8 @@ public interface MemberDAO {
 	
 	// 更新用户
 	public void updateMember(Member member);
+	
+	// 通过ID查询成员信息
+	public Member queryMemberByID(int id);
 }
  

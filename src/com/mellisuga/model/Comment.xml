@@ -10,6 +10,21 @@
     	insert into comment(question_id, answer_id, reviewer_id, parent_comment_id, content, comment_date, favour_num) 
     	values(#{question_id}, #{answer_id}, #{reviewer_id}, #{parent_comment_id}, #{content}, #{comment_date}, #{favour_num})
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="CommentList" type="Comment">
+    	<id column="id" property="id"/>
+    	<result column="question_id" property="question_id"/>
+    	<result column="answer_id" property="answer_id"/>
+    	<result column="reviewer_id" property="reviewer_id"/>
+    	<result column="parent_comment_id" property="parent_comment_id"/>
+    	<result column="content" property="content"/>
+    	<result column="comment_date" property="comment_date"/>
+    	<result column="favour_num" property="favour_num"/>
+    </resultMap>
+    <select id="queryCommentByQuestionId" parameterType="int" resultMap="CommentList">
+        select * from comment where question_id = #{question_id}
+    </select>
 </mapper>
 
 

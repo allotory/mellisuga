@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.CommentDAO;
+import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Comment;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.Question;
 
 @WebServlet("/CommentQuestionServlet")
 public class CommentQuestionServlet extends HttpServlet {
@@ -48,6 +50,7 @@ public class CommentQuestionServlet extends HttpServlet {
 		try {
 			session = DBConnection.openDefaultSession();
 			
+			// 插入问题评论
 			CommentDAO commentDAO = session.getMapper(CommentDAO.class);
 			Comment comment = new Comment();
 			comment.setQuestion_id(question_id);
@@ -60,6 +63,16 @@ public class CommentQuestionServlet extends HttpServlet {
 			
 			commentDAO.insertComment(comment);
 			
+			// 更新问题
+			QuestionDAO questionDAO = session.getMapper(QuestionDAO.class);
+			Question question = new Question();
+			question.setId(question_id);
+			Question q = questionDAO.queryQuestionById(question);
+			q.setReply_num(q.getReply_num() + 1);
+			
+			questionDAO.updateQuestion(q);
+			
+			// 提交
 			session.commit();
 			
 		} catch(Exception e) {

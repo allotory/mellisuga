@@ -79,6 +79,11 @@
 	    where id=#{id}
     </update>
     
+    <!-- 查询单一数据 -->
+    <select id="queryMemberByID" parameterType="int" resultType="Member">
+        select * from member where id = #{id}
+    </select>
+    
 </mapper>
 
 

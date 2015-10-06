@@ -97,10 +97,26 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								</a>
 							</div>
 							<div class="q-meta-panel">
-								<a href="#comment" data-toggle="collapse" class="q-meta-item">
+								<%
+									if(questionBean.getQuestion().getReply_num() > 0) {
+										
+								%>
+								<a href="#comment" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
+									data-toggle="collapse" class="q-meta-item">
+									<i class="fa fa-commenting-o"></i> 
+									<%=questionBean.getQuestion().getReply_num() %>条评论
+								</a>
+								<%
+									}else {
+								%>
+								<a href="#comment" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
+									 data-toggle="collapse" class="q-meta-item">
 									<i class="fa fa-comment-o"></i> 
 									添加评论
 								</a>
+								<%
+									}
+								%>
 								<a href="#" class="q-meta-item">
 									<i class="fa fa-share"></i> 
 									分享
@@ -236,7 +252,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											} else {
 										%>
 										<a href="#comment-<%=ab.getAnswer().getId() %>" data-toggle="collapse" class="meta-item">
-											<i class="fa fa-commentint-o"></i> 
+											<i class="fa fa-commenting-o"></i> 
 											<%=ab.getAnswer().getReply_num() %>条评论
 										</a>
 										<%
@@ -271,7 +287,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<!-- comment -->
 								<div id="comment-<%=ab.getAnswer().getId() %>" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;" 
+										<div class="panel-body q-comment"
 												onmouseenter="showItem('comment-hidden')" 
 												onmouseleave="hiddenItem('comment-hidden')">
 											<!-- avatar and upvote col -->
@@ -298,7 +314,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 															这个廉价的东西不能退、不能改签应该是常识啊
 															<span class="answer-date" style="display: block;">
 																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
+																<span id="comment-hidden" style="display:none; margin-left: 5px;">
 																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
 																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
 																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
