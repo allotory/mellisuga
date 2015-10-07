@@ -25,6 +25,12 @@
     <select id="queryCommentByQuestionId" parameterType="int" resultMap="CommentList">
         select * from comment where question_id = #{question_id}
     </select>
+    
+    <select id="queryCommentByAnswerId" parameterType="int" resultMap="CommentList">
+        select * from comment where answer_id = #{answer_id}
+    </select>
+    
+    
 </mapper>
 
 

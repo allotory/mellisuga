@@ -11,4 +11,7 @@ public interface CommentDAO {
 	
 	// 通过问题ID查询评论
 	public List<Comment> queryCommentByQuestionId(int question_id);
+	
+	// 通过答案ID查询评论
+	public List<Comment> queryCommentByAnswerId(int answer_id);
 }
