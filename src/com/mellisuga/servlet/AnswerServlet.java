@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONObject;
 
+import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
@@ -118,76 +122,19 @@ public class AnswerServlet extends HttpServlet {
 			m = memberDAO.queryMemberByUserID(m.getId());
 			request.getSession().setAttribute("member", m);
 			
-			// 返回消息
-			out.print("<!-- left main content wrap  -->");
-			out.print("<div class='row left-main-content-wrap'>");
-			out.print("<div class='left-main-content'>");
-			out.print("<!-- avatar and upvote col -->");
-			out.print("<div class='avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1'>");
-			out.print("<div class='row'>");
-			out.print("<a href='#'><img src='"+ m.getAvatar_path() +"' class='img-responsive img-rounded' alt='Responsive image'></a>");
-			out.print("</div>");
-			out.print("<div class='row'>");
-			out.print("<div class='vote-text-center vote-number'>");
-			out.print("	<a href='#'><i class='fa fa-caret-up'></i><span style='display:block;'>122</span></a>");
-			out.print("</div>");
-			out.print("<div class='vote-text-center vote-number'>");
-			out.print("	<a href='#'><i class='fa fa-caret-down'></i></a>");
-			out.print("</div>");
-			out.print("</div>");
-			out.print("</div><!-- end avatar and upvote col -->");
-			out.print("<!-- content-details -->");
-			out.print("<div class='content-details col-lg-11 col-md-11 col-sm-11 col-xs-11'>");
-			// 赞同部分
-//			out.print("<div class='row'>");
-//			out.print("<div class='content-source'>");
-//			out.print("<a href='#'>空明流转</a> 赞同该回答<span class='source-time'>3小时前</span>");
-//			out.print("</div>");
-//			out.print("</div>");
-			// 问题标题
-//			out.print("<div class='row'>");
-//			out.print("<div class='question-link'>");
-//			out.print("<h5><a href='https://www.baidu.com'>除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>");
-//			out.print("</div>");
-//			out.print("</div>");
-			out.print("<div class='row'>");
-			out.print("<div class='author-info'><a href='#'><strong>" + m.getFullname() +"</strong></a>,<span>"+ m.getAutograph() +"</span></div>");
-			out.print("</div>");
-			out.print("<div class='row'>");
-			out.print("<div class='question-content'>");
-			out.print("<div id='answers' class='editable-content' style='display: block;'>");
-			out.print("<div style='margin-top:12px; margin-bottom:12px;'>" + answers.getAnswers() + "</div>");
-			out.print("<span class='answer-date' style='display: block;'><a target='_blank' href='#'>发布于" + now + "</a></span>");
-			out.print("</div>");
-			out.print("<div class='summary-content clearfix' style='display: none;'>");
-			out.print("<div style='margin-top:12px; margin-bottom:12px;'>" + answers.getAnswers() + "</div>");
-			out.print("</div>");
-			out.print("</div>");
-			out.print("</div>");
-			out.print("<div class='row'>");
-			out.print("<div class='meta-panel'>");
-			//out.print("<a class='meta-item' href='javascript:;'><i class="fa fa-plus"></i> 关注问题</a>");
-			out.print("<a href='#' class='meta-item'><i class='fa fa-comment-o'></i> 添加评论</a>");
-			out.print("<a href='#' class='meta-item' data-thanked='false'><i class='fa fa-heart-o'></i> 感谢</a>");
-			out.print("<a href='#' class='meta-item'><i class='fa fa-share'></i> 分享</a>");
-			out.print("<a href='#' class='meta-item'><i class='fa fa-bookmark-o'></i> 收藏</a>");
-			out.print("<span class='bull'>•</span>");
-			out.print("<a href='#' class='meta-item'>没有帮助</a>");
-			out.print("<span class='bull'>•</span>");
-			out.print("<a href='#' class='meta-item goog-inline-block'>举报</a>");
-			out.print("<span class='bull'>•</span>");
-			out.print("<a href='#' class='meta-item'>作者保留权利</a>");
-			out.print("<span class='copyright'></span>");
-			out.print("<a href='#' class='answer-collapse meta-item'><i class='fa fa-angle-double-up'></i> 收起</a>");
-			out.print("</div>");
-			out.print("</div>");
-			out.print("</div><!-- end content-details -->");
-			out.print("</div><!-- end left main content -->");
-			out.print("</div><!--end left main content wrap  -->");
-
-			out.print("<div class='row'>");
-			out.print("<hr style='margin-top:12px;margin-bottom:12px;'/>");
-			out.print("</div>");
+			// 设置答案bean
+			AnswerBean answerBean = new AnswerBean();
+			answerBean.setAnswer(answers);
+			answerBean.setMember(m);
+			
+			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
+			answerBeanList.add(answerBean);
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("answerBeanList", answerBeanList);
+			
+			// 返回评论json
+			out.print(jsonObject.toString());
 			
 		} catch(Exception e) {
 			out.println("Post answer error!");

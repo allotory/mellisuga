@@ -214,7 +214,132 @@ function newAnswer(question_id) {
 	} else {
 		loadXMLDoc("AnswerServlet?question_id=" + question_id + "&answers=" + answers + "&is_anonymous=" + is_anonymous, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("newAnswer").innerHTML = xmlhttp.responseText;
+				
+				var obj = JSON.parse(xmlhttp.responseText);
+
+				var answerDiv = document.createElement('div');
+				answerDiv.id = "newAnswer" + obj.answerBeanList[0].answer.id;
+				document.getElementById("newAnswers").appendChild(answerDiv);
+				
+				var str = '<!-- left main content wrap  -->'
+						+ '<div class="row left-main-content-wrap" onmouseenter="showItem(\'hidden-item-' + obj.answerBeanList[0].answer.id + '\')" '
+						+ 'onmouseleave="hiddenItem(\'hidden-item-' + obj.answerBeanList[0].answer.id + '\')">'
+						+ '<div class="left-main-content">'
+		
+						+ '<!-- avatar and upvote col -->'
+						+ '<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">'
+						+ '<div class="row">'
+						+ '<a href="#">'
+						+ '<img src="' + obj.answerBeanList[0].member.avatar_path + '" class="img-responsive img-rounded" alt="Responsive image">'
+						+ '</a>'
+						+ '</div>'
+						+ '<div class="row">'
+						+ '<div class="vote-text-center vote-number">'
+						+ '<a href="#">'
+						+ '<i class="fa fa-caret-up"></i>'
+						+ '<span style="display:block;">122</span>'
+						+ '</a>'
+						+ '</div>'
+										
+						+ '<div class="vote-text-center vote-number">'
+						+ '<a href="#">'
+						+ '<i class="fa fa-caret-down"></i>'
+						+ '</a>'
+						+ '</div>'
+						+ '</div>'
+						+ '</div><!-- end avatar and upvote col -->'
+		
+						+ '<!-- content-details -->'
+						+ '<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">'
+		
+						+ '<div class="row">'
+						+ '<div class="author-info">'
+						+ '<a href="#"><strong>' + obj.answerBeanList[0].member.fullname + '</strong></a>,'
+						+ '<span>' + obj.answerBeanList[0].member.autograph + '</span>'
+						+ '</div>'
+						+ '</div>'
+		
+						+ '<div class="row">'
+						+ '<div class="question-content">'
+						+ '<div class="editable-content" style="display: block;">'
+						+ '<div style="margin-top:12px; margin-bottom:12px;">'
+						+ obj.answerBeanList[0].answer.answers
+						+ '</div>'
+						+ '<span class="answer-date" style="display: block;">'
+						+ '<a target="_blank" href="#">发布于 ' + obj.answerBeanList[0].answer.answer_date + '</a>'
+						+ '</span>'
+						+ '</div>'
+						+ '<div class="summary-content clearfix" style="display: none;">'
+						+ obj.answerBeanList[0].answer.answers
+						+ '</div>'
+						+ '</div>'
+						+ '</div>'
+		
+						+ '<div class="row">'
+						+ '<div class="meta-panel">'
+						+ '<a class="meta-item" href="javascript:;">'
+						+ '<i class="fa fa-plus"></i> 关注问题'
+						+ '</a>'
+						+ '<a href="#comment-' + obj.answerBeanList[0].answer.id + '" '
+						+ 'onclick="queryACommentList(' + obj.answerBeanList[0].answer.id + ');"  '
+						+ 'data-toggle="collapse" class="meta-item">'
+						+ '<i class="fa fa-comment-o"></i> 添加评论'
+						+ '</a>'
+						+ '<span id="hidden-item-' + obj.answerBeanList[0].answer.id + '" style="display:none">'
+						+ '<a href="#" class="meta-item" data-thanked="false">'
+						+ '<i class="fa fa-heart-o"></i> 感谢'
+						+ '</a>'
+						+ '<a href="#" class="meta-item">'
+						+ '<i class="fa fa-share"></i> 分享'
+						+ '</a>'
+						+ '<a href="#" class="meta-item">'
+						+ '<i class="fa fa-bookmark-o"></i> 收藏'
+						+ '</a>'
+						+ '<span class="bull">•</span>'
+						+ '<a href="#" class="meta-item">没有帮助</a>'
+						+ '<span class="bull">•</span>'
+						+ '<a href="#" class="meta-item goog-inline-block">'
+						+ '举报'
+						+ '</a>'
+						+ '<span class="bull">•</span>'
+						+ '<a href="#" class="meta-item">作者保留权利</a>'
+						+ '<span class="copyright"></span>'
+						+ '</span>'
+						+ '<a href="#" class="answer-collapse meta-item">'
+						+ '<i class="fa fa-angle-double-up"></i> 收起'
+						+ '</a>'
+						+ '</div>'
+						+ '</div>'
+									
+						+ '<!-- comment -->'
+						+ '<div id="comment-' + obj.answerBeanList[0].answer.id + '" class="row comment collapse">'
+						+ '<div class="panel panel-default">'
+						+ '<div id="newAnswerComments">'
+											
+						+ '</div>'
+						+ '<div class="panel-body">'
+						+ '<div class="form-group">'
+						+ '<textarea class="form-control" id="acomment" name="acomment" rows="1" placeholder="请写下你的评论..."></textarea>'
+						+ '</div>'
+						+ '<div class="form-group module-right">'
+						+ '<button class="btn btn-default btn-sm">取消</button>'
+						+ '<button type="button" onclick="newAnswerComment(' + obj.answerBeanList[0].answer.id + ');" class="btn btn-primary btn-sm">评论</button>'
+						+ '</div>'
+						+ '</div>'
+											
+						+ '</div>'
+						+ '</div><!--end comment -->'
+		
+						+ '</div><!-- end content-details -->'
+															
+						+ '</div><!-- end left main content -->'
+						+ '</div><!--end left main content wrap  -->'
+						
+						+ '<div class="row">'
+						+ '<hr style="margin-top:12px;margin-bottom:12px;"/>'
+						+ '</div>'
+						
+				answerDiv.innerHTML = str;
 			}
 		});
 		bacheditor.setVal('');

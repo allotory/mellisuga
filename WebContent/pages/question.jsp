@@ -321,7 +321,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 					%>
 		
 					<!-- new answer div -->
-					<div id="newAnswer">
+					<div id="newAnswers">
 					</div>
 
 					<!-- loding more btn row 
