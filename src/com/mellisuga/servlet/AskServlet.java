@@ -84,8 +84,8 @@ public class AskServlet extends HttpServlet {
 
 			session.commit();
 
-			// 查询问题
-			Question q = questionDAO.queryQuestionByQUid(question);
+			// 查询问题 —— 这句话多余～
+			//Question q = questionDAO.queryQuestionByQUid(question);
 
 			// 添加话题
 			TagDAO tagDAO = session.getMapper(TagDAO.class);
@@ -94,7 +94,7 @@ public class AskServlet extends HttpServlet {
 				for (int i = 0; i < tag_array.length; i++) {
 					Tag tag = new Tag();
 					tag.setTagname(tag_array[i]);
-					tag.setQuestion_id(q.getId());
+					tag.setQuestion_id(question.getId());
 					tagDAO.insertTag(tag);
 				}
 			}
@@ -102,7 +102,7 @@ public class AskServlet extends HttpServlet {
 			// 添加动态
 			TrendsDAO trendsDAO = session.getMapper(TrendsDAO.class);
 			Trends trends = new Trends();
-			trends.setTrends_id(q.getId());
+			trends.setTrends_id(question.getId());
 			// 动态类型—— FollowingQuestion, AgreeWithThisAnswer, AnswerThisQuestion, AskAQuestion
 			trends.setTrends_type("AskAQuestion");
 			trends.setTrends_time(now);
@@ -126,11 +126,11 @@ public class AskServlet extends HttpServlet {
 			m = memberDAO.queryMemberByUserID(m.getId());
 			
 			// 查询标签
-			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);
+			List<Tag> tagList = tagDAO.queryTagByQuestionId(question);
 			
 			// 查询答案
 			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
-			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(q);
+			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(question);
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
 			if(answersList != null && !answersList.isEmpty()) {
 				// 由答案查询答案作者
@@ -144,7 +144,7 @@ public class AskServlet extends HttpServlet {
 			}
 			
 			QuestionBean questionBean = new QuestionBean();
-			questionBean.setQuestion(q);
+			questionBean.setQuestion(question);
 			questionBean.setTagList(tagList);
 			questionBean.setAnswerBeanList(answerBeanList);
 			
