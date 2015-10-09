@@ -133,6 +133,28 @@ public class LoginServlet extends HttpServlet {
 								
 							} else if("AgreeWithThisAnswer".equals(t.getTrends_type())) {
 								// 2：赞同该回答
+								trendsBean = new TrendsBean();
+								trendsBean.setTrends(t);
+								
+								// 查询回答问题信息
+								Question question = new Question();
+								question.setId(t.getP_trends_id());
+								Question q = questionDAO.queryQuestionById(question);
+								trendsBean.setQuestion(q);
+								
+								// 查询答案
+								Answers answers = new Answers();
+								answers.setId(t.getTrends_id());
+								answers = answersDAO.queryAnswerById(answers);
+								trendsBean.setAnswer(answers);
+
+								// 查询回答用户
+								Member m = memberDAO.queryMemberByUserID(answers.getAuthor_id());
+								trendsBean.setMember(m);
+								
+								// 查询点赞用户
+								Member tm = memberDAO.queryMemberByID(t.getTrends_member());
+								trendsBean.setTrendsMember(tm);
 								
 							} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
 								// 3：回答了该问题

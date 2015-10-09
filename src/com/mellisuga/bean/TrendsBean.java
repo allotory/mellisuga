@@ -14,6 +14,8 @@ public class TrendsBean {
 	private Answers answer;
 	
 	private Member member;
+	
+	private Member trendsMember;
 
 	public Trends getTrends() {
 		return trends;
@@ -46,5 +48,12 @@ public class TrendsBean {
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	
+
+	public Member getTrendsMember() {
+		return trendsMember;
+	}
+
+	public void setTrendsMember(Member trendsMember) {
+		this.trendsMember = trendsMember;
+	}
 }

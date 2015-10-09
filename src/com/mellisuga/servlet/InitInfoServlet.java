@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.bean.TrendsBean;
+import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.RoleDAO;
 import com.mellisuga.dao.RoleMemberDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Role;
@@ -117,6 +119,7 @@ public class InitInfoServlet extends HttpServlet {
 			
 			// 首页动态查询
 			TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
+			AnswersDAO answersDAO = defaultSession.getMapper(AnswersDAO.class);
 			List<Trends> trendsList = trendsDAO.queryAllTrends();
 			List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 			
@@ -133,9 +136,49 @@ public class InitInfoServlet extends HttpServlet {
 						
 					} else if("AgreeWithThisAnswer".equals(t.getTrends_type())) {
 						// 2：赞同该回答
+						trendsBean = new TrendsBean();
+						trendsBean.setTrends(t);
+						
+						// 查询回答问题信息
+						Question question = new Question();
+						question.setId(t.getP_trends_id());
+						Question q = questionDAO.queryQuestionById(question);
+						trendsBean.setQuestion(q);
+						
+						// 查询答案
+						Answers answers = new Answers();
+						answers.setId(t.getTrends_id());
+						answers = answersDAO.queryAnswerById(answers);
+						trendsBean.setAnswer(answers);
+
+						// 查询回答用户
+						Member mm = memberDAO.queryMemberByUserID(answers.getAuthor_id());
+						trendsBean.setMember(mm);
+						
+						// 查询点赞用户
+						Member tm = memberDAO.queryMemberByID(t.getTrends_member());
+						trendsBean.setTrendsMember(tm);
 						
 					} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
 						// 3：回答了该问题
+						trendsBean = new TrendsBean();
+						trendsBean.setTrends(t);
+						
+						// 查询回答问题信息
+						Question question = new Question();
+						question.setId(t.getP_trends_id());
+						Question q = questionDAO.queryQuestionById(question);
+						trendsBean.setQuestion(q);
+						
+						// 查询答案
+						Answers answers = new Answers();
+						answers.setId(t.getTrends_id());
+						answers = answersDAO.queryAnswerById(answers);
+						trendsBean.setAnswer(answers);
+						
+						// 查询回答用户
+						Member mm = memberDAO.queryMemberByUserID(answers.getAuthor_id());
+						trendsBean.setMember(mm);
 						
 					} else if("AskAQuestion".equals(t.getTrends_type())) {
 						// 4：提了一个问题
