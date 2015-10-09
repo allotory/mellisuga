@@ -220,7 +220,7 @@ CREATE TABLE IF NOT EXISTS vote (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 投票ID（唯一标识） */
 	answer_id int(11) NOT NULL,					/* 答案ID（唯一标识） */
 	voter_id int(11) NOT NULL,					/* 投票用户ID */
-	voted varchar(16) NOT NULL,				/* 投票 up、down、unconcern */
+	vote_type varchar(16) NOT NULL,			/* 投票 up、down、unconcern */
 	PRIMARY KEY (id) 
 );
 

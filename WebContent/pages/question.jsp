@@ -190,15 +190,17 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 									</a>
 								</div>
 								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-up-<%=ab.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'up');">
+										<a>
 											<i class="fa fa-caret-up"></i>
-											<span style="display:block;">122</span>
+											<span id="vote_count-<%=ab.getAnswer().getId() %>" style="display:block;">122</span>
 										</a>
 									</div>
 									
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-down-<%=ab.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'down');">
+										<a>
 											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>

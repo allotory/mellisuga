@@ -155,12 +155,7 @@ function hiddenItem(id) {
 	item.style.display = "none";
 }
 
-// 赞成
-function voteUp() {
-
-}
-
-//动态显示回答编辑器
+// 动态显示回答编辑器
 function renderAnswerEditor() {
 	var answerdiv = document.getElementById('answer-editor');
 	answerdiv.className='editor';
@@ -169,7 +164,7 @@ function renderAnswerEditor() {
 	bacheditor.render('#answers','edit');
 }
 
-//动态显示提问编辑器
+// 动态显示提问编辑器
 function renderAskEditor() {
 	var askdiv = document.getElementById('ask-editor');
 	askdiv.className='editor';
@@ -205,13 +200,19 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.send();
 }
 
-//提交答案
+// 提交答案
 function newAnswer(question_id) {
 	var answers = bacheditor.getHTML();
 	var is_anonymous = document.getElementById('is_anonymous');
 	if(answers == "") {
 		alert("答案不能为空！");
 	} else {
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
+		// TODO  get方式提交答案时， 答案长度有限制，应该为post
 		loadXMLDoc("AnswerServlet?question_id=" + question_id + "&answers=" + answers + "&is_anonymous=" + is_anonymous, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				
@@ -460,7 +461,7 @@ function queryQCommentList(question_id) {
 	});
 }
 
-//添加答案评论
+// 添加答案评论
 function newAnswerComment(answer_id) {
 	var acomment = document.getElementById('acomment');
 	loadXMLDoc("CommentAnswerServlet?answer_id=" + answer_id + "&&comment_content=" + acomment.value, function() {
@@ -518,7 +519,7 @@ function newAnswerComment(answer_id) {
 
 
 
-//查询答案评论
+// 查询答案评论
 function queryACommentList(answer_id) {
 	
 	loadXMLDoc("AnswerCommentDetailsServlet?answer_id=" + answer_id, function() {
@@ -574,4 +575,54 @@ function queryACommentList(answer_id) {
 			}
 		}
 	});
+}
+
+// 赞成
+function vote(answer_id, vote_type) {
+	var vote_up = document.getElementById("vote-up-" + answer_id);
+	var vote_down = document.getElementById("vote-down-" + answer_id);
+	var vote_count = document.getElementById("vote_count-" + answer_id);
+	
+	if(vote_up.className == "vote-number" && vote_down.className == "vote-number") {
+		// 还没有投过票
+		if(vote_type == "up") {
+			vote_up.className = "vote-number-pressed";
+			vote_count.innerHTML = Number(vote_count.innerHTML) + 1;
+		}else if(vote_type == "down") {
+			vote_down.className = "vote-number-pressed";
+		}
+		
+		// 正常添加
+		loadXMLDoc("VoteAnswerServlet?answer_id=" + answer_id 
+				+ "&&vote_type=" + vote_type + "&&vote_flag=newvote", function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+			}
+		});
+		
+	}else if(vote_up.className == "vote-number-pressed" && vote_down.className == "vote-number"){
+		// 投过赞同票，此时不管点赞同还是反对都是取消该赞同
+		vote_up.className = "vote-number";
+		vote_count.innerHTML = Number(vote_count.innerHTML) - 1;
+		
+		// 原up状态修改为unconcer
+		loadXMLDoc("VoteAnswerServlet?answer_id=" + answer_id 
+				+ "&&vote_type=unconcer&&vote_flag=cancelupvote", function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+			}
+		});
+		
+	}else if(vote_up.className == "vote-number" && vote_down.className == "vote-number-pressed") {
+		// 投过反对票, 取消反对
+		vote_down.className = "vote-number";
+		
+		// 原down状态修改为unconcer
+		loadXMLDoc("VoteAnswerServlet?answer_id=" + answer_id 
+				+ "&&vote_type=unconcer&&vote_flag=canceldownvote", function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+			}
+		});
+	}
 }

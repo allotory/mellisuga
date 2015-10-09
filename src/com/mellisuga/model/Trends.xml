@@ -24,6 +24,17 @@
     <select id="queryAllTrends" resultMap="TrendsList">
         select * from trends order by id desc;
     </select>
+    
+    <!-- 查询单一数据 -->
+	<select id="queryTrendsByTUid" parameterType="java.util.HashMap" resultType="Trends">
+        select * from trends where trends_id = #{answer_id} 
+        	and trends_member = #{member_id} and trends_type = #{trends_type}
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="deleteTrendsById" parameterType="int">
+    	delete from trends where id=#{id}
+    </delete>
 </mapper>
 
 

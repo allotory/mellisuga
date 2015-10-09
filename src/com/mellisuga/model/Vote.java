@@ -8,7 +8,7 @@ public class Vote {
 	
 	private int voter_id;
 	
-	private String voted;
+	private String vote_type;
 
 	public int getId() {
 		return id;
@@ -34,12 +34,12 @@ public class Vote {
 		this.voter_id = voter_id;
 	}
 
-	public String getVoted() {
-		return voted;
+	public String getVote_type() {
+		return vote_type;
 	}
 
-	public void setVoted(String voted) {
-		this.voted = voted;
+	public void setVote_type(String vote_type) {
+		this.vote_type = vote_type;
 	}
 	
 }

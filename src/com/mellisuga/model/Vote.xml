@@ -7,9 +7,29 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到Vote的id属性--> 
     <insert id="insertVote" parameterType="Vote" useGeneratedKeys="true" keyProperty="id">
-    	insert into vote(answer_id, voter_id, voted) 
-    	values(#{answer_id}, #{voter_id}, #{voted})
+    	insert into vote(answer_id, voter_id, vote_type) 
+    	values(#{answer_id}, #{voter_id}, #{vote_type})
     </insert>
+    
+    <!-- 更新 -->
+    <update id="updateVote" parameterType="Vote">
+    	update vote set 
+    		answer_id = #{answer_id}, 
+    		voter_id = #{voter_id}, 
+    		vote_type = #{vote_type}
+	    where id=#{id}
+    </update>
+    
+    <!-- 删除 -->
+    <delete id="deleteVoteById" parameterType="int">
+    	delete from vote where id=#{id}
+    </delete>
+    
+    <!-- 查询单一数据 -->
+	<select id="queryVoteAUid" parameterType="java.util.HashMap" resultType="Vote">
+        select * from vote where answer_id = #{answer_id} 
+        	and voter_id = #{voter_id}
+    </select>
 </mapper>
 
 
