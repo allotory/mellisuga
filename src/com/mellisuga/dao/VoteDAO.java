@@ -1,6 +1,7 @@
 package com.mellisuga.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.mellisuga.model.Vote;
 
@@ -17,4 +18,7 @@ public interface VoteDAO {
 	
 	// 删除投票
 	public void deleteVoteById(int id);
+	
+	// 查询投票
+	public List<Vote> queryVoteByAid(int answer_id);
 }

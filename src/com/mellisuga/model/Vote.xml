@@ -30,6 +30,17 @@
         select * from vote where answer_id = #{answer_id} 
         	and voter_id = #{voter_id}
     </select>
+    
+    <!-- 返回多列 -->
+    <resultMap id="VoteList" type="Vote">
+    	<id column="id" property="id"/>
+    	<result column="answer_id" property="answer_id"/>
+    	<result column="voter_id" property="voter_id"/>
+    	<result column="vote_type" property="vote_type"/>
+    </resultMap>
+    <select id="queryVoteByAid" parameterType="int" resultMap="VoteList">
+        select * from vote where answer_id = #{answer_id} and vote_type='up'
+    </select>
 </mapper>
 
 

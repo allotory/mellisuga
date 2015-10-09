@@ -189,12 +189,19 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										<img src="<%=ab.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
+								<%
+									// 判断当前用户是否投票过
+									if(ab.getVote() != null) {
+										if("up".equals(ab.getVote().getVote_type())) {
+								%>
 								<div class="row">
-									<div id="vote-up-<%=ab.getAnswer().getId() %>" class="vote-number" 
+									<div id="vote-up-<%=ab.getAnswer().getId() %>" class="vote-number-pressed" 
 											onclick="vote('<%=ab.getAnswer().getId() %>', 'up');">
 										<a>
 											<i class="fa fa-caret-up"></i>
-											<span id="vote_count-<%=ab.getAnswer().getId() %>" style="display:block;">122</span>
+											<span id="vote_count-<%=ab.getAnswer().getId() %>" style="display:block;">
+												<%=ab.getVoterBean().getUpCount() %>
+											</span>
 										</a>
 									</div>
 									
@@ -205,6 +212,53 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 										</a>
 									</div>
 								</div>
+								<%
+										} else if("down".equals(ab.getVote().getVote_type())) {
+								%>
+								<div class="row">
+									<div id="vote-up-<%=ab.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=ab.getAnswer().getId() %>" style="display:block;">
+												<%=ab.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=ab.getAnswer().getId() %>" class="vote-number-pressed"
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+										}
+									} else {
+										// 当前用户没投过票
+								%>
+								<div class="row">
+									<div id="vote-up-<%=ab.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=ab.getAnswer().getId() %>" style="display:block;">
+												<%=ab.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=ab.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=ab.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+									}
+								%>
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->

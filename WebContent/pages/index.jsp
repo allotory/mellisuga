@@ -298,7 +298,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="vote-text-center vote-number">
 										<a href="#">
 											<i class="fa fa-caret-up"></i>
-											<span style="display:block;"><%=trendsBean.getMember().getApprove_num() %></span>
+											<span style="display:block;"></span>
 										</a>
 									</div>
 									
@@ -497,7 +497,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="vote-text-center vote-number">
 										<a href="#">
 											<i class="fa fa-caret-up"></i>
-											<span style="display:block;"><%=trendsBean.getMember().getApprove_num() %></span>
+											<span style="display:block;"></span>
 										</a>
 									</div>
 									
