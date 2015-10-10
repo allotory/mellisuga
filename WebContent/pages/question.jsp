@@ -271,11 +271,27 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 									</div>
 								</div>
 
+								<%
+									if(ab.getVoterBean().getUpCount() > 0) {
+								%>
 								<div class="row">
 									<div class="content-source">
-										<a href="#">空明流转</a> 赞同该回答
+									<%
+										String split = "";	
+										for(Member member : ab.getVoterBean().getVoterList()) {
+									%>
+										<%=split %>
+										<a href="#"><%=member.getFullname() %></a>
+									<%
+											split = "、";
+										}
+									%>
+										等赞同该回答
 									</div>
 								</div>
+								<%
+									}
+								%>
 
 								<div class="row">
 									<div class="question-content">

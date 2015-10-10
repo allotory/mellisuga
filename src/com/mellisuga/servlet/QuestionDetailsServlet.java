@@ -48,6 +48,22 @@ public class QuestionDetailsServlet extends HttpServlet {
 		QuestionBean questionBean = new QuestionBean();
 		try {
 			session = DBConnection.openDefaultSession();
+			
+			/**				
+			 * 				QuestionBean
+			 * 					 |
+			 * 		------------------------------
+			 * 		|         	|              	 |        
+			 * 	 Question    List<Tag>    List<AnswerBean>
+			 * 									 |
+			 * 						---------------------------
+			 * 						|      |       |           |
+			 * 					Answer   Member	  Vote   List<voterBean>
+			 * 													|
+			 * 											 ---------------
+			 * 											 |		       |	
+			 * 										  List<Member>   UpCount
+			 */
 
 			// 查询问题
 			QuestionDAO questionDAO = session.getMapper(QuestionDAO.class);
@@ -86,22 +102,36 @@ public class QuestionDetailsServlet extends HttpServlet {
 					List<Vote> voteUpList = voteDAO.queryVoteByAid(a.getId());
 					List<Member> memberList = new ArrayList<Member>();
 					VoterBean voterBean = new VoterBean();
+					
 					if(voteUpList != null && !voteUpList.isEmpty()) {
+						System.out.println("voteUpList.size()" + voteUpList.size());
 						// 点赞用户大于0
 						voterBean.setUpCount(voteUpList.size());
-						for(Vote v : voteUpList) {
-							Member voter = memberDAO.queryMemberByID(v.getVoter_id());
+//						for(Vote v : voteUpList) {
+//							Member voter = memberDAO.queryMemberByID(v.getVoter_id());
+//							memberList.add(voter);
+//							
+//							// TODO 不用全部查出来，只要最后3个即可
+//							// TODO 不用全部查出来，只要最后3个即可
+//							// TODO 不用全部查出来，只要最后3个即可
+//							// TODO 不用全部查出来，只要最后3个即可
+//							// TODO 不用全部查出来，只要最后3个即可
+//						}
+						
+						int length = voteUpList.size() >= 3 ? voteUpList.size() - 3 : 0;
+						
+						for(int i = (voteUpList.size() - 1); i >= length; i --) {
+							System.out.println(i + "--" + length);
+							System.out.println(voteUpList.get(i).getVoter_id());
+							Member voter = memberDAO.queryMemberByID(
+									voteUpList.get(i).getVoter_id());
 							memberList.add(voter);
-							
-							// TODO 不用全部查出来，只要最后3个即可
-							// TODO 不用全部查出来，只要最后3个即可
-							// TODO 不用全部查出来，只要最后3个即可
-							// TODO 不用全部查出来，只要最后3个即可
-							// TODO 不用全部查出来，只要最后3个即可
 						}
+						
 						voterBean.setVoterList(memberList);
 					} else if(voteUpList == null) {
 						// 还没有人点过赞
+						System.out.println("voteUpList.size() == null");
 						voterBean.setUpCount(0);
 						voterBean.setVoterList(null);
 					}
