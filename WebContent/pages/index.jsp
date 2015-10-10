@@ -142,13 +142,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(trendsBean.getQuestion().getReply_num() > 0) {
 										%>
-										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<i class="fa fa-comment-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
+										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
 										<%
 											}else {
 										%>
-										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
 										<%
@@ -182,89 +184,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
-										</div>
-										<div class="panel-body">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
+									
+										<div id="newQuestionComments-<%=trendsBean.getQuestion().getId() %>">
+										
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="qcomment-<%=trendsBean.getQuestion().getId() %>" 
+												name="qcomment-<%=trendsBean.getQuestion().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
-												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+												<button type="button" onclick="newQuestionComment('<%=trendsBean.getQuestion().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 											</div>
 										</div>
 										
@@ -429,9 +362,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<a class="meta-item" href="javascript:;">
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<i class="fa fa-comment-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
+										<%
+											if(trendsBean.getAnswer().getReply_num() > 0) {
+										%>
+										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
 										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-comment-o"></i> 添加评论
+										</a>
+										<%
+											}
+										%>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
@@ -460,89 +407,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
-										</div>
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
+										<div id="newAnswerComments-<%=trendsBean.getAnswer().getId() %>">
+										
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="acomment-<%=trendsBean.getAnswer().getId() %>" 
+													name="acomment-<%=trendsBean.getAnswer().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
-												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+												<button type="button" onclick="newAnswerComment('<%=trendsBean.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 											</div>
 										</div>
 										
@@ -715,9 +592,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<a class="meta-item" href="javascript:;">
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										<a href="#comment" data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<i class="fa fa-comment-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
+										<%
+											if(trendsBean.getAnswer().getReply_num() > 0) {
+										%>
+										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
 										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-comment-o"></i> 添加评论
+										</a>
+										<%
+											}
+										%>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 											<a href="#" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
@@ -746,89 +637,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" class="row comment collapse">
 									<div class="panel panel-default">
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
-										</div>
-										<div class="panel-body" style="border-bottom: 1px solid #eeeeee;">
-											<!-- avatar and upvote col -->
-											<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-												<div class="row">
-													<a href="#">
-														<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-													</a>
-												</div>
-											</div><!-- end avatar and upvote col -->
-											
-											<!-- comment-details -->
-											<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-												<div class="row">
-													<div class="author-info">
-														<a href="#"><strong>空明</strong></a>
-													</div>
-												</div>
-				
-												<div class="row">
-													<div class="question-content">
-														<div class="editable-content" style="display: block;">
-															这个廉价的东西不能退、不能改签应该是常识啊
-															这个廉价的东西不能退、不能改签应该是常识啊
-															<span class="answer-date" style="display: block;">
-																<a target="_blank" href="#">发布于 14:36</a>
-																<span id="comment-hidden" style="margin-left: 5px;">
-																	<a href="#" class="split"><i class="fa fa-reply"></i> 回复</a>
-																	<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>
-																	<a href="#" class="split"><i class="fa fa-flag-o"></i> 举报</a>
-																</span>
-																<a href="#" class="split module-right">56赞</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div><!-- end comment-details -->
+										<div id="newAnswerComments-<%=trendsBean.getAnswer().getId() %>">
+										
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="acomment-<%=trendsBean.getAnswer().getId() %>" 
+													name="acomment-<%=trendsBean.getAnswer().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
-												<button type="submit" class="btn btn-primary btn-sm">评论</button>
+												<button type="button" onclick="newAnswerComment('<%=trendsBean.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 											</div>
 										</div>
 										

@@ -349,14 +349,14 @@ function newAnswer(question_id) {
 
 // 添加问题评论
 function newQuestionComment(question_id) {
-	var qcomment = document.getElementById('qcomment');
+	var qcomment = document.getElementById('qcomment-' + question_id);
 	loadXMLDoc("CommentQuestionServlet?question_id=" + question_id + "&&comment_content=" + qcomment.value, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
 
 			var commentDiv = document.createElement('div');
 			commentDiv.id = "newQuestionComment" + obj.commentBeanList[0].comment.id;
-			document.getElementById("newQuestionComments").appendChild(commentDiv);
+			document.getElementById("newQuestionComments-" + question_id).appendChild(commentDiv);
 
 			var str = '<div class="panel-body q-comment"'
 					+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[0].comment.id + '\')"'
@@ -414,7 +414,7 @@ function queryQCommentList(question_id) {
 				
 				var commentDiv = document.createElement('div');
 				commentDiv.id = "questionComment-" + obj.commentBeanList[i].comment.id;
-				document.getElementById("newQuestionComments").appendChild(commentDiv);
+				document.getElementById("newQuestionComments-" + question_id).appendChild(commentDiv);
 				
 				var str = '<div class="panel-body q-comment"'
 						+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')"'
@@ -463,14 +463,14 @@ function queryQCommentList(question_id) {
 
 // 添加答案评论
 function newAnswerComment(answer_id) {
-	var acomment = document.getElementById('acomment');
+	var acomment = document.getElementById('acomment-' + answer_id);
 	loadXMLDoc("CommentAnswerServlet?answer_id=" + answer_id + "&&comment_content=" + acomment.value, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
 			
 			var commentDiv = document.createElement('div');
 			commentDiv.id = "answerComment-" + obj.acommentBeanList[0].comment.id;
-			document.getElementById("newAnswerComments").appendChild(commentDiv);
+			document.getElementById("newAnswerComments-" + answer_id).appendChild(commentDiv);
 			
 			var str = '<div class="panel-body q-comment"'
 					+ 'onmouseenter="showItem(\'comment-hidden' + obj.acommentBeanList[0].comment.id + '\')"'
@@ -530,7 +530,7 @@ function queryACommentList(answer_id) {
 				
 				var commentDiv = document.createElement('div');
 				commentDiv.id = "answerComment-" + obj.commentBeanList[i].comment.id;
-				document.getElementById("newAnswerComments").appendChild(commentDiv);
+				document.getElementById("newAnswerComments-" + answer_id).appendChild(commentDiv);
 				
 				var str = '<div class="panel-body q-comment"'
 						+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')"'

@@ -101,7 +101,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 									if(questionBean.getQuestion().getReply_num() > 0) {
 										
 								%>
-								<a href="#comment" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
+								<a href="#comment-<%=questionBean.getQuestion().getId() %>-qpage" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
 									data-toggle="collapse" class="q-meta-item">
 									<i class="fa fa-commenting-o"></i> 
 									<%=questionBean.getQuestion().getReply_num() %>条评论
@@ -109,7 +109,7 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<%
 									}else {
 								%>
-								<a href="#comment" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
+								<a href="#comment-<%=questionBean.getQuestion().getId() %>-qpage" onclick="queryQCommentList(<%=questionBean.getQuestion().getId() %>);" 
 									 data-toggle="collapse" class="q-meta-item">
 									<i class="fa fa-comment-o"></i> 
 									添加评论
@@ -130,14 +130,15 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							</div>
 							
 							<!-- comment -->
-							<div id="comment" class="row comment collapse" style="margin-left: 10px;margin-right:10px;">
+							<div id="comment-<%=questionBean.getQuestion().getId() %>-qpage" class="row comment collapse" style="margin-left: 10px;margin-right:10px;">
 								<div class="panel panel-default">
-									<div id="newQuestionComments">
+									<div id="newQuestionComments-<%=questionBean.getQuestion().getId() %>">
 									
 									</div>
 									<div class="panel-body">
 										<div class="form-group">
-											<textarea class="form-control" id="qcomment" name="qcomment" rows="1" placeholder="请写下你的评论..."></textarea>
+											<textarea class="form-control" id="qcomment-<%=questionBean.getQuestion().getId() %>" 
+												name="qcomment-<%=questionBean.getQuestion().getId() %>" rows="1" placeholder="请写下你的评论..."></textarea>
 										</div>
 										<div class="form-group module-right">
 											<button class="btn btn-default btn-sm">取消</button>
@@ -363,12 +364,12 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 								<!-- comment -->
 								<div id="comment-<%=ab.getAnswer().getId() %>" class="row comment collapse">
 									<div class="panel panel-default">
-										<div id="newAnswerComments">
+										<div id="newAnswerComments-<%=ab.getAnswer().getId() %>">
 										
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" id="acomment" name="acomment" rows="1" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="acomment-<%=ab.getAnswer().getId() %>" name="acomment-<%=ab.getAnswer().getId() %>" rows="1" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
