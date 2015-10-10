@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,15 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.bean.TrendsBean;
+import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TrendsDAO;
+import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
+import com.mellisuga.model.Vote;
 import com.mellisuga.remote.dao.UserDAO;
 import com.mellisuga.remote.model.User;
 import com.mellisuga.security.Encryption;
@@ -117,6 +121,7 @@ public class LoginServlet extends HttpServlet {
 					// 首页动态查询
 					TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
 					AnswersDAO answersDAO = defaultSession.getMapper(AnswersDAO.class);
+					VoteDAO voteDAO = defaultSession.getMapper(VoteDAO.class);
 					List<Trends> trendsList = trendsDAO.queryAllTrends();
 					List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 					
@@ -156,6 +161,38 @@ public class LoginServlet extends HttpServlet {
 								Member tm = memberDAO.queryMemberByID(t.getTrends_member());
 								trendsBean.setTrendsMember(tm);
 								
+								// 查询是否投票
+								HashMap<String, Object> voteMap = new HashMap<String, Object>();
+								voteMap.put("answer_id", answers.getId());
+								voteMap.put("voter_id", member.getId());
+								Vote vote = voteDAO.queryVoteAUid(voteMap);
+								trendsBean.setVote(vote);
+								
+								// 查询所有点了赞同的用户
+								List<Vote> voteUpList = voteDAO.queryVoteByAid(answers.getId());
+								List<Member> memberList = new ArrayList<Member>();
+								VoterBean voterBean = new VoterBean();
+								
+								if(voteUpList != null && !voteUpList.isEmpty()) {
+									// 点赞用户大于0
+									voterBean.setUpCount(voteUpList.size());
+									
+									int length = voteUpList.size() >= 3 ? voteUpList.size() - 3 : 0;
+									
+									for(int i = (voteUpList.size() - 1); i >= length; i --) {
+										Member voter = memberDAO.queryMemberByID(
+												voteUpList.get(i).getVoter_id());
+										memberList.add(voter);
+									}
+									
+									voterBean.setVoterList(memberList);
+								} else if(voteUpList == null) {
+									// 还没有人点过赞
+									voterBean.setUpCount(0);
+									voterBean.setVoterList(null);
+								}
+								
+								trendsBean.setVoterBean(voterBean);
 							} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
 								// 3：回答了该问题
 								trendsBean = new TrendsBean();
@@ -177,6 +214,38 @@ public class LoginServlet extends HttpServlet {
 								Member m = memberDAO.queryMemberByUserID(answers.getAuthor_id());
 								trendsBean.setMember(m);
 								
+								// 查询是否投票
+								HashMap<String, Object> voteMap = new HashMap<String, Object>();
+								voteMap.put("answer_id", answers.getId());
+								voteMap.put("voter_id", member.getId());
+								Vote vote = voteDAO.queryVoteAUid(voteMap);
+								trendsBean.setVote(vote);
+								
+								// 查询所有点了赞同的用户
+								List<Vote> voteUpList = voteDAO.queryVoteByAid(answers.getId());
+								List<Member> memberList = new ArrayList<Member>();
+								VoterBean voterBean = new VoterBean();
+								
+								if(voteUpList != null && !voteUpList.isEmpty()) {
+									// 点赞用户大于0
+									voterBean.setUpCount(voteUpList.size());
+									
+									int length = voteUpList.size() >= 3 ? voteUpList.size() - 3 : 0;
+									
+									for(int i = (voteUpList.size() - 1); i >= length; i --) {
+										Member voter = memberDAO.queryMemberByID(
+												voteUpList.get(i).getVoter_id());
+										memberList.add(voter);
+									}
+									
+									voterBean.setVoterList(memberList);
+								} else if(voteUpList == null) {
+									// 还没有人点过赞
+									voterBean.setUpCount(0);
+									voterBean.setVoterList(null);
+								}
+								
+								trendsBean.setVoterBean(voterBean);
 							} else if("AskAQuestion".equals(t.getTrends_type())) {
 								// 4：提了一个问题
 								trendsBean = new TrendsBean();

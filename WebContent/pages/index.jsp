@@ -294,20 +294,78 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
+								
+								<%
+									// 判断当前用户是否投票过
+									if(trendsBean.getVote() != null) {
+										if("up".equals(trendsBean.getVote().getVote_type())) {
+								%>
 								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number-pressed" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
 											<i class="fa fa-caret-up"></i>
-											<span style="display:block;"></span>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
 										</a>
 									</div>
 									
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
 											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
+								<%
+										} else if("down".equals(trendsBean.getVote().getVote_type())) {
+								%>
+								<div class="row">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number-pressed"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+										}
+									} else {
+										// 当前用户没投过票
+								%>
+								<div class="row">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+									}
+								%>
+								
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
@@ -493,20 +551,78 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
+								
+								<%
+									// 判断当前用户是否投票过
+									if(trendsBean.getVote() != null) {
+										if("up".equals(trendsBean.getVote().getVote_type())) {
+								%>
 								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number-pressed" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
 											<i class="fa fa-caret-up"></i>
-											<span style="display:block;"></span>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
 										</a>
 									</div>
 									
-									<div class="vote-text-center vote-number">
-										<a href="#">
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
 											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
+								<%
+										} else if("down".equals(trendsBean.getVote().getVote_type())) {
+								%>
+								<div class="row">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number-pressed"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+										}
+									} else {
+										// 当前用户没投过票
+								%>
+								<div class="row">
+									<div id="vote-up-<%=trendsBean.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=trendsBean.getAnswer().getId() %>" style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=trendsBean.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=trendsBean.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+									}
+								%>
+								
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->

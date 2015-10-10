@@ -4,6 +4,7 @@ import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
+import com.mellisuga.model.Vote;
 
 public class TrendsBean {
 
@@ -16,6 +17,10 @@ public class TrendsBean {
 	private Member member;
 	
 	private Member trendsMember;
+	
+	private Vote vote;
+	
+	private VoterBean voterBean;
 
 	public Trends getTrends() {
 		return trends;
@@ -56,4 +61,21 @@ public class TrendsBean {
 	public void setTrendsMember(Member trendsMember) {
 		this.trendsMember = trendsMember;
 	}
+
+	public VoterBean getVoterBean() {
+		return voterBean;
+	}
+
+	public void setVoterBean(VoterBean voterBean) {
+		this.voterBean = voterBean;
+	}
+
+	public Vote getVote() {
+		return vote;
+	}
+
+	public void setVote(Vote vote) {
+		this.vote = vote;
+	}
+	
 }
