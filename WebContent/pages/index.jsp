@@ -387,6 +387,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</h5>
 									</div>
 								</div>
+								
+								<%
+									if(trendsBean.getVoterBean().getUpCount() > 0) {
+								%>
+								<div class="row">
+									<div class="content-source">
+									<%
+										String split = "";	
+										for(Member member : trendsBean.getVoterBean().getVoterList()) {
+									%>
+										<%=split %>
+										<a href="#"><%=member.getFullname() %></a>
+									<%
+											split = "、";
+										}
+									%>
+										等赞同该回答
+									</div>
+								</div>
+								<%
+									}
+								%>
 
 								<div class="row">
 									<div class="question-content">
@@ -651,6 +673,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<span><%=trendsBean.getMember().getAutograph() %></span>
 									</div>
 								</div>
+								
+								<%
+									if(trendsBean.getVoterBean().getUpCount() > 0) {
+								%>
+								<div class="row">
+									<div class="content-source">
+									<%
+										String split = "";	
+										for(Member member : trendsBean.getVoterBean().getVoterList()) {
+									%>
+										<%=split %>
+										<a href="#"><%=member.getFullname() %></a>
+									<%
+											split = "、";
+										}
+									%>
+										等赞同该回答
+									</div>
+								</div>
+								<%
+									}
+								%>
 
 								<div class="row">
 									<div class="question-content">
