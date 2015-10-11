@@ -435,7 +435,8 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
 										
 					<div class="follow-btn">
-						<a href="#" class="btn btn-primary">关注问题</a>
+						<button id="followQuestion" onclick="followQuestion(<%=questionBean.getQuestion().getId() %>)" 
+								class="btn btn-primary">关注问题</button>
 						<div class="btn-group">
 							<a href="#" class="btn btn-default"><i class="fa fa-cog"></i></a> 
 							<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

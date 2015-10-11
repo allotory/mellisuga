@@ -626,3 +626,33 @@ function vote(answer_id, vote_type) {
 		});
 	}
 }
+
+// 关注问题
+function followQuestion(question_id) {
+	
+	var followQuestion = document.getElementById("followQuestion");
+	
+	if(followQuestion.className == "btn btn-primary") {
+		// 关注问题
+		followQuestion.className = "btn btn-default";
+		followQuestion.innerHTML = "取消关注";
+		loadXMLDoc("FollowQuestionServlet?question_id=" + question_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("关注问题失败，请稍候重试");
+					followQuestion.className = "btn btn-primary";
+					followQuestion.innerHTML = "关注问题";
+				}
+			}
+		});
+	} else if(followQuestion.className == "btn btn-default") {
+		// 取消关注
+		followQuestion.className = "btn btn-primary";
+		followQuestion.innerHTML = "关注问题";
+		loadXMLDoc("UnFollowQuestionServlet?question_id=" + question_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+			}
+		});
+	}
+}
