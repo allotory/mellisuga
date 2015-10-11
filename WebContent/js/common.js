@@ -627,7 +627,7 @@ function vote(answer_id, vote_type) {
 	}
 }
 
-// 关注问题
+// 问题页面关注问题
 function followQuestion(question_id) {
 	
 	var followQuestion = document.getElementById("followQuestion-" + question_id);
@@ -654,6 +654,40 @@ function followQuestion(question_id) {
 				if(xmlhttp.responseText == "error") {
 					alert("取消关注失败，请稍候重试");
 					followQuestion.className = "btn btn-default";
+					followQuestion.innerHTML = "取消关注";
+				}
+			}
+		});
+	}
+}
+
+//首页动态里关注问题
+function followQuestionOnTrends(question_id) {
+	
+	var followQuestion = document.getElementById("followQuestion-" + question_id);
+	
+	if(followQuestion.title == "follow") {
+		// 关注问题
+		followQuestion.title = "following";
+		followQuestion.innerHTML = "取消关注";
+		loadXMLDoc("FollowQuestionServlet?question_id=" + question_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("关注问题失败，请稍候重试");
+					followQuestion.title = "follow";
+					followQuestion.innerHTML = "<i class='fa fa-plus'></i> 关注问题";
+				}
+			}
+		});
+	} else if(followQuestion.title == "following") {
+		// 取消关注
+		followQuestion.title = "follow";
+		followQuestion.innerHTML = "<i class='fa fa-plus'></i> 关注问题";
+		loadXMLDoc("UnFollowQuestionServlet?question_id=" + question_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("取消关注失败，请稍候重试");
+					followQuestion.title = "following";
 					followQuestion.innerHTML = "取消关注";
 				}
 			}

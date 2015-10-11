@@ -136,20 +136,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-										<%
+									
+										<%	// 判断是否已关注问题
 											if(!trendsBean.isFollowing()) {
 												
 										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
+										</a>
 										<%
 											} else {
 										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											取消关注
+										</a>
 										<%
 											}
 										%>
-										</a>
+										
 										<%
 											if(trendsBean.getQuestion().getReply_num() > 0) {
 										%>
@@ -370,20 +376,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-										<%
+										
+										<%	// 判断是否已关注问题
 											if(!trendsBean.isFollowing()) {
 												
 										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
+										</a>
 										<%
 											} else {
 										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											取消关注
+										</a>
 										<%
 											}
 										%>
-										</a>
+										
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {
 										%>
@@ -611,20 +623,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-										<%
+										<%	// 判断是否已关注问题
 											if(!trendsBean.isFollowing()) {
 												
 										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
+										</a>
 										<%
 											} else {
 										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
 											取消关注
+										</a>
 										<%
 											}
 										%>
-										</a>
+										
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {
 										%>
