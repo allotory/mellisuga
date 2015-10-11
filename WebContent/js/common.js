@@ -651,7 +651,11 @@ function followQuestion(question_id) {
 		followQuestion.innerHTML = "关注问题";
 		loadXMLDoc("UnFollowQuestionServlet?question_id=" + question_id, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				alert(xmlhttp.responseText);
+				if(xmlhttp.responseText == "error") {
+					alert("取消关注失败，请稍候重试");
+					followQuestion.className = "btn btn-default";
+					followQuestion.innerHTML = "取消关注";
+				}
 			}
 		});
 	}
