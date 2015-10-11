@@ -15,6 +15,8 @@ public class QuestionBean {
 	private List<AnswerBean> answerBeanList;
 	
 	private Vote vote;
+	
+	private boolean isFollowing;
 
 	public Question getQuestion() {
 		return question;
@@ -46,6 +48,14 @@ public class QuestionBean {
 
 	public void setVote(Vote vote) {
 		this.vote = vote;
+	}
+
+	public boolean isFollowing() {
+		return isFollowing;
+	}
+
+	public void setFollowing(boolean isFollowing) {
+		this.isFollowing = isFollowing;
 	}
 
 }

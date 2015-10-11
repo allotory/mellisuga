@@ -14,4 +14,7 @@ public interface FollowDAO {
 	
 	// 删除关注
 	public void deleteFollowById(int id);
+	
+	// 判断是否存在
+	public int isExistInFollow(HashMap<String, Object> parameterMap);
 }

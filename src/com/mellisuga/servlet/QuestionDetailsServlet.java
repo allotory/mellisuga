@@ -17,6 +17,7 @@ import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.QuestionBean;
 import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
+import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
@@ -52,9 +53,9 @@ public class QuestionDetailsServlet extends HttpServlet {
 			/**				
 			 * 				QuestionBean
 			 * 					 |
-			 * 		------------------------------
-			 * 		|         	|              	 |        
-			 * 	 Question    List<Tag>    List<AnswerBean>
+			 * 		---------------------------------------------
+			 * 		|         	|              	 |        		|
+			 * 	 Question    List<Tag>    List<AnswerBean>	isFollowing
 			 * 									 |
 			 * 						---------------------------
 			 * 						|      |       |           |
@@ -76,6 +77,15 @@ public class QuestionDetailsServlet extends HttpServlet {
 			TagDAO tagDAO = session.getMapper(TagDAO.class);
 			List<Tag> tagList = tagDAO.queryTagByQuestionId(q);
 			questionBean.setTagList(tagList);
+			
+			// 查询是否关注该问题
+			FollowDAO followDAO = session.getMapper(FollowDAO.class);
+			HashMap<String, Object> followMap = new HashMap<String, Object>();
+			followMap.put("question_id", q.getId());
+			followMap.put("follower_id", m.getId());
+			int count = followDAO.isExistInFollow(followMap);
+			boolean isFollowing = count > 0 ? true: false;   
+			questionBean.setFollowing(isFollowing);
 			
 			// 查询答案
 			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
