@@ -21,6 +21,8 @@ public class TrendsBean {
 	private Vote vote;
 	
 	private VoterBean voterBean;
+	
+	private boolean isFollowing;
 
 	public Trends getTrends() {
 		return trends;
@@ -76,6 +78,14 @@ public class TrendsBean {
 
 	public void setVote(Vote vote) {
 		this.vote = vote;
+	}
+
+	public boolean isFollowing() {
+		return isFollowing;
+	}
+
+	public void setFollowing(boolean isFollowing) {
+		this.isFollowing = isFollowing;
 	}
 	
 }

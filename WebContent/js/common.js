@@ -630,7 +630,7 @@ function vote(answer_id, vote_type) {
 // 关注问题
 function followQuestion(question_id) {
 	
-	var followQuestion = document.getElementById("followQuestion");
+	var followQuestion = document.getElementById("followQuestion-" + question_id);
 	
 	if(followQuestion.className == "btn btn-primary") {
 		// 关注问题

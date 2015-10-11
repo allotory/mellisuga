@@ -438,12 +438,12 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 						<%
 							if(!questionBean.isFollowing()) {
 						%>
-						<button id="followQuestion" onclick="followQuestion(<%=questionBean.getQuestion().getId() %>)" 
+						<button id="followQuestion-<%=questionBean.getQuestion().getId() %>" onclick="followQuestion(<%=questionBean.getQuestion().getId() %>)" 
 								class="btn btn-primary">关注问题</button>
 						<%
 							} else {
 						%>
-						<button id="followQuestion" onclick="followQuestion(<%=questionBean.getQuestion().getId() %>)" 
+						<button id="followQuestion-<%=questionBean.getQuestion().getId() %>" onclick="followQuestion(<%=questionBean.getQuestion().getId() %>)" 
 								class="btn btn-default">取消关注</button>
 						<%
 							}

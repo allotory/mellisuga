@@ -137,7 +137,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
+										<%
+											if(!trendsBean.isFollowing()) {
+												
+										%>
 											<i class="fa fa-plus"></i> 关注问题
+										<%
+											} else {
+										%>
+											取消关注
+										<%
+											}
+										%>
 										</a>
 										<%
 											if(trendsBean.getQuestion().getReply_num() > 0) {
@@ -360,7 +371,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
+										<%
+											if(!trendsBean.isFollowing()) {
+												
+										%>
 											<i class="fa fa-plus"></i> 关注问题
+										<%
+											} else {
+										%>
+											取消关注
+										<%
+											}
+										%>
 										</a>
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {
@@ -590,7 +612,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										<a class="meta-item" href="javascript:;">
+										<%
+											if(!trendsBean.isFollowing()) {
+												
+										%>
 											<i class="fa fa-plus"></i> 关注问题
+										<%
+											} else {
+										%>
+											取消关注
+										<%
+											}
+										%>
 										</a>
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {

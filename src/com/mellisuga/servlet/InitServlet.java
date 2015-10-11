@@ -16,6 +16,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
+import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.RoleDAO;
@@ -88,6 +89,7 @@ public class InitServlet extends HttpServlet {
 			TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
 			AnswersDAO answersDAO = defaultSession.getMapper(AnswersDAO.class);
 			VoteDAO voteDAO = defaultSession.getMapper(VoteDAO.class);
+			FollowDAO followDAO = defaultSession.getMapper(FollowDAO.class);
 			List<Trends> trendsList = trendsDAO.queryAllTrends();
 			List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 			
@@ -228,6 +230,15 @@ public class InitServlet extends HttpServlet {
 						Member m2 = memberDAO.queryMemberByUserID(q.getMember_id());
 						trendsBean.setMember(m2);
 					}
+
+					// 查询是否关注该问题
+					HashMap<String, Object> followMap = new HashMap<String, Object>();
+					followMap.put("question_id", trendsBean.getQuestion().getId());
+					followMap.put("follower_id", m.getId());
+					int count = followDAO.isExistInFollow(followMap);
+					boolean isFollowing = count > 0 ? true: false;   
+					trendsBean.setFollowing(isFollowing);
+					
 					trendsBeanList.add(trendsBean);
 				}
 			}
