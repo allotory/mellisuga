@@ -35,6 +35,12 @@
     <delete id="deleteTrendsById" parameterType="int">
     	delete from trends where id=#{id}
     </delete>
+    
+    <!-- 删除 -->
+    <delete id="deleteTrendsByTUid" parameterType="java.util.HashMap">
+    	delete from trends where trends_id = #{trends_id} 
+    		and trends_member = #{trends_member} and trends_type='FollowingQuestion'
+    </delete>
 </mapper>
 
 

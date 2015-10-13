@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.FollowDAO;
+import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Follow;
 import com.mellisuga.model.Member;
@@ -41,13 +42,21 @@ public class UnFollowQuestionServlet extends HttpServlet {
 			
 			FollowDAO followDAO = session.getMapper(FollowDAO.class);
 			
+			// 删除关注
 			HashMap<String, Object> followMap = new HashMap<String, Object>();
 			followMap.put("question_id", question_id);
 			followMap.put("follower_id", m.getId());
 			
 			Follow follow = followDAO.queryFollowByQMid(followMap);
-			
 			followDAO.deleteFollowById(follow.getId());
+			
+			// 删除动态
+			TrendsDAO trendsDAO = session.getMapper(TrendsDAO.class);
+			
+			HashMap<String, Object> trendsMap = new HashMap<String, Object>();
+			trendsMap.put("trends_id", question_id);
+			trendsMap.put("trends_member", m.getId());
+			trendsDAO.deleteTrendsByTUid(trendsMap);
 			
 			session.commit();
 		} catch(Exception e) {
