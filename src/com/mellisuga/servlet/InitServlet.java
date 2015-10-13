@@ -103,6 +103,17 @@ public class InitServlet extends HttpServlet {
 					// 动态类型—— FollowingQuestion, AgreeWithThisAnswer, AnswerThisQuestion, AskAQuestion
 					if("FollowingQuestion".equals(t.getTrends_type())) {
 						// 1：关注该问题
+						trendsBean = new TrendsBean();
+						trendsBean.setTrends(t);
+						
+						// 查询所提问题信息
+						Question question = new Question();
+						question.setId(t.getTrends_id());
+						Question q = questionDAO.queryQuestionById(question);
+						trendsBean.setQuestion(q);
+						
+						Member mm = memberDAO.queryMemberByUserID(t.getTrends_member());
+						trendsBean.setMember(mm);
 						
 					} else if("AgreeWithThisAnswer".equals(t.getTrends_type())) {
 						// 2：赞同该回答

@@ -716,6 +716,138 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					</div>
 					
 					<%
+								}else if("FollowingQuestion".equals(trendsBean.getTrends().getTrends_type())) {
+					%>
+					<!-- left main content wrap  -->
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
+							onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
+						<div class="left-main-content">
+
+							<!-- avatar and upvote col -->
+							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="#">
+										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+							</div><!-- end avatar and upvote col -->
+
+							<!-- content-details -->
+							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
+
+								<div class="row">
+									<div class="content-source">
+										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 关注该问题
+										<span class="source-time">3小时前</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="question-link">
+										<h5>
+											<a href="./QuestionDetails?id=<%=trendsBean.getQuestion().getId() %>">
+												<%=trendsBean.getQuestion().getQuestion_title() %>
+											</a>
+										</h5>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="meta-panel">
+									
+										<%	// 判断是否已关注问题
+											if(!trendsBean.isFollowing()) {
+												
+										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+											<i class="fa fa-plus"></i> 关注问题
+										</a>
+										<%
+											} else {
+										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+											取消关注
+										</a>
+										<%
+											}
+										%>
+										
+										<%
+											if(trendsBean.getQuestion().getReply_num() > 0) {
+										%>
+										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
+										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-comment-o"></i> 添加评论
+										</a>
+										<%
+											}
+										%>
+										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+											<a href="#" class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 感谢
+											</a>
+											<a href="#" class="meta-item" >
+												<i class="fa fa-share"></i> 分享
+											</a>
+											<a href="#" class="meta-item">
+												<i class="fa fa-bookmark-o"></i> 收藏
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item">没有帮助</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												举报
+											</a>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												作者保留权利
+											</a>
+										</span>
+										<a href="#" class="answer-collapse meta-item" style="display:none">
+											<i class="fa fa-angle-double-up"></i> 收起
+										</a>
+									</div>
+								</div>
+								
+								<!-- comment -->
+								<div id="comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" class="row comment collapse">
+									<div class="panel panel-default">
+									
+										<div id="newQuestionComments-<%=trendsBean.getQuestion().getId() %>">
+										
+										</div>
+										<div class="panel-body">
+											<div class="form-group">
+												<textarea class="form-control" id="qcomment-<%=trendsBean.getQuestion().getId() %>" 
+												name="qcomment-<%=trendsBean.getQuestion().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+											</div>
+											<div class="form-group module-right">
+												<button class="btn btn-default btn-sm">取消</button>
+												<button type="button" onclick="newQuestionComment('<%=trendsBean.getQuestion().getId() %>');" class="btn btn-primary btn-sm">评论</button>
+											</div>
+										</div>
+										
+									</div>
+								</div><!--end comment -->
+
+							</div><!-- end content-details -->
+														
+						</div><!-- end left main content -->
+					</div><!--end left main content wrap  -->
+					
+					<div class="row">
+						<hr style="margin-top:12px;margin-bottom:12px;"/>
+					</div>
+					<%				
 								}
 							}
 						}

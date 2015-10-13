@@ -664,6 +664,31 @@ function followQuestion(question_id) {
 //首页动态里关注问题
 function followQuestionOnTrends(question_id) {
 	
+	// TODO 多个动态里面ID重复了了了了了了了
+	// TODO 多个动态里面ID重复了了了了了了了
+	// TODO 多个动态里面ID重复了了了了了了了
+	// TODO 多个动态里面ID重复了了了了了了了
+	// TODO 多个动态里面ID重复了了了了了了了
+	// TODO 多个动态里面ID重复了了了了了了了
+
+	// 怎么办怎么办怎么办怎么办怎么办怎么办？？？？？？？？？
+	
+	// 分组吧！！！！！！！
+	
+	// 动态类型分类 ———— 4种
+	
+	// 好像又不对！ 
+	
+	/**
+	 * 	
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	
+	
+	
 	var followQuestion = document.getElementById("followQuestion-" + question_id);
 	
 	if(followQuestion.title == "follow") {
