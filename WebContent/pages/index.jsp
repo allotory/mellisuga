@@ -141,15 +141,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											if(!trendsBean.isFollowing()) {
 												
 										%>
-										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
 											} else {
 										%>
-										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											取消关注
 										</a>
 										<%
@@ -381,15 +381,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											if(!trendsBean.isFollowing()) {
 												
 										%>
-										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
 											} else {
 										%>
-										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											取消关注
 										</a>
 										<%
@@ -627,15 +627,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											if(!trendsBean.isFollowing()) {
 												
 										%>
-										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
 											} else {
 										%>
-										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											取消关注
 										</a>
 										<%
@@ -716,7 +716,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					</div>
 					
 					<%
-								}else if("FollowingQuestion".equals(trendsBean.getTrends().getTrends_type())) {
+							}else if("FollowingQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 					%>
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
@@ -759,15 +759,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											if(!trendsBean.isFollowing()) {
 												
 										%>
-										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
 											} else {
 										%>
-										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getQuestion().getId() %>" 
-											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>)" >
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											取消关注
 										</a>
 										<%
