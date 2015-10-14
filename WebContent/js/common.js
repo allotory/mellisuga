@@ -199,23 +199,39 @@ function loadXMLDoc(url, callback) {
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
+function loadXMLDoc2(url, parameter, callback) {
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = callback;
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send(parameter);
+}
 
 // 提交答案
 function newAnswer(question_id) {
+	
+	// 将AJAX从GET改为POST总结：
+	// 1. 客户端改动后，服务端也要相应改动（至少应该看一下吗）
+	// 2. 一个浏览器错误提示莫名其妙看不懂找不到，不要在一棵树上吊死，到旁边那棵上试试
+	// 3. firefox是个好浏览器
+	
 	var answers = bacheditor.getHTML();
 	var is_anonymous = document.getElementById('is_anonymous');
+	var parameter = "question_id=" + question_id + "&answers=" + answers 
+		+ "&is_anonymous=" + is_anonymous.value;
+	
 	if(answers == "") {
 		alert("答案不能为空！");
 	} else {
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		// TODO  get方式提交答案时， 答案长度有限制，应该为post
-		loadXMLDoc("AnswerServlet?question_id=" + question_id + "&answers=" + answers + "&is_anonymous=" + is_anonymous, function() {
+		
+		loadXMLDoc2("AnswerServlet", parameter, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				
 				var obj = JSON.parse(xmlhttp.responseText);
 
 				var answerDiv = document.createElement('div');

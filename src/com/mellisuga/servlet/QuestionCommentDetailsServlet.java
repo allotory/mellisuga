@@ -67,7 +67,7 @@ public class QuestionCommentDetailsServlet extends HttpServlet {
 			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("commentBeanList", commentBeanList);
-			System.out.println(jsonObject);
+			//System.out.println(jsonObject);
 			
 			// 返回评论json
 			out.print(jsonObject.toString());

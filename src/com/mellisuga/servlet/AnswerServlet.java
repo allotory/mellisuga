@@ -38,6 +38,10 @@ public class AnswerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -47,6 +51,10 @@ public class AnswerServlet extends HttpServlet {
 		String question_id = request.getParameter("question_id");
 		String ans = request.getParameter("answers");
 		String is_anonymous = request.getParameter("is_anonymous");
+		
+		System.out.println(question_id);
+		System.out.println(ans);
+		System.out.println(is_anonymous);
 		
 		// 更新日期
 		Date date = new Date();
@@ -96,7 +104,7 @@ public class AnswerServlet extends HttpServlet {
 			// TODO 同一个问题每个人只能回答一次！！！
 			
 			// 查询答案
-			answers = answersDAO.queryAnswerByQUid(answers);
+			//answers = answersDAO.queryAnswerByQUid(answers);
 			//System.out.println("=="+answers.getId());
 			
 			// 更新用户信息（回答数）
@@ -134,6 +142,7 @@ public class AnswerServlet extends HttpServlet {
 			jsonObject.put("answerBeanList", answerBeanList);
 			
 			// 返回评论json
+			System.out.println(jsonObject.toString());
 			out.print(jsonObject.toString());
 			
 		} catch(Exception e) {
@@ -142,11 +151,6 @@ public class AnswerServlet extends HttpServlet {
 		} finally {
 			DBConnection.closeSession(session);
 		}
-
-	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }
