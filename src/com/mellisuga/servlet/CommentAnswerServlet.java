@@ -35,6 +35,10 @@ public class CommentAnswerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -99,10 +103,6 @@ public class CommentAnswerServlet extends HttpServlet {
 		jsonObject.put("acommentBeanList", acommentBeanList);
 	
 		out.print(jsonObject.toString());
-	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }
