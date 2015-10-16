@@ -427,7 +427,14 @@ function newQuestionComment(question_id) {
 }
 
 // 查询问题评论
-function queryQCommentList(question_id) {
+function queryQCommentList() {
+	var paramlength = arguments.length;
+	if (paramlength == 1) {
+		var question_id = arguments[0];
+	} else if (paramlength == 2){    
+        var question_id = arguments[0];
+        var trends_id = arguments[1];
+    }
 	
 	loadXMLDoc("QuestionCommentDetailsServlet?question_id=" + question_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -437,7 +444,11 @@ function queryQCommentList(question_id) {
 				
 				var commentDiv = document.createElement('div');
 				commentDiv.id = "questionComment-" + obj.commentBeanList[i].comment.id;
-				document.getElementById("newQuestionComments-" + question_id).appendChild(commentDiv);
+				if(paramlength == 1) {
+					document.getElementById("newQuestionComments-" + question_id).appendChild(commentDiv);
+				} else if(paramlength == 2) {
+					document.getElementById("newQuestionComments-" + trends_id).appendChild(commentDiv);
+				}
 				
 				var str = '<div class="panel-body q-comment"'
 						+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')"'
@@ -547,10 +558,17 @@ function newAnswerComment(answer_id) {
 	acomment.value = "";
 }
 
-
-
 // 查询答案评论
-function queryACommentList(answer_id) {
+function queryACommentList() {
+
+	var paramlength = arguments.length;
+	
+	if (paramlength == 1) {
+		var answer_id = arguments[0];
+	} else if (paramlength == 2){    
+        var answer_id = arguments[0];
+        var trends_id = arguments[1];
+    }
 	
 	loadXMLDoc("AnswerCommentDetailsServlet?answer_id=" + answer_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -560,7 +578,12 @@ function queryACommentList(answer_id) {
 				
 				var commentDiv = document.createElement('div');
 				commentDiv.id = "answerComment-" + obj.commentBeanList[i].comment.id;
-				document.getElementById("newAnswerComments-" + answer_id).appendChild(commentDiv);
+				if(paramlength == 1) {
+					document.getElementById("newAnswerComments-" + answer_id).appendChild(commentDiv);
+				} else if (paramlength == 2) {
+					document.getElementById("newAnswerComments-" + trends_id).appendChild(commentDiv);
+				}
+				
 				
 				var str = '<div class="panel-body q-comment"'
 						+ 'onmouseenter="showItem(\'comment-hidden' + obj.commentBeanList[i].comment.id + '\')"'

@@ -159,14 +159,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(trendsBean.getQuestion().getReply_num() > 0) {
 										%>
-										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-commenting-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
 										<%
 											}else {
 										%>
-										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-askNewQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
@@ -201,10 +201,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment-<%=trendsBean.getQuestion().getId() %>-askNewQuestion" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getTrends().getId() %>-askNewQuestion" class="row comment collapse">
 									<div class="panel panel-default">
 									
-										<div id="newQuestionComments-<%=trendsBean.getQuestion().getId() %>">
+										<div id="newQuestionComments-<%=trendsBean.getTrends().getId() %>">
 										
 										</div>
 										<div class="panel-body">
@@ -399,14 +399,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {
 										%>
-										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
 										</a>
 										<%
 											}else {
 										%>
-										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
@@ -441,9 +441,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment-<%=trendsBean.getAnswer().getId() %>-answerThisQuestion" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" class="row comment collapse">
 									<div class="panel panel-default">
-										<div id="newAnswerComments-<%=trendsBean.getAnswer().getId() %>">
+										<div id="newAnswerComments-<%=trendsBean.getTrends().getId() %>">
 										
 										</div>
 										<div class="panel-body">
@@ -645,14 +645,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(trendsBean.getAnswer().getReply_num() > 0) {
 										%>
-										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
 										</a>
 										<%
 											}else {
 										%>
-										<a href="#comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
@@ -687,9 +687,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment-<%=trendsBean.getAnswer().getId() %>-agreeWithThisAnswer" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" class="row comment collapse">
 									<div class="panel panel-default">
-										<div id="newAnswerComments-<%=trendsBean.getAnswer().getId() %>">
+										<div id="newAnswerComments-<%=trendsBean.getTrends().getId() %>">
 										
 										</div>
 										<div class="panel-body">
@@ -777,14 +777,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(trendsBean.getQuestion().getReply_num() > 0) {
 										%>
-										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-commenting-o"></i> <%=trendsBean.getQuestion().getReply_num() %>条评论
 										</a>
 										<%
 											}else {
 										%>
-										<a href="#comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>);" 
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-followingQuestion" onclick="queryQCommentList(<%=trendsBean.getQuestion().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
@@ -819,10 +819,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								
 								<!-- comment -->
-								<div id="comment-<%=trendsBean.getQuestion().getId() %>-followingQuestion" class="row comment collapse">
+								<div id="comment-<%=trendsBean.getTrends().getId() %>-followingQuestion" class="row comment collapse">
 									<div class="panel panel-default">
 									
-										<div id="newQuestionComments-<%=trendsBean.getQuestion().getId() %>">
+										<div id="newQuestionComments-<%=trendsBean.getTrends().getId() %>">
 										
 										</div>
 										<div class="panel-body">
