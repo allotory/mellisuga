@@ -11,6 +11,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 Member m = (Member) request.getSession().getAttribute("member");
 QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
+
+boolean is_answered = false;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -177,6 +179,10 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 						if(questionBean.getAnswerBeanList() != null 
 							&& !questionBean.getAnswerBeanList().isEmpty()) {
 							for(AnswerBean ab : questionBean.getAnswerBeanList()) {
+								// 判断是否已回答
+								if(ab.getAnswer().getAuthor_id() == m.getId()) {
+									is_answered = true;
+								}
 					%>
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=ab.getAnswer().getId() %>')" 
@@ -302,6 +308,15 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											</div>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 <%=ab.getAnswer().getAnswer_date() %></a>
+												<%
+													if(is_answered) {
+												%>
+												<a href="#" class="module-right" style="padding-right: 5px;">
+													<i class="fa fa-edit"></i> 编辑
+												</a>
+												<%
+													}
+												%>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
@@ -336,9 +351,14 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 											}
 										%>
 										<span id="hidden-item-<%=ab.getAnswer().getId() %>" style="display:none">
-											<a href="#" class="meta-item" data-thanked="false">
+											
+											
+											<a title="thankAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
+												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
+											
+											
 											<a href="#" class="meta-item">
 												<i class="fa fa-share"></i> 分享
 											</a>
@@ -408,6 +428,10 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div> -->
 					
+					<% 
+						// 判断是否已回答
+						if (!is_answered) {
+					%>
 					<!-- post editor -->
 					<div class="row">
 						<div class="post-main">
@@ -429,6 +453,9 @@ QuestionBean questionBean = (QuestionBean) request.getAttribute("questionBean");
 							</div>
 						</div>
 					</div><!-- end post editor -->
+					<% 
+						}
+					%>
 
 				</div><!-- end left main-->
 

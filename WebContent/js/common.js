@@ -748,3 +748,53 @@ function followQuestionOnTrends(question_id, trends_id) {
 		});
 	}
 }
+
+// 感谢
+function thankAuthor(answer_id) {
+	var thankAuthorLink = document.getElementById("thankAuthor-" + answer_id);
+	
+	if(thankAuthorLink.title == "thankAuthor") {
+		thankAuthorLink.title = "thankedAuthor";
+		thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 取消感谢";
+		loadXMLDoc("ThankAuthorServlet?answer_id=" + answer_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("感谢作者失败，请稍候重试");
+					followQuestion.title = "thankAuthor";
+					followQuestion.innerHTML = "<i class='fa fa-heart-o'></i> 感谢";
+				}
+			}
+		});
+	} else if(thankAuthorLink.title == "thankedAuthor") {
+		thankAuthorLink.title = "thankAuthor";
+		thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 感谢";
+		loadXMLDoc("ThankAuthorServlet?answer_id=" + answer_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("感谢作者失败，请稍候重试");
+					followQuestion.title = "thankedAuthor";
+					followQuestion.innerHTML = "<i class='fa fa-heart-o'></i> 取消感谢";
+				}
+			}
+		});
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
