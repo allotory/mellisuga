@@ -10,6 +10,12 @@
     	insert into thanks(answer_id, thanker_id) 
     	values(#{answer_id}, #{thanker_id})
     </insert>
+    
+    <!-- 删除 -->
+    <delete id="deleteThanksByAMId" parameterType="java.util.HashMap">
+    	delete from thanks where answer_id = #{answer_id} 
+    		and thanker_id = #{thanker_id}
+    </delete>    
 </mapper>
 
 

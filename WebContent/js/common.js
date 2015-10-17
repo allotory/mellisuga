@@ -768,7 +768,7 @@ function thankAuthor(answer_id) {
 	} else if(thankAuthorLink.title == "thankedAuthor") {
 		thankAuthorLink.title = "thankAuthor";
 		thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 感谢";
-		loadXMLDoc("ThankAuthorServlet?answer_id=" + answer_id, function() {
+		loadXMLDoc("UnThankAuthorServlet?answer_id=" + answer_id, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				if(xmlhttp.responseText == "error") {
 					alert("感谢作者失败，请稍候重试");
