@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mellisuga.model.*" %>
+<%@ page import="java.util.List" %>
 <%@include file="sitename.jsp"%>
 <%   
 String path = request.getContextPath();   
@@ -17,6 +19,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 	<!-- js css plugin include -->
 	<%@include file="include.jsp"%>
+
+<%
+@SuppressWarnings("unchecked")
+List<Question> questionList = (List<Question>) request.getAttribute("questionList");
+%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -50,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<!--left main title row-->
 					<div class="row">
 						<div class="left-main-title">
-							<i class="fa fa-list-ul"></i> 我关注的问题（325）
+							<i class="fa fa-list-ul"></i> 我关注的问题（<%=questionList.size() %>）
 							<span class="news-setting">
 								<a href="#">
 									<i class="fa fa-cog"></i> 设置
@@ -63,8 +70,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 
+					<%
+						if(!(questionList == null || questionList.isEmpty())) {
+							for (Question q : questionList) {
+					%>
+
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -72,7 +84,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="vote-text-center vote-number">
 										<a href="#">
-											<span id="voteupnum" style="display:block;">123</span>
+											<span id="voteupnum" style="display:block;"><%=q.getScan_num() %></span>
 											<span class="" style="display:block;">浏览</span>
 										</a>
 									</div>
@@ -84,21 +96,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+										<h5>
+											<a href="./QuestionDetails?id=<%=q.getId() %>">
+												<%=q.getQuestion_title() %>
+											</a>
+										</h5>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
+										<a class="meta-item" title="following" id="followQuestion-<%=q.getId() %>" 
+											onclick="followQuestionOnFollowing(<%=q.getId() %>)" >
 											取消关注
 										</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item">
-											2357个回答
+										<a class="meta-item">
+											<%=q.getAnswers_num() %>个回答
 										</a>
 										<span class="bull">•</span>
-										<a href="#" class="meta-item">1354人关注</a>
+										<a class="meta-item"><%=q.getFollowers_num() %>人关注</a>
 									</div>
 								</div>
 
@@ -111,50 +128,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 					
-					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item')" onmouseleave="hiddenItem('hidden-item')">
-						<div class="left-main-content">
-
-							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<span id="voteupnum" style="display:block;">123</span>
-											<span class="" style="display:block;">浏览</span>
-										</a>
-									</div>
-								</div>
-							</div><!-- end avatar and upvote col -->
-
-							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-11 col-xs-11">
-
-								<div class="row">
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-											取消关注
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">
-											2357个回答
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">1354人关注</a>
-									</div>
-								</div>
-
-							</div><!-- end content-details -->
-														
-						</div><!-- end left main content -->
-					</div><!--end left main content wrap  -->
-
+					<%
+							}
+						} else {
+					%>
+						您还没有关注任何问题哦！
+					<%
+						}
+					%>
+					
 					<!-- loding more btn row  -->
 					<div class="row">
 						<div class="loding-btn">

@@ -1,6 +1,7 @@
 package com.mellisuga.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.mellisuga.model.Follow;
 
@@ -17,4 +18,7 @@ public interface FollowDAO {
 	
 	// 判断是否存在
 	public int isExistInFollow(HashMap<String, Object> parameterMap);
+	
+	// 由用户id查询关注
+	public List<Follow> queryFollowByMemberId(int follower_id);
 }
