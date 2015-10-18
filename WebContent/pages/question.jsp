@@ -352,12 +352,24 @@ boolean is_answered = false;
 										%>
 										<span id="hidden-item-<%=ab.getAnswer().getId() %>" style="display:none">
 											
-											
+											<%
+												// 判断是否已感谢作者回答
+												if(!ab.isIs_thank()) {
+											%>
 											<a title="thankAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
 												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
-											
+											<%
+												}else {
+											%>
+											<a title="thankedAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
+												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+											<%
+												}
+											%>
 											
 											<a href="#" class="meta-item">
 												<i class="fa fa-share"></i> 分享

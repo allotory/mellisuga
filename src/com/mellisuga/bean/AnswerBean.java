@@ -14,6 +14,8 @@ public class AnswerBean {
 	
 	private VoterBean voterBean;
 	
+	private boolean is_thank;
+	
 	public Answers getAnswer() {
 		return answer;
 	}
@@ -44,6 +46,14 @@ public class AnswerBean {
 
 	public void setVoterBean(VoterBean voterBean) {
 		this.voterBean = voterBean;
+	}
+
+	public boolean isIs_thank() {
+		return is_thank;
+	}
+
+	public void setIs_thank(boolean is_thank) {
+		this.is_thank = is_thank;
 	}
 	
 }

@@ -21,12 +21,14 @@ import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
+import com.mellisuga.dao.ThanksDAO;
 import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Tag;
+import com.mellisuga.model.Thanks;
 import com.mellisuga.model.Vote;
 
 @WebServlet("/QuestionDetails")
@@ -57,9 +59,9 @@ public class QuestionDetailsServlet extends HttpServlet {
 			 * 		|         	|              	 |        		|
 			 * 	 Question    List<Tag>    List<AnswerBean>	isFollowing
 			 * 									 |
-			 * 						---------------------------
-			 * 						|      |       |           |
-			 * 					Answer   Member	  Vote   List<voterBean>
+			 * 			 --------------------------------------
+			 * 			 |   	 |       |         |           |
+			 * 		is_thank  Answer   Member	  Vote   List<voterBean>
 			 * 													|
 			 * 											 ---------------
 			 * 											 |		       |	
@@ -89,6 +91,7 @@ public class QuestionDetailsServlet extends HttpServlet {
 			
 			// 查询答案
 			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
+			ThanksDAO thanksDAO = session.getMapper(ThanksDAO.class);
 			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(q);
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
 			if(answersList != null && !answersList.isEmpty()) {
@@ -99,6 +102,17 @@ public class QuestionDetailsServlet extends HttpServlet {
 					Member member = memberDAO.queryMemberByUserID(a.getAuthor_id());
 					answerBean.setAnswer(a);
 					answerBean.setMember(member);
+					
+					// 查询是否感谢过作者
+					HashMap<String, Object> thanksMap = new HashMap<String, Object>();
+					thanksMap.put("answer_id", a.getId());
+					thanksMap.put("thanker_id", m.getId());
+					Thanks thanks = thanksDAO.queryThanksByAMId(thanksMap);
+					if(thanks == null) {
+						answerBean.setIs_thank(false);
+					} else {
+						answerBean.setIs_thank(true);
+					}
 					
 					// 查询是否投票
 					VoteDAO voteDAO = session.getMapper(VoteDAO.class);

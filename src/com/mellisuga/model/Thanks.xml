@@ -16,6 +16,12 @@
     	delete from thanks where answer_id = #{answer_id} 
     		and thanker_id = #{thanker_id}
     </delete>    
+    
+    <!-- 查询单一数据 -->
+	<select id="queryThanksByAMId" parameterType="java.util.HashMap" resultType="Thanks">
+        select * from thanks where answer_id = #{answer_id} 
+        	and thanker_id = #{thanker_id}
+    </select>
 </mapper>
 
 

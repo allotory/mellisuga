@@ -11,4 +11,7 @@ public interface ThanksDAO {
 	
 	// 由答案id及用户id删除感谢作者
 	public void deleteThanksByAMId(HashMap<String, Object> parameterMap);
+	
+	// 由答案id及用户id查询感谢作者
+	public Thanks queryThanksByAMId(HashMap<String, Object> parameterMap);
 }

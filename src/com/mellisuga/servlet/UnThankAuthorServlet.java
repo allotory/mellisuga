@@ -19,7 +19,7 @@ import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 
-@WebServlet("/ThankAuthorServlet")
+@WebServlet("/UnThankAuthorServlet")
 public class UnThankAuthorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
