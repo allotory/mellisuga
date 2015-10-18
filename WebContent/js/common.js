@@ -749,10 +749,20 @@ function followQuestionOnTrends(question_id, trends_id) {
 	}
 }
 
-// 感谢
-function thankAuthor(answer_id) {
-	var thankAuthorLink = document.getElementById("thankAuthor-" + answer_id);
+// 问题页面感谢作者
+function thankAuthor() {
 	
+	var paramlength = arguments.length;
+
+	if (paramlength == 1) {
+		var answer_id = arguments[0];
+		var thankAuthorLink = document.getElementById("thankAuthor-" + answer_id);
+	} else if (paramlength == 2){    
+        var answer_id = arguments[0];
+        var trends_id = arguments[1];
+        var thankAuthorLink = document.getElementById("thankAuthor-" + trends_id);
+    }
+
 	if(thankAuthorLink.title == "thankAuthor") {
 		thankAuthorLink.title = "thankedAuthor";
 		thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 取消感谢";
@@ -760,8 +770,8 @@ function thankAuthor(answer_id) {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				if(xmlhttp.responseText == "error") {
 					alert("感谢作者失败，请稍候重试");
-					followQuestion.title = "thankAuthor";
-					followQuestion.innerHTML = "<i class='fa fa-heart-o'></i> 感谢";
+					thankAuthorLink.title = "thankAuthor";
+					thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 感谢";
 				}
 			}
 		});
@@ -772,8 +782,8 @@ function thankAuthor(answer_id) {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				if(xmlhttp.responseText == "error") {
 					alert("感谢作者失败，请稍候重试");
-					followQuestion.title = "thankedAuthor";
-					followQuestion.innerHTML = "<i class='fa fa-heart-o'></i> 取消感谢";
+					thankAuthorLink.title = "thankedAuthor";
+					thankAuthorLink.innerHTML = "<i class='fa fa-heart-o'></i> 取消感谢";
 				}
 			}
 		});

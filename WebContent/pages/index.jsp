@@ -392,13 +392,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(!trendsBean.isThanked()) {
 										%>
-											<a href="#" class="meta-item" data-thanked="false">
+											<a title="thankAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
 										<%
 											} else {
 										%>
-											<a href="#" class="meta-item" data-thanked="false">
+											<a title="thankedAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 取消感谢
 											</a>
 										<%
@@ -650,13 +652,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											if(!trendsBean.isThanked()) {
 										%>
-											<a href="#" class="meta-item" data-thanked="false">
+											<a title="thankAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
 										<%
 											} else {
 										%>
-											<a href="#" class="meta-item" data-thanked="false">
+											<a title="thankedAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 取消感谢
 											</a>
 										<%
