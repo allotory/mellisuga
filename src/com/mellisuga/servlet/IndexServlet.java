@@ -19,12 +19,14 @@ import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
+import com.mellisuga.dao.ThanksDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
+import com.mellisuga.model.Thanks;
 import com.mellisuga.model.Trends;
 import com.mellisuga.model.Vote;
 
@@ -54,6 +56,7 @@ public class IndexServlet extends HttpServlet {
 			MemberDAO memberDAO = defaultSession.getMapper(MemberDAO.class);
 			VoteDAO voteDAO = defaultSession.getMapper(VoteDAO.class);
 			FollowDAO followDAO = defaultSession.getMapper(FollowDAO.class);
+			ThanksDAO thanksDAO = defaultSession.getMapper(ThanksDAO.class);
 			List<Trends> trendsList = trendsDAO.queryAllTrends();
 			List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 			
@@ -136,6 +139,17 @@ public class IndexServlet extends HttpServlet {
 						}
 						
 						trendsBean.setVoterBean(voterBean);
+
+						// 查询是否感谢过作者
+						HashMap<String, Object> thanksMap = new HashMap<String, Object>();
+						thanksMap.put("answer_id", answers.getId());
+						thanksMap.put("thanker_id", m.getId());
+						Thanks thanks = thanksDAO.queryThanksByAMId(thanksMap);
+						if(thanks == null) {
+							trendsBean.setThanked(false);
+						} else {
+							trendsBean.setThanked(true);
+						}
 						
 					} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
 						// 3：回答了该问题
@@ -189,6 +203,17 @@ public class IndexServlet extends HttpServlet {
 						}
 						
 						trendsBean.setVoterBean(voterBean);
+						
+						// 查询是否感谢过作者
+						HashMap<String, Object> thanksMap = new HashMap<String, Object>();
+						thanksMap.put("answer_id", answers.getId());
+						thanksMap.put("thanker_id", m.getId());
+						Thanks thanks = thanksDAO.queryThanksByAMId(thanksMap);
+						if(thanks == null) {
+							trendsBean.setThanked(false);
+						} else {
+							trendsBean.setThanked(true);
+						}
 						
 					} else if("AskAQuestion".equals(t.getTrends_type())) {
 						// 4：提了一个问题

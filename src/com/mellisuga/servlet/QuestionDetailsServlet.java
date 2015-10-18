@@ -61,7 +61,7 @@ public class QuestionDetailsServlet extends HttpServlet {
 			 * 									 |
 			 * 			 --------------------------------------
 			 * 			 |   	 |       |         |           |
-			 * 		is_thank  Answer   Member	  Vote   List<voterBean>
+			 * 		isThanked  Answer   Member	  Vote   List<voterBean>
 			 * 													|
 			 * 											 ---------------
 			 * 											 |		       |	
@@ -109,9 +109,9 @@ public class QuestionDetailsServlet extends HttpServlet {
 					thanksMap.put("thanker_id", m.getId());
 					Thanks thanks = thanksDAO.queryThanksByAMId(thanksMap);
 					if(thanks == null) {
-						answerBean.setIs_thank(false);
+						answerBean.setThanked(false);
 					} else {
-						answerBean.setIs_thank(true);
+						answerBean.setThanked(true);
 					}
 					
 					// 查询是否投票

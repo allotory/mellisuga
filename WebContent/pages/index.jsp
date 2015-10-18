@@ -101,8 +101,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								if("AskAQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
-							onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -173,30 +172,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											}
 										%>
-										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
-											<a href="#" class="meta-item" data-thanked="false">
-												<i class="fa fa-heart-o"></i> 感谢
-											</a>
-											<a href="#" class="meta-item" >
-												<i class="fa fa-share"></i> 分享
-											</a>
-											<a href="#" class="meta-item">
-												<i class="fa fa-bookmark-o"></i> 收藏
-											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												举报
-											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												作者保留权利
-											</a>
-										</span>
-										<a href="#" class="answer-collapse meta-item" style="display:none">
-											<i class="fa fa-angle-double-up"></i> 收起
-										</a>
 									</div>
 								</div>
 								
@@ -414,9 +389,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											}
 										%>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<%
+											if(!trendsBean.isThanked()) {
+										%>
 											<a href="#" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
+										<%
+											} else {
+										%>
+											<a href="#" class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+										<%
+											}
+										%>
 											<a href="#" class="meta-item" >
 												<i class="fa fa-share"></i> 分享
 											</a>
@@ -660,9 +647,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											}
 										%>
 										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<%
+											if(!trendsBean.isThanked()) {
+										%>
 											<a href="#" class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
+										<%
+											} else {
+										%>
+											<a href="#" class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+										<%
+											}
+										%>
 											<a href="#" class="meta-item" >
 												<i class="fa fa-share"></i> 分享
 											</a>
@@ -719,8 +718,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							}else if("FollowingQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
-							onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -791,30 +789,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											}
 										%>
-										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
-											<a href="#" class="meta-item" data-thanked="false">
-												<i class="fa fa-heart-o"></i> 感谢
-											</a>
-											<a href="#" class="meta-item" >
-												<i class="fa fa-share"></i> 分享
-											</a>
-											<a href="#" class="meta-item">
-												<i class="fa fa-bookmark-o"></i> 收藏
-											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												举报
-											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												作者保留权利
-											</a>
-										</span>
-										<a href="#" class="answer-collapse meta-item" style="display:none">
-											<i class="fa fa-angle-double-up"></i> 收起
-										</a>
 									</div>
 								</div>
 								

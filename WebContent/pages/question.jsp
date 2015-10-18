@@ -354,7 +354,7 @@ boolean is_answered = false;
 											
 											<%
 												// 判断是否已感谢作者回答
-												if(!ab.isIs_thank()) {
+												if(!ab.isThanked()) {
 											%>
 											<a title="thankAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
 												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
