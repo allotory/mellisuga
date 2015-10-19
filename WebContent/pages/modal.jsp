@@ -7,15 +7,15 @@
 		<input type="text" class="form-control" placeholder="Search for...">
 		<span class="input-group-btn">
 			<button class="btn btn-primary" type="button" data-toggle="modal" 
-					data-target="#myModal" data-backdrop="false">
+					data-target="#searchModal" data-backdrop="false">
 				<i class="fa fa-search"></i>
 			</button>
 		</span>
 	</div>
 </form>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="提问">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -59,3 +59,23 @@
 		</div>
 	</div>
 </div><!-- end Modal -->
+
+
+<!-- Collection Modal -->
+<div class="modal fade" id="collectionModal" tabindex="-1" role="dialog" aria-labelledby="收藏夹">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
