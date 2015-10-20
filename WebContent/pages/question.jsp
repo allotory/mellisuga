@@ -40,18 +40,8 @@ boolean is_answered = false;
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-main">
 
-				<!-- search -->
-				<form class="navbar-form navbar-left" role="search">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for...">
-						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button" data-toggle="modal" 
-									data-target="#myModal" data-backdrop="false">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
+				<!-- search modal -->
+				<%@include file="modal.jsp"%>
 
 				<!-- navbar -->
 				<%@include file="navbar.jsp" %>
@@ -374,7 +364,7 @@ boolean is_answered = false;
 											<a href="#" class="meta-item">
 												<i class="fa fa-share"></i> 分享
 											</a>
-											<a href="#" class="meta-item">
+											<a href="#" data-toggle="modal" data-target="#collectionListModal" data-backdrop="false" class="meta-item">
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
