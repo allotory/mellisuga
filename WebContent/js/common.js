@@ -825,7 +825,23 @@ function followQuestionOnFollowing(question_id) {
 	}
 }
 
+// 创建收藏夹
+function newCollectionRedirect() {
+	var newCollectionModal = document.getElementById("newCollectionModal");
+	var collectionListModal = document.getElementById("collectionListModal");
+	
+	collectionListModal.style.display = "none";
+	newCollectionModal.style.display = "block";
+}
 
+// 收藏夹列表
+function collectionList() {
+	var newCollectionModal = document.getElementById("newCollectionModal");
+	var collectionListModal = document.getElementById("collectionListModal");
+	
+	collectionListModal.style.display = "block";
+	newCollectionModal.style.display = "none";
+}
 
 
 

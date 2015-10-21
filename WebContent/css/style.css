@@ -441,3 +441,8 @@ del {
 	padding-bottom: 5px;
 	border-bottom: 1px solid #eeeeee;
 }
+
+.meta-color {
+	font-size: 11px;
+	color: #999;
+}
