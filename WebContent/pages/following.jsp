@@ -37,6 +37,19 @@ List<Question> questionList = (List<Question>) request.getAttribute("questionLis
 				</button>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-main">
+				
+				<!-- search -->
+				<form class="navbar-form navbar-left" role="search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button" data-toggle="modal"
+								data-target="#searchModal" data-backdrop="false">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
 
 				<!-- search modal -->
 				<%@include file="modal.jsp"%>
