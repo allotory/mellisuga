@@ -106,25 +106,25 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form id="newCollectionForm">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">标题：</label> 
-						<input type="text" class="form-control" id="recipient-name" placeholder="最多输入20个字">
+						<input type="text" class="form-control" id="foldername" name="foldername" placeholder="最多输入20个字">
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">描述（可选）：</label>
-						<textarea id="myModalEditor" class="form-control" rows="4" placeholder="最多输入256个字" ></textarea>
+						<textarea id="description" name="description" class="form-control" rows="4" placeholder="最多输入256个字" ></textarea>
 					</div>
 					<div class="form-group">
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
+								<input type="radio" id="is_public_y" name="is_public" value="1" checked="checked">
 								公开 <span style="font-size: 11px; color: #999;">公开后不能设为秘密</span>
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+								<input type="radio" id="is_public_n" name="is_public" value="0">
 								秘密 <span style="font-size: 11px; color: #999;">只有你可以查看这个收藏夹</span>
 							</label>
 						</div>
@@ -133,7 +133,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-				<button type="button" class="btn btn-primary" onclick="collectionList();">确认创建</button>
+				<button type="button" class="btn btn-primary" onclick="newCollection();">确认创建</button>
 			</div>
 		</div>
 	</div>

@@ -825,7 +825,7 @@ function followQuestionOnFollowing(question_id) {
 	}
 }
 
-// 创建收藏夹
+// 创建收藏夹跳转
 function newCollectionRedirect() {
 	var newCollectionModal = document.getElementById("newCollectionModal");
 	var collectionListModal = document.getElementById("collectionListModal");
@@ -834,13 +834,38 @@ function newCollectionRedirect() {
 	newCollectionModal.style.display = "block";
 }
 
-// 收藏夹列表
-function collectionList() {
+// 创建收藏夹并跳转到收藏夹列表
+function newCollection() {
 	var newCollectionModal = document.getElementById("newCollectionModal");
 	var collectionListModal = document.getElementById("collectionListModal");
 	
-	collectionListModal.style.display = "block";
-	newCollectionModal.style.display = "none";
+	var foldername = document.getElementById("foldername").value;
+	var description = document.getElementById("description").value;
+	var is_publics = document.getElementsByName("is_public");
+	var is_public;
+	
+	alert(foldername);
+	alert(description);
+	if(is_publics[0].checked) {
+		is_public = 1;
+		alert(1);
+	} else if(is_publics[1].checked) {
+		is_public = 0;
+		alert(0);
+	}
+	
+	var parameter = "foldername=" + foldername + "&description=" + description
+			+ "&is_public=" + is_public;
+	
+	loadXMLDoc2("CreateCollectionServlet", parameter, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			// var obj = JSON.parse(xmlhttp.responseText);
+			alert(xmlhttp.responseText);
+		}
+	});
+	
+	//collectionListModal.style.display = "block";
+	//newCollectionModal.style.display = "none";
 }
 
 
