@@ -22,6 +22,20 @@
     		#{followers_num}, 
     		#{is_public})
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="CollectionFolderList" type="CollectionFolder">
+    	<id column="id" property="id"/>
+    	<result column="foldername" property="foldername"/>
+    	<result column="description" property="description"/>
+    	<result column="owner_id" property="owner_id"/>
+    	<result column="answers_num" property="answers_num"/>
+    	<result column="followers_num" property="followers_num"/>
+    	<result column="is_public" property="is_public"/>
+    </resultMap>
+    <select id="queryCollectionFolderByMid" parameterType="int" resultMap="CollectionFolderList">
+        select * from collection_folder where owner_id = #{id}
+    </select>    
 </mapper>
 
 

@@ -2,6 +2,7 @@ package com.mellisuga.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONObject;
 
 import com.mellisuga.dao.CollectionFolderDAO;
+import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.CollectionFolder;
 import com.mellisuga.model.Member;
@@ -45,6 +48,7 @@ public class CreateCollectionServlet extends HttpServlet {
 		try {
 			session = DBConnection.openDefaultSession();
 			
+			// 插入收藏夹
 			CollectionFolderDAO collectionFolderDAO = session.getMapper(CollectionFolderDAO.class);
 			CollectionFolder collectionFolder = new CollectionFolder();
 			collectionFolder.setFoldername(foldername);
@@ -55,11 +59,26 @@ public class CreateCollectionServlet extends HttpServlet {
 			collectionFolder.setIs_public(is_public);
 			collectionFolderDAO.insertCollectionFolder(collectionFolder);
 			
+			// 更新用户收藏夹数量
+			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
+			Member member = memberDAO.queryMemberByID(m.getId());
+			member.setCollect_num(member.getCollect_num() + 1);
+			memberDAO.updateMember(member);
+			
 			session.commit();
 			
 			// 返回收藏夹列表
+			List<CollectionFolder> collectionFolderList = collectionFolderDAO.queryCollectionFolderByMid(m.getId());
+			for(CollectionFolder cf : collectionFolderList) {
+				System.out.println(cf.getId() + "=" + cf.getFoldername());
+			}
 			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("collectionFolderList", collectionFolderList);
 			
+			// 返回收藏夹json
+			//System.out.println(jsonObject.toString());
+			out.print(jsonObject.toString());
 		} catch (Exception e) {
 			out.print("create collection folder error!");
 			e.printStackTrace();
@@ -67,7 +86,6 @@ public class CreateCollectionServlet extends HttpServlet {
 			DBConnection.closeSession(session);
 		}
 		
-		out.print("create collection folder succsss!~");
 	}
 
 }
