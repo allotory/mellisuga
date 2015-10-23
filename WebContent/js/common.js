@@ -906,8 +906,6 @@ function newCollection() {
 					document.getElementById("collectionFolderList").appendChild(panelDiv);
 				}
 			}
-			
-			alert(xmlhttp.responseText);
 		}
 	});
 	
@@ -915,7 +913,64 @@ function newCollection() {
 	newCollectionModal.style.display = "none";
 }
 
+// 获取收藏夹列表
+function getCollectionList() {
+	loadXMLDoc("CollectionFolderListServlet", function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var obj = JSON.parse(xmlhttp.responseText);
+			var content;
+			if(obj.collectionFolderList.length == 0) {
+				content = "<div class='panel-body'>"
+				+ "<div style='color: #999; text-align:center;'>"
+				+ "您可以创建多个收藏夹，将答案分类收藏"
+				+ "</div>"
+				+ "</div>";
+				
+				var panelDiv = document.createElement('div');
+				panelDiv.className = "panel panel-default";
+				panelDiv.innerHTML = content;
+				document.getElementById("collectionFolderList").appendChild(panelDiv);
+			} else if(obj.collectionFolderList.length > 0) {
+				for(var i = 0; i< obj.collectionFolderList.length; i++) {
+					//alert(obj.collectionFolderList[i].foldername);
 
+					if (obj.collectionFolderList[i].is_public == 1) {
+
+						content = "<div class='panel-body'>"
+						+ "<div class='meta-color' style='display: inline;'>"
+						+ "<i class='fa fa-unlock'></i> " + obj.collectionFolderList[i].foldername
+						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<i class='fa fa-check-circle'></i>"
+						+ "</div>"
+						+ "</div>"
+						+ "<div class='meta-color'>"
+						+ obj.collectionFolderList[i].answers_num + "条答案，" + obj.collectionFolderList[i].followers_num + "人关注"
+						+ "</div>"
+						+ "</div>";
+					} else if(obj.collectionFolderList[i].is_public == 0) {
+
+						content = "<div class='panel-body'>"
+						+ "<div class='meta-color' style='display: inline;'>"
+						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderList[i].foldername
+						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<i class='fa fa-check-circle'></i>"
+						+ "</div>"
+						+ "</div>"
+						+ "<div class='meta-color'>"
+						+ obj.collectionFolderList[i].answers_num + "条答案，" + obj.collectionFolderList[i].followers_num + "人关注"
+						+ "</div>"
+						+ "</div>";
+						
+					}
+					var panelDiv = document.createElement('div');
+					panelDiv.className = "panel panel-default";
+					panelDiv.innerHTML = content;
+					document.getElementById("collectionFolderList").appendChild(panelDiv);
+				}
+			}
+		}
+	});
+}
 
 
 
