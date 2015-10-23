@@ -866,9 +866,16 @@ function newCollection() {
 				
 				var panelDiv = document.createElement('div');
 				panelDiv.className = "panel panel-default";
+				panelDiv.id = "noCollectionFolder";
 				panelDiv.innerHTML = content;
 				document.getElementById("collectionFolderList").appendChild(panelDiv);
 			} else if(obj.collectionFolderList.length > 0) {
+				// 判断当前没有收藏夹提示div是否存在，并删除
+				var noCollectionFolderDiv = document.getElementById("noCollectionFolder");
+				if(noCollectionFolderDiv) {
+					noCollectionFolderDiv.parentNode.removeChild(noCollectionFolderDiv);
+				}
+				
 				for(var i = 0; i< obj.collectionFolderList.length; i++) {
 					//alert(obj.collectionFolderList[i].foldername);
 
@@ -877,7 +884,7 @@ function newCollection() {
 						content = "<div class='panel-body'>"
 						+ "<div class='meta-color' style='display: inline;'>"
 						+ "<i class='fa fa-unlock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<div class='module-right collect-circle' style=''>"
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
@@ -890,7 +897,7 @@ function newCollection() {
 						content = "<div class='panel-body'>"
 						+ "<div class='meta-color' style='display: inline;'>"
 						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<div class='module-right collect-circle' style=''>"
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
@@ -914,7 +921,8 @@ function newCollection() {
 }
 
 // 获取收藏夹列表
-function getCollectionList() {
+function getCollectionList(answer_id) {
+	alert(answer_id);
 	loadXMLDoc("CollectionFolderListServlet", function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
@@ -928,18 +936,25 @@ function getCollectionList() {
 				
 				var panelDiv = document.createElement('div');
 				panelDiv.className = "panel panel-default";
+				panelDiv.id = "noCollectionFolder";
 				panelDiv.innerHTML = content;
 				document.getElementById("collectionFolderList").appendChild(panelDiv);
 			} else if(obj.collectionFolderList.length > 0) {
+				// 判断当前没有收藏夹提示div是否存在，并删除
+				var noCollectionFolderDiv = document.getElementById("noCollectionFolder");
+				if(noCollectionFolderDiv) {
+					noCollectionFolderDiv.parentNode.removeChild(noCollectionFolderDiv);
+				}
+				
 				for(var i = 0; i< obj.collectionFolderList.length; i++) {
 					//alert(obj.collectionFolderList[i].foldername);
 
 					if (obj.collectionFolderList[i].is_public == 1) {
 
-						content = "<div class='panel-body'>"
+						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderList[i].id + ");'>"
 						+ "<div class='meta-color' style='display: inline;'>"
 						+ "<i class='fa fa-unlock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<div id='collect_circle' class='module-right collect-circle' style='display: none;'>"
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
@@ -949,10 +964,10 @@ function getCollectionList() {
 						+ "</div>";
 					} else if(obj.collectionFolderList[i].is_public == 0) {
 
-						content = "<div class='panel-body'>"
+						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ");'>"
 						+ "<div class='meta-color' style='display: inline;'>"
 						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div class='module-right' style='font-size:26px;color:#4caf50;'>"
+						+ "<div class='module-right collect-circle' style='display: none;'>"
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
@@ -972,7 +987,34 @@ function getCollectionList() {
 	});
 }
 
-
+// 收藏答案
+function collect(answer_id, collection_folder_id) {
+	var collect_circle = document.getElementById("collect_circle");
+	
+	if(collect_circle.style.display == "block") {
+		// 从收藏夹删除答案
+//		loadXMLDoc("UnCollectAnswerServlet", function() {
+//			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//				
+//			}
+//		});
+		
+	} else if(collect_circle.style.display == "none") {
+		// 添加答案到收藏夹
+		loadXMLDoc("CollectAnswerServlet?answer_id=" + answer_id 
+				+ "&collection_folder_id=" + collection_folder_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "addToCollectionFolderError!") {
+					alert("添加到收藏夹失败，请稍候重试！");
+				} else {
+					collect_circle.style.display = "block";
+				}
+			}
+		});
+		
+		collect_circle.style.display = "block";
+	}
+}
 
 
 

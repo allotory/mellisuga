@@ -446,3 +446,12 @@ del {
 	font-size: 11px;
 	color: #999;
 }
+
+.collect-circle {
+	font-size: 26px;
+	color: #4caf50;
+}
+
+.mouse-hand {
+    cursor: pointer;
+}

@@ -74,7 +74,6 @@ public class CreateCollectionServlet extends HttpServlet {
 			jsonObject.put("collectionFolderList", collectionFolderList);
 			
 			// 返回收藏夹json
-			//System.out.println(jsonObject.toString());
 			out.print(jsonObject.toString());
 		} catch (Exception e) {
 			out.print("create collection folder error!");

@@ -11,4 +11,10 @@ public interface CollectionFolderDAO {
 	
 	// 由用户id查询全部收藏夹
 	public List<CollectionFolder> queryCollectionFolderByMid(int id);
+	
+	// 由id查询收藏夹
+	public CollectionFolder queryCollectionFolderById(int id);
+	
+	// 更新收藏夹
+	public void updateCollectionFolder(CollectionFolder collectionFolder);
 }
