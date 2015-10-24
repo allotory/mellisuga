@@ -923,11 +923,12 @@ function newCollection() {
 // 获取收藏夹列表
 function getCollectionList(answer_id) {
 	alert(answer_id);
-	loadXMLDoc("CollectionFolderListServlet", function() {
+	loadXMLDoc("CollectionFolderListServlet?answer_id=" + answer_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
+			alert(xmlhttp.responseText);
 			var content;
-			if(obj.collectionFolderList.length == 0) {
+			if(obj.collectionFolderBeanList.length == 0) {
 				content = "<div class='panel-body'>"
 				+ "<div style='color: #999; text-align:center;'>"
 				+ "您可以创建多个收藏夹，将答案分类收藏"
@@ -939,40 +940,48 @@ function getCollectionList(answer_id) {
 				panelDiv.id = "noCollectionFolder";
 				panelDiv.innerHTML = content;
 				document.getElementById("collectionFolderList").appendChild(panelDiv);
-			} else if(obj.collectionFolderList.length > 0) {
+			} else if(obj.collectionFolderBeanList.length > 0) {
 				// 判断当前没有收藏夹提示div是否存在，并删除
 				var noCollectionFolderDiv = document.getElementById("noCollectionFolder");
 				if(noCollectionFolderDiv) {
 					noCollectionFolderDiv.parentNode.removeChild(noCollectionFolderDiv);
 				}
 				
-				for(var i = 0; i< obj.collectionFolderList.length; i++) {
+				for(var i = 0; i< obj.collectionFolderBeanList.length; i++) {
 					//alert(obj.collectionFolderList[i].foldername);
 
-					if (obj.collectionFolderList[i].is_public == 1) {
+					// 判断是否已经收藏
+					var isCollected;
+					if(obj.collectionFolderBeanList[i].collected) {
+						isCollected = "<div id='collect_circle-" + obj.collectionFolderBeanList[i].collectionFolder.id + "' class='module-right collect-circle' style='display: block;'>";
+					} else {
+						isCollected = "<div id='collect_circle-" + obj.collectionFolderBeanList[i].collectionFolder.id + "' class='module-right collect-circle' style='display: none;'>";
+					}
+					
+					if (obj.collectionFolderBeanList[i].collectionFolder.is_public == 1) {
 
-						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderList[i].id + ");'>"
+						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderBeanList[i].collectionFolder.id + ");'>"
 						+ "<div class='meta-color' style='display: inline;'>"
-						+ "<i class='fa fa-unlock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div id='collect_circle' class='module-right collect-circle' style='display: none;'>"
+						+ "<i class='fa fa-unlock'></i> " + obj.collectionFolderBeanList[i].collectionFolder.foldername
+						+ isCollected
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
 						+ "<div class='meta-color'>"
-						+ obj.collectionFolderList[i].answers_num + "条答案，" + obj.collectionFolderList[i].followers_num + "人关注"
+						+ obj.collectionFolderBeanList[i].collectionFolder.answers_num + "条答案，" + obj.collectionFolderBeanList[i].collectionFolder.followers_num + "人关注"
 						+ "</div>"
 						+ "</div>";
-					} else if(obj.collectionFolderList[i].is_public == 0) {
+					} else if(obj.collectionFolderBeanList[i].collectionFolder.is_public == 0) {
 
 						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ");'>"
 						+ "<div class='meta-color' style='display: inline;'>"
-						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderList[i].foldername
-						+ "<div class='module-right collect-circle' style='display: none;'>"
+						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderBeanList[i].collectionFolder.foldername
+						+ isCollected
 						+ "<i class='fa fa-check-circle'></i>"
 						+ "</div>"
 						+ "</div>"
 						+ "<div class='meta-color'>"
-						+ obj.collectionFolderList[i].answers_num + "条答案，" + obj.collectionFolderList[i].followers_num + "人关注"
+						+ obj.collectionFolderBeanList[i].collectionFolder.answers_num + "条答案，" + obj.collectionFolderBeanList[i].collectionFolder.followers_num + "人关注"
 						+ "</div>"
 						+ "</div>";
 						
@@ -989,7 +998,7 @@ function getCollectionList(answer_id) {
 
 // 收藏答案
 function collect(answer_id, collection_folder_id) {
-	var collect_circle = document.getElementById("collect_circle");
+	var collect_circle = document.getElementById("collect_circle-" + collection_folder_id);
 	
 	if(collect_circle.style.display == "block") {
 		// 从收藏夹删除答案

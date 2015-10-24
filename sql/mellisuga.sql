@@ -266,6 +266,7 @@ CREATE TABLE IF NOT EXISTS collection (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 收藏ID（唯一标识） */
 	answer_id int(11) NOT NULL,					/* 被收藏的答案ID */
 	collection_folder_id int(11) NOT NULL,		/* 所属收藏夹ID */
+	owner_id int(11) NOT NULL,					/* 收藏夹所属用户ID */
 	PRIMARY KEY (id)
 );
 

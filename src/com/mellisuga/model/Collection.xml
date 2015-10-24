@@ -7,9 +7,15 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到Collections的id属性--> 
     <insert id="insertCollection" parameterType="Collection" useGeneratedKeys="true" keyProperty="id">
-    	insert into collection(answer_id, collection_folder_id) 
-    	values(#{answer_id}, #{collection_folder_id})
+    	insert into collection(answer_id, collection_folder_id, owner_id) 
+    	values(#{answer_id}, #{collection_folder_id}, #{owner_id})
     </insert>
+    
+    <!-- 查询单一数据 -->
+	<select id="queryCollectionByACid" parameterType="java.util.HashMap" resultType="Collection">
+        select * from collection where answer_id = #{a_id} 
+        	and collection_folder_id = #{cf_id}
+    </select>
 </mapper>
 
 

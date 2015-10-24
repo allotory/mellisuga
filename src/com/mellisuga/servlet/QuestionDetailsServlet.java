@@ -59,9 +59,9 @@ public class QuestionDetailsServlet extends HttpServlet {
 			 * 		|         	|              	 |        		|
 			 * 	 Question    List<Tag>    List<AnswerBean>	isFollowing
 			 * 									 |
-			 * 			 --------------------------------------
-			 * 			 |   	 |       |         |           |
-			 * 		isThanked  Answer   Member	  Vote   List<voterBean>
+			 * 			 --------------------------------------------------------
+			 * 			 |   	 |       |         |           |				|
+			 * 		isThanked  Answer   Member	  Vote   List<voterBean>	isCollected
 			 * 													|
 			 * 											 ---------------
 			 * 											 |		       |	

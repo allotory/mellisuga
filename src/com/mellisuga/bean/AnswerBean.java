@@ -16,6 +16,8 @@ public class AnswerBean {
 	
 	private boolean isThanked;
 	
+	private boolean isCollected;
+	
 	public Answers getAnswer() {
 		return answer;
 	}
@@ -54,6 +56,14 @@ public class AnswerBean {
 
 	public void setThanked(boolean isThanked) {
 		this.isThanked = isThanked;
+	}
+
+	public boolean isCollected() {
+		return isCollected;
+	}
+
+	public void setCollected(boolean isCollected) {
+		this.isCollected = isCollected;
 	}
 	
 }

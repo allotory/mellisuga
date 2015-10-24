@@ -16,6 +16,7 @@ import com.mellisuga.dao.CollectionFolderDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Collection;
 import com.mellisuga.model.CollectionFolder;
+import com.mellisuga.model.Member;
 
 @WebServlet("/CollectAnswerServlet")
 public class CollectAnswerServlet extends HttpServlet {
@@ -33,6 +34,7 @@ public class CollectAnswerServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
+		Member m = (Member) request.getSession().getAttribute("member");
 		int answer_id = Integer.parseInt(request.getParameter("answer_id"));
 		int collection_folder_id = Integer.parseInt(request.getParameter("collection_folder_id"));
 		
@@ -43,6 +45,7 @@ public class CollectAnswerServlet extends HttpServlet {
 			Collection collection = new Collection();
 			collection.setAnswer_id(answer_id);
 			collection.setCollection_folder_id(collection_folder_id);
+			collection.setOwner_id(m.getId());
 			collectionDAO.insertCollection(collection);
 			
 			// 更新收藏夹答案数量

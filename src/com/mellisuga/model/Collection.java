@@ -7,6 +7,8 @@ public class Collection {
 	private int answer_id;
 	
 	private int collection_folder_id;
+	
+	private int owner_id;
 
 	public int getId() {
 		return id;
@@ -30,6 +32,14 @@ public class Collection {
 
 	public void setCollection_folder_id(int collection_folder_id) {
 		this.collection_folder_id = collection_folder_id;
+	}
+
+	public int getOwner_id() {
+		return owner_id;
+	}
+
+	public void setOwner_id(int owner_id) {
+		this.owner_id = owner_id;
 	}
 	
 }
