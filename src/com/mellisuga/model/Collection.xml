@@ -31,6 +31,12 @@
 	<select id="queryCollectionByACid" parameterType="java.util.HashMap" resultType="Collections">
         select * from collection where answer_id = #{a_id} and collection_folder_id = #{cf_id}
     </select>
+    
+    <!-- 删除 -->
+    <delete id="deleteCollectionByACid" parameterType="java.util.HashMap">
+    	delete from collection where answer_id = #{answer_id} 
+    		and collection_folder_id = #{collection_folder_id}
+    </delete> 
 </mapper>
 
 

@@ -956,7 +956,7 @@ function getCollectionList(answer_id) {
 					} else {
 						isCollected = "<div id='collect_circle-" + obj.collectionFolderBeanList[i].collectionFolder.id + "' class='module-right collect-circle' style='display: none;'>";
 					}
-					
+					alert(obj.collectionFolderBeanList[i].collected);
 					if (obj.collectionFolderBeanList[i].collectionFolder.is_public == 1) {
 
 						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderBeanList[i].collectionFolder.id + ");'>"
@@ -1001,12 +1001,17 @@ function collect(answer_id, collection_folder_id) {
 
 	if(collect_circle.style.display == "block") {
 		// 从收藏夹删除答案
-//		loadXMLDoc("UnCollectAnswerServlet", function() {
-//			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//				
-//			}
-//		});
-		
+		loadXMLDoc("UnCollectAnswerServlet?answer_id=" + answer_id 
+				+ "&collection_folder_id=" + collection_folder_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "delFromCollectionFolderError!") {
+					alert("取消收藏失败，请稍候重试！");
+				} else {
+					collect_circle.style.display = "none";
+				}
+			}
+		});
+		collect_circle.style.display = "none";
 	} else if(collect_circle.style.display == "none") {
 		// 添加答案到收藏夹
 		loadXMLDoc("CollectAnswerServlet?answer_id=" + answer_id 
