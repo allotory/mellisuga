@@ -1036,7 +1036,28 @@ function collect(answer_id, collection_folder_id) {
 	}
 }
 
-
+// 没有帮助
+function nohelp(answer_id) {
+	
+	var nohelp = document.getElementById("nohelp-" + answer_id);
+	
+	if (nohelp.title == "nohelp") {
+		nohelp.title = "unnohelp";
+		nohelp.innerHTML = "撤消没有帮助";
+		loadXMLDoc("NoHelpServlet?answer_id=" + answer_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "addnohelperror") {
+					alert("插入没有帮助败，请稍候重试");
+					nohelp.title = "nohelp";
+					nohelp.innerHTML = "没有帮助";
+				}
+			}
+		});
+	} else if(nohelp.title == "unnohelp") {
+		nohelp.title = "nohelp";
+		nohelp.innerHTML = "没有帮助";
+	}
+}
 
 
 

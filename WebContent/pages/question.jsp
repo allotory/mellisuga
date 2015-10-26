@@ -381,7 +381,11 @@ boolean is_answered = false;
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
+											
+											<a title="nohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
+												id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">没有帮助</a>
+											<!-- <a href="#" class="meta-item">撤消没有帮助</a>  -->
+											
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block">
 												举报
@@ -503,7 +507,7 @@ boolean is_answered = false;
 					</div>
 
 					<div class="sidebar-group">
-						<span><a href="#">155</a> 人关注该问题</span>
+						<span><a href="#"><%=questionBean.getQuestion().getFollowers_num() %></a> 人关注该问题</span>
 					</div>
 
 					<div class="sidebar-group">
