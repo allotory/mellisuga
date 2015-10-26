@@ -6,15 +6,30 @@
     <!-- 插入 -->
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到Collections的id属性--> 
-    <insert id="insertCollection" parameterType="Collection" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertCollection" parameterType="Collections" useGeneratedKeys="true" keyProperty="id">
     	insert into collection(answer_id, collection_folder_id, owner_id) 
     	values(#{answer_id}, #{collection_folder_id}, #{owner_id})
     </insert>
-    
+
+	<!-- 
+		混沌之初，创建Configureation.xml时，Collection 的 typeAlias 标签里面的alias属性用的
+		是 Collection , 但是 Collection 已经被 java.util.Collection 映射了，所以会提示
+		org.apache.ibatis.type.TypeException: 
+			The alias 'Collection' is already mapped to the value 'java.util.Collection'.
+		所以被改成了 Collections , 随后就忘了这一茬了!!!
+		
+		N久之后，时空已经运转到收藏答案了，下面查询收藏时使用的是 Collection 作为 resultType ，这时问题出现了
+		会报 java.lang.UnsupportedOperationException 异常。
+		
+		在 google 上百度了好几下都说是结果类型出错，一直都觉得是 Collection ，没错，一定没错，纠结了两天才发现问题所在，
+		少了个 s 啊啊啊！
+		
+		但是，另一个问题来了，上面插入收藏的时候 parameterType 一直用的是 Collection 并没有出错，why？
+		将 parameterType 改为 Collections 也没有报错，并插入成功，什么原理？
+	 -->
     <!-- 查询单一数据 -->
-	<select id="queryCollectionByACid" parameterType="java.util.HashMap" resultType="Collection">
-        select * from collection where answer_id = #{a_id} 
-        	and collection_folder_id = #{cf_id}
+	<select id="queryCollectionByACid" parameterType="java.util.HashMap" resultType="Collections">
+        select * from collection where answer_id = #{a_id} and collection_folder_id = #{cf_id}
     </select>
 </mapper>
 

@@ -922,7 +922,7 @@ function newCollection() {
 
 // 获取收藏夹列表
 function getCollectionList(answer_id) {
-	alert(answer_id);
+
 	loadXMLDoc("CollectionFolderListServlet?answer_id=" + answer_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
@@ -948,7 +948,6 @@ function getCollectionList(answer_id) {
 				}
 				
 				for(var i = 0; i< obj.collectionFolderBeanList.length; i++) {
-					//alert(obj.collectionFolderList[i].foldername);
 
 					// 判断是否已经收藏
 					var isCollected;
@@ -973,7 +972,7 @@ function getCollectionList(answer_id) {
 						+ "</div>";
 					} else if(obj.collectionFolderBeanList[i].collectionFolder.is_public == 0) {
 
-						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ");'>"
+						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderBeanList[i].collectionFolder.id + ");'>"
 						+ "<div class='meta-color' style='display: inline;'>"
 						+ "<i class='fa fa-lock'></i> " + obj.collectionFolderBeanList[i].collectionFolder.foldername
 						+ isCollected
@@ -999,7 +998,7 @@ function getCollectionList(answer_id) {
 // 收藏答案
 function collect(answer_id, collection_folder_id) {
 	var collect_circle = document.getElementById("collect_circle-" + collection_folder_id);
-	
+
 	if(collect_circle.style.display == "block") {
 		// 从收藏夹删除答案
 //		loadXMLDoc("UnCollectAnswerServlet", function() {
