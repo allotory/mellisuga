@@ -61,6 +61,7 @@ public class CollectionFolderListServlet extends HttpServlet {
 				HashMap<String, Object> parameterMap = new HashMap<String, Object>();
 				parameterMap.put("a_id", answer_id);
 				parameterMap.put("cf_id", cf.getId());
+				
 				Collection collection = collectionDAO.queryCollectionByACid(parameterMap);
 				if(collection != null) {
 					collectionFolderBean.setCollected(true);
@@ -74,8 +75,8 @@ public class CollectionFolderListServlet extends HttpServlet {
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("collectionFolderBeanList", collectionFolderBeanList);
 			
-			// 返回收藏夹json
-			System.out.println(jsonObject.toString());
+			// 返回收藏夹 json
+			//System.out.println(jsonObject.toString());
 			out.print(jsonObject.toString());
 		} catch (Exception e) {
 			out.print("get collection folder list error!");

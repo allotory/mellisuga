@@ -922,11 +922,18 @@ function newCollection() {
 
 // 获取收藏夹列表
 function getCollectionList(answer_id) {
-
+	
+	// 移除collectionFolderList中的全部节点
+	var div = document.getElementById("collectionFolderList");
+	while(div.hasChildNodes()) {
+	    div.removeChild(div.firstChild);
+	}
+	
+	alert(answer_id);
 	loadXMLDoc("CollectionFolderListServlet?answer_id=" + answer_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
-			alert(xmlhttp.responseText);
+			//alert(xmlhttp.responseText);
 			var content;
 			if(obj.collectionFolderBeanList.length == 0) {
 				content = "<div class='panel-body'>"
@@ -956,7 +963,7 @@ function getCollectionList(answer_id) {
 					} else {
 						isCollected = "<div id='collect_circle-" + obj.collectionFolderBeanList[i].collectionFolder.id + "' class='module-right collect-circle' style='display: none;'>";
 					}
-					alert(obj.collectionFolderBeanList[i].collected);
+
 					if (obj.collectionFolderBeanList[i].collectionFolder.is_public == 1) {
 
 						content = "<div class='panel-body mouse-hand' onclick='collect(" + answer_id + ", " + obj.collectionFolderBeanList[i].collectionFolder.id + ");'>"

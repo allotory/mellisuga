@@ -422,7 +422,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<a href="#" class="meta-item" >
 												<i class="fa fa-share"></i> 分享
 											</a>
-											<a href="#" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
+											<a onclick="getCollectionList(<%=trendsBean.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
@@ -682,7 +682,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<a href="#" class="meta-item" >
 												<i class="fa fa-share"></i> 分享
 											</a>
-											<a href="#" class="meta-item">
+											<a onclick="getCollectionList(<%=trendsBean.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
