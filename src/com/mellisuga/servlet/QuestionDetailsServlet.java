@@ -19,6 +19,7 @@ import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.NoHelpDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
 import com.mellisuga.dao.ThanksDAO;
@@ -26,6 +27,7 @@ import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.NoHelp;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Tag;
 import com.mellisuga.model.Thanks;
@@ -52,21 +54,21 @@ public class QuestionDetailsServlet extends HttpServlet {
 		try {
 			session = DBConnection.openDefaultSession();
 			
-			/**				
-			 * 				QuestionBean
-			 * 					 |
-			 * 		---------------------------------------------
-			 * 		|         	|              	 |        		|
-			 * 	 Question    List<Tag>    List<AnswerBean>	isFollowing
-			 * 									 |
-			 * 			 --------------------------------------------------------
-			 * 			 |   	 |       |         |           |				|
-			 * 		isThanked  Answer   Member	  Vote   List<voterBean>	isCollected
-			 * 													|
-			 * 											 ---------------
-			 * 											 |		       |	
-			 * 										  List<Member>   UpCount
-			 */
+/**				
+ * 				QuestionBean
+ * 					 |
+ * 		---------------------------------------------
+ * 		|         	|              	 |        		|
+ * 	 Question    List<Tag>    List<AnswerBean>	isFollowing
+ * 									 |
+ * 			 --------------------------------------------------------------------
+ * 			 |   	 |       |         |           |				|			|
+ * 		isThanked  Answer   Member	  Vote   List<voterBean>	isCollected	  isNoHelp
+ * 													|
+ * 											 ---------------
+ * 											 |		       |	
+ * 										  List<Member>   UpCount
+ */
 
 			// 查询问题
 			QuestionDAO questionDAO = session.getMapper(QuestionDAO.class);
@@ -92,6 +94,7 @@ public class QuestionDetailsServlet extends HttpServlet {
 			// 查询答案
 			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
 			ThanksDAO thanksDAO = session.getMapper(ThanksDAO.class);
+			NoHelpDAO noHelpDAO = session.getMapper(NoHelpDAO.class);
 			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(q);
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
 			if(answersList != null && !answersList.isEmpty()) {
@@ -112,6 +115,17 @@ public class QuestionDetailsServlet extends HttpServlet {
 						answerBean.setThanked(false);
 					} else {
 						answerBean.setThanked(true);
+					}
+					
+					// 查询是否没有帮助
+					HashMap<String, Object> noHelpMap = new HashMap<String, Object>();
+					noHelpMap.put("answer_id", a.getId());
+					noHelpMap.put("member_id", m.getId());
+					NoHelp noHelp = noHelpDAO.queryNoHelpByAMid(noHelpMap);
+					if(noHelp == null) {
+						answerBean.setNoHelp(false);
+					} else {
+						answerBean.setNoHelp(true);
 					}
 					
 					// 查询是否投票

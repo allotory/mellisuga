@@ -18,6 +18,8 @@ public class AnswerBean {
 	
 	private boolean isCollected;
 	
+	private boolean isNoHelp;
+	
 	public Answers getAnswer() {
 		return answer;
 	}
@@ -64,6 +66,14 @@ public class AnswerBean {
 
 	public void setCollected(boolean isCollected) {
 		this.isCollected = isCollected;
+	}
+
+	public boolean isNoHelp() {
+		return isNoHelp;
+	}
+
+	public void setNoHelp(boolean isNoHelp) {
+		this.isNoHelp = isNoHelp;
 	}
 	
 }

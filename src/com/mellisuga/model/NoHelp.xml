@@ -10,6 +10,18 @@
     	insert into nohelp(answer_id, member_id) 
     	values(#{answer_id}, #{member_id})
     </insert>
+    
+    <!-- 查询单一数据 -->
+	<select id="queryNoHelpByAMid" parameterType="java.util.HashMap" resultType="NoHelp">
+        select * from nohelp where answer_id = #{answer_id} 
+        	and member_id = #{member_id}
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="delNoHelpByAMid" parameterType="java.util.HashMap">
+    	delete from nohelp where answer_id = #{answer_id} 
+    		and member_id = #{member_id}
+    </delete>
 </mapper>
 
 

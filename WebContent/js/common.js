@@ -1047,7 +1047,7 @@ function nohelp(answer_id) {
 		loadXMLDoc("NoHelpServlet?answer_id=" + answer_id, function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				if(xmlhttp.responseText == "addnohelperror") {
-					alert("插入没有帮助败，请稍候重试");
+					alert("插入没有帮助失败，请稍候重试");
 					nohelp.title = "nohelp";
 					nohelp.innerHTML = "没有帮助";
 				}
@@ -1056,6 +1056,15 @@ function nohelp(answer_id) {
 	} else if(nohelp.title == "unnohelp") {
 		nohelp.title = "nohelp";
 		nohelp.innerHTML = "没有帮助";
+		loadXMLDoc("UnNoHelpServlet?answer_id=" + answer_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "delnohelperror") {
+					alert("删除没有帮助失败，请稍候重试");
+					nohelp.title = "nohelp";
+					nohelp.innerHTML = "没有帮助";
+				}
+			}
+		});
 	}
 }
 

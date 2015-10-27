@@ -334,6 +334,7 @@ boolean is_answered = false;
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
 										<%
+											// 判断是否有评论	
 											if(ab.getAnswer().getReply_num() == 0) {
 										%>
 										<a href="#comment-<%=ab.getAnswer().getId() %>" 
@@ -382,10 +383,20 @@ boolean is_answered = false;
 											</a>
 											<span class="bull">•</span>
 											
+											<%
+												// 判断是否没有帮助
+												if(!ab.isNoHelp()) {
+											%>
 											<a title="nohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
 												id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">没有帮助</a>
-											<!-- <a href="#" class="meta-item">撤消没有帮助</a>  -->
-											
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
+												id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block">
 												举报
