@@ -39,6 +39,8 @@
         <typeAlias alias="Invite" type="com.mellisuga.model.Invite"/>
         <typeAlias alias="Draft" type="com.mellisuga.model.Draft"/>
         <typeAlias alias="Trends" type="com.mellisuga.model.Trends"/>
+        <typeAlias alias="ReportType" type="com.mellisuga.model.ReportType"/>
+        <typeAlias alias="Report" type="com.mellisuga.model.Report"/>
         
     </typeAliases> 
 
@@ -98,5 +100,7 @@
         <mapper resource="com/mellisuga/model/Invite.xml"/>
         <mapper resource="com/mellisuga/model/Draft.xml"/>
         <mapper resource="com/mellisuga/model/Trends.xml"/>
+        <mapper resource="com/mellisuga/model/ReportType.xml"/>
+        <mapper resource="com/mellisuga/model/Report.xml"/>
     </mappers>
 </configuration>

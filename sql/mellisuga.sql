@@ -348,3 +348,22 @@ CREATE TABLE IF NOT EXISTS user_system_msg (
 	PRIMARY KEY (id)
 );
 
+/**
+ * 举报类型表
+ */
+CREATE TABLE IF NOT EXISTS report_type (
+	id int(11) NOT NULL AUTO_INCREMENT,				/* 举报类型主键ID（唯一标识） */
+	report_type_content varchar(64) NOT NULL;	    /* 举报类型 */
+	PRIMARY KEY (id)
+);
+	
+/**
+ * 举报表
+ */
+CREATE TABLE IF NOT EXISTS report (
+	id int(11) NOT NULL AUTO_INCREMENT,		/* 举报主键ID（唯一标识） */
+	report_type_id varchar(64) NOT NULL,	/* 举报类型 ID */
+	report_category int(11) NOT NULL,		/* 举报内容所属分类 0：问题，1：答案，2：评论 */
+	member_id int(11) NOT NULL,				/* 举报用户ID（唯一标识） */
+	PRIMARY KEY (id)
+);

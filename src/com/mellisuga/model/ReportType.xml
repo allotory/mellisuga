@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mellisuga.dao.ReportTypeDAO">
+    <!-- 插入 -->
+    <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
+    	 keyProperty="id"指定把获取到的主键值注入到ReportType的id属性--> 
+    <insert id="insertReportType" parameterType="ReportType" useGeneratedKeys="true" keyProperty="id">
+    	insert into report_type(report_type_content) 
+    	values(#{report_type_content})
+    </insert>
+</mapper>
+
+
