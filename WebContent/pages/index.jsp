@@ -426,7 +426,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
+											<%
+												// 判断是否没有帮助
+												if(!trendsBean.isNoHelp()) {
+											%>
+											<a title="nohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">没有帮助</a>
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 												举报
@@ -686,7 +699,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item">没有帮助</a>
+											
+											<%
+												// 判断是否没有帮助
+												if(!trendsBean.isNoHelp()) {
+											%>
+											<a title="nohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">没有帮助</a>
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 												举报

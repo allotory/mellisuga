@@ -1037,9 +1037,18 @@ function collect(answer_id, collection_folder_id) {
 }
 
 // 没有帮助
-function nohelp(answer_id) {
+function nohelp() {
 	
-	var nohelp = document.getElementById("nohelp-" + answer_id);
+	var paramlength = arguments.length;
+
+	if (paramlength == 1) {
+		var answer_id = arguments[0];
+		var nohelp = document.getElementById("nohelp-" + answer_id);
+	} else if (paramlength == 2){    
+        var answer_id = arguments[0];
+        var trends_id = arguments[1];
+        var nohelp = document.getElementById("nohelp-" + trends_id);
+    }
 	
 	if (nohelp.title == "nohelp") {
 		nohelp.title = "unnohelp";

@@ -18,6 +18,7 @@ import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.NoHelpDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.RoleDAO;
 import com.mellisuga.dao.RoleMemberDAO;
@@ -27,6 +28,7 @@ import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.NoHelp;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Role;
 import com.mellisuga.model.RoleMember;
@@ -130,6 +132,7 @@ public class InitInfoServlet extends HttpServlet {
 			VoteDAO voteDAO = defaultSession.getMapper(VoteDAO.class);
 			FollowDAO followDAO = defaultSession.getMapper(FollowDAO.class);
 			ThanksDAO thanksDAO = defaultSession.getMapper(ThanksDAO.class);
+			NoHelpDAO noHelpDAO = defaultSession.getMapper(NoHelpDAO.class);
 			List<Trends> trendsList = trendsDAO.queryAllTrends();
 			List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 			
@@ -224,6 +227,17 @@ public class InitInfoServlet extends HttpServlet {
 							trendsBean.setThanked(true);
 						}
 						
+						// 查询是否没有帮助
+						HashMap<String, Object> noHelpMap = new HashMap<String, Object>();
+						noHelpMap.put("answer_id", answers.getId());
+						noHelpMap.put("member_id", m.getId());
+						NoHelp noHelp = noHelpDAO.queryNoHelpByAMid(noHelpMap);
+						if(noHelp == null) {
+							trendsBean.setNoHelp(false);
+						} else {
+							trendsBean.setNoHelp(true);
+						}
+						
 					} else if("AnswerThisQuestion".equals(t.getTrends_type())) {
 						// 3：回答了该问题
 						trendsBean = new TrendsBean();
@@ -287,6 +301,17 @@ public class InitInfoServlet extends HttpServlet {
 							trendsBean.setThanked(false);
 						} else {
 							trendsBean.setThanked(true);
+						}
+						
+						// 查询是否没有帮助
+						HashMap<String, Object> noHelpMap = new HashMap<String, Object>();
+						noHelpMap.put("answer_id", answers.getId());
+						noHelpMap.put("member_id", m.getId());
+						NoHelp noHelp = noHelpDAO.queryNoHelpByAMid(noHelpMap);
+						if(noHelp == null) {
+							trendsBean.setNoHelp(false);
+						} else {
+							trendsBean.setNoHelp(true);
 						}
 						
 					} else if("AskAQuestion".equals(t.getTrends_type())) {

@@ -25,6 +25,8 @@ public class TrendsBean {
 	private boolean isFollowing;
 	
 	private boolean isThanked;
+	
+	private boolean isNoHelp;
 
 	public Trends getTrends() {
 		return trends;
@@ -96,6 +98,14 @@ public class TrendsBean {
 
 	public void setThanked(boolean isThanked) {
 		this.isThanked = isThanked;
+	}
+
+	public boolean isNoHelp() {
+		return isNoHelp;
+	}
+
+	public void setNoHelp(boolean isNoHelp) {
+		this.isNoHelp = isNoHelp;
 	}
 	
 }
