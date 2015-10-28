@@ -354,6 +354,7 @@ CREATE TABLE IF NOT EXISTS user_system_msg (
 CREATE TABLE IF NOT EXISTS report_type (
 	id int(11) NOT NULL AUTO_INCREMENT,				/* 举报类型主键ID（唯一标识） */
 	report_type_content varchar(64) NOT NULL;	    /* 举报类型 */
+	is_common int(11) NOT NULL,						/* 判断是否是通用类型（即答案评论类型） */
 	PRIMARY KEY (id)
 );
 	

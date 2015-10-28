@@ -3,9 +3,11 @@ package com.mellisuga.db;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.PermissionDAO;
+import com.mellisuga.dao.ReportTypeDAO;
 import com.mellisuga.dao.RoleDAO;
 import com.mellisuga.dao.RolePermissionDAO;
 import com.mellisuga.model.Permission;
+import com.mellisuga.model.ReportType;
 import com.mellisuga.model.Role;
 import com.mellisuga.model.RolePermission;
 
@@ -176,6 +178,53 @@ public class InitDB {
 			rolePermissionLU30.setPermission_id(readingPermission.getId());
 			// 插入
 			rolePermissionDAO.insertRolePermission(rolePermissionLU30);
+			
+			// 插入举报类型
+			ReportTypeDAO reportTypeDAO = session.getMapper(ReportTypeDAO.class);
+			/*
+			 * 广告等垃圾信息
+			 * 不友善内容
+			 * 违反法律法规的内容
+			 * 不宜公开讨论的政治内容
+			 * ×问题已失效或过期×
+			 * ×需要进一步修改×
+			 * 其他
+			 * */
+			ReportType reportType0 = new ReportType();
+			reportType0.setReport_type_content("广告等垃圾信息");
+			reportType0.setIs_common(1);
+
+			ReportType reportType1 = new ReportType();
+			reportType1.setReport_type_content("不友善内容");
+			reportType1.setIs_common(1);
+
+			ReportType reportType2 = new ReportType();
+			reportType2.setReport_type_content("违反法律法规的内容");
+			reportType2.setIs_common(1);
+
+			ReportType reportType3 = new ReportType();
+			reportType3.setReport_type_content("不宜公开讨论的政治内容");
+			reportType3.setIs_common(1);
+
+			ReportType reportType4 = new ReportType();
+			reportType4.setReport_type_content("问题已失效或过期");
+			reportType4.setIs_common(0);
+
+			ReportType reportType5 = new ReportType();
+			reportType5.setReport_type_content("需要进一步修改");
+			reportType5.setIs_common(0);
+
+			ReportType reportType6 = new ReportType();
+			reportType6.setReport_type_content("其他");
+			reportType6.setIs_common(1);
+			
+			reportTypeDAO.insertReportType(reportType0);
+			reportTypeDAO.insertReportType(reportType1);
+			reportTypeDAO.insertReportType(reportType2);
+			reportTypeDAO.insertReportType(reportType3);
+			reportTypeDAO.insertReportType(reportType4);
+			reportTypeDAO.insertReportType(reportType5);
+			reportTypeDAO.insertReportType(reportType6);
 			
 			session.commit();
 			

@@ -1077,7 +1077,12 @@ function nohelp() {
 	}
 }
 
-
+// 举报列表
+function reportList(report_category) {
+	if(report_category == 0) {
+		
+	}
+}
 
 
 

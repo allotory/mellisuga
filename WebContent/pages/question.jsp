@@ -128,10 +128,19 @@ boolean is_answered = false;
 								</a> 
 								<span class="zg-bull">•</span> 
 								<a href="#" class="q-meta-item">邀请回答</a>
-								<a href="#" class="q-meta-item-right">
-									<i class="fa fa-flag-o"></i>  
-									举报
-								</a>
+								<div class="btn-group q-meta-item-right">
+									<a onclick="reportList(0);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-flag-o"></i>  
+										举报
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+									</ul>
+								</div>
 							</div>
 							
 							<!-- comment -->

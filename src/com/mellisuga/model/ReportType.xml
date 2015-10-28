@@ -7,8 +7,8 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到ReportType的id属性--> 
     <insert id="insertReportType" parameterType="ReportType" useGeneratedKeys="true" keyProperty="id">
-    	insert into report_type(report_type_content) 
-    	values(#{report_type_content})
+    	insert into report_type(report_type_content, is_common) 
+    	values(#{report_type_content}, #{is_common})
     </insert>
 </mapper>
 
