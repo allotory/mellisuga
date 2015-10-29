@@ -10,6 +10,21 @@
     	insert into report_type(report_type_content, is_common) 
     	values(#{report_type_content}, #{is_common})
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="ReportTypeList" type="ReportType">
+    	<id column="id" property="id"/>
+    	<result column="report_type_content" property="report_type_content"/>
+    	<result column="is_common" property="is_common"/>
+    </resultMap>
+    <select id="queryReportTypeByIsCommon" parameterType="int" resultMap="ReportTypeList">
+        select * from report_type where is_common = #{is_common}
+    </select>
+    
+    <select id="queryAllReportType" resultMap="ReportTypeList">
+        select * from report_type
+    </select>
+    
 </mapper>
 
 

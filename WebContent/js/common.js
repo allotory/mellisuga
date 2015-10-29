@@ -1078,10 +1078,31 @@ function nohelp() {
 }
 
 // 举报列表
-function reportList(report_category) {
-	if(report_category == 0) {
-		
-	}
+function reportList(is_common, this_obj) {
+	
+	var ul = this_obj.parentNode.getElementsByTagName("ul");
+	
+	// 举报问题
+	loadXMLDoc("ReportServlet?is_common=" + is_common, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			
+			if(xmlhttp.responseText == "queryreporttypeerror") {
+				alert("查询举报类型失败，请稍候重试");
+			} else {
+				var obj = JSON.parse(xmlhttp.responseText);
+				for (var i = 0; i< obj.reportTypeList.length; i++) {
+					//alert(obj.reportTypeList[i].report_type_content);
+					var li = document.createElement("li");
+					var alink = document.createElement("a");
+					alink.href= "#";
+					alink.innerHTML = obj.reportTypeList[i].report_type_content;
+					li.appendChild(alink);
+					ul[0].appendChild(li);
+				}
+			}
+			
+		}
+	});
 }
 
 
