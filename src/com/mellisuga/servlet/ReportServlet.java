@@ -61,7 +61,6 @@ public class ReportServlet extends HttpServlet {
 		jsonObject.put("reportTypeList", reportTypeList);
 		
 		// 返回举报类型 Json
-		System.out.println(jsonObject.toString());
 		out.print(jsonObject.toString());
 	}
 

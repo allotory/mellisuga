@@ -358,57 +358,60 @@ boolean is_answered = false;
 										<%
 											}
 										%>
-										<span id="hidden-item-<%=ab.getAnswer().getId() %>" style="display:none">
 											
-											<%
-												// 判断是否已感谢作者回答
-												if(!ab.isThanked()) {
-											%>
-											<a title="thankAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
-												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
-												<i class="fa fa-heart-o"></i> 感谢
-											</a>
-											<%
-												}else {
-											%>
-											<a title="thankedAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
-												id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
-												<i class="fa fa-heart-o"></i> 取消感谢
-											</a>
-											<%
-												}
-											%>
-											
-											<a href="#" class="meta-item">
-												<i class="fa fa-share"></i> 分享
-											</a>
-											<a onclick="getCollectionList(<%=ab.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
-												<i class="fa fa-bookmark-o"></i> 收藏
-											</a>
-											<span class="bull">•</span>
-											
-											<%
-												// 判断是否没有帮助
-												if(!ab.isNoHelp()) {
-											%>
-											<a title="nohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
-												id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">没有帮助</a>
-											<%
-												} else {
-											%>
-											<a title="unnohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
-												id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">撤消没有帮助</a>
-											<%
-												}	
-											%>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block">
+										<%
+											// 判断是否已感谢作者回答
+											if(!ab.isThanked()) {
+										%>
+										<a title="thankAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
+											id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
+											<i class="fa fa-heart-o"></i> 感谢
+										</a>
+										<%
+											}else {
+										%>
+										<a title="thankedAuthor" onclick="thankAuthor(<%=ab.getAnswer().getId() %>);"
+											id="thankAuthor-<%=ab.getAnswer().getId() %>" class="meta-item" data-thanked="false">
+											<i class="fa fa-heart-o"></i> 取消感谢
+										</a>
+										<%
+											}
+										%>
+										
+										<a href="#" class="meta-item">
+											<i class="fa fa-share"></i> 分享
+										</a>
+										<a onclick="getCollectionList(<%=ab.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
+											<i class="fa fa-bookmark-o"></i> 收藏
+										</a>
+										<span class="bull">•</span>
+										
+										<%
+											// 判断是否没有帮助
+											if(!ab.isNoHelp()) {
+										%>
+										<a title="nohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
+											id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">没有帮助</a>
+										<%
+											} else {
+										%>
+										<a title="unnohelp" onclick="nohelp(<%=ab.getAnswer().getId() %>);"
+											id="nohelp-<%=ab.getAnswer().getId() %>" class="meta-item">撤消没有帮助</a>
+										<%
+											}	
+										%>
+										<span class="bull">•</span>
+										<div class="btn-group">
+											<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+												<i class="fa fa-flag-o"></i>  
 												举报
 											</a>
-											<span class="bull">•</span>
-											<a href="#" class="meta-item">作者保留权利</a>
-											<span class="copyright"></span>
-										</span>
+											<ul class="dropdown-menu">
+											</ul>
+										</div>
+										<span class="bull">•</span>
+										<a href="#" class="meta-item">作者保留权利</a>
+										<span class="copyright"></span>
 										<a href="#" class="answer-collapse meta-item">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
