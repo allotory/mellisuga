@@ -401,7 +401,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											}
 										%>
-										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 										<%
 											if(!trendsBean.isThanked()) {
 										%>
@@ -441,14 +441,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												}	
 											%>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												举报
-											</a>
+											<div class="btn-group">
+												<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-flag-o"></i>  
+													举报
+												</a>
+												<ul class="dropdown-menu">
+												</ul>
+											</div>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 												作者保留权利
 											</a>
-										</span>
+										</div>
 										<a href="#" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
@@ -674,7 +679,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											}
 										%>
-										<span id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
 										<%
 											if(!trendsBean.isThanked()) {
 										%>
@@ -715,14 +720,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												}	
 											%>
 											<span class="bull">•</span>
-											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-												举报
-											</a>
+											<div class="btn-group">
+												<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-flag-o"></i>  
+													举报
+												</a>
+												<ul class="dropdown-menu">
+												</ul>
+											</div>
 											<span class="bull">•</span>
 											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
 												作者保留权利
 											</a>
-										</span>
+										</div>
 										<a href="#" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>

@@ -192,8 +192,7 @@ boolean is_answered = false;
 								}
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=ab.getAnswer().getId() %>')" 
-							onmouseleave="hiddenItem('hidden-item-<%=ab.getAnswer().getId() %>')">
+					<div class="row left-main-content-wrap">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
