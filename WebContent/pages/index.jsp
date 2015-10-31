@@ -442,7 +442,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											%>
 											<span class="bull">•</span>
 											<div class="btn-group">
-												<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+												<a onclick="reportList(1, this, 1, <%=trendsBean.getAnswer().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
 													<i class="fa fa-flag-o"></i>  
 													举报
 												</a>
@@ -721,7 +721,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											%>
 											<span class="bull">•</span>
 											<div class="btn-group">
-												<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+												<a onclick="reportList(1, this, 1, <%=trendsBean.getAnswer().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
 													<i class="fa fa-flag-o"></i>  
 													举报
 												</a>
