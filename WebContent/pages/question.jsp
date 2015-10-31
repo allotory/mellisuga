@@ -129,7 +129,7 @@ boolean is_answered = false;
 								<span class="zg-bull">•</span> 
 								<a href="#" class="q-meta-item">邀请回答</a>
 								<div class="btn-group q-meta-item-right">
-									<a onclick="reportList(0, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+									<a onclick="reportList(0, this, 0, <%=questionBean.getQuestion().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
 										<i class="fa fa-flag-o"></i>  
 										举报
 									</a>
@@ -401,7 +401,7 @@ boolean is_answered = false;
 										%>
 										<span class="bull">•</span>
 										<div class="btn-group">
-											<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+											<a onclick="reportList(1, this, 1, <%=ab.getAnswer().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
 												<i class="fa fa-flag-o"></i>  
 												举报
 											</a>

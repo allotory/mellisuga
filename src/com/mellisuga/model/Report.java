@@ -4,9 +4,11 @@ public class Report {
 
 	private int id;
 	
-	private String report_type_id;
+	private int report_type_id;
 	
 	private int report_category;
+	
+	private int report_category_id;
 	
 	private int member_id;
 
@@ -18,11 +20,11 @@ public class Report {
 		this.id = id;
 	}
 
-	public String getReport_type_id() {
+	public int getReport_type_id() {
 		return report_type_id;
 	}
 
-	public void setReport_type_id(String report_type_id) {
+	public void setReport_type_id(int report_type_id) {
 		this.report_type_id = report_type_id;
 	}
 
@@ -40,6 +42,14 @@ public class Report {
 
 	public void setMember_id(int member_id) {
 		this.member_id = member_id;
+	}
+
+	public int getReport_category_id() {
+		return report_category_id;
+	}
+
+	public void setReport_category_id(int report_category_id) {
+		this.report_category_id = report_category_id;
 	}
 	
 }

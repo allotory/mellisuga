@@ -2,7 +2,6 @@ package com.mellisuga.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,17 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.JSONObject;
 
-import com.mellisuga.dao.ReportTypeDAO;
+import com.mellisuga.dao.ReportDAO;
 import com.mellisuga.db.DBConnection;
-import com.mellisuga.model.ReportType;
+import com.mellisuga.model.Member;
+import com.mellisuga.model.Report;
 
-@WebServlet("/ReportServlet")
-public class ReportServlet extends HttpServlet {
+@WebServlet("/ReportingServlet")
+public class ReportingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ReportServlet() {
+	public ReportingServlet() {
 		super();
 	}
 
@@ -32,37 +31,32 @@ public class ReportServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
-		int is_common = Integer.parseInt(request.getParameter("is_common"));
+		int report_type_id = Integer.parseInt(request.getParameter("report_type"));
+		int report_category = Integer.parseInt(request.getParameter("report_category"));
+		int report_category_id = Integer.parseInt(request.getParameter("report_category_id"));
+
+		Member m = (Member) request.getSession().getAttribute("member");
 		
 		SqlSession session = null;
-		List<ReportType> reportTypeList = null;
 		try {
 			session = DBConnection.openDefaultSession();
 			
 			// 查询举报类型
-			ReportTypeDAO reportTypeDAO = session.getMapper(ReportTypeDAO.class);
-			if(is_common == 0) {
-				// 问题举报列表
-				reportTypeList = reportTypeDAO.queryAllReportType();
-			} else if(is_common == 1) {
-				// 答案及评论举报列表
-				reportTypeList = reportTypeDAO.queryReportTypeByIsCommon(1);
-			}
+			ReportDAO reportDAO = session.getMapper(ReportDAO.class);
+			Report report = new Report();
+			report.setReport_type_id(report_type_id);
+			report.setReport_category(report_category);
+			report.setReport_category_id(report_category_id);
+			report.setMember_id(m.getId());
+			reportDAO.insertReport(report);
 			
 			session.commit();
 		} catch(Exception e) {
-			out.print("queryreporttypeerror");
+			out.print("insertreporterror");
 			e.printStackTrace();
 		} finally {
 			DBConnection.closeSession(session);
 		}
-		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("reportTypeList", reportTypeList);
-		
-		// 返回举报类型 Json
-		//System.out.println(jsonObject.toString());
-		out.print(jsonObject.toString());
 	}
 
 	protected void doPost(HttpServletRequest request,

@@ -118,3 +118,32 @@
 		</div>
 	</div>
 </div>
+
+<!-- Report Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" data-backdrop="false"
+	aria-labelledby="提问">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">举报成功！</h4>
+			</div>
+			<div class="modal-body">
+				<div>您的举报正在等待人工审核，我们会在 24 小时内审核完成
+						处理完成后会「<a href="#">私信</a>」通知您 <br />
+				</div>
+				您也可以进入 <a href="#">社区服务中心</a> 查看实时处理进度
+			</div>
+			<div class="modal-footer">
+				<label style="float: left;"> 
+					<input type="checkbox"> 不再提醒
+				</label>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">知道啦</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end Modal -->

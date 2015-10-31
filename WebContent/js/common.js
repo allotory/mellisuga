@@ -316,7 +316,7 @@ function newAnswer(question_id) {
 						+ '<a href="#" class="meta-item">没有帮助</a>'
 						+ '<span class="bull">•</span>'
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 1, ' + obj.answerBeanList[0].answer.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -416,7 +416,7 @@ function newQuestionComment(question_id) {
 						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
 
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 2, ' + obj.commentBeanList[0].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -495,7 +495,7 @@ function queryQCommentList() {
 						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
 
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 2, ' + obj.commentBeanList[0].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -566,7 +566,7 @@ function newAnswerComment(answer_id) {
 						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
 
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 2, ' + obj.acommentBeanList[0].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -648,7 +648,7 @@ function queryACommentList() {
 						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
 
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this);" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 2, ' + obj.acommentBeanList[0].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -1119,11 +1119,18 @@ function nohelp() {
 }
 
 // 举报列表
-function reportList(is_common, this_obj) {
+function reportList(is_common, this_obj, report_category, report_category_id) {
+	
+	/**
+	 * is_common : 是否是通用类型
+	 * this_obj: 当前举报对象
+	 * report_category: 举报类型（0问题、1答案、2评论）
+	 * report_category_id: 与举报类型相对应的id
+	 */
 	
 	var ul = this_obj.parentNode.getElementsByTagName("ul");
 	
-	// 举报问题
+	// 获取举报类型列表
 	loadXMLDoc("ReportServlet?is_common=" + is_common, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			
@@ -1131,14 +1138,17 @@ function reportList(is_common, this_obj) {
 				alert("查询举报类型失败，请稍候重试");
 			} else {
 				var obj = JSON.parse(xmlhttp.responseText);
+				ul[0].innerHTML = "";
 				for (var i = 0; i< obj.reportTypeList.length; i++) {
-					//alert(obj.reportTypeList[i].report_type_content);
 					var li = document.createElement("li");
 					var alink = document.createElement("a");
-					alink.href= "#";
+					alink.className = "mouse-hand";
+					alink.onclick = new Function("reporting(" + obj.reportTypeList[i].id + ", " 
+							+ report_category + ", " + report_category_id + ")");
 					alink.innerHTML = obj.reportTypeList[i].report_type_content;
 					li.appendChild(alink);
 					ul[0].appendChild(li);
+
 				}
 			}
 			
@@ -1146,6 +1156,22 @@ function reportList(is_common, this_obj) {
 	});
 }
 
+// 举报
+function reporting(report_type, report_category, report_category_id) {
+	// 举报
+	loadXMLDoc("ReportingServlet?report_type=" + report_type 
+			+ "&report_category=" + report_category 
+			+ "&report_category_id=" + report_category_id, function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			
+			if(xmlhttp.responseText == "insertreporterror") {
+				alert("举报失败，请稍候重试!");
+			} else {
+				$('#reportModal').modal('show');
+			}
+		}
+	});	
+}
 
 
 

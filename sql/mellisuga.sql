@@ -363,8 +363,9 @@ CREATE TABLE IF NOT EXISTS report_type (
  */
 CREATE TABLE IF NOT EXISTS report (
 	id int(11) NOT NULL AUTO_INCREMENT,		/* 举报主键ID（唯一标识） */
-	report_type_id varchar(64) NOT NULL,	/* 举报类型 ID */
+	report_type_id int(11) NOT NULL,		/* 举报类型 ID */
 	report_category int(11) NOT NULL,		/* 举报内容所属分类 0：问题，1：答案，2：评论 */
+	report_category_id int(11) NOT NULL,	/* 举报内容所属分类对应的问题、评论、答案id */
 	member_id int(11) NOT NULL,				/* 举报用户ID（唯一标识） */
 	PRIMARY KEY (id)
 );
