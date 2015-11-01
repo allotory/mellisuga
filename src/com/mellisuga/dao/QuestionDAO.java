@@ -1,5 +1,7 @@
 package com.mellisuga.dao;
 
+import java.util.List;
+
 import com.mellisuga.model.Question;
 
 public interface QuestionDAO {
@@ -15,4 +17,7 @@ public interface QuestionDAO {
 	
 	// 更新问题
 	public void updateQuestion(Question question);
+	
+	// 由提问用户查询问题后三条
+	public List<Question> query3QuestionByMid(int member_id);
 }

@@ -48,6 +48,12 @@
     		is_anonymous=#{is_anonymous}
     	where id=#{id}
     </update>
+    
+    <!-- 返回多列 -->
+    <select id="query3AnswersByAuthorId" parameterType="int" resultMap="AnswersList">
+        select * from answers where author_id = #{author_id} 
+        	order by answer_date desc limit 3
+    </select>
 </mapper>
 
 

@@ -35,6 +35,24 @@
     		member_id=#{member_id} 
     	where id=#{id}
     </update>
+    
+    <!-- 返回多列 -->
+    <resultMap id="QuestionList" type="Question">
+    	<id column="id" property="id"/>
+    	<result column="question_title" property="question_title"/>
+    	<result column="question_content" property="question_content"/>
+    	<result column="answers_num" property="answers_num"/>
+    	<result column="followers_num" property="followers_num"/>
+    	<result column="last_updated" property="last_updated"/>
+    	<result column="scan_num" property="scan_num"/>
+    	<result column="reply_num" property="reply_num"/>
+    	<result column="is_anonymous" property="is_anonymous"/>
+    	<result column="member_id" property="member_id"/>
+    </resultMap>
+    <select id="query3QuestionByMid" parameterType="int" resultMap="QuestionList">
+        select * from question where member_id = #{member_id}
+        	order by id desc limit 3
+    </select>    
 </mapper>
 
 

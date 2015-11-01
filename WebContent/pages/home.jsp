@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mellisuga.bean.*" %>
 <%@include file="sitename.jsp"%>
 <%   
 String path = request.getContextPath();   
@@ -17,6 +18,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 	<!-- js css plugin include -->
 	<%@include file="include.jsp"%>
+	
+	<% 
+		Member m = (Member) request.getSession().getAttribute("member"); 
+		HomeBean homeBean = (HomeBean) request.getAttribute("homeBean");
+	%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -65,19 +71,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class="profile-header">
-									<strong>Ellery</strong>
+									<strong><%=m.getFullname() %></strong>
 								</div>
 								<div class="row user-infos">
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded">
+										<img src="<%=m.getAvatar_path() %>" class="img-responsive img-rounded">
 									</div>
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
 										<div class="user-info">
 											<i class="fa fa-map-marker"></i> 
-											<span class="location">HaiLin</span>
-											<span class="business">互联网</span>
-											<span class="gender">男</span>
+											<span class="location"><%=m.getLocation() %></span>
+											<span class="business"><%=m.getBusiness() %></span>
+											<span class="gender"><%=m.getGender() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -86,8 +92,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 										<div class="user-info">
 											<i class="fa fa-suitcase"></i> 
-											<span class="company">公司</span>
-											<span class="work">程序猿</span>
+											<span class="company"><%=m.getEmployment() %></span>
+											<span class="work"><%=m.getPosition() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -96,8 +102,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 										<div class="user-info-end">
 											<i class="fa fa-graduation-cap"></i> 
-											<span class="education">大学</span>
-											<span class="specialty">专业</span>
+											<span class="education"><%=m.getEducation() %></span>
+											<span class="specialty"><%=m.getMajor() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -108,7 +114,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</div>
 										<hr style="margin-top:12px;margin-bottom:12px;"/>
 										
-										<p>从前有一只北极熊买了一副墨镜，他戴了墨镜之后沉思一会儿，说到：突然好想吃竹子哦～</p>
+										<p><%=m.getDescription() %></p>
 									</div>
 								</div>
 
@@ -117,11 +123,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<span class="achieve">获得</span>
 									<span class="achieve">
 										<i class="fa fa-thumbs-o-up"></i> 
-										<strong>133</strong>赞同
+										<strong><%=m.getApprove_num() %></strong>赞同
 									</span>
 									<span class="achieve">
 										<i class="fa fa-heart-o"></i> 
-										<strong>52</strong>感谢
+										<strong><%=m.getThank_num() %></strong>感谢
 									</span>
 									<a href="#" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 								</div>
@@ -129,10 +135,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div>
 							<div class="panel-footer user-info-foot">
 								<a href="" class="info-item"><i class="fa fa-home"></i> </a>
-								<a href="" class="info-item"><strong>提问</strong><span> 0</span></a>
-								<a href="" class="info-item"><strong>回答</strong><span> 0</span></a>
+								<a href="" class="info-item"><strong>提问</strong><span> <%=m.getQuestion_num() %></span></a>
+								<a href="" class="info-item"><strong>回答</strong><span> <%=m.getAnswer_num() %></span></a>
 								<a href="" class="info-item"><strong>专栏文章</strong><span> 0</span></a>
-								<a href="" class="info-item"><strong>收藏</strong><span> 0</span></a>
+								<a href="" class="info-item"><strong>收藏</strong><span> <%=m.getCollect_num() %></span></a>
 								<a href="" class="info-item"><strong>公共编辑</strong><span> 0</span></a>
 							</div>
 						</div>
@@ -146,19 +152,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
+								<%
+									// 所提问题列表
+									//String split = "";
+								System.out.println(homeBean.getQuestionList().size());
+									for(Question q : homeBean.getQuestionList()) {
+								%>
+								
 								<div class="ask-list">
 									<div class="ask-list-content">
-										<a href="" class="question-list">雨为什么是一滴一滴下的？</a>
+										<a href="" class="question-list"><%=q.getQuestion_title() %></a>
 										<div class="feed-meta">
-											<a href="#" class="answer-date">发布于 18:14 </a> 
+											<a href="#" class="answer-date">发布于 <%=q.getLast_updated() %> </a> 
 											<span class="bull">•</span> <a href="#" class="meta-item">4847赞</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">975浏览</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">4回答</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">28关注</a>
+											<span class="bull">•</span> <a href="#" class="meta-item"><%=q.getScan_num() %>浏览</a>
+											<span class="bull">•</span> <a href="#" class="meta-item"><%=q.getAnswers_num() %>回答</a>
+											<span class="bull">•</span> <a href="#" class="meta-item"><%=q.getFollowers_num() %>关注</a>
 										</div>
 									</div>
 								</div>
-								<hr style="margin-top:12px;margin-bottom:12px;"/>
+								<!-- <hr style="margin-top:12px;margin-bottom:12px;"/> -->
+								<%
+									//split = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
+									}
+								%>
 								<div class="ask-list">
 									<div class="ask-list-content">
 										<a href="" class="question-list">雨为什么是一滴一滴下的？</a>

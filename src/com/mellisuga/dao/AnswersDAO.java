@@ -21,4 +21,7 @@ public interface AnswersDAO {
 	
 	// 更新答案
 	public void updateAnswer(Answers answers);
+	
+	// 由作者查询答案后3条
+	public List<Answers> query3AnswersByAuthorId(int author_id);
 }

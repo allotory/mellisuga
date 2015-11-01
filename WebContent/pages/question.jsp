@@ -279,7 +279,9 @@ boolean is_answered = false;
 
 								<div class="row">
 									<div class="author-info">
-										<a href="#"><strong><%=ab.getMember().getFullname() %></strong></a>,
+										<a href="#" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">
+											<strong><%=ab.getMember().getFullname() %></strong>
+										</a>,
 										<span><%=ab.getMember().getAutograph() %></span>
 									</div>
 								</div>
