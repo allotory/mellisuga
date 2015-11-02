@@ -2,11 +2,14 @@ package com.mellisuga.bean;
 
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.Question;
 import com.mellisuga.model.Vote;
 
 public class AnswerBean {
 
 	private Answers answer;
+	
+	private Question question;
 	
 	private Member member;
 
@@ -26,6 +29,14 @@ public class AnswerBean {
 
 	public void setAnswer(Answers answer) {
 		this.answer = answer;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public Member getMember() {

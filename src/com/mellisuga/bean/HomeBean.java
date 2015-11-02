@@ -2,7 +2,6 @@ package com.mellisuga.bean;
 
 import java.util.List;
 
-import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
@@ -13,7 +12,7 @@ public class HomeBean {
 	
 	private List<Question> questionList;
 	
-	private List<Answers> answersList;
+	private List<AnswerBean> answerBeanList;
 	
 	private List<Trends> trendsList;
 
@@ -33,12 +32,12 @@ public class HomeBean {
 		this.questionList = questionList;
 	}
 
-	public List<Answers> getAnswersList() {
-		return answersList;
+	public List<AnswerBean> getAnswerBeanList() {
+		return answerBeanList;
 	}
 
-	public void setAnswersList(List<Answers> answersList) {
-		this.answersList = answersList;
+	public void setAnswerBeanList(List<AnswerBean> answerBeanList) {
+		this.answerBeanList = answerBeanList;
 	}
 
 	public List<Trends> getTrendsList() {

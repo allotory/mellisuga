@@ -20,4 +20,5 @@ public interface QuestionDAO {
 	
 	// 由提问用户查询问题后三条
 	public List<Question> query3QuestionByMid(int member_id);
+	
 }

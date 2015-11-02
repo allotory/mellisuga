@@ -1,6 +1,7 @@
 package com.mellisuga.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.HomeBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.QuestionDAO;
@@ -48,15 +50,24 @@ public class HomeServlet extends HttpServlet {
 			// 查询所有提问
 			List<Question> questionList = questionDAO.query3QuestionByMid(m.getId());
 			homeBean.setQuestionList(questionList);
-			System.out.println("ahahahahahahahahahahahahah");
-			System.out.println(questionList.size());
-			for(Question q : questionList) {
-				System.out.println(q.getQuestion_title());
-			}
 			
 			// 查询所有回答
+			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
 			List<Answers> answersList = answersDAO.query3AnswersByAuthorId(m.getId());
-			homeBean.setAnswersList(answersList);
+			for(Answers a : answersList) {
+				// 查询答案对应问题
+				Question question = new Question();
+				question.setId(a.getQuestion_id());
+				question = questionDAO.queryQuestionById(question);
+				
+				// 设置答案及问题bean
+				AnswerBean answerBean = new AnswerBean();
+				answerBean.setAnswer(a);
+				answerBean.setQuestion(question);
+				
+				answerBeanList.add(answerBean);
+			}
+			homeBean.setAnswerBeanList(answerBeanList);
 			
 			// 查询动态
 			
