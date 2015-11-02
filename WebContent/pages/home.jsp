@@ -154,11 +154,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<div class="panel-body">
 								<%
 									// 所提问题列表
-									//String split = "";
-								System.out.println(homeBean.getQuestionList().size());
+									String split = "";
 									for(Question q : homeBean.getQuestionList()) {
 								%>
-								
+								<%=split %>
 								<div class="ask-list">
 									<div class="ask-list-content">
 										<a href="" class="question-list"><%=q.getQuestion_title() %></a>
@@ -171,23 +170,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</div>
 									</div>
 								</div>
-								<!-- <hr style="margin-top:12px;margin-bottom:12px;"/> -->
 								<%
-									//split = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
+										split = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
 									}
 								%>
-								<div class="ask-list">
-									<div class="ask-list-content">
-										<a href="" class="question-list">雨为什么是一滴一滴下的？</a>
-										<div class="feed-meta">
-											<a href="#" class="answer-date">发布于 18:14 </a> 
-											<span class="bull">•</span> <a href="#" class="meta-item">4847赞</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">975浏览</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">4回答</a>
-											<span class="bull">•</span> <a href="#" class="meta-item">28关注</a>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div><!-- end ask list -->
@@ -200,19 +186,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
+								<%
+									// 答案列表
+									String split2 = "";
+									for(Answers a : homeBean.getAnswersList()) {								
+								%>
 								<div class="answer-list">
 									<div class="answer-list-content">
-										<a href="" class="answer-question">雨为什么是一滴一滴下的？</a>
-										<p class="user-answer">雨为什么是一滴一滴下的？雨为什么是一滴一滴下的？雨为什么是一滴一滴下的？</p>
+										<a href="" class="answer-question"><%=a.getId() %></a>
+										<p class="user-answer"><%=a.getAnswers() %></p>
 									</div>
 								</div>
-								<hr style="margin-top:12px;margin-bottom:12px;"/>
-								<div class="answer-list">
-									<div class="answer-list-content">
-										<a href="" class="answer-question">雨为什么是一滴一滴下的？</a>
-										<p class="user-answer">雨为什么是一滴一滴下的？雨为什么是一滴一滴下的？雨为什么是一滴一滴下的？</p>
-									</div>
-								</div>
+								<%
+										split2 = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
+									}
+								%>
 							</div>
 						</div>
 					</div><!-- end answer list -->

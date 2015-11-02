@@ -117,7 +117,7 @@ public class AskServlet extends HttpServlet {
 			
 			// 更新用户信息（提问数）
 			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
-			m.setAnswer_num(m.getAnswer_num() + 1);
+			m.setQuestion_num(m.getQuestion_num() + 1);
 			memberDAO.updateMember(m);
 			
 			session.commit();

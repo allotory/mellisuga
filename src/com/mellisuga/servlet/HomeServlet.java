@@ -48,6 +48,8 @@ public class HomeServlet extends HttpServlet {
 			// 查询所有提问
 			List<Question> questionList = questionDAO.query3QuestionByMid(m.getId());
 			homeBean.setQuestionList(questionList);
+			System.out.println("ahahahahahahahahahahahahah");
+			System.out.println(questionList.size());
 			for(Question q : questionList) {
 				System.out.println(q.getQuestion_title());
 			}
