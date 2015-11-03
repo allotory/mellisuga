@@ -171,7 +171,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								</div>
 								<%
-										split = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
+										split = "<hr style='margin-top:6px;margin-bottom:12px;'/>";
 									}
 								%>
 							</div>
@@ -191,28 +191,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									String split2 = "";
 									for(AnswerBean answerBean : homeBean.getAnswerBeanList()) {								
 								%>
-								<div class="row" style="border-bottom: 1px solid #eee;">
-								<!-- avatar and upvote col -->
-								<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1" style="border-bottom: 1px solid #eee;">
-									<div class="row">
-										<div class="vote-text-center vote-number">
-											<a href="#">
-												<span id="voteupnum" style="display:block;">325</span>
-												<span class="" style="display:block;">浏览</span>
-											</a>
-										</div>
+								<%=split2 %>
+								<div class="answer-list">
+									<a href="" class="answer-question"><%=answerBean.getQuestion().getQuestion_title() %></a>
+									<div class="user-answer">
+										<% 
+											if(answerBean.getAnswer().getAnswers().length() <= 120) {
+												out.print(answerBean.getAnswer().getAnswers());
+											} else {
+												out.print(answerBean.getAnswer().getAnswers().substring(0, 120) + " ...");
+											}
+										%>
 									</div>
-								</div><!-- end avatar and upvote col -->
-								
-								<div class="answer-list col-lg-11 col-md-11 col-sm-11 col-xs-11" style="border-bottom: 1px solid #eee;">
-									<div class="answer-list-content">
-										<a href="" class="answer-question"><%=answerBean.getQuestion().getQuestion_title() %></a>
-										<p class="user-answer"><%=answerBean.getAnswer().getAnswers() %></p>
-									</div>
-								</div>
 								</div>
 								<%
-										split2 = "<hr style='margin-top:12px;margin-bottom:12px;'/>";
+										System.out.println(answerBean.getAnswer().getAnswers().length());
+								
+										split2 = "<hr style='margin-top:0px;margin-bottom:8px;'/>";
 									}
 								%>
 							</div>
