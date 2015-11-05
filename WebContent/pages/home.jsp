@@ -226,7 +226,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											if("AgreeWithThisAnswer".equals(trendsBean.getTrends().getTrends_type())) {
 								%>
 								<!-- content-details -->
-								<div class="content-details">
+								<div class="content-details"  onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
+									onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
 
 									<div class="content-source">
 										<span class="user-agree">赞同该回答</span>
@@ -255,33 +256,120 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
+										<%	// 判断是否已关注问题
+											if(!trendsBean.isFollowing()) {
+												
+										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										<a href="#" class="meta-item">
+										<%
+											} else {
+										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
+											取消关注
+										</a>
+										<%
+											}
+										%>
+										
+										<%
+											if(trendsBean.getAnswer().getReply_num() > 0) {
+										%>
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
+										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
-										<a href="#" class="meta-item" data-thanked="false">
-											<i class="fa fa-heart-o"></i> 感谢
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-share"></i> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-bookmark-o"></i> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block">
-											举报
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">作者保留权利</a>
-										<a href="#" class="answer-collapse meta-item">
+										<%
+											}
+										%>
+										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<%
+											if(!trendsBean.isThanked()) {
+										%>
+											<a title="thankAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 感谢
+											</a>
+										<%
+											} else {
+										%>
+											<a title="thankedAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+										<%
+											}
+										%>
+											<a href="#" class="meta-item" >
+												<i class="fa fa-share"></i> 分享
+											</a>
+											<a onclick="getCollectionList(<%=trendsBean.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
+												<i class="fa fa-bookmark-o"></i> 收藏
+											</a>
+											<span class="bull">•</span>
+											
+											<%
+												// 判断是否没有帮助
+												if(!trendsBean.isNoHelp()) {
+											%>
+											<a title="nohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">没有帮助</a>
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
+											<span class="bull">•</span>
+											<div class="btn-group">
+												<a onclick="reportList(1, this, 1, <%=trendsBean.getAnswer().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-flag-o"></i>  
+													举报
+												</a>
+												<ul class="dropdown-menu">
+												</ul>
+											</div>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												作者保留权利
+											</a>
+										</div>
+										<a href="#" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
+									
+									<!-- comment -->
+									<div id="comment-<%=trendsBean.getTrends().getId() %>-agreeWithThisAnswer" class="row comment collapse">
+										<div class="panel panel-default">
+											<div id="newAnswerComments-<%=trendsBean.getTrends().getId() %>">
+											
+											</div>
+											<div class="panel-body">
+												<div class="form-group">
+													<textarea class="form-control" id="acomment-<%=trendsBean.getAnswer().getId() %>" 
+														name="acomment-<%=trendsBean.getAnswer().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												</div>
+												<div class="form-group module-right">
+													<button class="btn btn-default btn-sm">取消</button>
+													<button type="button" onclick="newAnswerComment('<%=trendsBean.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
+												</div>
+											</div>
+											
+										</div>
+									</div><!--end comment -->
 									
 								</div><!-- end content-details -->
 
@@ -308,14 +396,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
 								<%
-											} else if ("AgreeWithThisAnswer".equals(trendsBean.getTrends().getTrends_type())) {
+											} else if ("AnswerThisQuestion".equals(trendsBean.getTrends().getTrends_type())) {
 								%>
 								
 								<!-- content-details -->
-								<div class="content-details">
+								<div class="content-details" onmouseenter="showItem('hidden-item-<%=trendsBean.getTrends().getId() %>')" 
+									onmouseleave="hiddenItem('hidden-item-<%=trendsBean.getTrends().getId() %>')">
 
 									<div class="content-source">
-										<span class="user-agree">赞同该回答</span>
+										<span class="user-agree">回答了问题</span>
 										<span class="source-time">3小时前</span>
 									</div>
 								
@@ -341,34 +430,121 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 									
 									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
+										
+										<%	// 判断是否已关注问题
+											if(!trendsBean.isFollowing()) {
+												
+										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										<a href="#" class="meta-item">
+										<%
+											} else {
+										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=trendsBean.getTrends().getId() %>" 
+											onclick="followQuestionOnTrends(<%=trendsBean.getQuestion().getId() %>, <%=trendsBean.getTrends().getId() %>)" >
+											取消关注
+										</a>
+										<%
+											}
+										%>
+										
+										<%
+											if(trendsBean.getAnswer().getReply_num() > 0) {
+										%>
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+											<i class="fa fa-commenting-o"></i> <%=trendsBean.getAnswer().getReply_num() %>条评论
+										</a>
+										<%
+											}else {
+										%>
+										<a href="#comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" onclick="queryACommentList(<%=trendsBean.getAnswer().getId() %>,<%=trendsBean.getTrends().getId() %>);" 
+												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
 											<i class="fa fa-comment-o"></i> 添加评论
 										</a>
-										<a href="#" class="meta-item" data-thanked="false">
-											<i class="fa fa-heart-o"></i> 感谢
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-share"></i> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-bookmark-o"></i> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block">
-											举报
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">作者保留权利</a>
-										<a href="#" class="answer-collapse meta-item">
+										<%
+											}
+										%>
+										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<%
+											if(!trendsBean.isThanked()) {
+										%>
+											<a title="thankAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 感谢
+											</a>
+										<%
+											} else {
+										%>
+											<a title="thankedAuthor" onclick="thankAuthor(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="thankAuthor-<%=trendsBean.getTrends().getId() %>"  class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+										<%
+											}
+										%>
+											<a href="#" class="meta-item" >
+												<i class="fa fa-share"></i> 分享
+											</a>
+											<a onclick="getCollectionList(<%=trendsBean.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
+												<i class="fa fa-bookmark-o"></i> 收藏
+											</a>
+											<span class="bull">•</span>
+											<%
+												// 判断是否没有帮助
+												if(!trendsBean.isNoHelp()) {
+											%>
+											<a title="nohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">没有帮助</a>
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=trendsBean.getAnswer().getId() %>, <%=trendsBean.getTrends().getId()%>);"
+												id="nohelp-<%=trendsBean.getTrends().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
+											<span class="bull">•</span>
+											<div class="btn-group">
+												<a onclick="reportList(1, this, 1, <%=trendsBean.getAnswer().getId() %>);" class="meta-item dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-flag-o"></i>  
+													举报
+												</a>
+												<ul class="dropdown-menu">
+												</ul>
+											</div>
+											<span class="bull">•</span>
+											<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
+												作者保留权利
+											</a>
+										</div>
+										<a href="#" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 									
+									<!-- comment -->
+									<div id="comment-<%=trendsBean.getTrends().getId() %>-answerThisQuestion" class="row comment collapse">
+										<div class="panel panel-default">
+											<div id="newAnswerComments-<%=trendsBean.getTrends().getId() %>">
+											
+											</div>
+											<div class="panel-body">
+												<div class="form-group">
+													<textarea class="form-control" id="acomment-<%=trendsBean.getAnswer().getId() %>" 
+														name="acomment-<%=trendsBean.getAnswer().getId() %>" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												</div>
+												<div class="form-group module-right">
+													<button class="btn btn-default btn-sm">取消</button>
+													<button type="button" onclick="newAnswerComment('<%=trendsBean.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
+												</div>
+											</div>
+											
+										</div>
+									</div><!--end comment -->
+										
 								</div><!-- end content-details -->
 
 								<hr style="margin-top:12px;margin-bottom:12px;"/>

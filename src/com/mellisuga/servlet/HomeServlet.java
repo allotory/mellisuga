@@ -73,10 +73,6 @@ public class HomeServlet extends HttpServlet {
 			
 			// 查询动态
 			List<TrendsBean> trendsBeanList = new TrendsFunc().getTrends(session, m);
-			System.out.println(trendsBeanList.isEmpty());
-			for(TrendsBean tb : trendsBeanList) {
-				System.out.println(tb.getQuestion().getQuestion_title());
-			}
 			homeBean.setTrendsBeanList(trendsBeanList);
 			
 			request.setAttribute("homeBean", homeBean);
