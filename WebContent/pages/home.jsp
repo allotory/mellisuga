@@ -205,8 +205,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								</div>
 								<%
-										System.out.println(answerBean.getAnswer().getAnswers().length());
-								
 										split2 = "<hr style='margin-top:0px;margin-bottom:8px;'/>";
 									}
 								%>
@@ -222,7 +220,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<a href="#" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
-								
+								<%
+									if(homeBean.getTrendsBeanList() != null && !homeBean.getTrendsBeanList().isEmpty()) {
+										for (TrendsBean trendsBean : homeBean.getTrendsBeanList()) {
+											if("AgreeWithThisAnswer".equals(trendsBean.getTrends().getTrends_type())) {
+								%>
 								<!-- content-details -->
 								<div class="content-details">
 
@@ -232,28 +234,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								
 									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+										<h5><a href="#"><%=trendsBean.getQuestion().getQuestion_title() %></a></h5>
 									</div>
 								
 									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
+										<a href="#"><strong><%=trendsBean.getMember().getFullname() %></strong></a>,
+										<span><%=trendsBean.getMember().getAutograph() %></span>
 									</div>
 								
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=trendsBean.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
+												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=trendsBean.getAnswer().getAnswers() %>
 										</div>
 									</div>
 								
@@ -289,6 +286,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div><!-- end content-details -->
 
 								<hr style="margin-top:12px;margin-bottom:12px;"/>
+								
+								<%
+											} else if ("FollowingQuestion".equals(trendsBean.getTrends().getTrends_type())) {
+								%>
 
 								<!-- content-details -->
 								<div class="content-details">
@@ -299,13 +300,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								
 									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+										<h5><a href="#"><%=trendsBean.getQuestion().getQuestion_title() %></a></h5>
 									</div>
 								
 								</div><!-- end content-details -->
 									
 								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
+								<%
+											} else if ("AgreeWithThisAnswer".equals(trendsBean.getTrends().getTrends_type())) {
+								%>
+								
 								<!-- content-details -->
 								<div class="content-details">
 
@@ -315,28 +320,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								
 									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
+										<h5><a href="#"><%=trendsBean.getQuestion().getQuestion_title() %></a></h5>
 									</div>
 								
 									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
+										<a href="#"><strong><%=trendsBean.getMember().getFullname() %></strong></a>,
+										<span><%=trendsBean.getMember().getAutograph() %></span>
 									</div>
 								
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=trendsBean.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
+												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
+											<%=trendsBean.getAnswer().getAnswers() %>
 										</div>
 									</div>
 									
@@ -373,7 +373,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<hr style="margin-top:12px;margin-bottom:12px;"/>
 
+								<%
+											} else if("AskAQuestion".equals(trendsBean.getTrends().getTrends_type())) {
+								%>
+
+
 								<!-- content-details -->
+								<div class="content-details">
+
+									<div class="content-source">
+										<span class="user-agree">提出了问题</span>
+										<span class="source-time">3小时前</span>
+									</div>
+								
+									<div class="question-link">
+										<h5><a href="#"><%=trendsBean.getQuestion().getQuestion_title() %></a></h5>
+									</div>
+								
+								</div><!-- end content-details -->
+								
+								<hr style="margin-top:12px;margin-bottom:12px;"/>
+								
+								<!-- content-details -->
+								<!-- 关注话题
 								<div class="content-details">
 
 									<div class="content-source">
@@ -385,28 +407,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<h5><a href="#">BAT</a></h5>
 									</div>
 								
-								</div><!-- end content-details -->
-
+								</div> 
 								<hr style="margin-top:12px;margin-bottom:12px;"/>
-
-								<!-- content-details -->
-								<div class="content-details">
-
-									<div class="content-source">
-										<span class="user-agree">提出了问题</span>
-										<span class="source-time">3小时前</span>
-									</div>
-								
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								
-								</div><!-- end content-details -->
+								-->
+ 								<!-- end content-details -->
+								<%
+											}
+										}
+									}
+								%>
 
 								<div class="loding-btn">
 									<a href="#" class="btn btn-default btn-block">加载更多</a>
 								</div>
-								
 							</div><!-- end panel body-->
 						</div><!-- end panel -->
 					</div><!-- end recent news -->

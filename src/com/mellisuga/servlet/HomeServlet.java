@@ -14,9 +14,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.HomeBean;
+import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.function.TrendsFunc;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
@@ -70,8 +72,13 @@ public class HomeServlet extends HttpServlet {
 			homeBean.setAnswerBeanList(answerBeanList);
 			
 			// 查询动态
+			List<TrendsBean> trendsBeanList = new TrendsFunc().getTrends(session, m);
+			System.out.println(trendsBeanList.isEmpty());
+			for(TrendsBean tb : trendsBeanList) {
+				System.out.println(tb.getQuestion().getQuestion_title());
+			}
+			homeBean.setTrendsBeanList(trendsBeanList);
 			
-
 			request.setAttribute("homeBean", homeBean);
 			request.getRequestDispatcher("/pages/home.jsp")
 					.forward(request, response);

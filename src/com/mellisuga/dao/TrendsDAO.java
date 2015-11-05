@@ -21,4 +21,7 @@ public interface TrendsDAO {
 	
 	// 通过用户ID和动态ID（问题ID） 动态类型删除动态
 	public void deleteTrendsByTUid(HashMap<String, Object> parameterMap);
+	
+	// 由动态发起人查询动态列表
+	public List<Trends> queryTrendsByTMid(int member_id);
 }

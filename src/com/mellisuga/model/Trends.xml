@@ -41,6 +41,11 @@
     	delete from trends where trends_id = #{trends_id} 
     		and trends_member = #{trends_member} and trends_type='FollowingQuestion'
     </delete>
+    
+    <!-- 返回多列 -->
+    <select id="queryTrendsByTMid" parameterType="int" resultMap="TrendsList">
+        select * from trends where trends_member = #{member_id};
+    </select>
 </mapper>
 
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
-import com.mellisuga.model.Trends;
 
 public class HomeBean {
 
@@ -14,7 +13,7 @@ public class HomeBean {
 	
 	private List<AnswerBean> answerBeanList;
 	
-	private List<Trends> trendsList;
+	private List<TrendsBean> trendsBeanList;
 
 	public Member getMember() {
 		return member;
@@ -40,12 +39,11 @@ public class HomeBean {
 		this.answerBeanList = answerBeanList;
 	}
 
-	public List<Trends> getTrendsList() {
-		return trendsList;
+	public List<TrendsBean> getTrendsBeanList() {
+		return trendsBeanList;
 	}
 
-	public void setTrendsList(List<Trends> trendsList) {
-		this.trendsList = trendsList;
+	public void setTrendsBeanList(List<TrendsBean> trendsBeanList) {
+		this.trendsBeanList = trendsBeanList;
 	}
-	
 }
