@@ -24,4 +24,7 @@ public interface AnswersDAO {
 	
 	// 由作者查询答案后3条
 	public List<Answers> query3AnswersByAuthorId(int author_id);
+	
+	// 由作者查询全部答案
+	public List<Answers> queryAnswersByAuthorId(int author_id);
 }
