@@ -53,6 +53,11 @@
         select * from question where member_id = #{member_id}
         	order by id desc limit 3
     </select>    
+    
+    <!-- 返回多列 -->
+    <select id="queryQuestionByMid" parameterType="int" resultMap="QuestionList">
+        select * from question where member_id = #{member_id}
+    </select>   
 </mapper>
 
 

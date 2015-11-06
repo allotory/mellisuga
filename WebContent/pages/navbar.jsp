@@ -18,7 +18,7 @@
 		<a href="#">发现</a>
 	</li>
 	<li>
-		<a href="#">消息</a>
+		<a href="#">消息<span class="badge">42</span></a>
 	</li>
 </ul>
 
