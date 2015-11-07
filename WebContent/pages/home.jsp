@@ -245,7 +245,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											<%=trendsBean.getAnswer().getAnswers() %>
+											<%
+												if(trendsBean.getAnswer().getAnswers().length() <= 120) {
+													out.print(trendsBean.getAnswer().getAnswers());
+												} else {
+													out.print(trendsBean.getAnswer().getAnswers().substring(0, 120) + " <b>... ...</b>");
+												}
+											%>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
 											</span>
@@ -419,7 +425,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 									<div class="question-content">
 										<div class="editable-content" style="display: block;">
-											<%=trendsBean.getAnswer().getAnswers() %>
+											<%
+												if(trendsBean.getAnswer().getAnswers().length() <= 120) {
+													out.print(trendsBean.getAnswer().getAnswers());
+												} else {
+													out.print(trendsBean.getAnswer().getAnswers().substring(0, 120) + " <b>... ...</b>");
+												}
+											%>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
 											</span>

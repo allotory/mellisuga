@@ -17,11 +17,8 @@
  	<script type="text/javascript" src="./plugin/Taginput/bootstrap-tagsinput.js"></script>
 	<link rel="stylesheet" href="./plugin/Taginput/bootstrap-tagsinput.css">
 
-	<!-- modal -->
 	<script type="text/javascript">
-		$('#myModal').on('shown.bs.modal', function () {
-		  $('#myInput').focus()
-		})
+		$(function () { $("[data-toggle='popover']").popover(); });
 	</script>
 
 	<!-- bacheditor -->

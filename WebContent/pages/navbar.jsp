@@ -4,6 +4,43 @@
 <%
 	Member me = (Member) request.getSession().getAttribute("member"); 
 %>
+	
+<script type="text/javascript">
+	$(function () { 
+		$("#msg").popover({
+			placement:'bottom', 
+			trigger: "click",
+            animation: true,
+			delay: {show: 100, hide: 50}, 
+			html: true,
+            container: 'body',
+            content: getPopoverContent()
+		}); 
+	});
+	function getPopoverContent() {
+		
+		var content = "<ul class='nav nav-tabs'>"
+		  + "<li class='active'><a href='#home' data-toggle='tab'><i class='fa fa-list'></i></a></li>"
+		  + "<li><a href='#profile' data-toggle='tab'><i class='fa fa-users'></i></a></li>"
+		  + "<li><a href='#haha' data-toggle='tab'><i class='fa fa-heart'></i></a></li>"
+		  + "</ul>"
+		  + "<div id='myTabContent' class='tab-content'>"
+		  + "<div class='tab-pane fade active in' id='home'>"
+		  + "<p>Raw denim you ptate nisi quiate nisi quiate nisiquiate nisi quiate nisiquiate nisi quiate nisiquiate nisi quiate nisi quiate nisi qui.</p>"
+		  + "</div>"
+		  + "<div class='tab-pane fade active in' id='profile'>"
+		  + "<p>Raw denim you ptate nisi qui.</p>"
+		  + "</div>"
+		  + "<div class='tab-pane fade active in' id='haha'>"
+		  + "<p>Raw denim you ptate nisi qui.</p>"
+		  + "</div>"
+		  + "</div>";
+		
+		
+		return content;
+	};
+</script>
+
 <ul class="nav navbar-nav">
 	<li>
 		<a href="./IndexServlet">首页</a>
@@ -18,7 +55,9 @@
 		<a href="#">发现</a>
 	</li>
 	<li>
-		<a href="#">消息<span class="badge">42</span></a>
+		<a id="msg" class="mouse-hand">
+      		消息<span class="badge">42</span>
+      	</a>
 	</li>
 </ul>
 
