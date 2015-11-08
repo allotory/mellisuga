@@ -198,10 +198,7 @@ boolean is_answered = false;
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a data-toggle="popover" data-container="body" 
-										data-placement="auto top" data-animation="true"
-										data-html="true" data-trigger="hover"
-										data-content="<a href='https://www.baidu.com/'>百度</a>">
+									<a data-toggle="popover" id="qavatar-<%=ab.getMember().getId() %>">
 										<img src="<%=ab.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
