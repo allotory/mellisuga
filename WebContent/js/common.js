@@ -212,6 +212,18 @@ function loadXMLDoc2(url, parameter, callback) {
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send(parameter);
 }
+function loadXMLDoc3(url, callback) {
+	if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = callback;
+	xmlhttp.open("GET", url, false);
+	xmlhttp.send();
+}
 
 // 提交答案
 function newAnswer(question_id) {
@@ -1175,67 +1187,80 @@ function reporting(report_type, report_category, report_category_id) {
 
 // 个人资料框内容
 function popContent(id) {
+
+	var content;
 	
-	//alert(id);
-	
-	return "<div class='row' style='width:273px;'>"
-		+ "<div class='panel panel-default' style='border: 1px solid white;'>"
-		+ "<div class='panel-body'>"
-		
-		+ "<div class='profile-header'>"
-		+ "<strong><a href='#'>heheheh</a> <i class='fa fa-mars'></i></strong>"
-
-		+ "<a href='#' class='btn btn-success btn-xs module-right'>关注他</a>"
-		
-		+ "</div>"
-		
-		+ "<div class='row user-infos' style='padding-bottom: 10px;'>"
-		+ "<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>"
-		+ "<img src='./images/avatar/default.jpg' class='img-responsive img-rounded'>"
-		+ "</div>"
-
-		+ "<div class='col-lg-8 col-md-8 col-sm-8 col-xs-8'>"
-		+ "<div class='user-info'>"
-		+ "<i class='fa fa-map-marker'></i> "
-		+ "<span class='location'>dsg</span>"
-		+ "<span class='business'>ghj</span>"
-		+ "<span class='gender'>ert</span>"
-		+ "</div>"
-
-		+ "<div class='user-info'>"
-		+ "<i class='fa fa-suitcase'></i> "
-		+ "<span class='company'>gjkl</span>"
-		+ "<span class='work'>uioluil</span>"
-		+ "</div>"
-
-		+ "<div class='user-info-end'>"
-		+ "<i class='fa fa-graduation-cap'></i> "
-		+ "<span class='education'>jhljhkl</span>"
-		+ "<span class='specialty'>uiouiol</span>"
-		+ "</div>"
+	loadXMLDoc3("MemberInfoServlet?id=" + id.substring(5), function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			
+			if(xmlhttp.responseText == "querymemberinfoerror") {
+				alert("查询用户信息失败，请稍候重试!");
+			} else {
+				var obj = JSON.parse(xmlhttp.responseText);
+				//alert(obj.memberList[0]);
+				content = "<div class='row' style='width:273px;'>"
+					+ "<div class='panel panel-default' style='border: 1px solid white;'>"
+					+ "<div class='panel-body'>"
 					
-		+ "</div>"
-		+ "</div>"
+					+ "<div class='profile-header'>"
+					+ "<strong><a href='#'>" +obj.memberList[0].fullname+ "</a> <i class='fa fa-mars'></i></strong>"
+
+					+ "<a href='#' class='btn btn-success btn-xs module-right'>关注他</a>"
+					
+					+ "</div>"
+					
+					+ "<div class='row user-infos' style='padding-bottom: 10px;'>"
+					+ "<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>"
+					+ "<img src='" +obj.memberList[0].avatar_path+ "' class='img-responsive img-rounded'>"
+					+ "</div>"
+
+					+ "<div class='col-lg-8 col-md-8 col-sm-8 col-xs-8'>"
+					+ "<div class='user-info'>"
+					+ "<i class='fa fa-map-marker'></i> "
+					+ "<span class='location'>" +obj.memberList[0].location+ "</span>"
+					+ "<span class='business'>" +obj.memberList[0].business+ "</span>"
+					+ "<span class='gender'>" +obj.memberList[0].gender+ "</span>"
+					+ "</div>"
+
+					+ "<div class='user-info'>"
+					+ "<i class='fa fa-suitcase'></i> "
+					+ "<span class='company'>" +obj.memberList[0].employment+ "</span>"
+					+ "<span class='work'>" +obj.memberList[0].position+ "</span>"
+					+ "</div>"
+
+					+ "<div class='user-info-end'>"
+					+ "<i class='fa fa-graduation-cap'></i> "
+					+ "<span class='education'>" +obj.memberList[0].education+ "</span>"
+					+ "<span class='specialty'>" +obj.memberList[0].major+ "</span>"
+					+ "</div>"
+								
+					+ "</div>"
+					+ "</div>"
 
 
-		+ "<div class='achievement'>"
-		+ "<span class='achieve'>"
-		+ "<i class='fa fa-pencil'></i> "
-		+ "<strong>1254</strong>回答"
-		+ "</span>"
-		+ "<span class='achieve'>"
-		+ "<i class='fa fa-file-o'></i> "
-		+ "<strong>14</strong>文章"
-		+ "</span>"
-		+ "<span class='achieve'>"
-		+ "<i class='fa fa-heart-o'></i> "
-		+ "<strong>5k</strong>关注者"
-		+ "</span>"
-		+ "</div>"
-		
-		+ "</div>"
-		+ "</div>"
-		+ "</div>";
+					+ "<div class='achievement'>"
+					+ "<span class='achieve'>"
+					+ "<i class='fa fa-pencil'></i> "
+					+ "<strong>" +obj.memberList[0].question_num+ "</strong>提问"
+					+ "</span>"
+					+ "<span class='achieve'>"
+					+ "<i class='fa fa-file-o'></i> "
+					+ "<strong>0</strong>文章"
+					+ "</span>"
+					+ "<span class='achieve'>"
+					+ "<i class='fa fa-heart-o'></i> "
+					+ "<strong>" +obj.memberList[0].answer_num+ "</strong>回答"
+					+ "</span>"
+					+ "</div>"
+					
+					+ "</div>"
+					+ "</div>"
+					+ "</div>";
+
+			}
+		}
+	});	
+	return content;
 }
 
 
