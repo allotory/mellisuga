@@ -1173,7 +1173,70 @@ function reporting(report_type, report_category, report_category_id) {
 	});	
 }
 
+// 个人资料框内容
+function popContent(id) {
+	
+	//alert(id);
+	
+	return "<div class='row' style='width:273px;'>"
+		+ "<div class='panel panel-default' style='border: 1px solid white;'>"
+		+ "<div class='panel-body'>"
+		
+		+ "<div class='profile-header'>"
+		+ "<strong><a href='#'>heheheh</a> <i class='fa fa-mars'></i></strong>"
 
+		+ "<a href='#' class='btn btn-success btn-xs module-right'>关注他</a>"
+		
+		+ "</div>"
+		
+		+ "<div class='row user-infos' style='padding-bottom: 10px;'>"
+		+ "<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>"
+		+ "<img src='./images/avatar/default.jpg' class='img-responsive img-rounded'>"
+		+ "</div>"
+
+		+ "<div class='col-lg-8 col-md-8 col-sm-8 col-xs-8'>"
+		+ "<div class='user-info'>"
+		+ "<i class='fa fa-map-marker'></i> "
+		+ "<span class='location'>dsg</span>"
+		+ "<span class='business'>ghj</span>"
+		+ "<span class='gender'>ert</span>"
+		+ "</div>"
+
+		+ "<div class='user-info'>"
+		+ "<i class='fa fa-suitcase'></i> "
+		+ "<span class='company'>gjkl</span>"
+		+ "<span class='work'>uioluil</span>"
+		+ "</div>"
+
+		+ "<div class='user-info-end'>"
+		+ "<i class='fa fa-graduation-cap'></i> "
+		+ "<span class='education'>jhljhkl</span>"
+		+ "<span class='specialty'>uiouiol</span>"
+		+ "</div>"
+					
+		+ "</div>"
+		+ "</div>"
+
+
+		+ "<div class='achievement'>"
+		+ "<span class='achieve'>"
+		+ "<i class='fa fa-pencil'></i> "
+		+ "<strong>1254</strong>回答"
+		+ "</span>"
+		+ "<span class='achieve'>"
+		+ "<i class='fa fa-file-o'></i> "
+		+ "<strong>14</strong>文章"
+		+ "</span>"
+		+ "<span class='achieve'>"
+		+ "<i class='fa fa-heart-o'></i> "
+		+ "<strong>5k</strong>关注者"
+		+ "</span>"
+		+ "</div>"
+		
+		+ "</div>"
+		+ "</div>"
+		+ "</div>";
+}
 
 
 

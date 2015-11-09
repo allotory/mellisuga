@@ -198,7 +198,7 @@ boolean is_answered = false;
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a data-toggle="popover" id="qavatar-<%=ab.getMember().getId() %>">
+									<a data-toggle="popover" id="qtar-<%=ab.getMember().getId() %>">
 										<img src="<%=ab.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
