@@ -120,7 +120,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a href="#">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
@@ -131,7 +131,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="content-source">
-										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 提了一个问题
+										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 提了一个问题
 										<span class="source-time">3小时前</span>
 									</div>
 								</div>
@@ -228,7 +228,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a href="#">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
@@ -311,7 +311,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="content-source">
-										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 回答了该问题
+										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 回答了该问题
 										<span class="source-time">3小时前</span>
 									</div>
 								</div>
@@ -500,7 +500,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a href="#">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
@@ -583,7 +583,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="content-source">
-										<a href="#"><%=trendsBean.getTrendsMember().getFullname() %></a> 赞同了该答案
+										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getTrendsMember().getFullname() %></a> 赞同了该答案
 										<span class="source-time">3小时前</span>
 									</div>
 								</div>
@@ -600,7 +600,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 								<div class="row">
 									<div class="author-info">
-										<a href="#"><strong><%=trendsBean.getMember().getFullname() %></strong></a>,
+										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><strong><%=trendsBean.getMember().getFullname() %></strong></a>,
 										<span><%=trendsBean.getMember().getAutograph() %></span>
 									</div>
 								</div>
@@ -615,7 +615,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										for(Member member : trendsBean.getVoterBean().getVoterList()) {
 									%>
 										<%=split %>
-										<a href="#"><%=member.getFullname() %></a>
+										<a href="./HomeServlet?id=<%=member.getId() %>"><%=member.getFullname() %></a>
 									<%
 											split = "、";
 										}
@@ -778,7 +778,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<!-- avatar and upvote col -->
 							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
-									<a href="#">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
 									</a>
 								</div>
@@ -789,7 +789,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 								<div class="row">
 									<div class="content-source">
-										<a href="#"><%=trendsBean.getMember().getFullname() %></a> 关注该问题
+										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 关注该问题
 										<span class="source-time">3小时前</span>
 									</div>
 								</div>

@@ -1203,7 +1203,7 @@ function popContent(id) {
 					+ "<div class='panel-body'>"
 					
 					+ "<div class='profile-header'>"
-					+ "<strong><a href='#'>" +obj.memberList[0].fullname+ "</a> <i class='fa fa-mars'></i></strong>"
+					+ "<strong><a href='./HomeServlet?id=" +obj.memberList[0].id+ "'>" +obj.memberList[0].fullname+ "</a> <i class='fa fa-mars'></i></strong>"
 
 					+ "<a href='#' class='btn btn-success btn-xs module-right'>关注他</a>"
 					

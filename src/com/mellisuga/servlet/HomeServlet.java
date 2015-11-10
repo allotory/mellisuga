@@ -16,6 +16,7 @@ import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.HomeBean;
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.dao.AnswersDAO;
+import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.function.TrendsFunc;
@@ -37,17 +38,20 @@ public class HomeServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		Member m = (Member) request.getSession().getAttribute("member");
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		HomeBean homeBean = new HomeBean();
 		
 		SqlSession session = DBConnection.openDefaultSession();
+		MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 		QuestionDAO questionDAO = session.getMapper(QuestionDAO.class);
 		AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
 		
 		try {
 			
 			// 查询当前用户信息
-			homeBean.setMember(m);
+			Member member = memberDAO.queryMemberByID(id);
+			homeBean.setMember(member);
 			
 			// 查询所有提问
 			List<Question> questionList = questionDAO.query3QuestionByMid(m.getId());

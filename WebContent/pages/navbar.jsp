@@ -5,42 +5,6 @@
 	Member me = (Member) request.getSession().getAttribute("member"); 
 %>
 	
-<script type="text/javascript">
-	$(function () { 
-		$("#msg").popover({
-			placement:'bottom', 
-			trigger: "click",
-            animation: true,
-			delay: {show: 100, hide: 50}, 
-			html: true,
-            container: 'body',
-            content: getPopoverContent()
-		}); 
-	});
-	function getPopoverContent() {
-		
-		var content = "<ul class='nav nav-tabs'>"
-		  + "<li class='active'><a href='#home' data-toggle='tab'><i class='fa fa-list'></i></a></li>"
-		  + "<li><a href='#profile' data-toggle='tab'><i class='fa fa-users'></i></a></li>"
-		  + "<li><a href='#haha' data-toggle='tab'><i class='fa fa-heart'></i></a></li>"
-		  + "</ul>"
-		  + "<div id='myTabContent' class='tab-content'>"
-		  + "<div class='tab-pane fade active in' id='home'>"
-		  + "<p>Raw denim you ptate nisi quiate nisi quiate nisiquiate nisi quiate nisiquiate nisi quiate nisiquiate nisi quiate nisi quiate nisi qui.</p>"
-		  + "</div>"
-		  + "<div class='tab-pane fade active in' id='profile'>"
-		  + "<p>Raw denim you ptate nisi qui.</p>"
-		  + "</div>"
-		  + "<div class='tab-pane fade active in' id='haha'>"
-		  + "<p>Raw denim you ptate nisi qui.</p>"
-		  + "</div>"
-		  + "</div>";
-		
-		
-		return content;
-	};
-</script>
-
 <ul class="nav navbar-nav">
 	<li>
 		<a href="./IndexServlet">首页</a>
@@ -65,7 +29,7 @@
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=me.getFullname() %> <span class="caret"></span></a>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="./HomeServlet"><i class="fa fa-user margin-icon"></i> 我的主页</a></li>
+			<li><a href="./HomeServlet?id=<%=me.getId() %>"><i class="fa fa-user margin-icon"></i> 我的主页</a></li>
 			<li><a href="#"><i class="fa fa-envelope margin-icon"></i> 私信</a></li>
 			<li><a href="#"><i class="fa fa-cog margin-icon"></i> 设置</a></li>
 			<li class="divider"></li>

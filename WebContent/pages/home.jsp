@@ -71,19 +71,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class="profile-header">
-									<strong><%=m.getFullname() %></strong>
+									<strong><%=homeBean.getMember().getFullname() %></strong>
 								</div>
 								<div class="row user-infos">
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<img src="<%=m.getAvatar_path() %>" class="img-responsive img-rounded">
+										<img src="<%=homeBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded">
 									</div>
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
 										<div class="user-info">
 											<i class="fa fa-map-marker"></i> 
-											<span class="location"><%=m.getLocation() %></span>
-											<span class="business"><%=m.getBusiness() %></span>
-											<span class="gender"><%=m.getGender() %></span>
+											<span class="location"><%=homeBean.getMember().getLocation() %></span>
+											<span class="business"><%=homeBean.getMember().getBusiness() %></span>
+											<span class="gender"><%=homeBean.getMember().getGender() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -92,8 +92,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 										<div class="user-info">
 											<i class="fa fa-suitcase"></i> 
-											<span class="company"><%=m.getEmployment() %></span>
-											<span class="work"><%=m.getPosition() %></span>
+											<span class="company"><%=homeBean.getMember().getEmployment() %></span>
+											<span class="work"><%=homeBean.getMember().getPosition() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -102,8 +102,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 										<div class="user-info-end">
 											<i class="fa fa-graduation-cap"></i> 
-											<span class="education"><%=m.getEducation() %></span>
-											<span class="specialty"><%=m.getMajor() %></span>
+											<span class="education"><%=homeBean.getMember().getEducation() %></span>
+											<span class="specialty"><%=homeBean.getMember().getMajor() %></span>
 											<a href="#" class="item-edit">
 												<i class="fa fa-edit"></i> 
 												修改
@@ -114,7 +114,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										</div>
 										<hr style="margin-top:12px;margin-bottom:12px;"/>
 										
-										<p><%=m.getDescription() %></p>
+										<p><%=homeBean.getMember().getDescription() %></p>
 									</div>
 								</div>
 
@@ -123,11 +123,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<span class="achieve">获得</span>
 									<span class="achieve">
 										<i class="fa fa-thumbs-o-up"></i> 
-										<strong><%=m.getApprove_num() %></strong>赞同
+										<strong><%=homeBean.getMember().getApprove_num() %></strong>赞同
 									</span>
 									<span class="achieve">
 										<i class="fa fa-heart-o"></i> 
-										<strong><%=m.getThank_num() %></strong>感谢
+										<strong><%=homeBean.getMember().getThank_num() %></strong>感谢
 									</span>
 									<a href="#" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 								</div>
@@ -135,10 +135,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div>
 							<div class="panel-footer user-info-foot">
 								<a href="" class="info-item"><i class="fa fa-home"></i> </a>
-								<a href="" class="info-item"><strong>提问</strong><span> <%=m.getQuestion_num() %></span></a>
-								<a href="" class="info-item"><strong>回答</strong><span> <%=m.getAnswer_num() %></span></a>
+								<a href="" class="info-item"><strong>提问</strong><span> <%=homeBean.getMember().getQuestion_num() %></span></a>
+								<a href="" class="info-item"><strong>回答</strong><span> <%=homeBean.getMember().getAnswer_num() %></span></a>
 								<a href="" class="info-item"><strong>专栏文章</strong><span> 0</span></a>
-								<a href="" class="info-item"><strong>收藏</strong><span> <%=m.getCollect_num() %></span></a>
+								<a href="" class="info-item"><strong>收藏</strong><span> <%=homeBean.getMember().getCollect_num() %></span></a>
 								<a href="" class="info-item"><strong>公共编辑</strong><span> 0</span></a>
 							</div>
 						</div>
