@@ -296,7 +296,7 @@ boolean is_answered = false;
 										for(Member member : ab.getVoterBean().getVoterList()) {
 									%>
 										<%=split %>
-										<a href="#"><%=member.getFullname() %></a>
+										<a href="./HomeServlet?id=<%=member.getId() %>"><%=member.getFullname() %></a>
 									<%
 											split = "、";
 										}
