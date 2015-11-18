@@ -300,51 +300,51 @@ CREATE TABLE IF NOT EXISTS block (
 	PRIMARY KEY (id)
 );
 
+/**
+ * 	（^为直接插入存储 ， #为动态读取）
+ * 
+ * 用户对用户：
+ * 	1. 私信 ^ -- PrivateMsg
+ * 
+ * 系统对用户：
+ * 	1. 提醒
+ * 		别人邀请你回答一个问题^	-- InviteMsg
+ * 		别人评论了你的回答^		-- CommentAnswerMsg
+ * 		别人评论了你的问题^		-- CommentQuestionMsg
+ * 		别人回答了你的问题^		-- AnswerQuestionMsg
+ * 		@用户^					-- AtUserMsg
+ * 		二级回复^					-- ReplyCommentMsg
+ * 	2. 系统通知
+ * 		别人关注了你^				-- FollowingYouMsg
+ * 		你关注的问题有了一个新回答 #-- NewAnswerMsg
+ * 		别人赞同了你的回答^		-- AgreeAnswerMsg
+ * 		别人感谢了你的回答^		-- ThankYouAnswerMsg
+ */
+
 /*
  * 消息内容表
  */
 CREATE TABLE IF NOT EXISTS message_text (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 消息内容ID（唯一标识） */
+	sender_id int(11) NOT NULL,					/* 发送用户ID */
 	content text NOT NULL,						/* 消息内容 */
+	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
+	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
+	msg_type varchar(64) NOT NULL,				/* 消息类型  */
+	follow_group int(11) NOT NULL,				/* 关注问题的用户组 */
 	PRIMARY KEY (id)
 );
 
 /*
  * 用户消息表
  */
-CREATE TABLE IF NOT EXISTS user_message (
+CREATE TABLE IF NOT EXISTS message_log (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 用户消息ID（唯一标识） */
-	sender_id int(11) NOT NULL,					/* 发送用户ID */
 	receiver_id int(11) NOT NULL,				/* 接收用户ID */
 	text_id int(11) NOT NULL,					/* 消息内容ID */
 	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 */
-	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
-	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
 	read_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 阅读时间 */
 	is_read smallint NOT NULL,					/* 是否已读 */
-	mtype int(11) NOT NULL,						/* 消息类型 —— 回答问题、关注、点赞 */
-	PRIMARY KEY (id)
-);
-
-/*
- * 系统消息表
- */
-CREATE TABLE IF NOT EXISTS system_message (
-	id int(11) NOT NULL AUTO_INCREMENT,			/* 系统消息表 */
-	title varchar(256) NOT NULL,				/* 系统消息标题 */
-	text_id int(11) NOT NULL,					/* 消息内容ID */
-	create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,		/* 消息创建时间 */
-	mtype int(11) NOT NULL,						/* 消息类型  */
-	PRIMARY KEY (id)
-);
-
-/*
- * 消息关联表
- */
-CREATE TABLE IF NOT EXISTS user_system_msg (
-	id int(11) NOT NULL AUTO_INCREMENT,			/* 消息关联主键ID（唯一标识） */
-	member_id int(11) NOT NULL,
-	system_message_id int(11) NOT NULL,
 	PRIMARY KEY (id)
 );
 
