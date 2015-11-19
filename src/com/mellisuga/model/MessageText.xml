@@ -7,8 +7,22 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到MessageText的id属性--> 
     <insert id="insertMessageText" parameterType="MessageText" useGeneratedKeys="true" keyProperty="id">
-    	insert into message_text(content) 
-    	values(#{content})
+    	insert into message_text(
+	    	sender_id, 
+	    	content, 
+	    	send_time, 
+	    	sender_isdel, 
+	    	msg_type, 
+	    	follow_group
+    	) 
+    	values(
+    		#{sender_id},
+    		#{content},
+    		#{send_time},
+    		#{sender_isdel},
+    		#{msg_type},
+    		#{follow_group}
+    	)
     </insert>
 </mapper>
 

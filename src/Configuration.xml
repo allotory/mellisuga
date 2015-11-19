@@ -30,18 +30,15 @@
         <typeAlias alias="Qlog" type="com.mellisuga.model.Qlog"/>
         <typeAlias alias="Question" type="com.mellisuga.model.Question"/>
         <typeAlias alias="Relationship" type="com.mellisuga.model.Relationship"/>
-        <typeAlias alias="SystemMessage" type="com.mellisuga.model.SystemMessage"/>
         <typeAlias alias="Thanks" type="com.mellisuga.model.Thanks"/>
         <typeAlias alias="Tag" type="com.mellisuga.model.Tag"/>
-        <typeAlias alias="UserMessage" type="com.mellisuga.model.UserMessage"/>
-        <typeAlias alias="UserSystemMsg" type="com.mellisuga.model.UserSystemMsg"/>
         <typeAlias alias="Vote" type="com.mellisuga.model.Vote"/>
         <typeAlias alias="Invite" type="com.mellisuga.model.Invite"/>
         <typeAlias alias="Draft" type="com.mellisuga.model.Draft"/>
         <typeAlias alias="Trends" type="com.mellisuga.model.Trends"/>
         <typeAlias alias="ReportType" type="com.mellisuga.model.ReportType"/>
         <typeAlias alias="Report" type="com.mellisuga.model.Report"/>
-        
+        <typeAlias alias="MessageLog" type="com.mellisuga.model.MessageLog"/>
     </typeAliases> 
 
     <environments default="development">
@@ -91,16 +88,14 @@
         <mapper resource="com/mellisuga/model/Qlog.xml"/>
         <mapper resource="com/mellisuga/model/Question.xml"/>
         <mapper resource="com/mellisuga/model/Relationship.xml"/>
-        <mapper resource="com/mellisuga/model/SystemMessage.xml"/>
         <mapper resource="com/mellisuga/model/Thanks.xml"/>
         <mapper resource="com/mellisuga/model/Tag.xml"/>
-        <mapper resource="com/mellisuga/model/UserMessage.xml"/>
-        <mapper resource="com/mellisuga/model/UserSystemMsg.xml"/>
         <mapper resource="com/mellisuga/model/Vote.xml"/>
         <mapper resource="com/mellisuga/model/Invite.xml"/>
         <mapper resource="com/mellisuga/model/Draft.xml"/>
         <mapper resource="com/mellisuga/model/Trends.xml"/>
         <mapper resource="com/mellisuga/model/ReportType.xml"/>
         <mapper resource="com/mellisuga/model/Report.xml"/>
+        <mapper resource="com/mellisuga/model/MessageLog.xml"/>
     </mappers>
 </configuration>
