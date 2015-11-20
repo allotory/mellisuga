@@ -18,12 +18,14 @@ import org.apache.ibatis.session.SqlSession;
 import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.QuestionBean;
 import com.mellisuga.dao.AnswersDAO;
+import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TagDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
+import com.mellisuga.model.Follow;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Tag;
@@ -119,6 +121,13 @@ public class AskServlet extends HttpServlet {
 			MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 			m.setQuestion_num(m.getQuestion_num() + 1);
 			memberDAO.updateMember(m);
+			
+			// 提问用户自动关注问题
+			FollowDAO followDAO = session.getMapper(FollowDAO.class);
+			Follow follow = new Follow();
+			follow.setQuestion_id(question.getId());
+			follow.setFollower_id(m.getId());
+			followDAO.insertFollow(follow);
 			
 			session.commit();
 			

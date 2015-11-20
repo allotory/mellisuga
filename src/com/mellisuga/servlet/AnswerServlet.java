@@ -20,11 +20,13 @@ import org.json.JSONObject;
 import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.MessageTextDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.MessageText;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
 
@@ -51,10 +53,6 @@ public class AnswerServlet extends HttpServlet {
 		String question_id = request.getParameter("question_id");
 		String ans = request.getParameter("answers");
 		String is_anonymous = request.getParameter("is_anonymous");
-		
-		System.out.println(question_id);
-		System.out.println(ans);
-		System.out.println(is_anonymous);
 		
 		// 更新日期
 		Date date = new Date();
@@ -124,6 +122,18 @@ public class AnswerServlet extends HttpServlet {
 			trends.setTrends_member(m.getId());
 			trendsDAO.insertTrends(trends);
 			
+			// 更新消息
+			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+			MessageText messageText = new MessageText();
+			messageText.setSender_id(0);
+			messageText.setContent("有人回答了你关注的问题～");
+			messageText.setSend_time(now);
+			messageText.setSender_isdel(0);
+			messageText.setMsg_type("NewAnswerMsg");
+			messageText.setFollow_group(q.getId());
+			
+			messageTextDAO.insertMessageText(messageText);
+			
 			session.commit();
 			
 			// 重新查询用户信息
@@ -142,7 +152,7 @@ public class AnswerServlet extends HttpServlet {
 			jsonObject.put("answerBeanList", answerBeanList);
 			
 			// 返回评论json
-			System.out.println(jsonObject.toString());
+			//System.out.println(jsonObject.toString());
 			out.print(jsonObject.toString());
 			
 		} catch(Exception e) {
