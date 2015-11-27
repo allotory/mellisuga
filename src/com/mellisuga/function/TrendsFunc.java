@@ -26,7 +26,7 @@ import com.mellisuga.model.Vote;
 
 public class TrendsFunc {
 
-	public List<TrendsBean> getTrends(SqlSession defaultSession, Member member) {
+	public List<TrendsBean> getTrends(SqlSession defaultSession, Member member, String trends_object) {
 
 		// 动态查询
 		TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
@@ -38,8 +38,14 @@ public class TrendsFunc {
 		ThanksDAO thanksDAO = defaultSession.getMapper(ThanksDAO.class);
 		NoHelpDAO noHelpDAO = defaultSession.getMapper(NoHelpDAO.class);
 		
+		List<Trends> trendsList = null;
+		
 		// 查询全部动态列表
-		List<Trends> trendsList = trendsDAO.queryTrendsByTMid(member.getId());
+		if(trends_object.equals("specificUser")) {
+			trendsList = trendsDAO.queryTrendsByTMid(member.getId());
+		} else if(trends_object.equals("allUser")) {
+			trendsList = trendsDAO.queryAllTrends();
+		}
 		List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
 
 		if (trendsList != null) {

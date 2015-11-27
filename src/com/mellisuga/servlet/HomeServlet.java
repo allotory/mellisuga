@@ -76,7 +76,8 @@ public class HomeServlet extends HttpServlet {
 			homeBean.setAnswerBeanList(answerBeanList);
 			
 			// 查询动态
-			List<TrendsBean> trendsBeanList = new TrendsFunc().getTrends(session, m);
+			List<TrendsBean> trendsBeanList = new TrendsFunc()
+				.getTrends(session, m, "specificUser");
 			homeBean.setTrendsBeanList(trendsBeanList);
 			
 			request.setAttribute("homeBean", homeBean);
