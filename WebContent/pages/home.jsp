@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.bean.*" %>
+<%@ page import="com.mellisuga.utils.*" %>
 <%@include file="sitename.jsp"%>
 <%   
 String path = request.getContextPath();   
@@ -162,7 +163,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="ask-list-content">
 										<a href="" class="question-list"><%=q.getQuestion_title() %></a>
 										<div class="feed-meta">
-											<a href="#" class="answer-date">发布于 <%=q.getLast_updated() %> </a> 
+											<a href="#" class="answer-date">发布于 <%=TimeUtils.getPostTime(q.getLast_updated()) %> </a> 
 											<span class="bull">•</span> <a href="#" class="meta-item">4847赞</a>
 											<span class="bull">•</span> <a href="#" class="meta-item"><%=q.getScan_num() %>浏览</a>
 											<span class="bull">•</span> <a href="#" class="meta-item"><%=q.getAnswers_num() %>回答</a>
@@ -231,7 +232,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 									<div class="content-source">
 										<span class="user-agree">赞同该回答</span>
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								
 									<div class="question-link">
@@ -253,7 +254,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												}
 											%>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
@@ -390,7 +391,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 									<div class="content-source">
 										<span class="user-agree">关注了问题</span>
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								
 									<div class="question-link">
@@ -411,7 +412,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 									<div class="content-source">
 										<span class="user-agree">回答了问题</span>
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								
 									<div class="question-link">
@@ -433,7 +434,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												}
 											%>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
@@ -571,7 +572,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 									<div class="content-source">
 										<span class="user-agree">提出了问题</span>
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								
 									<div class="question-link">

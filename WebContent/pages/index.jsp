@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
 <%@ page import="com.mellisuga.bean.*" %>
+<%@ page import="com.mellisuga.utils.*" %>
 <%@include file="sitename.jsp"%>
 <%
 String path = request.getContextPath();   
@@ -132,7 +133,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="content-source">
 										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 提了一个问题
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								</div>
 
@@ -312,7 +313,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="content-source">
 										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 回答了该问题
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								</div>
 								
@@ -353,7 +354,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<div class="editable-content" style="display: block;">
 											<%=trendsBean.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
@@ -584,7 +585,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="content-source">
 										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getTrendsMember().getFullname() %></a> 赞同了该答案
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								</div>
 								
@@ -632,7 +633,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<div class="editable-content" style="display: block;">
 											<%=trendsBean.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 <%=trendsBean.getAnswer().getAnswer_date() %></a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
 										<div class="summary-content clearfix" style="display: none;">
@@ -790,7 +791,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="content-source">
 										<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>"><%=trendsBean.getMember().getFullname() %></a> 关注该问题
-										<span class="source-time">3小时前</span>
+										<span class="source-time"><%=TimeUtils.getTimeDifference(trendsBean.getTrends().getTrends_time()) %></span>
 									</div>
 								</div>
 
@@ -880,110 +881,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							}
 						}
 					%>
-
-					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap">
-						<div class="left-main-content">
-
-							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div class="row">
-									<a href="#">
-										<img src="./images/avatar/310d85e8d.jpg" class="img-responsive img-rounded" alt="Responsive image">
-									</a>
-								</div>
-								<div class="row">
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<i class="fa fa-caret-up"></i>
-											<span style="display:block;">122</span>
-										</a>
-									</div>
-									
-									<div class="vote-text-center vote-number">
-										<a href="#">
-											<i class="fa fa-caret-down"></i>
-										</a>
-									</div>
-								</div>
-							</div><!-- end avatar and upvote col -->
-
-							<!-- content-details -->
-							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
-
-								<div class="row">
-									<div class="content-source">
-										<a href="#">空明流转</a> 赞同该回答
-										<span class="source-time">3小时前</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-link">
-										<h5><a href="#">除去计算机软件领域，哪些行业软件离不开Windows?</a></h5>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="author-info">
-										<a href="#"><strong>空明</strong></a>,
-										<span>RednaxelaFX</span>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="question-content">
-										<div class="editable-content" style="display: block;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 14:36</a>
-											</span>
-										</div>
-										<div class="summary-content clearfix" style="display: none;">
-											这个廉价的东西不能退、不能改签应该是常识啊
-											这个廉价的东西不能退、不能改签应该是常识啊
-										</div>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="meta-panel">
-										<a class="meta-item" href="javascript:;">
-											<i class="fa fa-plus"></i> 关注问题
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-comment-o"></i> 添加评论
-										</a>
-										<a href="#" class="meta-item" data-thanked="false">
-											<i class="fa fa-heart-o"></i> 感谢
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-share"></i> 分享
-										</a>
-										<a href="#" class="meta-item">
-											<i class="fa fa-bookmark-o"></i> 收藏
-										</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item">没有帮助</a>
-										<span class="bull">•</span>
-										<a href="#" class="meta-item goog-inline-block" style="-webkit-user-select: none;">
-											举报
-										</a>
-										<span class="copyright"></span>
-										<a href="#" class="answer-collapse meta-item">
-											<i class="fa fa-angle-double-up"></i> 收起
-										</a>
-									</div>
-								</div>
-
-							</div><!-- end content-details -->
-														
-						</div><!-- end left main content -->
-					</div><!--end left main content wrap  -->
 
 					<!-- loding more btn row  -->
 					<div class="row">

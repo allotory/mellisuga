@@ -6,13 +6,11 @@ import java.util.Date;
 
 public class TimeUtils {
 
-	public static Timestamp getTimeDifference(Timestamp t) {
+	public static String getTimeDifference(Timestamp t) {
 		Date date = new Date();
 		String dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 				.format(date);
 		Timestamp now = Timestamp.valueOf(dateFormate);
-		
-		System.out.println(now.getTime() - t.getTime());
 		
 		long timeDifference = now.getTime() - t.getTime();
 		
@@ -23,37 +21,61 @@ public class TimeUtils {
 		long month = 1000L*60*60*24*30;
 		long year = 1000L*60*60*24*365;
 		
-		System.out.println("一小时内："+ hour);
-		System.out.println("24小时内："+ day);
-		System.out.println("一月内："+ month);
-		System.out.println("一年内："+ year);
-
+		String time = "";
+		
 		if(timeDifference > second && timeDifference <= minute) {
 			// 时间大于1秒钟，小于1小分钟
-			System.out.println(timeDifference / second);
+			time = timeDifference / second + "秒前";
 		} else if(timeDifference > minute && timeDifference <= hour) {
 			// 时间大于1分钟，小于1小时
-			System.out.println(timeDifference / minute);
+			time = timeDifference / minute + "分钟前";
 		} else if(timeDifference > hour && timeDifference <= day) {
 			// 时间大于1小时，小于1天
-			System.out.println(timeDifference / hour);
+			time = timeDifference / hour + "小时前";
 		} else if(timeDifference > day && timeDifference <= month) {
 			// 时间大于1天，小于1月
-			System.out.println(timeDifference / day);
+			time = timeDifference / day + "天前";
 		} else if(timeDifference > month && timeDifference <= year) {
 			// 时间大于1月，小于1年
-			System.out.println(timeDifference / month);
+			time = timeDifference / month + "月前";
 		} else if(timeDifference > year) {
 			// 时间大于1年
-			System.out.println(t);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			time = sdf.format(t);
 		}
 		
-		return null;
+		return time;
+	}
+	
+	public static String getPostTime(Timestamp t) {
+		Date date = new Date();
+		String dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+				.format(date);
+		Timestamp now = Timestamp.valueOf(dateFormate);
+		
+		long timeDifference = now.getTime() - t.getTime();
+		
+		long day = 1000L*60*60*24;
+		
+		String time = "";
+		
+		if(timeDifference > 0 && timeDifference <= day) {
+			// 时间小于1天
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			time = sdf.format(t);
+		} else if(timeDifference > day) {
+			// 时间大于1天
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			time = sdf.format(t);
+		}
+		
+		return time;
 	}
 	
 	public static void main(String[] args) {
 		
-		Timestamp date  = Timestamp.valueOf("2015-12-02 22:42:02");
-		System.out.print(TimeUtils.getTimeDifference(date));
+		Timestamp date  = Timestamp.valueOf("2015-12-01 13:21:02");
+		//System.out.print(TimeUtils.getTimeDifference(date));
+		System.out.print(TimeUtils.getPostTime(date));
 	}
 }

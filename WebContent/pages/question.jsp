@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
 <%@ page import="com.mellisuga.bean.*" %>
+<%@ page import="com.mellisuga.utils.*" %>
 <%@ page import="java.util.List" %>
 <%@include file="sitename.jsp"%>
 <%
@@ -315,7 +316,7 @@ boolean is_answered = false;
 												<%=ab.getAnswer().getAnswers() %>
 											</div>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 <%=ab.getAnswer().getAnswer_date() %></a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(ab.getAnswer().getAnswer_date()) %></a>
 												<%
 													if(is_answered) {
 												%>
