@@ -44,7 +44,7 @@
     
     <!-- 返回多列 -->
     <select id="queryTrendsByTMid" parameterType="int" resultMap="TrendsList">
-        select * from trends where trends_member = #{member_id};
+        select * from trends where trends_member = #{member_id} order by id desc;
     </select>
 </mapper>
 
