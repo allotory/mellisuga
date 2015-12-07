@@ -23,6 +23,8 @@ public class AnswerBean {
 	
 	private boolean isNoHelp;
 	
+	private double answerWeight;
+	
 	public Answers getAnswer() {
 		return answer;
 	}
@@ -86,5 +88,13 @@ public class AnswerBean {
 	public void setNoHelp(boolean isNoHelp) {
 		this.isNoHelp = isNoHelp;
 	}
-	
+
+	public double getAnswerWeight() {
+		return answerWeight;
+	}
+
+	public void setAnswerWeight(double answerWeight) {
+		this.answerWeight = answerWeight;
+	}
+
 }

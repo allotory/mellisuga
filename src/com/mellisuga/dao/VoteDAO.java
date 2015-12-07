@@ -21,4 +21,7 @@ public interface VoteDAO {
 	
 	// 查询投票
 	public List<Vote> queryVoteByAid(int answer_id);
+	
+	// 查询投票数量（up/down）
+	public int queryCountByAidVoteType(HashMap<String, Object> parameterMap);
 }

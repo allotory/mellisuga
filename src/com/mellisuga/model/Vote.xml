@@ -41,6 +41,12 @@
     <select id="queryVoteByAid" parameterType="int" resultMap="VoteList">
         select * from vote where answer_id = #{answer_id} and vote_type='up'
     </select>
+    
+	<select id="queryCountByAidVoteType" parameterType="java.util.HashMap" resultType="int">
+		select count(*) vote_count from vote 
+			where answer_id = #{answer_id} and vote_type=#{vote_type};
+	</select>
+    
 </mapper>
 
 

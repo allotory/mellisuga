@@ -25,6 +25,7 @@ import com.mellisuga.dao.TagDAO;
 import com.mellisuga.dao.ThanksDAO;
 import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.function.WilsonScoreInterval;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.NoHelp;
@@ -95,16 +96,63 @@ public class QuestionDetailsServlet extends HttpServlet {
 			AnswersDAO answersDAO = session.getMapper(AnswersDAO.class);
 			ThanksDAO thanksDAO = session.getMapper(ThanksDAO.class);
 			NoHelpDAO noHelpDAO = session.getMapper(NoHelpDAO.class);
+			VoteDAO voteDAO = session.getMapper(VoteDAO.class);
 			List<Answers> answersList = answersDAO.queryAnswerByQuestionId(q);
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
+			
+			// 存在答案
 			if(answersList != null && !answersList.isEmpty()) {
-				// 由答案查询答案作者
+				
 				MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 				for(Answers a : answersList) {
+					// 由答案查询答案作者
 					AnswerBean answerBean = new AnswerBean();
 					Member member = memberDAO.queryMemberByUserID(a.getAuthor_id());
-					answerBean.setAnswer(a);
 					answerBean.setMember(member);
+					
+					// 设置答案
+					answerBean.setAnswer(a);
+					
+					// 计算并设置答案权重
+					/**
+					 *  威尔逊区间算法
+					 *  	u 为加权赞同票数，
+					 *  	v 为加权反对票数，
+					 *  	z_alpha 为参数， 暂定2.2，(5~10好一点，吗)
+					 * 
+					 *  n = u + v;
+					 *  p = u / n;
+					 *  
+					 *  score = (p + z*z/2n - (z/2n)*Math.sqrt(4n*(1 - p)*p + z*z)) 
+					 *  			/ (1 + z*z/n)
+					 *  
+					 *  z设置得越高，绝对赞同数就越重要，反之设置较低时，赞同率就越重要。
+					 *  当z等于0时，赞同率将起到全部作用。
+					 *  比如一个1000赞，100反对的回答，当z等于0.73时，其分数将完全等于一个1赞0反对的回答。
+					 *  
+					 *  当z增大时，绝对赞同数起的作用就开始增大。
+					 *  两个回答，前者100赞30反对，后者70赞0反对，那么当z小于21时，后者排名靠前，当大于21时，前者排名靠前。
+					 */
+					
+					// 赞同数
+					HashMap<String, Object> voteUpCountMap = new HashMap<String, Object>();
+					voteUpCountMap.put("answer_id", a.getId());
+					voteUpCountMap.put("vote_type", "up");
+					int voteUpCount = voteDAO.queryCountByAidVoteType(voteUpCountMap);
+					
+					// 反对数
+					HashMap<String, Object> voteDownCountMap = new HashMap<String, Object>();
+					voteDownCountMap.put("answer_id", a.getId());
+					voteDownCountMap.put("vote_type", "down");
+					int voteDownCount = voteDAO.queryCountByAidVoteType(voteDownCountMap);
+					
+					// 计算权重
+					double answerWeight = WilsonScoreInterval.getWSI(voteUpCount, voteDownCount);
+					answerBean.setAnswerWeight(answerWeight);
+					
+					
+					// 单元测试。。。。。
+					
 					
 					// 查询是否感谢过作者
 					HashMap<String, Object> thanksMap = new HashMap<String, Object>();
@@ -129,7 +177,6 @@ public class QuestionDetailsServlet extends HttpServlet {
 					}
 					
 					// 查询是否投票
-					VoteDAO voteDAO = session.getMapper(VoteDAO.class);
 					HashMap<String, Object> voteMap = new HashMap<String, Object>();
 					voteMap.put("answer_id", a.getId());
 					voteMap.put("voter_id", m.getId());
