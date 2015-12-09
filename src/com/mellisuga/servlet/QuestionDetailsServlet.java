@@ -50,6 +50,7 @@ public class QuestionDetailsServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		int question_id = Integer.parseInt(request.getParameter("id"));
+		String sorted = request.getParameter("sort");
 		Member m = (Member) request.getSession().getAttribute("member");
 		
 		SqlSession session = null;
@@ -195,9 +196,11 @@ public class QuestionDetailsServlet extends HttpServlet {
 				}
 			}
 			
-			// 答案按权重自动排序
-			VoteComparator vc = new VoteComparator();
-			Collections.sort(answerBeanList, vc);
+			if(sorted == null || sorted == "") {
+				// 答案按权重自动排序
+				VoteComparator vc = new VoteComparator();
+				Collections.sort(answerBeanList, vc);
+			}
 			
 			questionBean.setAnswerBeanList(answerBeanList);
 			

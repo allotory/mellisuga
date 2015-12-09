@@ -167,12 +167,13 @@ boolean is_answered = false;
 						<div class="answer-info">
 							<span><%=questionBean.getAnswerBeanList().size() %>个回答</span>
 							<div class="btn-group answer-sort">
-								<a href="./QuestionDetails?id=<%=questionBean.getQuestion().getId() %>&sort=created" class="btn btn-default btn-xs">按票数排序</a> 
-								<a href="./QuestionDetails?id=<%=questionBean.getQuestion().getId() %>" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+								<a href="#" class="btn btn-default btn-xs">答案排序</a> 
+								<a href="#" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
 									<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="#">按时间排序</a></li>
+									<li><a href="./QuestionDetails?id=<%=questionBean.getQuestion().getId() %>">按票数排序</a></li>
+									<li><a href="./QuestionDetails?id=<%=questionBean.getQuestion().getId() %>&sort=created">按时间排序</a></li>
 								</ul>
 							</div>
 						</div><!-- end answer info -->
