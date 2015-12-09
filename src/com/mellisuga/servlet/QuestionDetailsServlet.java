@@ -2,6 +2,7 @@ package com.mellisuga.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import com.mellisuga.dao.TagDAO;
 import com.mellisuga.dao.ThanksDAO;
 import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.function.VoteComparator;
 import com.mellisuga.function.WilsonScoreInterval;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
@@ -135,10 +137,6 @@ public class QuestionDetailsServlet extends HttpServlet {
 					}
 					answerBean.setAnswerWeight(answerWeight);
 					
-					
-					// 单元测试。。。。。
-					
-					
 					// 查询是否感谢过作者
 					HashMap<String, Object> thanksMap = new HashMap<String, Object>();
 					thanksMap.put("answer_id", a.getId());
@@ -196,6 +194,11 @@ public class QuestionDetailsServlet extends HttpServlet {
 					answerBeanList.add(answerBean);
 				}
 			}
+			
+			// 答案按权重自动排序
+			VoteComparator vc = new VoteComparator();
+			Collections.sort(answerBeanList, vc);
+			
 			questionBean.setAnswerBeanList(answerBeanList);
 			
 			request.setAttribute("questionBean", questionBean);
