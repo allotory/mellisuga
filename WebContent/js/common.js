@@ -1265,14 +1265,25 @@ function popContent(id) {
 
 // 显示摘要全文
 function getDigestSource(id) {
+	// 全部内容
 	var editable_content = document.getElementById("editable-content-" + id);
+	// 摘要
 	var summary_content = document.getElementById("summary-content-" + id);
+	
+	// 收起
 	var retract = document.getElementById("retract-" + id);
+	
+	// 投票按钮
+	var vote_detail = document.getElementById("vote-detail-" + id);
+	var vote_digest = document.getElementById("vote-digest-" + id);
 	
 	if (editable_content.style.display == "none") {
 		editable_content.style.display = "block";
 		retract.style.display = "block";
 		summary_content.style.display = "none";
+		
+		vote_detail.style.display = "block";
+		vote_digest.style.display = "none";
 	} 
 //	else {
 //		editable_content.style.display = "none";
@@ -1284,11 +1295,20 @@ function getDigestSource(id) {
 function retract(id) {
 	var editable_content = document.getElementById("editable-content-" + id);
 	var summary_content = document.getElementById("summary-content-" + id);
+	
+	// 收起按钮
 	var retract = document.getElementById("retract-" + id);
+	
+	// 投票按钮
+	var vote_detail = document.getElementById("vote-detail-" + id);
+	var vote_digest = document.getElementById("vote-digest-" + id);
 	
 	editable_content.style.display = "none";
 	retract.style.display = "none";
 	summary_content.style.display = "block";
+
+	vote_detail.style.display = "none";
+	vote_digest.style.display = "block";
 }
 
 

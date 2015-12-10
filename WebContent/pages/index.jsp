@@ -228,7 +228,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							<div id="vote-detail-<%=trendsBean.getTrends().getId() %>" style="display: none;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
@@ -306,6 +306,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									}
 								%>
 								
+							</div><!-- end avatar and upvote col -->
+							
+							<!-- avatar and upvote col -->
+							<div id="vote-digest-<%=trendsBean.getTrends().getId() %>" style="display: block;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
+										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
+									<div class="vote-number">
+										<a>
+											<span style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+								</div>
 							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
@@ -500,7 +518,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
-							<div class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							<div id="vote-detail-<%=trendsBean.getTrends().getId() %>" style="display: none;"  class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
 										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
@@ -579,6 +597,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								%>
 								
 							</div><!-- end avatar and upvote col -->
+							
+							<!-- avatar and upvote col -->
+							<div id="vote-digest-<%=trendsBean.getTrends().getId() %>" style="display: block;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="./HomeServlet?id=<%=trendsBean.getMember().getId() %>">
+										<img src="<%=trendsBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
+									<div class="vote-number">
+										<a>
+											<span style="display:block;">
+												<%=trendsBean.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div><!-- end avatar and upvote col -->
 
 							<!-- content-details -->
 							<div class="content-details col-lg-11 col-md-11 col-sm-10 col-xs-10">
@@ -629,16 +665,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									}
 								%>
 
-								<div class="row">
+								<div class="row" onclick="getDigestSource(<%=trendsBean.getTrends().getId() %>);">
 									<div class="question-content">
-										<div class="editable-content" style="display: block;">
+										<div id="editable-content-<%=trendsBean.getTrends().getId() %>" style="display: none;">
 											<%=trendsBean.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
-										<div class="summary-content clearfix" style="display: none;">
-											<%=trendsBean.getAnswer().getAnswers() %>
+										<div id="summary-content-<%=trendsBean.getTrends().getId() %>" style="display: block;">
+											<%=DigestFunc.getDigest(trendsBean.getAnswer().getAnswers(), 200, " ...") %>
 										</div>
 									</div>
 								</div>
@@ -735,7 +771,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												作者保留权利
 											</a>
 										</div>
-										<a href="#" class="answer-collapse meta-item" style="display:none">
+										<a id="retract-<%=trendsBean.getTrends().getId() %>" href="javascript: retract(<%=trendsBean.getTrends().getId() %>);" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
