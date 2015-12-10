@@ -1263,6 +1263,32 @@ function popContent(id) {
 	return content;
 }
 
+// 显示摘要全文
+function getDigestSource(id) {
+	var editable_content = document.getElementById("editable-content-" + id);
+	var summary_content = document.getElementById("summary-content-" + id);
+	var retract = document.getElementById("retract-" + id);
+	
+	if (editable_content.style.display == "none") {
+		editable_content.style.display = "block";
+		retract.style.display = "block";
+		summary_content.style.display = "none";
+	} 
+//	else {
+//		editable_content.style.display = "none";
+//		summary_content.style.display = "block";
+//	}
+}
 
+// 收起答案
+function retract(id) {
+	var editable_content = document.getElementById("editable-content-" + id);
+	var summary_content = document.getElementById("summary-content-" + id);
+	var retract = document.getElementById("retract-" + id);
+	
+	editable_content.style.display = "none";
+	retract.style.display = "none";
+	summary_content.style.display = "block";
+}
 
 
