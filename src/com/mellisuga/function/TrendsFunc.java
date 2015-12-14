@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.github.pagehelper.PageHelper;
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
@@ -42,8 +43,12 @@ public class TrendsFunc {
 		
 		// 查询全部动态列表
 		if(trends_object.equals("specificUser")) {
+			//获取第1页，5条内容，默认查询总数count
+            PageHelper.startPage(1, 15);
 			trendsList = trendsDAO.queryTrendsByTMid(member.getId());
 		} else if(trends_object.equals("allUser")) {
+			//获取第1页，5条内容，默认查询总数count
+            PageHelper.startPage(1, 15);
 			trendsList = trendsDAO.queryAllTrends();
 		}
 		List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
