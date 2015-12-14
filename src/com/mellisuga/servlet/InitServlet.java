@@ -76,7 +76,7 @@ public class InitServlet extends HttpServlet {
 			
 			// 首页动态查询
 			List<TrendsBean> trendsBeanList = new TrendsFunc()
-				.getTrends(defaultSession, member, "allUser");
+				.getTrends(defaultSession, member, "allUser", 1);
 			
 			// 跳转首页
 			request.getSession().setAttribute("member", m);

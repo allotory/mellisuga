@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
@@ -27,7 +28,9 @@ import com.mellisuga.model.Vote;
 
 public class TrendsFunc {
 
-	public List<TrendsBean> getTrends(SqlSession defaultSession, Member member, String trends_object) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<TrendsBean> getTrends(SqlSession defaultSession, 
+			Member member, String trends_object, int pageNum) {
 
 		// 动态查询
 		TrendsDAO trendsDAO = defaultSession.getMapper(TrendsDAO.class);
@@ -41,18 +44,26 @@ public class TrendsFunc {
 		
 		List<Trends> trendsList = null;
 		
+		// 用PageInfo对结果进行包装
+		PageInfo pageInfo = null;
+		
 		// 查询全部动态列表
 		if(trends_object.equals("specificUser")) {
 			//获取第1页，5条内容，默认查询总数count
-            PageHelper.startPage(1, 15);
+            PageHelper.startPage(pageNum, 15);
 			trendsList = trendsDAO.queryTrendsByTMid(member.getId());
+			
+			pageInfo = new PageInfo(trendsList);
 		} else if(trends_object.equals("allUser")) {
 			//获取第1页，5条内容，默认查询总数count
-            PageHelper.startPage(1, 15);
+            PageHelper.startPage(pageNum, 15);
 			trendsList = trendsDAO.queryAllTrends();
+			
+			pageInfo = new PageInfo(trendsList);
 		}
+		
 		List<TrendsBean> trendsBeanList = new ArrayList<TrendsBean>();
-
+		
 		if (trendsList != null) {
 			for (Trends t : trendsList) {
 
@@ -253,6 +264,9 @@ public class TrendsFunc {
 				int count = followDAO.isExistInFollow(followMap);
 				boolean isFollowing = count > 0 ? true : false;
 				trendsBean.setFollowing(isFollowing);
+				
+				// 设置pageInfo
+				trendsBean.setPageInfo(pageInfo);
 
 				trendsBeanList.add(trendsBean);
 			}

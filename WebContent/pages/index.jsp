@@ -376,7 +376,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
-										<div id="summary-content-<%=trendsBean.getTrends().getId() %>" style="display: block;">
+										<div id="summary-content-<%=trendsBean.getTrends().getId() %>" style="display: block;cursor: pointer;">
 											<%=DigestFunc.getDigest(trendsBean.getAnswer().getAnswers(), 200, " ...") %>
 										</div>
 									</div>
@@ -673,7 +673,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(trendsBean.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
-										<div id="summary-content-<%=trendsBean.getTrends().getId() %>" style="display: block;">
+										<div id="summary-content-<%=trendsBean.getTrends().getId() %>" style="display: block;cursor: pointer;">
 											<%=DigestFunc.getDigest(trendsBean.getAnswer().getAnswers(), 200, " ...") %>
 										</div>
 									</div>
@@ -717,7 +717,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<%
 											}
 										%>
-										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none">
+										<div id="hidden-item-<%=trendsBean.getTrends().getId() %>" style="display:none;">
 										<%
 											if(!trendsBean.isThanked()) {
 										%>
@@ -916,15 +916,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<%				
 								}
 							}
-						}
 					%>
-
 					<!-- loding more btn row  -->
 					<div class="row">
 						<div class="loding-btn">
-							<a href="#" class="btn btn-default btn-block">加载更多</a>
+							<a href="./IndexServlet?pageNum=<%=trendsBeanList.get(0).getPageInfo().getPageNum()+1 %>" class="btn btn-default btn-block">加载更多</a>
 						</div>
 					</div><!-- end loding more btn row  -->
+					<%
+						}
+					%>
 
 				</div><!-- end left main-->
 

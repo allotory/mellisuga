@@ -1,6 +1,7 @@
 package com.mellisuga.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONObject;
 
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.db.DBConnection;
@@ -31,6 +33,17 @@ public class IndexServlet extends HttpServlet {
 
 		Member m = (Member) request.getSession().getAttribute("member");
 		
+		// 判断是否分页
+		String pageNum_s = request.getParameter("pageNum");
+		int pageNum = 0;
+		if(pageNum_s == null || "".equals(pageNum_s)) {
+			pageNum = 1;
+		} else {
+			pageNum = Integer.parseInt(pageNum_s);
+		}
+		 
+		PrintWriter out = response.getWriter();
+		
 		SqlSession defaultSession = null;
 
 		try {
@@ -38,7 +51,14 @@ public class IndexServlet extends HttpServlet {
 
 			// 首页动态查询
 			List<TrendsBean> trendsBeanList  = new TrendsFunc()
-				.getTrends(defaultSession, m, "allUser");
+				.getTrends(defaultSession, m, "allUser", pageNum);
+			
+			
+//			JSONObject jsonObject = new JSONObject();
+//			jsonObject.put("answerBeanList", answerBeanList);
+//			// 返回评论json
+//			//System.out.println(jsonObject.toString());
+//			out.print(jsonObject.toString());
 			
 			request.setAttribute("trendsBeanList", trendsBeanList);
 			request.getRequestDispatcher("/pages/index.jsp")

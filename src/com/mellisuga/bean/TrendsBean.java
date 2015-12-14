@@ -1,5 +1,6 @@
 package com.mellisuga.bean;
 
+import com.github.pagehelper.PageInfo;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
@@ -27,6 +28,9 @@ public class TrendsBean {
 	private boolean isThanked;
 	
 	private boolean isNoHelp;
+	
+	@SuppressWarnings("rawtypes")
+	private PageInfo pageInfo;
 
 	public Trends getTrends() {
 		return trends;
@@ -106,6 +110,16 @@ public class TrendsBean {
 
 	public void setNoHelp(boolean isNoHelp) {
 		this.isNoHelp = isNoHelp;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
 	}
 	
 }
