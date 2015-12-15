@@ -4,6 +4,7 @@
 <%@ page import="com.mellisuga.bean.*" %>
 <%@ page import="com.mellisuga.utils.*" %>
 <%@ page import="com.mellisuga.function.*" %>
+<%@ page import="com.github.pagehelper.PageInfo" %>
 <%@include file="sitename.jsp"%>
 <%
 String path = request.getContextPath();   
@@ -919,9 +920,43 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					%>
 					<!-- loding more btn row  -->
 					<div class="row">
-						<div class="loding-btn">
-							<a href="./IndexServlet?pageNum=<%=trendsBeanList.get(0).getPageInfo().getPageNum()+1 %>" class="btn btn-default btn-block">加载更多</a>
-						</div>
+						<ul class="pagination">
+							<%
+								@SuppressWarnings("rawtypes")
+								PageInfo pageInfo = trendsBeanList.get(0).getPageInfo();
+								if(pageInfo.isIsFirstPage()) {
+							%>
+								<li class="disabled"><a href="#">&laquo;</a></li>
+							<%
+								} else {
+							%>
+								<li><a href="./IndexServlet?pageNum=<%=pageInfo.getFirstPage() %>">&laquo;</a></li>
+							<%
+								}
+								
+								for(int i = pageInfo.getFirstPage(); i<=pageInfo.getLastPage(); i++) {
+									if(i == pageInfo.getPageNum()) {
+							%>
+								<li class="active"><a href="./IndexServlet?pageNum=<%=i %>"><%=i %></a></li>
+							<%
+									} else {
+							%>
+								<li><a href="./IndexServlet?pageNum=<%=i %>"><%=i %></a></li>
+							<%
+									}
+								}
+								
+								if(pageInfo.isIsLastPage()) {
+							%>
+								<li class="disabled"><a href="#">&raquo;</a></li>
+							<%		
+								} else {
+							%>
+								<li><a href="./IndexServlet?pageNum=<%=pageInfo.getLastPage() %>">&raquo;</a></li>
+							<%
+								}
+							%>
+						</ul>
 					</div><!-- end loding more btn row  -->
 					<%
 						}

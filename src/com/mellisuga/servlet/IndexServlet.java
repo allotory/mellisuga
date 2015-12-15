@@ -1,7 +1,6 @@
 package com.mellisuga.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.json.JSONObject;
 
 import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.db.DBConnection;
@@ -42,8 +40,6 @@ public class IndexServlet extends HttpServlet {
 			pageNum = Integer.parseInt(pageNum_s);
 		}
 		 
-		PrintWriter out = response.getWriter();
-		
 		SqlSession defaultSession = null;
 
 		try {
@@ -53,13 +49,6 @@ public class IndexServlet extends HttpServlet {
 			List<TrendsBean> trendsBeanList  = new TrendsFunc()
 				.getTrends(defaultSession, m, "allUser", pageNum);
 			
-			
-//			JSONObject jsonObject = new JSONObject();
-//			jsonObject.put("answerBeanList", answerBeanList);
-//			// 返回评论json
-//			//System.out.println(jsonObject.toString());
-//			out.print(jsonObject.toString());
-			
 			request.setAttribute("trendsBeanList", trendsBeanList);
 			request.getRequestDispatcher("/pages/index.jsp")
 					.forward(request, response);
@@ -68,10 +57,9 @@ public class IndexServlet extends HttpServlet {
 		} finally {
 			DBConnection.closeSession(defaultSession);
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-	}
-
+			HttpServletResponse response) throws ServletException, IOException {}
 }
