@@ -924,6 +924,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<%
 								@SuppressWarnings("rawtypes")
 								PageInfo pageInfo = trendsBeanList.get(0).getPageInfo();
+								// 判断当前是否是第一页
 								if(pageInfo.isIsFirstPage()) {
 							%>
 								<li class="disabled"><a href="#">&laquo;</a></li>
@@ -934,18 +935,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<%
 								}
 								
-								for(int i = pageInfo.getFirstPage(); i<=pageInfo.getLastPage(); i++) {
-									if(i == pageInfo.getPageNum()) {
+								// 判断总页数是否大于10
+								if(pageInfo.getPages() <= 10) {
+									for(int i = pageInfo.getFirstPage(); i<=pageInfo.getLastPage(); i++) {
+										// 判断是否是当前页
+										if(i == pageInfo.getPageNum()) {
 							%>
 								<li class="active"><a href="./IndexServlet?pageNum=<%=i %>"><%=i %></a></li>
 							<%
-									} else {
+										} else {
 							%>
 								<li><a href="./IndexServlet?pageNum=<%=i %>"><%=i %></a></li>
 							<%
+										}
 									}
+								} else {
+							%>
+								<li class="active"><a href="#">共 <%=pageInfo.getPages() %> 页</a></li>
+							<%	
 								}
 								
+								// 判断是否是最后一页
 								if(pageInfo.isIsLastPage()) {
 							%>
 								<li class="disabled"><a href="#">&raquo;</a></li>
