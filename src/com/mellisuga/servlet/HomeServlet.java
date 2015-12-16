@@ -39,6 +39,7 @@ public class HomeServlet extends HttpServlet {
 		
 		Member m = (Member) request.getSession().getAttribute("member");
 		int id = Integer.parseInt(request.getParameter("id"));
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		
 		HomeBean homeBean = new HomeBean();
 		
@@ -77,7 +78,7 @@ public class HomeServlet extends HttpServlet {
 			
 			// 查询动态
 			List<TrendsBean> trendsBeanList = new TrendsFunc()
-				.getTrends(session, m, "specificUser", 1);
+				.getTrends(session, m, "specificUser", pageNum);
 			homeBean.setTrendsBeanList(trendsBeanList);
 			
 			request.setAttribute("homeBean", homeBean);

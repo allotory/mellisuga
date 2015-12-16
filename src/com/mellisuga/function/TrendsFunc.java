@@ -50,7 +50,7 @@ public class TrendsFunc {
 		// 查询全部动态列表
 		if(trends_object.equals("specificUser")) {
 			//获取第1页，5条内容，默认查询总数count
-            PageHelper.startPage(pageNum, 15);
+            PageHelper.startPage(pageNum, 10);
 			trendsList = trendsDAO.queryTrendsByTMid(member.getId());
 			
 			pageInfo = new PageInfo(trendsList);

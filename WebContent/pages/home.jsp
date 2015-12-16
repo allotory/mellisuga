@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.bean.*" %>
 <%@ page import="com.mellisuga.utils.*" %>
+<%@ page import="com.github.pagehelper.PageInfo" %>
 <%@include file="sitename.jsp"%>
 <%   
 String path = request.getContextPath();   
@@ -603,12 +604,61 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<%
 											}
 										}
+								%>
+								<!-- loding more btn row  -->
+								<div class="row">
+									<ul class="pagination" style="margin-left: 25px;">
+										<%
+											@SuppressWarnings("rawtypes")
+											PageInfo pageInfo = homeBean.getTrendsBeanList().get(0).getPageInfo();
+											// 判断当前是否是第一页
+											if(pageInfo.isIsFirstPage()) {
+										%>
+											<li class="disabled"><a href="#">&laquo;</a></li>
+										<%
+											} else {
+										%>
+											<li><a href="./HomeServlet?id=<%=homeBean.getMember().getId() %>&pageNum=<%=pageInfo.getFirstPage() %>">&laquo;</a></li>
+										<%
+											}
+											
+											// 判断总页数是否大于10
+											if(pageInfo.getPages() <= 10) {
+												for(int i = pageInfo.getFirstPage(); i<=pageInfo.getLastPage(); i++) {
+													// 判断是否是当前页
+													if(i == pageInfo.getPageNum()) {
+										%>
+											<li class="active"><a href="./HomeServlet?id=<%=homeBean.getMember().getId() %>&pageNum=<%=i %>"><%=i %></a></li>
+										<%
+													} else {
+										%>
+											<li><a href="./HomeServlet?id=<%=homeBean.getMember().getId() %>&pageNum=<%=i %>"><%=i %></a></li>
+										<%
+													}
+												}
+											} else {
+										%>
+											<li class="active"><a href="#">共 <%=pageInfo.getPages() %> 页</a></li>
+										<%	
+											}
+											
+											// 判断是否是最后一页
+											if(pageInfo.isIsLastPage()) {
+										%>
+											<li class="disabled"><a href="#">&raquo;</a></li>
+										<%		
+											} else {
+										%>
+											<li><a href="./HomeServlet?id=<%=homeBean.getMember().getId() %>&pageNum=<%=pageInfo.getLastPage() %>">&raquo;</a></li>
+										<%
+											}
+										%>
+									</ul>
+								</div><!-- end loding more btn row  -->
+								<%
 									}
 								%>
 
-								<div class="loding-btn">
-									<a href="#" class="btn btn-default btn-block">加载更多</a>
-								</div>
 							</div><!-- end panel body-->
 						</div><!-- end panel -->
 					</div><!-- end recent news -->
