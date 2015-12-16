@@ -1265,6 +1265,7 @@ function popContent(id) {
 
 // 显示摘要全文
 function getDigestSource(id) {
+	alert(id);
 	// 全部内容
 	var editable_content = document.getElementById("editable-content-" + id);
 	// 摘要
@@ -1311,7 +1312,36 @@ function retract(id) {
 	vote_digest.style.display = "block";
 }
 
+//显示个人主页摘要全文
+function getHomeDigestSource(id) {
+	// 全部内容
+	var editable_content = document.getElementById("editable-content-" + id);
+	// 摘要
+	var summary_content = document.getElementById("summary-content-" + id);
+	
+	// 收起
+	var retract = document.getElementById("retract-" + id);
+	
+	
+	if (editable_content.style.display == "none") {
+		editable_content.style.display = "block";
+		retract.style.display = "block";
+		summary_content.style.display = "none";
+	} 
+}
 
+//收起答案
+function retractHome(id) {
+	var editable_content = document.getElementById("editable-content-" + id);
+	var summary_content = document.getElementById("summary-content-" + id);
+	
+	// 收起按钮
+	var retract = document.getElementById("retract-" + id);
+	
+	editable_content.style.display = "none";
+	retract.style.display = "none";
+	summary_content.style.display = "block";
+}
 
 
 
