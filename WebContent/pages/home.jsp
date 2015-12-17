@@ -186,7 +186,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<strong>回答</strong>
-								<a href="./AllAnswerServlet" class="more"><i class="fa fa-chevron-right"></i> </a>
+								<a href="./AllAnswerServlet?pageNum=1" class="more"><i class="fa fa-chevron-right"></i> </a>
 							</div>
 							<div class="panel-body">
 								<%

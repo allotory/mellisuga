@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.bean.HomeBean;
 import com.mellisuga.dao.AnswersDAO;
@@ -35,6 +37,7 @@ public class AllAnswerServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		Member m = (Member) request.getSession().getAttribute("member");
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		
 		HomeBean homeBean = new HomeBean();
 		
@@ -49,7 +52,17 @@ public class AllAnswerServlet extends HttpServlet {
 			
 			// 查询所有回答
 			List<AnswerBean> answerBeanList = new ArrayList<AnswerBean>();
+			
+			// 用PageInfo对结果进行包装
+			PageInfo<Answers> pageInfo = null;
+			//获取第1页，5条内容，默认查询总数count
+            PageHelper.startPage(pageNum, 5);
+						
 			List<Answers> answersList = answersDAO.queryAnswersByAuthorId(m.getId());
+			
+			pageInfo = new PageInfo<Answers>(answersList);
+			homeBean.setAnswerPageInfo(pageInfo);
+			
 			for(Answers a : answersList) {
 				// 查询答案对应问题
 				Question question = new Question();
