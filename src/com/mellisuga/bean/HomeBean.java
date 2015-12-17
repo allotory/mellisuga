@@ -2,6 +2,8 @@ package com.mellisuga.bean;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.Question;
 
@@ -14,6 +16,10 @@ public class HomeBean {
 	private List<AnswerBean> answerBeanList;
 	
 	private List<TrendsBean> trendsBeanList;
+	
+	private PageInfo<Question> questionPageInfo;
+	
+	private PageInfo<Answers> answerPageInfo;
 
 	public Member getMember() {
 		return member;
@@ -46,4 +52,21 @@ public class HomeBean {
 	public void setTrendsBeanList(List<TrendsBean> trendsBeanList) {
 		this.trendsBeanList = trendsBeanList;
 	}
+
+	public PageInfo<Question> getQuestionPageInfo() {
+		return questionPageInfo;
+	}
+
+	public void setQuestionPageInfo(PageInfo<Question> questionPageInfo) {
+		this.questionPageInfo = questionPageInfo;
+	}
+
+	public PageInfo<Answers> getAnswerPageInfo() {
+		return answerPageInfo;
+	}
+
+	public void setAnswerPageInfo(PageInfo<Answers> answerPageInfo) {
+		this.answerPageInfo = answerPageInfo;
+	}
+	
 }

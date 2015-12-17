@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.bean.*" %>
+<%@ page import="com.github.pagehelper.PageInfo" %>
 <%@include file="sitename.jsp"%>
 <%   
 String path = request.getContextPath();   
@@ -173,14 +174,51 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										split = "<hr style='margin-top:6px;margin-bottom:12px;'/>";
 									}
 								%>
-								<ul class="pagination pagination-sm">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&raquo;</a></li>
+								<ul class="pagination" style="margin-left: 25px;">
+									<%
+										PageInfo<Question> pageInfo = homeBean.getQuestionPageInfo();
+										// 判断当前是否是第一页
+										if(pageInfo.isIsFirstPage()) {
+									%>
+										<li class="disabled"><a href="#">&laquo;</a></li>
+									<%
+										} else {
+									%>
+										<li><a href="./AllQuestionServlet?pageNum=<%=pageInfo.getFirstPage() %>">&laquo;</a></li>
+									<%
+										}
+										
+										// 判断总页数是否大于10
+										if(pageInfo.getPages() <= 10) {
+											for(int i = pageInfo.getFirstPage(); i<=pageInfo.getLastPage(); i++) {
+												// 判断是否是当前页
+												if(i == pageInfo.getPageNum()) {
+									%>
+										<li class="active"><a href="./AllQuestionServlet?pageNum=<%=i %>"><%=i %></a></li>
+									<%
+												} else {
+									%>
+										<li><a href="./AllQuestionServlet?pageNum=<%=i %>"><%=i %></a></li>
+									<%
+												}
+											}
+										} else {
+									%>
+										<li class="active"><a href="#">共 <%=pageInfo.getPages() %> 页</a></li>
+									<%	
+										}
+										
+										// 判断是否是最后一页
+										if(pageInfo.isIsLastPage()) {
+									%>
+										<li class="disabled"><a href="#">&raquo;</a></li>
+									<%		
+										} else {
+									%>
+										<li><a href="./AllQuestionServlet?pageNum=<%=pageInfo.getLastPage() %>">&raquo;</a></li>
+									<%
+										}
+									%>
 								</ul>
 							</div>
 						</div>
