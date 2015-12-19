@@ -66,3 +66,7 @@ $(function() {
 
 <!-- font awesome -->
 <link rel="stylesheet" href="./plugin/font-awesome/css/font-awesome.min.css"/>
+
+<!-- uploadify -->
+<link rel="stylesheet" type="text/css" href="./plugin/Uploadify/css/uploadify.css" />
+<script type="text/javascript" src="./plugin/Uploadify/js/jquery.uploadify.min.js"></script>
