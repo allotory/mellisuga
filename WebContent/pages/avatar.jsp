@@ -24,19 +24,141 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 	<script type="text/javascript">
 		$(document).ready(function() {
 		 $("#uploadify").uploadify({
-				'auto'           : false,
-	            'swf'       	 : '<%=path%>/plugin/Uploadify/js/uploadify.swf',
-	            'uploader'       : '../UploadServlet',			//后台处理的请求
-				'queueID' : 'fileQueue',			//与下面的id对应
+				'auto' : false,
+	            'swf' : '<%=path%>/plugin/Uploadify/js/uploadify.swf',
+	            'uploader' : '../UploadServlet',			// 后台处理的请求
+				'queueID' : 'fileQueue',					// 与下面的id对应
 				'queueSizeLimit' : 1,
+				'sizeLimit' : 2048000,  					// 允许上传的文件大小(kb)  此为2M
 				'fileTypeDesc' : '支持格式:jpg/jpeg/png',
-				'fileTypeExts' : '*.jpg;*.jpeg;*.png', 	//控制可上传文件的扩展名，启用本项时需同时声明fileDesc
+				'fileTypeExts' : '*.jpg;*.jpeg;*.png', 		// 控制可上传文件的扩展名，启用本项时需同时声明fileDesc
 				'multi' : false,
-				'buttonText' : '选择文件'
+				'buttonText' : '选择文件',
+	            'onUploadSuccess' : function(file, data, response) {	// 当单个文件上传完成后触发
+	                // fileObj : 选中文件的对象，他包含的属性列表
+	                // response : 服务器端返回的Response文本，我这里返回的是处理过的文件名称
+	                // data : 文件队列详细信息和文件上传的一般数据
+	                
+	                $("#image_target").attr("src", data);
+	                $("#image_preview").attr("src", data);
+	                // 图片路径设置完成后，显示图片
+	                $("#image_view").css("display","block");
+	                
+	                // 隐藏上传按钮
+	                $("#uploadify_btn").css("display", "none");
+	                // 显示切片保存按钮
+	                $("#save_btn").css("display", "block");
+	                
+	                // 初始化jcrop插件
+	                $("#image_src").attr("value", data);
+	                jcrop_cut();
+	            }
 			});
 		});
-	</script>
+		
+		function jcrop_cut() {
+			alert("haha");
+			// Create variables (in this scope) to hold the API and image size
+			var jcrop_api, boundx, boundy,
 	
+			// Grab some information about the preview pane
+			$preview = $('#preview-pane');
+			$pcnt = $('#preview-pane .preview-container');
+			$pimg = $('#preview-pane .preview-container img');
+	
+			xsize = $pcnt.width();
+			ysize = $pcnt.height();
+	
+			console.log('init', [ xsize, ysize ]);
+			$('#image_target').Jcrop({
+				onChange : updatePreview,
+				onSelect : updatePreview,
+				aspectRatio : 1
+				//onRelease : clearCoords
+			}, function() {
+				// Use the API to get the real image size
+				var bounds = this.getBounds();
+				boundx = bounds[0];
+				boundy = bounds[1];
+				// Store the API in the jcrop_api variable
+				jcrop_api = this;
+	
+				// Move the preview into the jcrop container for css positioning
+				$preview.appendTo(jcrop_api.ui.holder);
+			});
+	
+			function updatePreview(c) {
+				// 设置input hidden
+				showCoords(c);
+				
+				if (parseInt(c.w) > 0) {
+					var rx = xsize / c.w;
+					var ry = ysize / c.h;
+	
+					$pimg.css({
+						width : Math.round(rx * boundx) + 'px',
+						height : Math.round(ry * boundy) + 'px',
+						marginLeft : '-' + Math.round(rx * c.x) + 'px',
+						marginTop : '-' + Math.round(ry * c.y) + 'px'
+					});
+				}
+			};
+			
+	 		$('#coords').on(
+				'change',
+				'input',
+				function(e) {
+					var x1 = $('#x1').val();
+					var y1 = $('#y1').val();
+					jcrop_api.setSelect([x1, y1]);
+				}); 
+		}
+		
+		// Simple event handler, called from onChange and onSelect
+		// event handlers, as per the Jcrop invocation above
+		function showCoords(c) {
+			// 左上顶点
+			$('#x').val(c.x);
+			$('#y').val(c.y);
+			// 长度宽度
+			$('#w').val(c.w);
+			$('#h').val(c.h);
+		};
+		
+		function clearCoords() {
+			$('#coords input').val('');
+		};
+	
+	</script>
+	<style type="text/css">
+		/* Apply these styles only when #preview-pane has
+		   been placed within the Jcrop widget */
+		.jcrop-holder #preview-pane {
+			display: block;
+			position: absolute;
+			z-index: 2000;
+			top: 10px;
+			right: -280px;
+			padding: 6px;
+			border: 1px rgba(0, 0, 0, .4) solid;
+			background-color: white;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			-webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+			-moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+			box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+		}
+		
+		/* The Javascript code will set the aspect ratio of the crop
+		   area based on the size of the thumbnail preview,
+		   specified here */
+		#preview-pane .preview-container {
+			width: 250px;
+			height: 250px;
+			overflow: hidden;
+		}
+	</style>
 	<% 
 		Member m = (Member) request.getSession().getAttribute("member"); 
 	%>
@@ -87,10 +209,37 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<div class="row">
 						<input type="file" name="uploadify" id="uploadify" />
 						<div id="fileQueue"></div>
-						<p>
+						
+						
+						<!-- image view -->
+						<div id="image_view" style="display:none">
+							<img src="" id="image_target" alt="[Jcrop Example]"/>
+							<div id="preview-pane">
+								<div class="preview-container">
+									<img src="" id="image_preview" class="jcrop-preview" alt="Preview" />
+								</div>
+							</div>
+						</div>
+						
+						<p id="uploadify_btn" style="display:bolck;margin-top:10px;">
 							<a href="javascript:$('#uploadify').uplaodify('cancel','*')" class="btn btn-default btn-sm">取消</a>
 							<a href="javascript:$('#uploadify').uploadify('upload')" class="btn btn-primary btn-sm">开始上传</a>
 						</p>
+						
+						<!-- This is the form that our event handler fills -->
+						<form id="coords" class="coords" action="CutImageServlet" method="post">
+							<input type="hidden" id="image_src" name="image_src"/>
+							<div class="inline-labels">
+								<label>X <input type="text" size="6" id="x" name="x" /></label>
+								<label>Y <input type="text" size="6" id="y" name="y" /></label>
+								<label>W <input type="text" size="6" id="w" name="w" /></label>
+								<label>H <input type="text" size="6" id="h" name="h" /></label>
+							</div>
+							<P id="save_btn" style="display:none; padding-top: 10px;">
+								<input type="submit" value="保存" id="crop_submit" class="btn btn-primary btn-sm"/>
+							</P>
+						</form>
+						
 					</div><!-- end left main title row -->
 
 				</div><!-- end left main-->

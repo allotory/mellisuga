@@ -93,21 +93,38 @@ public class UploadServlet extends HttpServlet {
 	                    //上传成功，则插入数据库  
 	                    if (new File(fileRealPath).exists()) {  
 	                        //虚拟路径赋值  
-	                        fileRealResistPath="./images/avatar/"+newfileName+"/"+fileRealPath.substring(fileRealPath.lastIndexOf("\\")+1);  
+	                        fileRealResistPath="./uploads/avatar/"+newfileName+"/"+fileRealPath.substring(fileRealPath.lastIndexOf("\\")+1);  
 	                    }  
 	                       
 	                }   
             	}
             }   
+            
+            
+            
+            
+            
+            // 文件保存前需要缩小到宽度400px
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         } catch (org.apache.commons.fileupload.FileUploadException ex) {
     	   ex.printStackTrace();  
            System.out.println("上传文件失败，请稍候重试！");  
            return;  
 		}   
 
-		request.setAttribute("fileRealResistPath", fileRealResistPath);
-		request.getRequestDispatcher("/pages/log.jsp")
-				.forward(request, response); 
+        // 返回响应
+        response.getWriter().write(fileRealResistPath);
+        
     }  
    
     public void doPost(HttpServletRequest req, HttpServletResponse resp)  

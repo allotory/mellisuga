@@ -70,3 +70,7 @@ $(function() {
 <!-- uploadify -->
 <link rel="stylesheet" type="text/css" href="./plugin/Uploadify/css/uploadify.css" />
 <script type="text/javascript" src="./plugin/Uploadify/js/jquery.uploadify.min.js"></script>
+
+<!-- jcrop -->
+<script src="./plugin/Jcrop/js/jquery.Jcrop.js"></script>
+<link rel="stylesheet" href="./plugin/Jcrop/css/jquery.Jcrop.css" type="text/css" />
