@@ -78,7 +78,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								<div class="row user-infos">
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<img src="<%=homeBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded">
+										<a href="./pages/avatar.jsp">
+											<img src="<%=homeBean.getMember().getAvatar_path() %>" class="img-responsive img-rounded">
+										</a>
 									</div>
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										

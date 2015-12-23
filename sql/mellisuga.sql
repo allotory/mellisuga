@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS member (
 	id int(11) NOT NULL AUTO_INCREMENT,				/* 成员ID（唯一标识） */
 	fullname varchar(64) NOT NULL,					/* 全名 */
 	gender int(11) NOT NULL DEFAULT '0',			/* 性别  1:male , 2:female , 3: other */
-	avatar_path varchar(128) DEFAULT NULL,			/* 头像路径 */
+	avatar_path varchar(256) DEFAULT NULL,			/* 头像路径 */
   	location varchar(128) DEFAULT NULL,			/* 居住位置 */
   	business varchar(128) DEFAULT NULL,			/* 行业 */
   	employment varchar(128) DEFAULT NULL,			/* 公司或组织名称 */

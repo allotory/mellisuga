@@ -72,8 +72,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 			$('#image_target').Jcrop({
 				onChange : updatePreview,
 				onSelect : updatePreview,
-				aspectRatio : 1
-				//onRelease : clearCoords
+				aspectRatio : 1,
+				onRelease : clearCoords
 			}, function() {
 				// Use the API to get the real image size
 				var bounds = this.getBounds();
@@ -229,10 +229,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<form id="coords" class="coords" action="CutImageServlet" method="post">
 							<input type="hidden" id="image_src" name="image_src"/>
 							<div class="inline-labels">
-								<label>X <input type="text" size="6" id="x" name="x" /></label>
-								<label>Y <input type="text" size="6" id="y" name="y" /></label>
-								<label>W <input type="text" size="6" id="w" name="w" /></label>
-								<label>H <input type="text" size="6" id="h" name="h" /></label>
+								<input type="hidden" size="6" id="x" name="x" />
+								<input type="hidden" size="6" id="y" name="y" />
+								<input type="hidden" size="6" id="w" name="w" />
+								<input type="hidden" size="6" id="h" name="h" />
 							</div>
 							<P id="save_btn" style="display:none; padding-top: 10px;">
 								<input type="submit" value="保存" id="crop_submit" class="btn btn-primary btn-sm"/>
