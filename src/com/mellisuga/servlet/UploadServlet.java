@@ -1,5 +1,6 @@
 package com.mellisuga.servlet;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +22,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 
+import com.mellisuga.function.ImageCut;
 import com.mellisuga.model.Member;
 import com.mellisuga.security.Encryption;
 
@@ -81,7 +84,7 @@ public class UploadServlet extends HttpServlet {
 	                    String formatName = srcFileName.substring(srcFileName.lastIndexOf("."));  
 	                    //文件存放真实地址
 	                    fileRealPath = savePath + newfileName+ formatName;  
-	                    //System.out.println(fileRealPath);
+	                    System.out.println(fileRealPath);
 	                    
 	                    // 获得文件输入流  
 	                    BufferedInputStream in = new BufferedInputStream(item.getInputStream());  
@@ -100,22 +103,15 @@ public class UploadServlet extends HttpServlet {
             	}
             }   
             
-            
-            
-            
-            
-            // 文件保存前需要缩小到宽度400px
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+			// 文件保存前需要缩小到宽度400px
+			// 读入文件
+			BufferedImage src = ImageIO.read(new File(fileRealPath)); 
+			// 得到源图宽
+			int width = src.getWidth(); 
+			if(width > 400) {
+				ImageCut.scale(fileRealPath, fileRealPath);   
+			}
+			
         } catch (org.apache.commons.fileupload.FileUploadException ex) {
     	   ex.printStackTrace();  
            System.out.println("上传文件失败，请稍候重试！");  

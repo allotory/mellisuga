@@ -57,7 +57,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 		});
 		
 		function jcrop_cut() {
-			alert("haha");
 			// Create variables (in this scope) to hold the API and image size
 			var jcrop_api, boundx, boundy,
 	

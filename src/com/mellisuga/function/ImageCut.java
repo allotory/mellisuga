@@ -58,6 +58,38 @@ public class ImageCut {
 	}
 
 	/**
+	 * 缩放图像长度到400px
+	 * 
+	 * @param srcImageFile 源图像文件地址
+	 * @param result 缩放后的图像地址
+	 */
+	public static void scale(String srcImageFile, String result) {
+		try {
+			// 读入文件
+			BufferedImage src = ImageIO.read(new File(srcImageFile)); 
+			
+			// 得到源图宽
+			int width = src.getWidth(); 
+			// 得到源图长
+			int height = src.getHeight(); 
+			
+			height = height * 400 / width;
+			width = 400;
+			
+			Image image = src.getScaledInstance(width, height, Image.SCALE_DEFAULT);
+			BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			Graphics g = tag.getGraphics();
+			// 绘制缩小后的图
+			g.drawImage(image, 0, 0, null); 
+			g.dispose();
+			// 输出到文件流
+			ImageIO.write(tag, "JPEG", new File(result));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * 缩放图像
 	 * 
 	 * @param srcImageFile 源图像文件地址
@@ -83,8 +115,9 @@ public class ImageCut {
 			} else {
 				// 缩小
 				width = width / scale;
+				
 				height = height / scale;
-			}
+		}
 			
 			Image image = src.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 			BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
