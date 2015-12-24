@@ -85,34 +85,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 										
 										<div class="user-info">
-											<i class="fa fa-map-marker"></i> 
+											<i class="fa fa-map-marker" style="padding-right:12px;"></i> 
 											<span class="location"><%=homeBean.getMember().getLocation() %></span>
 											<span class="business"><%=homeBean.getMember().getBusiness() %></span>
-											<span class="gender"><%=homeBean.getMember().getGender() %></span>
-											<a href="#" class="item-edit">
-												<i class="fa fa-edit"></i> 
-												修改
-											</a>
+											<%
+												if(homeBean.getMember().getGender() == 1) {
+											%>
+											<span class="gender"><i class="fa fa-mars"></i></span>
+											<%
+												} else if(homeBean.getMember().getGender() == 2) {
+											%>
+											<span class="gender"><i class="fa fa-venus"></i></span>
+											<%
+												} else if(homeBean.getMember().getGender() == 3) {
+											%>
+											<span class="gender"><i class="fa fa-neuter"></i></span>
+											<%
+												} 
+											%>
 										</div>
 
 										<div class="user-info">
-											<i class="fa fa-suitcase"></i> 
+											<i class="fa fa-suitcase" style="padding-right:9px;"></i> 
 											<span class="company"><%=homeBean.getMember().getEmployment() %></span>
 											<span class="work"><%=homeBean.getMember().getPosition() %></span>
-											<a href="#" class="item-edit">
-												<i class="fa fa-edit"></i> 
-												修改
-											</a>
 										</div>
 
 										<div class="user-info-end">
-											<i class="fa fa-graduation-cap"></i> 
+											<i class="fa fa-graduation-cap" style="padding-right:9px;"></i> 
 											<span class="education"><%=homeBean.getMember().getEducation() %></span>
 											<span class="specialty"><%=homeBean.getMember().getMajor() %></span>
-											<a href="#" class="item-edit">
-												<i class="fa fa-edit"></i> 
-												修改
-											</a>
 										</div>
 										<hr style="margin-top:12px;margin-bottom:12px;"/>
 										
