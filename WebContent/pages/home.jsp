@@ -113,9 +113,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												<i class="fa fa-edit"></i> 
 												修改
 											</a>
-											<span class="user-info-detail">
-												<i class="fa fa-arrow-right"></i> 查看详细资料
-											</span>
 										</div>
 										<hr style="margin-top:12px;margin-bottom:12px;"/>
 										
@@ -134,7 +131,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<i class="fa fa-heart-o"></i> 
 										<strong><%=homeBean.getMember().getThank_num() %></strong>感谢
 									</span>
-									<a href="#" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
+									<a href="./pages/member_info.jsp" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 								</div>
 
 							</div>
