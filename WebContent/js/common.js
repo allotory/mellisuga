@@ -1312,7 +1312,7 @@ function retract(id) {
 	vote_digest.style.display = "block";
 }
 
-//显示个人主页摘要全文
+// 显示个人主页摘要全文
 function getHomeDigestSource(id) {
 	// 全部内容
 	var editable_content = document.getElementById("editable-content-" + id);
@@ -1330,7 +1330,7 @@ function getHomeDigestSource(id) {
 	} 
 }
 
-//收起答案
+// 收起答案
 function retractHome(id) {
 	var editable_content = document.getElementById("editable-content-" + id);
 	var summary_content = document.getElementById("summary-content-" + id);
@@ -1341,6 +1341,25 @@ function retractHome(id) {
 	editable_content.style.display = "none";
 	retract.style.display = "none";
 	summary_content.style.display = "block";
+}
+
+// 编辑答案
+function editAnswers(answer_id) {
+	var answer_div = document.getElementById("myanswer-" + answer_id);
+	var editor_div = document.getElementById("editmyanswer");
+	var cutting_line = document.getElementById("cutting_line_" + answer_id);
+	
+	answer_div.style.display = "none";
+	editor_div.style.display = "block";
+	cutting_line.style.display = "none";
+	
+	//bacheditor3.getHTML();
+
+	var editdiv = document.getElementById('answer_editor_edit');
+	editdiv.className='editor';
+	bacheditor_edit = new Editor();
+	bacheditor_edit.render('#answers_edit');
+	//bacheditor3.setVal("<p>heheh</p>");
 }
 
 

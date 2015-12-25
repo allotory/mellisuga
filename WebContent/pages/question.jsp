@@ -194,7 +194,7 @@ boolean is_answered = false;
 								}
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap">
+					<div id="myanswer-<%=ab.getAnswer().getId() %>" class="row left-main-content-wrap" style="display:block;">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
@@ -321,7 +321,7 @@ boolean is_answered = false;
 												<%
 													if(is_answered) {
 												%>
-												<a href="#" class="module-right" style="padding-right: 5px;">
+												<a onclick="editAnswers(<%=ab.getAnswer().getId() %>)" class="module-right mouse-hand" style="padding-right: 5px;display:inline;">
 													<i class="fa fa-edit"></i> 编辑
 												</a>
 												<%
@@ -445,7 +445,7 @@ boolean is_answered = false;
 						</div><!-- end left main content -->
 					</div><!--end left main content wrap  -->
 					
-					<div class="row">
+					<div id="cutting_line_<%=ab.getAnswer().getId() %>" class="row" style="display:block">
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 					<%
@@ -496,6 +496,28 @@ boolean is_answered = false;
 					<% 
 						}
 					%>
+					
+					<!-- post editor -->
+					<div id="editmyanswer" class="row" style="display:none">
+						<div class="post-main">
+							<div class="post-source">
+								<a href="#"><%=m.getFullname() %></a>
+							</div>
+							<div class="content">
+								<div id="answer_editor_edit" class="">
+									<textarea class="form-control" id="answers_edit" name="answers_edit" rows="4"></textarea>
+								</div>
+
+								<div class="checkbox post-module">
+									<label> 
+										<input type="checkbox" id="is_anonymous" name="is_anonymous" value="1">匿名
+									</label>
+									<button class="btn btn-default" onclick="showContent()">取消</button>
+									<button type="button" onclick="newAnswer('<%=questionBean.getQuestion().getId() %>')" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</div>
+					</div><!-- end post editor -->
 
 				</div><!-- end left main-->
 
