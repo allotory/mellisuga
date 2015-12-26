@@ -482,34 +482,34 @@ $(function() {
         $('.editor__resize').on('mousedown', startDrag);
 
         // 当toolbar看不到时，position:fixed toolbar的位置
-        $(window).scroll(function() {
-            if(!self.isBig) {
-                var _width = $('.editor').width();      //编辑器宽度
-                var _top = $('.editor').offset().top;   //编辑器距离页面顶部的高度
-                var _scrollTop = $(this).scrollTop();   //当前滚动条的位置
-                var _editorTop = 62 + $('.editor-help .tab-content').height();  //编辑器应该距离页面顶部
-                if(_scrollTop >= _top) {
-                    $('.editor-help-content.active').removeClass('active');
-                    $('.editor__menu').css({
-                        position: 'fixed',
-                        top: 0,
-                        'z-index': 1000,
-                        width: _width
-                    });
-                    $('.editor-help').css({
-                        position: 'fixed',
-                        top: '31px',
-                        'z-index': 1000,
-                        width: _width
-                    });
-                } else {
-                    $('.editor__menu, .editor-help').css({
-                        position: 'static',
-                        width: 'auto'
-                    });
-                }
-            }
-        });
+//        $(window).scroll(function() {
+//            if(!self.isBig) {
+//                var _width = $('.editor').width();      //编辑器宽度
+//                var _top = $('.editor').offset().top;   //编辑器距离页面顶部的高度
+//                var _scrollTop = $(this).scrollTop();   //当前滚动条的位置
+//                var _editorTop = 62 + $('.editor-help .tab-content').height();  //编辑器应该距离页面顶部
+//                if(_scrollTop >= _top) {
+//                    $('.editor-help-content.active').removeClass('active');
+//                    $('.editor__menu').css({
+//                        position: 'fixed',
+//                        top: 0,
+//                        'z-index': 1000,
+//                        width: _width
+//                    });
+//                    $('.editor-help').css({
+//                        position: 'fixed',
+//                        top: '31px',
+//                        'z-index': 1000,
+//                        width: _width
+//                    });
+//                } else {
+//                    $('.editor__menu, .editor-help').css({
+//                        position: 'static',
+//                        width: 'auto'
+//                    });
+//                }
+//            }
+//        });
 
         this._rendered = this.element;
 
