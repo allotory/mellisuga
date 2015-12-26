@@ -1344,22 +1344,18 @@ function retractHome(id) {
 }
 
 // 编辑答案
-function editAnswers(answer_id) {
-	var answer_div = document.getElementById("myanswer-" + answer_id);
-	var editor_div = document.getElementById("editmyanswer");
-	var cutting_line = document.getElementById("cutting_line_" + answer_id);
+function getEditSubmit() {
+	var askdiv = document.getElementById('edit_answer');
 	
-	answer_div.style.display = "none";
-	editor_div.style.display = "block";
-	cutting_line.style.display = "none";
+	var input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('name', 'answer_content');
+	input.setAttribute('value', bacheditorq.getHTML());
+	alert(bacheditorq.getHTML());
 	
-	//bacheditor3.getHTML();
-
-	var editdiv = document.getElementById('answer_editor_edit');
-	editdiv.className='editor';
-	bacheditor_edit = new Editor();
-	bacheditor_edit.render('#answers_edit');
-	//bacheditor3.setVal("<p>heheh</p>");
+	//askdiv.appendChild(input);
+	
+	return true;
 }
 
 

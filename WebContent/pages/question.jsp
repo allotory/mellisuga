@@ -321,7 +321,7 @@ boolean is_answered = false;
 												<%
 													if(is_answered) {
 												%>
-												<a onclick="editAnswers(<%=ab.getAnswer().getId() %>)" class="module-right mouse-hand" style="padding-right: 5px;display:inline;">
+												<a href="./PreEditServlet?answer_id=<%=ab.getAnswer().getId() %>" class="module-right mouse-hand" style="padding-right: 5px;display:inline;">
 													<i class="fa fa-edit"></i> 编辑
 												</a>
 												<%
@@ -497,7 +497,7 @@ boolean is_answered = false;
 						}
 					%>
 					
-					<!-- post editor -->
+					<!-- post editor 
 					<div id="editmyanswer" class="row" style="display:none">
 						<div class="post-main">
 							<div class="post-source">
@@ -517,7 +517,7 @@ boolean is_answered = false;
 								</div>
 							</div>
 						</div>
-					</div><!-- end post editor -->
+					</div>--><!-- end post editor -->
 
 				</div><!-- end left main-->
 
