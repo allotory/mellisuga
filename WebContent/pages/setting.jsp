@@ -46,15 +46,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 		<div class="question-main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
 				<ul class="nav nav-tabs">
-					<li><a href="#account" data-toggle="tab">帐号</a></li>
+					<li class="active"><a href="#account" data-toggle="tab">帐号</a></li>
 					<li><a href="#password" data-toggle="tab">帐号和密码</a></li>
 					<li><a href="#notification" data-toggle="tab">消息和邮件</a></li>
 					<li><a href="#filter" data-toggle="tab">屏蔽</a></li>
-					<li class="active"><a href="#lab" data-toggle="tab">实验室</a></li>
+					<li><a href="#lab" data-toggle="tab">实验室</a></li>
 				</ul>
 
 				<div id="myTabContent" class="tab-content" style="margin-top: 25px;">
-					<div class="tab-pane fade col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
+					<div class="tab-pane fade active in col-lg-6 col-md-6 col-sm-12 col-xs-12" id="account">
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="form-group">
@@ -459,7 +459,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</fieldset>
 						</form>
 					</div>
-					<div class="tab-pane fade active in" id="lab">
+					<div class="tab-pane fade" id="lab">
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="form-group">

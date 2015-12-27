@@ -982,7 +982,7 @@ function getCollectionList(answer_id) {
 	    div.removeChild(div.firstChild);
 	}
 	
-	alert(answer_id);
+	//alert(answer_id);
 	loadXMLDoc("CollectionFolderListServlet?answer_id=" + answer_id, function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var obj = JSON.parse(xmlhttp.responseText);
