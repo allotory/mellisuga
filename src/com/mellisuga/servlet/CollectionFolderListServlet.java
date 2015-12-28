@@ -39,7 +39,7 @@ public class CollectionFolderListServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		Member m = (Member) request.getSession().getAttribute("member");
-		System.out.println(request.getParameter("answer_id"));
+		//System.out.println(request.getParameter("answer_id"));
 		int answer_id = Integer.parseInt(request.getParameter("answer_id"));
 		
 		SqlSession session = null;

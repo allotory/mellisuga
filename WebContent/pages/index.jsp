@@ -980,7 +980,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<a href="#" class="list-group-item">
 							<i class="fa fa-file-o margin-icon"></i> 我的草稿<span class="badge">14</span>
 						</a> 
-						<a href="" class="list-group-item">
+						<a href="./CollectionsServlet" class="list-group-item">
 							<i class="fa fa-bookmark-o margin-icon"></i> 我的收藏<span class="badge">8</span>
 						</a> 
 						<a href="./FollowingServlet" class="list-group-item">

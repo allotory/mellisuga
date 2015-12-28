@@ -19,7 +19,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 	<!-- js css plugin include -->
 	<%@include file="include.jsp"%>
-
+	<%
+		Member m = (Member) request.getSession().getAttribute("member"); 
+		@SuppressWarnings("unchecked")
+		List<CollectionFolder> collectionFolderList = (List<CollectionFolder>) request.getAttribute("collectionFolderList");
+	%>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -65,11 +69,66 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 					<div class="row">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#followingCollection" data-toggle="tab">我关注的收藏夹</a></li>
-							<li><a href="#createdCollection" data-toggle="tab">我创建的收藏夹</a></li>
+							<li class="active"><a href="#createdCollection" data-toggle="tab">我创建的收藏夹</a></li>
+							<li><a href="#followingCollection" data-toggle="tab">我关注的收藏夹</a></li>
 						</ul>
 						<div id="myTabContent" class="tab-content" style="margin-top: 10px;">
-							<div class="tab-pane fade active in" id="followingCollection">
+							
+							<div class="tab-pane fade active in" id="createdCollection">
+							
+								<%
+									// 还没有创建收藏夹
+									if(collectionFolderList == null || collectionFolderList.isEmpty()) {
+								%>
+									创建一个收藏夹，将喜欢的答案收集起来~
+								<%		
+									} else {
+										for(CollectionFolder cf : collectionFolderList) {
+								%>
+							
+								<!-- left main content wrap  -->
+								<div class="row left-main-content-wrap" style="margin-left:10px; margin-right:10px;">
+									<div class="left-main-content">
+			
+										<!-- content-details -->
+										<div class="content-details col-lg-12 col-md-12 col-sm-112 col-xs-12">
+			
+											<div class="row">
+												<div class="question-link">
+													<h5>
+														<a href="#">
+															<%=cf.getFoldername() %>
+														</a>
+													</h5>
+												</div>
+											</div>
+			
+											<div class="row">
+												<div class="meta-panel">
+													<span class="bull">•</span>
+													<a class="meta-item">
+														<%=cf.getAnswers_num() %> 个回答
+													</a>
+													<span class="bull">•</span>
+													<a class="meta-item"><%=cf.getFollowers_num() %> 人关注</a>
+												</div>
+											</div>
+			
+										</div><!-- end content-details -->
+																	
+									</div><!-- end left main content -->
+								</div><!--end left main content wrap  -->
+								
+								<div class="row">
+									<hr style="margin-top:12px;margin-bottom:12px;margin-left:10px; margin-right:10px;"/>
+								</div>
+								<%
+										}
+									}
+								%>
+							</div>
+							
+							<div class="tab-pane fade" id="followingCollection">
 								
 								<!-- left main content wrap  -->
 								<div class="row left-main-content-wrap" style="margin-left:10px; margin-right:10px;">
@@ -81,7 +140,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="question-link">
 													<h5>
-														<a href="./QuestionDetails?id=5">
+														<a href="#">
 															各种生活经历，别人的故事是最好的人生智慧。
 														</a>
 													</h5>
@@ -96,8 +155,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 													</a> 创建
 													</span>
 													<span class="bull">•</span>
-													<a class="meta-item" title="following" id="followQuestion-" 
-														onclick="followQuestionOnFollowing()" >
+													<a class="meta-item">
 														取消关注
 													</a>
 													<span class="bull">•</span>
@@ -117,9 +175,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<hr style="margin-top:12px;margin-bottom:12px;margin-left:10px; margin-right:10px;"/>
 								</div>
-							</div>
-							<div class="tab-pane fade" id="createdCollection">
-								haha
 							</div>
 						</div>
 					</div>
