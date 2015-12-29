@@ -96,7 +96,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="question-link">
 													<h5>
-														<a href="#">
+														<a href="./CollectionDetailServlet?folder_id=<%=cf.getId() %>">
 															<%=cf.getFoldername() %>
 														</a>
 													</h5>
