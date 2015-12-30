@@ -17,4 +17,5 @@ public interface CollectionFolderDAO {
 	
 	// 更新收藏夹
 	public void updateCollectionFolder(CollectionFolder collectionFolder);
+	
 }

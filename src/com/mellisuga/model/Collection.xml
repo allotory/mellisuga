@@ -37,6 +37,17 @@
     	delete from collection where answer_id = #{answer_id} 
     		and collection_folder_id = #{collection_folder_id}
     </delete> 
+    
+    <!-- 返回多列 -->
+    <resultMap id="CollectionList" type="Collections">
+    	<id column="id" property="id"/>
+    	<result column="answer_id" property="answer_id"/>
+    	<result column="collection_folder_id" property="collection_folder_id"/>
+    	<result column="owner_id" property="owner_id"/>
+    </resultMap>
+    <select id="queryAnswerIdByFolderId" parameterType="int" resultMap="CollectionList">
+        select * from collection where collection_folder_id = #{collection_folder_id}
+    </select>
 </mapper>
 
 

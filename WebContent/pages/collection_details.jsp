@@ -25,6 +25,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 <%
 	Member m = (Member) request.getSession().getAttribute("member"); 
+	CollectionsDetailBean collectionDetailBean = (CollectionsDetailBean) request.getAttribute("collectionDetailBean");
 %>
 </head>
 <body>
@@ -80,7 +81,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</span> -->
 						</div><!-- end left main title -->
 						<div class="" style="margin-top:5px;margin-bottom:5px; font-size:22px;">
-							<a href=""><strong>ddddddddddddddddddddddddd</strong></a>
+							<a href=""><strong><%=collectionDetailBean.getCollectionFolder().getFoldername() %></strong></a>
 						</div>
 						<div class="row">
 							<div class="meta-panel" style="margin-left:10px; font-size:12px;">
@@ -118,6 +119,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						</div>
 					</div>--><!-- end loding btn row  -->
 					
+					<%
+						if(collectionDetailBean.getCollectionBeanList() == null 
+							|| collectionDetailBean.getCollectionBeanList().isEmpty()) {
+					%>
+						对不起，当前收藏夹为空！
+					<% 
+						} else {
+							for(CollectionBean cb : collectionDetailBean.getCollectionBeanList()) {
+					%>
 					<!-- left main content wrap  -->
 					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-')" 
 							onmouseleave="hiddenItem('hidden-item-')">
@@ -126,34 +136,91 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<!-- avatar and upvote col -->
 							<div id="vote-detail-" style="display: none;"  class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								
+								<%
+									// 判断当前用户是否投票过
+									if(cb.getVote() != null) {
+										if("up".equals(cb.getVote().getVote_type())) {
+								%>
 								<div class="row">
-									<div id="vote-up-" class="vote-number-pressed" 
-											onclick="vote('', 'up');">
+									<div id="vote-up-<%=cb.getAnswer().getId() %>" class="vote-number-pressed" 
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'up');">
 										<a>
 											<i class="fa fa-caret-up"></i>
-											<span id="vote_count-" style="display:block;">
-												555
+											<span id="vote_count-<%=cb.getAnswer().getId() %>" style="display:block;">
+												<%=cb.getVoterBean().getUpCount() %>
 											</span>
 										</a>
 									</div>
 									
-									<div id="vote-down-" class="vote-number"
-											onclick="vote('', 'down');">
+									<div id="vote-down-<%=cb.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'down');">
 										<a>
 											<i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 								</div>
+								<%
+										} else if("down".equals(cb.getVote().getVote_type())) {
+								%>
+								<div class="row">
+									<div id="vote-up-<%=cb.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=cb.getAnswer().getId() %>" style="display:block;">
+												<%=cb.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=cb.getAnswer().getId() %>" class="vote-number-pressed"
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+										}
+									} else {
+										// 当前用户没投过票
+								%>
+								<div class="row">
+									<div id="vote-up-<%=cb.getAnswer().getId() %>" class="vote-number" 
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'up');">
+										<a>
+											<i class="fa fa-caret-up"></i>
+											<span id="vote_count-<%=cb.getAnswer().getId() %>" style="display:block;">
+												<%=cb.getVoterBean().getUpCount() %>
+											</span>
+										</a>
+									</div>
+									
+									<div id="vote-down-<%=cb.getAnswer().getId() %>" class="vote-number"
+											onclick="vote('<%=cb.getAnswer().getId() %>', 'down');">
+										<a>
+											<i class="fa fa-caret-down"></i>
+										</a>
+									</div>
+								</div>	
+								<%
+									}
+								%>
 								
 							</div><!-- end avatar and upvote col -->
 							
 							<!-- avatar and upvote col -->
 							<div id="vote-digest-" style="display: block;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
+									<a href="./HomeServlet?id=<%=cb.getMember().getId() %>">
+										<img src="<%=cb.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
+								<div class="row">
 									<div class="vote-number">
 										<a>
 											<span style="display:block;">
-												555
+												<%=cb.getVoterBean().getUpCount() %>
 											</span>
 										</a>
 									</div>
@@ -166,8 +233,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="question-link">
 										<h5>
-											<a href="./QuestionDetails?id=">
-												55555/////;lllllllllllllll
+											<a href="./QuestionDetails?id=<%=cb.getQuestion().getId() %>">
+												<%=cb.getQuestion().getQuestion_title() %>
 											</a>
 										</h5>
 									</div>
@@ -175,8 +242,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								
 								<div class="row">
 									<div class="author-info">
-										<a href="./HomeServlet?id="><strong>fff</strong></a>,
-										<span>yttty</span>
+										<a href="./HomeServlet?id="><strong><%=cb.getMember().getFullname() %></strong></a>,
+										<span><%=cb.getMember().getAutograph() %></span>
 									</div>
 								</div>
 								
@@ -184,13 +251,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row" onclick="getDigestSource();">
 									<div class="question-content">
 										<div id="editable-content-" style="display: none;">
-											daan
+											<%=cb.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
 												<a target="_blank" href="#">发布于 12:13</a>
 											</span>
 										</div>
 										<div id="summary-content-" style="display: block;cursor: pointer;">
-											daan
+											<%=cb.getAnswer().getAnswers() %>
 										</div>
 									</div>
 								</div>
@@ -202,8 +269,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											onclick="followQuestionOnTrends()" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										
-										
 										
 										<a href="#comment--agreeWithThisAnswer" onclick="queryACommentList();" 
 												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
@@ -276,16 +341,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<div class="row">
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
+					<%
+							}
+						}
+					%>
 					
 				</div><!-- end left main-->
 
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
-										
+					<!-- 					
 					<div class="follow-btn">
 						<button id="followQuestion-" onclick="followQuestion()" 
 								class="btn btn-primary">关注收藏夹</button>
 					</div>
-					<hr>
+					<hr> -->
 
 					<div class="sidebar-group" style="padding-bottom:45px;">
 						<span><strong>关于创建者</strong></span>
