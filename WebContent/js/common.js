@@ -660,7 +660,7 @@ function queryACommentList() {
 						+ '<a href="#" class="split"><i class="fa fa-thumbs-o-up"></i> 赞</a>'
 
 						+ '<div class="btn-group">'
-						+ '<a onclick="reportList(1, this, 2, ' + obj.acommentBeanList[0].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
+						+ '<a onclick="reportList(1, this, 2, ' + obj.commentBeanList[i].comment.id + ');" class="meta-item dropdown-toggle" data-toggle="dropdown">'
 						+ '<i class="fa fa-flag-o"></i> ' 
 						+ '举报'
 						+ '</a>'
@@ -1265,7 +1265,6 @@ function popContent(id) {
 
 // 显示摘要全文
 function getDigestSource(id) {
-	alert(id);
 	// 全部内容
 	var editable_content = document.getElementById("editable-content-" + id);
 	// 摘要

@@ -20,6 +20,8 @@ public class CollectionBean {
 	private boolean isThanked;
 	
 	private boolean isNoHelp;
+	
+	private boolean isFollowing;
 
 	public Answers getAnswer() {
 		return answer;
@@ -75,6 +77,14 @@ public class CollectionBean {
 
 	public void setNoHelp(boolean isNoHelp) {
 		this.isNoHelp = isNoHelp;
+	}
+
+	public boolean isFollowing() {
+		return isFollowing;
+	}
+
+	public void setFollowing(boolean isFollowing) {
+		this.isFollowing = isFollowing;
 	}
 	
 }

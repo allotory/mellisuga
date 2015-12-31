@@ -19,6 +19,7 @@ import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.CollectionDAO;
 import com.mellisuga.dao.CollectionFolderDAO;
+import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.NoHelpDAO;
 import com.mellisuga.dao.QuestionDAO;
@@ -150,6 +151,15 @@ public class CollectionDetailServlet extends HttpServlet {
 					} else {
 						collectionBean.setNoHelp(true);
 					}
+					
+					// 查询是否关注该问题
+					FollowDAO followDAO = session.getMapper(FollowDAO.class);
+					HashMap<String, Object> followMap = new HashMap<String, Object>();
+					followMap.put("question_id", question.getId());
+					followMap.put("follower_id", m.getId());
+					int count = followDAO.isExistInFollow(followMap);
+					boolean isFollowing = count > 0 ? true : false;
+					collectionBean.setFollowing(isFollowing);
 					
 					collectionBeanList.add(collectionBean);
 				}

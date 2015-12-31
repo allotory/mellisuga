@@ -85,8 +85,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						</div>
 						<div class="row">
 							<div class="meta-panel" style="margin-left:10px; font-size:12px;">
-								<a href="#comment--agreeWithThisAnswer" onclick="queryACommentList();" 
-										data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
+								<a href="#" class="meta-item">
 									<i class="fa fa-comment-o"></i> 添加评论
 								</a>
 								<span class="bull">•</span>
@@ -129,13 +128,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							for(CollectionBean cb : collectionDetailBean.getCollectionBeanList()) {
 					%>
 					<!-- left main content wrap  -->
-					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-')" 
-							onmouseleave="hiddenItem('hidden-item-')">
+					<div class="row left-main-content-wrap" onmouseenter="showItem('hidden-item-<%=cb.getAnswer().getId() %>')" 
+							onmouseleave="hiddenItem('hidden-item-<%=cb.getAnswer().getId() %>')">
 						<div class="left-main-content">
 
 							<!-- avatar and upvote col -->
-							<div id="vote-detail-" style="display: none;"  class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								
+							<div id="vote-detail-<%=cb.getAnswer().getId() %>" style="display: none;"  class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<div class="row">
+									<a href="./HomeServlet?id=<%=cb.getMember().getId() %>">
+										<img src="<%=cb.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
+									</a>
+								</div>
 								<%
 									// 判断当前用户是否投票过
 									if(cb.getVote() != null) {
@@ -210,12 +213,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div><!-- end avatar and upvote col -->
 							
 							<!-- avatar and upvote col -->
-							<div id="vote-digest-" style="display: block;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<div class="row">
-									<a href="./HomeServlet?id=<%=cb.getMember().getId() %>">
-										<img src="<%=cb.getMember().getAvatar_path() %>" class="img-responsive img-rounded" alt="Responsive image">
-									</a>
-								</div>
+							<div id="vote-digest-<%=cb.getAnswer().getId() %>" style="display: block;" class="avatar-vote col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<div class="row">
 									<div class="vote-number">
 										<a>
@@ -247,17 +245,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									</div>
 								</div>
 								
+								<%
+									if(cb.getVoterBean().getUpCount() > 0) {
+								%>
+								<div class="row">
+									<div class="content-source">
+									<%
+										String split = "";	
+										for(Member member : cb.getVoterBean().getVoterList()) {
+									%>
+										<%=split %>
+										<a href="#"><%=member.getFullname() %></a>
+									<%
+											split = "、";
+										}
+									%>
+										等赞同该回答
+									</div>
+								</div>
+								<%
+									}
+								%>
 
-								<div class="row" onclick="getDigestSource();">
+								<div class="row" onclick="getDigestSource(<%=cb.getAnswer().getId() %>);">
 									<div class="question-content">
-										<div id="editable-content-" style="display: none;">
+										<div id="editable-content-<%=cb.getAnswer().getId() %>" style="display: none;">
 											<%=cb.getAnswer().getAnswers() %>
 											<span class="answer-date" style="display: block;">
-												<a target="_blank" href="#">发布于 12:13</a>
+												<a target="_blank" href="#">发布于 <%=TimeUtils.getPostTime(cb.getAnswer().getAnswer_date()) %></a>
 											</span>
 										</div>
-										<div id="summary-content-" style="display: block;cursor: pointer;">
-											<%=cb.getAnswer().getAnswers() %>
+										<div id="summary-content-<%=cb.getAnswer().getId() %>" style="display: block;cursor: pointer;">
+											<%=DigestFunc.getDigest(cb.getAnswer().getAnswers(), 200, " ...") %>
 										</div>
 									</div>
 								</div>
@@ -265,33 +284,89 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<div class="meta-panel">
 										
-										<a class="meta-item" title="follow" id="followQuestion-" 
-											onclick="followQuestionOnTrends()" >
+										<%	// 判断是否已关注问题
+											if(!cb.isFollowing()) {
+												
+										%>
+										<a class="meta-item" title="follow" id="followQuestion-<%=cb.getAnswer().getId() %>" 
+											onclick="followQuestionOnTrends(<%=cb.getQuestion().getId() %>, <%=cb.getAnswer().getId() %>)" >
 											<i class="fa fa-plus"></i> 关注问题
 										</a>
-										
-										<a href="#comment--agreeWithThisAnswer" onclick="queryACommentList();" 
-												data-toggle="collapse" class="meta-item" aria-expanded="false" aria-controls="comment">
-											<i class="fa fa-comment-o"></i> 添加评论
+										<%
+											} else {
+										%>
+										<a class="meta-item" title="following" id="followQuestion-<%=cb.getAnswer().getId() %>" 
+											onclick="followQuestionOnTrends(<%=cb.getQuestion().getId() %>, <%=cb.getAnswer().getId() %>)" >
+											取消关注
 										</a>
+										<%
+											}
+										%>
 										
-										<div id="hidden-item-" style="display:none;">
+										<%
+											// 判断是否有评论	
+											if(cb.getAnswer().getReply_num() == 0) {
+										%>
+										<a href="#comment-<%=cb.getAnswer().getId() %>" 
+											onclick="queryACommentList(<%=cb.getAnswer().getId() %>);"  
+											data-toggle="collapse" class="meta-item">
+											 <i class="fa fa-comment-o"></i> 添加评论
+										</a>
+										<%
+											} else {
+										%>
+										<a href="#comment-<%=cb.getAnswer().getId() %>" 
+											onclick="queryACommentList(<%=cb.getAnswer().getId() %>);" 
+											data-toggle="collapse" class="meta-item">
+											<i class="fa fa-commenting-o"></i> 
+											<%=cb.getAnswer().getReply_num() %>条评论
+										</a>
+										<%
+											}
+										%>
 										
-											<a title="thankAuthor" onclick="thankAuthor(, );"
-												id="thankAuthor-"  class="meta-item" data-thanked="false">
+										<div id="hidden-item-<%=cb.getAnswer().getId() %>" style="display:none;">
+										
+										<%
+											if(!cb.isThanked()) {
+										%>
+											<a title="thankAuthor" onclick="thankAuthor(<%=cb.getAnswer().getId() %>);"
+												id="thankAuthor-<%=cb.getAnswer().getId() %>"  class="meta-item" data-thanked="false">
 												<i class="fa fa-heart-o"></i> 感谢
 											</a>
+										<%
+											} else {
+										%>
+											<a title="thankedAuthor" onclick="thankAuthor(<%=cb.getAnswer().getId() %>);"
+												id="thankAuthor-<%=cb.getAnswer().getId() %>"  class="meta-item" data-thanked="false">
+												<i class="fa fa-heart-o"></i> 取消感谢
+											</a>
+										<%
+											}
+										%>
 										
 											<a href="#" class="meta-item" >
 												<i class="fa fa-share"></i> 分享
 											</a>
-											<a onclick="getCollectionList();" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
+											<a onclick="getCollectionList(<%=cb.getAnswer().getId() %>);" data-toggle="modal" data-target="#collectionModal" data-backdrop="false" class="meta-item">
 												<i class="fa fa-bookmark-o"></i> 收藏
 											</a>
 											<span class="bull">•</span>
 											
-											<a title="nohelp" onclick="nohelp(, );"
-												id="nohelp-" class="meta-item">没有帮助</a>
+											<%
+												// 判断是否没有帮助
+												if(!cb.isNoHelp()) {
+											%>
+											<a title="nohelp" onclick="nohelp(<%=cb.getAnswer().getId() %>);"
+												id="nohelp-<%=cb.getAnswer().getId() %>" class="meta-item">没有帮助</a>
+											<%
+												} else {
+											%>
+											<a title="unnohelp" onclick="nohelp(<%=cb.getAnswer().getId() %>);"
+												id="nohelp-<%=cb.getAnswer().getId() %>" class="meta-item">撤消没有帮助</a>
+											<%
+												}	
+											%>
 											
 											<span class="bull">•</span>
 											<div class="btn-group">
@@ -307,26 +382,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												作者保留权利
 											</a>
 										</div>
-										<a id="retract-" href="javascript: retract();" class="answer-collapse meta-item" style="display:none">
+										<a id="retract-<%=cb.getAnswer().getId() %>" href="javascript: retract(<%=cb.getAnswer().getId() %>);" class="answer-collapse meta-item" style="display:none">
 											<i class="fa fa-angle-double-up"></i> 收起
 										</a>
 									</div>
 								</div>
 								
 								<!-- comment -->
-								<div id="comment--agreeWithThisAnswer" class="row comment collapse">
+								<div id="comment-<%=cb.getAnswer().getId() %>" class="row comment collapse">
 									<div class="panel panel-default">
-										<div id="newAnswerComments-">
+										<div id="newAnswerComments-<%=cb.getAnswer().getId() %>">
 										
 										</div>
 										<div class="panel-body">
 											<div class="form-group">
-												<textarea class="form-control" id="acomment-" 
-													name="acomment-" rows="1" id="textArea" placeholder="请写下你的评论..."></textarea>
+												<textarea class="form-control" id="acomment-<%=cb.getAnswer().getId() %>" name="acomment-<%=cb.getAnswer().getId() %>" rows="1" placeholder="请写下你的评论..."></textarea>
 											</div>
 											<div class="form-group module-right">
 												<button class="btn btn-default btn-sm">取消</button>
-												<button type="button" onclick="newAnswerComment('');" class="btn btn-primary btn-sm">评论</button>
+												<button type="button" onclick="newAnswerComment('<%=cb.getAnswer().getId() %>');" class="btn btn-primary btn-sm">评论</button>
 											</div>
 										</div>
 										
