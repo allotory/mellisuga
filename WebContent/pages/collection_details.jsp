@@ -73,7 +73,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<!--left main title row-->
 					<div class="row">
 						<div class="left-main-title">
-							<a href="" style="color:#999;"><i class="fa fa-angle-double-left"></i> 去我的收藏</a>
+							<a href="./CollectionsServlet" style="color:#999;"><i class="fa fa-angle-double-left"></i> 去我的收藏</a>
 							<!-- <span class="news-setting">
 								<a href="#">
 									 xxx的收藏 <i class="fa fa-angle-double-right"></i> 
@@ -435,9 +435,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<img src="./images/avatar/default.jpg" width="60" height="60" class="img-responsive img-rounded" alt="Responsive image">
 						</div>
-						<div  class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px">
+						<!-- <div  class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px">
 							<button id="followQuestion-" class="btn btn-success btn-xs">关注ta</button>
-						</div>
+						</div> -->
 					</div>
 					<hr>
 

@@ -18,4 +18,7 @@ public interface CollectionFolderDAO {
 	// 更新收藏夹
 	public void updateCollectionFolder(CollectionFolder collectionFolder);
 	
+	// 查询热门收藏夹
+	public List<CollectionFolder> queryCollectionFolderByHot();
+	
 }

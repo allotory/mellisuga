@@ -54,6 +54,11 @@
     		is_public = #{is_public} 
 	    where id=#{id}
     </update>
+    
+    <!-- 返回多列 -->
+    <select id="queryCollectionFolderByHot" resultMap="CollectionFolderList">
+        select * from collection_folder order by followers_num desc
+    </select>    
 </mapper>
 
 
