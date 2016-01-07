@@ -100,7 +100,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="question-link">
 													<h5>
-														<a href="./CollectionDetailServlet?folder_id=<%=cf.getId() %>">
+														<a href="./CollectionDetailServlet?folder_id=<%=cf.getId() %>&is_my_collection=true">
 															<%=cf.getFoldername() %>
 														</a>
 													</h5>
@@ -203,9 +203,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="question-link">
 													<h5>
-														<a href="#">
+														<%
+															if(m.getId() == hcf.getCollectionFolder().getOwner_id()) {
+														%>
+														<a href="./CollectionDetailServlet?folder_id=<%=hcf.getCollectionFolder().getId() %>&is_my_collection=true">
 															<%=hcf.getCollectionFolder().getFoldername() %>
 														</a>
+														<%
+															} else {
+														%>
+														<a href="./CollectionDetailServlet?folder_id=<%=hcf.getCollectionFolder().getId() %>&is_my_collection=false">
+															<%=hcf.getCollectionFolder().getFoldername() %>
+														</a>
+														<%
+															}
+														%>
 													</h5>
 												</div>
 											</div>

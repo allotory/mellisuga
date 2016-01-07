@@ -73,12 +73,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<!--left main title row-->
 					<div class="row">
 						<div class="left-main-title">
+						<%
+							if(collectionDetailBean.isMyCollection()) {
+						%>
 							<a href="./CollectionsServlet" style="color:#999;"><i class="fa fa-angle-double-left"></i> 去我的收藏</a>
-							<!-- <span class="news-setting">
-								<a href="#">
-									 xxx的收藏 <i class="fa fa-angle-double-right"></i> 
+						<%
+							} else {
+						%>
+							<a href="#" style="color:#999;"><i class="fa fa-angle-double-left"></i> <%=collectionDetailBean.getFolderOwner().getFullname() %> 的收藏</a>
+							<span class="news-setting">
+								<a href="./CollectionsServlet">
+									  去我的收藏 <i class="fa fa-angle-double-right"></i> 
 								</a>
-							</span> -->
+							</span>
+						<%
+							}
+						%>
 						</div><!-- end left main title -->
 						<div class="" style="margin-top:5px;margin-bottom:5px; font-size:22px;">
 							<a href=""><strong><%=collectionDetailBean.getCollectionFolder().getFoldername() %></strong></a>
@@ -423,21 +433,40 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 				</div><!-- end left main-->
 
 				<div class="right-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
-					<!-- 					
+					
+					<%
+						// 不是当前用户时才显示关注按钮
+						if(!collectionDetailBean.isMyCollection()) {
+					%>					
 					<div class="follow-btn">
 						<button id="followQuestion-" onclick="followQuestion()" 
 								class="btn btn-primary">关注收藏夹</button>
 					</div>
-					<hr> -->
+					<hr>
+					<%
+						}
+					%>
 
 					<div class="sidebar-group" style="padding-bottom:45px;">
 						<span><strong>关于创建者</strong></span>
+						<%
+							if(collectionDetailBean.isMyCollection()) {
+						%>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<img src="./images/avatar/default.jpg" width="60" height="60" class="img-responsive img-rounded" alt="Responsive image">
+							<img src="<%=m.getAvatar_path() %>" width="60" height="60" class="img-responsive img-rounded" alt="Responsive image" title="<%=m.getFullname() %>">
 						</div>
-						<!-- <div  class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px">
+						<%
+							} else {
+						%>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<img src="<%=collectionDetailBean.getFolderOwner().getAvatar_path() %>" width="60" height="60" title="<%=collectionDetailBean.getFolderOwner().getFullname() %>" class="img-responsive img-rounded" alt="Responsive image">
+						</div>
+						<div  class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:10px">
 							<button id="followQuestion-" class="btn btn-success btn-xs">关注ta</button>
-						</div> -->
+						</div>
+						<%
+							}
+						%>
 					</div>
 					<hr>
 
@@ -451,7 +480,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 					<hr>
 
 					<div class="sidebar-group">
-						<span><a href="#">12345</a> 人关注该收藏夹</span>
+						<span><a href="#"><%=collectionDetailBean.getCollectionFolder().getFollowers_num() %></a> 人关注该收藏夹</span>
 					</div>
 					<hr>
 					<div class="sidebar-group">

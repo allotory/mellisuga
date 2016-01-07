@@ -51,6 +51,7 @@ public class CollectionDetailServlet extends HttpServlet {
 		
 		Member m = (Member) request.getSession().getAttribute("member");
 		int folder_id = Integer.parseInt(request.getParameter("folder_id"));
+		boolean isMyCollection = Boolean.parseBoolean(request.getParameter("is_my_collection"));
 		
 		SqlSession session = null;
 		try {
@@ -166,6 +167,14 @@ public class CollectionDetailServlet extends HttpServlet {
 			}
 			
 			collectionDetailBean.setCollectionBeanList(collectionBeanList);
+			collectionDetailBean.setMyCollection(isMyCollection);
+			
+			// 查询收藏夹创建者
+			if(!isMyCollection) {
+				MemberDAO memberDAO = session.getMapper(MemberDAO.class);
+				Member folderOwner = memberDAO.queryMemberByID(collectionFolder.getOwner_id());
+				collectionDetailBean.setFolderOwner(folderOwner);
+			}
 			
 			request.setAttribute("collectionDetailBean", collectionDetailBean);
 			request.getRequestDispatcher("/pages/collection_details.jsp")
