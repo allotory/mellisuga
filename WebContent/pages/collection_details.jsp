@@ -439,8 +439,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						if(!collectionDetailBean.isMyCollection()) {
 					%>					
 					<div class="follow-btn">
-						<button id="followQuestion-" onclick="followQuestion()" 
-								class="btn btn-primary">关注收藏夹</button>
+						<button id="followCollectionFolder-<%=collectionDetailBean.getCollectionFolder().getId() %>" 
+							onclick="followCollectionFolder(<%=collectionDetailBean.getCollectionFolder().getId() %>)" 
+							class="btn btn-primary">关注收藏夹</button>
 					</div>
 					<hr>
 					<%

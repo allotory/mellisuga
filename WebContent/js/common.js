@@ -1357,7 +1357,38 @@ function getEditSubmit() {
 	return true;
 }
 
-
+// 关注收藏夹
+function followCollectionFolder(collection_folder_id) {
+	var followCollectionFolder = document.getElementById("followCollectionFolder-" + collection_folder_id);
+	
+	if(followCollectionFolder.className == "btn btn-primary") {
+		// 关注问题
+		followCollectionFolder.className = "btn btn-default";
+		followCollectionFolder.innerHTML = "取消关注";
+		loadXMLDoc("FollowCollectionFolderServlet?collection_folder_id=" + collection_folder_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("关注收藏夹失败，请稍候重试");
+					followCollectionFolder.className = "btn btn-primary";
+					followCollectionFolder.innerHTML = "关注收藏夹";
+				}
+			}
+		});
+	} else if(followCollectionFolder.className == "btn btn-default") {
+		// 取消关注
+		followCollectionFolder.className = "btn btn-primary";
+		followCollectionFolder.innerHTML = "关注收藏夹";
+		loadXMLDoc("UnFollowCollectionFolderServlet?collection_folder_id=" + collection_folder_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "error") {
+					alert("关注收藏夹失败，请稍候重试");
+					followCollectionFolder.className = "btn btn-default";
+					followCollectionFolder.innerHTML = "取消关注";
+				}
+			}
+		});
+	}
+}
 
 
 
