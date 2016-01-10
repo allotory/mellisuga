@@ -10,6 +10,17 @@
     	insert into collection_folder_follow(collection_folder_id, follower_id) 
     	values(#{collection_folder_id}, #{follower_id})
     </insert>
+    
+    <!-- 查询单一数据 -->
+	<select id="queryCollectionFolderFollowById" parameterType="java.util.HashMap" resultType="CollectionFolderFollow">
+        select * from collection_folder_follow where collection_folder_id = #{collection_folder_id} 
+        	and follower_id = #{follower_id}
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="deleteCollectionFolderFollow" parameterType="CollectionFolderFollow">
+    	delete from collection_folder_follow where id = #{id}
+    </delete>
 </mapper>
 
 
