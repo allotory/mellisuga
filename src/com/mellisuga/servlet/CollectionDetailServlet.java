@@ -19,6 +19,7 @@ import com.mellisuga.bean.VoterBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.CollectionDAO;
 import com.mellisuga.dao.CollectionFolderDAO;
+import com.mellisuga.dao.CollectionFolderFollowDAO;
 import com.mellisuga.dao.FollowDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.NoHelpDAO;
@@ -174,6 +175,15 @@ public class CollectionDetailServlet extends HttpServlet {
 				MemberDAO memberDAO = session.getMapper(MemberDAO.class);
 				Member folderOwner = memberDAO.queryMemberByID(collectionFolder.getOwner_id());
 				collectionDetailBean.setFolderOwner(folderOwner);
+				
+				// 查询是否已关注该收藏夹
+				CollectionFolderFollowDAO collectionFolderFollowDAO = session.getMapper(CollectionFolderFollowDAO.class);
+				HashMap<String, Object> followMap = new HashMap<String, Object>();
+				followMap.put("collection_folder_id", folder_id);
+				followMap.put("follower_id", m.getId());
+				int count = collectionFolderFollowDAO.isExistInCollectionFolderFollow(followMap);
+				boolean isFollowing = count > 0 ? true: false;
+				collectionDetailBean.setFollowing(isFollowing);
 			}
 			
 			request.setAttribute("collectionDetailBean", collectionDetailBean);

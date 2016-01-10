@@ -11,4 +11,7 @@ public interface CollectionFolderFollowDAO {
 	public CollectionFolderFollow queryCollectionFolderFollowById(HashMap<String, Object> parameterMap);
 	
 	public void deleteCollectionFolderFollow(CollectionFolderFollow collectionFolderFollow);
+	
+	// 判断是否存在
+	public int isExistInCollectionFolderFollow(HashMap<String, Object> parameterMap);
 }

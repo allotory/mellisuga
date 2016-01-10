@@ -439,9 +439,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						if(!collectionDetailBean.isMyCollection()) {
 					%>					
 					<div class="follow-btn">
+						<%
+							if(!collectionDetailBean.isFollowing()) {
+						%>
 						<button id="followCollectionFolder-<%=collectionDetailBean.getCollectionFolder().getId() %>" 
 							onclick="followCollectionFolder(<%=collectionDetailBean.getCollectionFolder().getId() %>)" 
 							class="btn btn-primary">关注收藏夹</button>
+						<%
+							} else {
+						%>
+						<button id="followCollectionFolder-<%=collectionDetailBean.getCollectionFolder().getId() %>" 
+							onclick="followCollectionFolder(<%=collectionDetailBean.getCollectionFolder().getId() %>)" 
+							class="btn btn-default">取消关注</button>
+						<%	
+							}
+						%>
 					</div>
 					<hr>
 					<%

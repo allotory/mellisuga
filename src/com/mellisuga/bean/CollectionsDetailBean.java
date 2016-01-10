@@ -14,6 +14,8 @@ public class CollectionsDetailBean {
 	private boolean isMyCollection;
 	
 	private Member folderOwner;
+	
+	private boolean isFollowing;
 
 	public CollectionFolder getCollectionFolder() {
 		return collectionFolder;
@@ -45,6 +47,14 @@ public class CollectionsDetailBean {
 
 	public void setFolderOwner(Member folderOwner) {
 		this.folderOwner = folderOwner;
+	}
+
+	public boolean isFollowing() {
+		return isFollowing;
+	}
+
+	public void setFollowing(boolean isFollowing) {
+		this.isFollowing = isFollowing;
 	}
 
 }
