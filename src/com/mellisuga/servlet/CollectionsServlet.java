@@ -59,11 +59,22 @@ public class CollectionsServlet extends HttpServlet {
 			}
 			
 			// 返回我关注的收藏夹列表
-			// 。。。
+			List<CollectionFolderBean> followingCollectionFolderBeanList = new ArrayList<CollectionFolderBean>();
 			
+			List<CollectionFolder> followingCollectionFolderList = collectionFolderDAO.queryCollectionFolderByFollowing(m.getId());
+			for(CollectionFolder cf : followingCollectionFolderList) {
+				Member member = memberDAO.queryMemberByID(cf.getOwner_id());
+				
+				CollectionFolderBean collectionFolderBean = new CollectionFolderBean();
+				collectionFolderBean.setCollectionFolder(cf);
+				collectionFolderBean.setMember(member);
+				
+				followingCollectionFolderBeanList.add(collectionFolderBean);
+			}
 			
 			request.setAttribute("collectionFolderList", collectionFolderList);
 			request.setAttribute("hotCollectionFolderBeanList", hotCollectionFolderBeanList);
+			request.setAttribute("followingCollectionFolderBeanList", followingCollectionFolderBeanList);
 			request.getRequestDispatcher("/pages/collection.jsp")
 					.forward(request, response);
 		} catch (Exception e) {

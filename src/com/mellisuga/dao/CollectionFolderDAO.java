@@ -21,4 +21,7 @@ public interface CollectionFolderDAO {
 	// 查询热门收藏夹
 	public List<CollectionFolder> queryCollectionFolderByHot();
 	
+	// 查询我关注的收藏夹
+	public List<CollectionFolder> queryCollectionFolderByFollowing(int follower_id);
+	
 }

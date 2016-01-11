@@ -26,6 +26,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 		List<CollectionFolder> collectionFolderList = (List<CollectionFolder>) request.getAttribute("collectionFolderList");
 		@SuppressWarnings("unchecked")
 		List<CollectionFolderBean> hotCollectionFolderBeanList = (List<CollectionFolderBean>) request.getAttribute("hotCollectionFolderBeanList");
+		@SuppressWarnings("unchecked")
+		List<CollectionFolderBean> followingCollectionFolderBeanList = (List<CollectionFolderBean>) request.getAttribute("followingCollectionFolderBeanList");
 	%>
 </head>
 <body>
@@ -133,6 +135,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							</div>
 							
 							<div class="tab-pane fade" id="followingCollection">
+							
+								<%
+									// 还没有创建收藏夹
+									if(followingCollectionFolderBeanList == null || followingCollectionFolderBeanList.isEmpty()) {
+								%>
+									创建一个收藏夹，将喜欢的答案收集起来~
+								<%		
+									} else {
+										for(CollectionFolderBean fcf : followingCollectionFolderBeanList) {
+								%>
 								
 								<!-- left main content wrap  -->
 								<div class="row left-main-content-wrap" style="margin-left:10px; margin-right:10px;">
@@ -144,9 +156,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="question-link">
 													<h5>
-														<a href="#">
-															各种生活经历，别人的故事是最好的人生智慧。
+														<%
+															if(m.getId() == fcf.getCollectionFolder().getOwner_id()) {
+														%>
+														<a href="./CollectionDetailServlet?folder_id=<%=fcf.getCollectionFolder().getId() %>&is_my_collection=true">
+															<%=fcf.getCollectionFolder().getFoldername() %>
 														</a>
+														<%
+															} else {
+														%>
+														<a href="./CollectionDetailServlet?folder_id=<%=fcf.getCollectionFolder().getId() %>&is_my_collection=false">
+															<%=fcf.getCollectionFolder().getFoldername() %>
+														</a>
+														<%
+															}
+														%>
 													</h5>
 												</div>
 											</div>
@@ -154,20 +178,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="row">
 												<div class="meta-panel">
 													<span class="meta-item">
-													由 <a class="meta-item">
-														ddddd
+													由 <a href="" class="meta-item">
+														<%=fcf.getMember().getFullname() %>
 													</a> 创建
 													</span>
 													<span class="bull">•</span>
 													<a class="meta-item">
-														取消关注
+														关注收藏
 													</a>
 													<span class="bull">•</span>
 													<a class="meta-item">
-														254个回答
+														<%=fcf.getCollectionFolder().getAnswers_num() %>个回答
 													</a>
 													<span class="bull">•</span>
-													<a class="meta-item">354185人关注</a>
+													<a class="meta-item"><%=fcf.getCollectionFolder().getFollowers_num() %>人关注</a>
 												</div>
 											</div>
 			
@@ -179,6 +203,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								<div class="row">
 									<hr style="margin-top:12px;margin-bottom:12px;margin-left:10px; margin-right:10px;"/>
 								</div>
+								<%
+										}
+									}
+								%>
 							</div>
 							
 							<div class="tab-pane fade" id="hotCollection">

@@ -59,6 +59,12 @@
     <select id="queryCollectionFolderByHot" resultMap="CollectionFolderList">
         select * from collection_folder order by followers_num desc
     </select>    
+    
+    <!-- 返回多列 -->
+    <select id="queryCollectionFolderByFollowing" parameterType="int" resultMap="CollectionFolderList">
+        select * from collection_folder where id 
+        	in (select collection_folder_id from collection_folder_follow where follower_id=#{follower_id});
+    </select>    
 </mapper>
 
 
