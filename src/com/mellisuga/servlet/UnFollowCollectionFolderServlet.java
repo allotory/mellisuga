@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.dao.CollectionFolderDAO;
 import com.mellisuga.dao.CollectionFolderFollowDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.model.CollectionFolder;
 import com.mellisuga.model.CollectionFolderFollow;
 import com.mellisuga.model.Member;
 
@@ -40,6 +42,7 @@ public class UnFollowCollectionFolderServlet extends HttpServlet {
 		try {
 			session = DBConnection.openDefaultSession();
 			
+			// 删除收藏夹关注
 			CollectionFolderFollowDAO collectionFolderFollowDAO = session.getMapper(CollectionFolderFollowDAO.class);
 			
 			HashMap<String, Object> parameterMap = new HashMap<String, Object>();
@@ -48,6 +51,15 @@ public class UnFollowCollectionFolderServlet extends HttpServlet {
 			
 			CollectionFolderFollow cff = collectionFolderFollowDAO.queryCollectionFolderFollowById(parameterMap);
 			collectionFolderFollowDAO.deleteCollectionFolderFollow(cff);
+			
+			// 更新收藏夹关注数目
+			CollectionFolderDAO collectionFolderDAO = session.getMapper(CollectionFolderDAO.class);
+			
+			CollectionFolder collectionFolder = collectionFolderDAO.queryCollectionFolderById(collection_folder_id);
+			if(collectionFolder.getFollowers_num() > 0) {
+				collectionFolder.setFollowers_num(collectionFolder.getFollowers_num() - 1);
+			}
+			collectionFolderDAO.updateCollectionFolder(collectionFolder);
 			
 			session.commit();
 			

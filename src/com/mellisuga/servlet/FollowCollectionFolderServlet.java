@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.dao.CollectionFolderDAO;
 import com.mellisuga.dao.CollectionFolderFollowDAO;
 import com.mellisuga.db.DBConnection;
+import com.mellisuga.model.CollectionFolder;
 import com.mellisuga.model.CollectionFolderFollow;
 import com.mellisuga.model.Member;
 
@@ -39,12 +41,19 @@ public class FollowCollectionFolderServlet extends HttpServlet {
 		try {
 			session = DBConnection.openDefaultSession();
 			
+			// 插入关注收藏夹 
 			CollectionFolderFollowDAO collectionFolderFollowDAO = session.getMapper(CollectionFolderFollowDAO.class);
 			
 			CollectionFolderFollow cff = new CollectionFolderFollow();
 			cff.setCollection_folder_id(collection_folder_id);
 			cff.setFollower_id(m.getId());
 			collectionFolderFollowDAO.insertCollectionFolderFollow(cff);
+			
+			// 更新收藏夹关注数量
+			CollectionFolderDAO collectionFolderDAO = session.getMapper(CollectionFolderDAO.class);
+			CollectionFolder collectionFolder = collectionFolderDAO.queryCollectionFolderById(collection_folder_id);
+			collectionFolder.setFollowers_num(collectionFolder.getFollowers_num() + 1);
+			collectionFolderDAO.updateCollectionFolder(collectionFolder);
 			
 			session.commit();
 			
