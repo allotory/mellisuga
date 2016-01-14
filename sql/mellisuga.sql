@@ -317,6 +317,7 @@ CREATE TABLE IF NOT EXISTS block (
  * 	2. 系统通知
  * 		别人关注了你^				-- FollowingYouMsg
  * 		你关注的问题有了一个新回答 #-- NewAnswerMsg
+ * 		系统公告#					-- SystemNotice
  * 		别人赞同了你的回答^		-- AgreeAnswerMsg
  * 		别人感谢了你的回答^		-- ThankYouAnswerMsg
  */
@@ -326,25 +327,48 @@ CREATE TABLE IF NOT EXISTS block (
  */
 CREATE TABLE IF NOT EXISTS message_text (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 消息内容ID（唯一标识） */
-	sender_id int(11) NOT NULL,					/* 发送用户ID */
 	content text NOT NULL,						/* 消息内容 */
-	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
-	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
-	msg_type varchar(64) NOT NULL,				/* 消息类型  */
-	follow_group int(11) NOT NULL,				/* 关注问题的用户组 */
 	PRIMARY KEY (id)
 );
 
 /*
- * 用户消息表
+ * 公共消息表
+ */
+CREATE TABLE IF NOT EXISTS public_message (
+	id int(11) NOT NULL AUTO_INCREMENT,			/* 公共消息ID（唯一标识） */
+	text_id int(11) NOT NULL,					/* 消息内容ID */
+	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
+	message_type varchar(64) NOT NULL,				/* 消息类型  */
+	message_group_id int(11) NOT NULL,			/* 关注问题的用户组  0:默认所有人*/
+	PRIMARY KEY (id)
+);
+
+/*
+ * 消息记录表
  */
 CREATE TABLE IF NOT EXISTS message_log (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 用户消息ID（唯一标识） */
+	sender_id int(11) NOT NULL,					/* 发送用户ID */
 	receiver_id int(11) NOT NULL,				/* 接收用户ID */
 	text_id int(11) NOT NULL,					/* 消息内容ID */
-	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 */
+	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
 	read_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 阅读时间 */
+	message_type varchar(64) NOT NULL,				/* 消息类型  */
+	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
+	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 */
 	is_read smallint NOT NULL,					/* 是否已读 */
+	message_group_id int(11) NOT NULL,			/* 关注问题的用户组 */
+	PRIMARY KEY (id)
+);
+
+/**
+ * 消息组表
+ */
+CREATE TABLE IF NOT EXISTS message_group (
+	id int(11) NOT NULL AUTO_INCREMENT,			/* 消息组ID（唯一标识） */
+	member_id int(11) NOT NULL,					/* 用户ID */
+	question_id int(11) NOT NULL,				/* 问题ID */
+	answer_id int(11) NOT NULL,					/* 答案ID */
 	PRIMARY KEY (id)
 );
 

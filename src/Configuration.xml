@@ -25,7 +25,6 @@
         <typeAlias alias="Comment" type="com.mellisuga.model.Comment"/>
         <typeAlias alias="Favour" type="com.mellisuga.model.Favour"/>
         <typeAlias alias="Follow" type="com.mellisuga.model.Follow"/>
-        <typeAlias alias="MessageText" type="com.mellisuga.model.MessageText"/>
         <typeAlias alias="NoHelp" type="com.mellisuga.model.NoHelp"/>
         <typeAlias alias="Qlog" type="com.mellisuga.model.Qlog"/>
         <typeAlias alias="Question" type="com.mellisuga.model.Question"/>
@@ -38,7 +37,10 @@
         <typeAlias alias="Trends" type="com.mellisuga.model.Trends"/>
         <typeAlias alias="ReportType" type="com.mellisuga.model.ReportType"/>
         <typeAlias alias="Report" type="com.mellisuga.model.Report"/>
+        <typeAlias alias="MessageText" type="com.mellisuga.model.MessageText"/>
         <typeAlias alias="MessageLog" type="com.mellisuga.model.MessageLog"/>
+        <typeAlias alias="MessageGroup" type="com.mellisuga.model.MessageGroup"/>
+        <typeAlias alias="PublicMessage" type="com.mellisuga.model.PublicMessage"/>
     </typeAliases>
     
     <!-- 
@@ -122,7 +124,6 @@
         <mapper resource="com/mellisuga/model/Comment.xml"/>
         <mapper resource="com/mellisuga/model/Favour.xml"/>
         <mapper resource="com/mellisuga/model/Follow.xml"/>
-        <mapper resource="com/mellisuga/model/MessageText.xml"/>
         <mapper resource="com/mellisuga/model/NoHelp.xml"/>
         <mapper resource="com/mellisuga/model/Qlog.xml"/>
         <mapper resource="com/mellisuga/model/Question.xml"/>
@@ -135,6 +136,9 @@
         <mapper resource="com/mellisuga/model/Trends.xml"/>
         <mapper resource="com/mellisuga/model/ReportType.xml"/>
         <mapper resource="com/mellisuga/model/Report.xml"/>
+        <mapper resource="com/mellisuga/model/MessageText.xml"/>
         <mapper resource="com/mellisuga/model/MessageLog.xml"/>
+        <mapper resource="com/mellisuga/model/MessageGroup.xml"/>
+        <mapper resource="com/mellisuga/model/PublicMessage.xml"/>
     </mappers>
 </configuration>
