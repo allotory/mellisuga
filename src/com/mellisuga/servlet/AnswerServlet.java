@@ -20,11 +20,17 @@ import org.json.JSONObject;
 import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.MessageGroupDAO;
+import com.mellisuga.dao.MessageTextDAO;
+import com.mellisuga.dao.PublicMessageDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.MessageGroup;
+import com.mellisuga.model.MessageText;
+import com.mellisuga.model.PublicMessage;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
 
@@ -121,13 +127,30 @@ public class AnswerServlet extends HttpServlet {
 			trendsDAO.insertTrends(trends);
 			
 			// 更新消息
-
-			
-			
-			
-			
-			
-			
+			// 1. 插入消息
+			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+			MessageText  messageText = new MessageText();
+			messageText.setContent("你关注的问题有了一个新回答");
+			messageTextDAO.insertMessageText(messageText);
+			// 2. 插入用户组
+			MessageGroupDAO messageGroupDAO = session.getMapper(MessageGroupDAO.class);
+			MessageGroup messageGroup = new MessageGroup();
+			messageGroup.setMember_id(m.getId());		// 回答用户
+			messageGroup.setQuestion_id(q.getId());		// 被回答问题
+			messageGroup.setAnswer_id(answers.getId());	// 答案
+			messageGroupDAO.insertMessageGroup(messageGroup);
+			session.commit();
+			// 3. 插入公共消息
+			PublicMessageDAO publicMessageDAO = session.getMapper(PublicMessageDAO.class);
+			PublicMessage publicMessage = new PublicMessage();
+			System.out.println(messageText.getId());
+			publicMessage.setText_id(messageText.getId());
+			publicMessage.setSend_time(now);
+			publicMessage.setMessage_type("NewAnswerMsg");
+			System.out.println(messageGroup.getId());
+			publicMessage.setMessage_group_id(messageGroup.getId());
+			publicMessageDAO.insertPublicMessage(publicMessage);
+			session.commit();
 			
 			// 重新查询用户信息
 			m = memberDAO.queryMemberByUserID(m.getId());

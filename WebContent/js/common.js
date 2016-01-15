@@ -266,7 +266,7 @@ function newAnswer(question_id) {
 						+ '<div class="vote-text-center vote-number">'
 						+ '<a href="#">'
 						+ '<i class="fa fa-caret-up"></i>'
-						+ '<span style="display:block;">122</span>'
+						+ '<span style="display:block;">0</span>'
 						+ '</a>'
 						+ '</div>'
 										

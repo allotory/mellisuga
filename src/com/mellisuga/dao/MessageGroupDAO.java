@@ -4,5 +4,5 @@ import com.mellisuga.model.MessageGroup;
 
 public interface MessageGroupDAO {
 
-	public void insertMessageGroupDAO(MessageGroup messageGroup);
+	public void insertMessageGroup(MessageGroup messageGroup);
 }

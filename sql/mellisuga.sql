@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS public_message (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 公共消息ID（唯一标识） */
 	text_id int(11) NOT NULL,					/* 消息内容ID */
 	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
-	message_type varchar(64) NOT NULL,				/* 消息类型  */
+	message_type varchar(64) NOT NULL,			/* 消息类型  */
 	message_group_id int(11) NOT NULL,			/* 关注问题的用户组  0:默认所有人*/
 	PRIMARY KEY (id)
 );
@@ -353,7 +353,7 @@ CREATE TABLE IF NOT EXISTS message_log (
 	text_id int(11) NOT NULL,					/* 消息内容ID */
 	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
 	read_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 阅读时间 */
-	message_type varchar(64) NOT NULL,				/* 消息类型  */
+	message_type varchar(64) NOT NULL,			/* 消息类型  */
 	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
 	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 */
 	is_read smallint NOT NULL,					/* 是否已读 */
