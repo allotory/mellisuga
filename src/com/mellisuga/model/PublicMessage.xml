@@ -20,6 +20,19 @@
     		#{message_group_id}
     	)
     </insert>
+    
+    <!-- 返回多列 -->
+    <resultMap id="PublicMessageList" type="PublicMessage">
+    	<id column="id" property="id"/>
+    	<result column="text_id" property="text_id"/>
+    	<result column="send_time" property="send_time"/>
+    	<result column="message_type" property="message_type"/>
+    	<result column="message_group_id" property="message_group_id"/>
+    </resultMap>
+    <select id="queryPublicMessageByTypeTime"  resultMap="PublicMessageList">
+        select * from public_message where message_type='NewAnswerMsg' 
+        	and UNIX_TIMESTAMP()-UNIX_TIMESTAMP(send_time) &lt;= 15552000
+    </select>
 </mapper>
 
 

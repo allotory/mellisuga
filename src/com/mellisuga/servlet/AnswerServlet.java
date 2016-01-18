@@ -143,11 +143,9 @@ public class AnswerServlet extends HttpServlet {
 			// 3. 插入公共消息
 			PublicMessageDAO publicMessageDAO = session.getMapper(PublicMessageDAO.class);
 			PublicMessage publicMessage = new PublicMessage();
-			System.out.println(messageText.getId());
 			publicMessage.setText_id(messageText.getId());
 			publicMessage.setSend_time(now);
 			publicMessage.setMessage_type("NewAnswerMsg");
-			System.out.println(messageGroup.getId());
 			publicMessage.setMessage_group_id(messageGroup.getId());
 			publicMessageDAO.insertPublicMessage(publicMessage);
 			session.commit();

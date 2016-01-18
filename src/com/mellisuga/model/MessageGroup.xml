@@ -18,6 +18,10 @@
     		#{answer_id}
     	)
     </insert>
+    
+    <select id="queryMessageGroupByid" parameterType="int" resultType="MessageGroup">
+    	select * from message_group where id=#{id}
+    </select>
 </mapper>
 
 

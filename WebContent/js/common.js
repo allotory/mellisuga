@@ -1390,7 +1390,14 @@ function followCollectionFolder(collection_folder_id) {
 	}
 }
 
-
+function getMessage() {
+	loadXMLDoc("QueryMessageServlet", function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			alert(xmlhttp.responseText);
+			document.getElementById("message_count").innerHTML = xmlhttp.responseText;
+		}
+	});
+}
 
 
 

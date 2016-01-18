@@ -4,7 +4,11 @@
 <%
 	Member me = (Member) request.getSession().getAttribute("member"); 
 %>
-	
+
+<script type="text/javascript">
+	window.onload = getMessage;
+</script>
+
 <ul class="nav navbar-nav">
 	<li>
 		<a href="./IndexServlet">首页</a>
@@ -20,7 +24,7 @@
 	</li>
 	<li>
 		<a href="./pages/notifications.jsp" id="msg" class="mouse-hand">
-      		消息<span class="badge">42</span>
+      		消息<span class="badge" id="message_count">42</span>
       	</a>
 	</li>
 </ul>

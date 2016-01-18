@@ -351,12 +351,12 @@ CREATE TABLE IF NOT EXISTS message_log (
 	sender_id int(11) NOT NULL,					/* 发送用户ID */
 	receiver_id int(11) NOT NULL,				/* 接收用户ID */
 	text_id int(11) NOT NULL,					/* 消息内容ID */
-	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 发送时间 */
+	send_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,	/* 发送时间  设置时间时不需要更新*/
 	read_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,	/* 阅读时间 */
 	message_type varchar(64) NOT NULL,			/* 消息类型  */
-	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 */
-	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 */
-	is_read smallint NOT NULL,					/* 是否已读 */
+	sender_isdel smallint NOT NULL,			/* 发送用户是否删除 0:否 ，1：是 */
+	receiver_isdel smallint NOT NULL,			/* 接收用户是否删除 0:否 ，1：是 */
+	is_read smallint NOT NULL,					/* 是否已读 0:否 ，1：是  */
 	message_group_id int(11) NOT NULL,			/* 关注问题的用户组 */
 	PRIMARY KEY (id)
 );
