@@ -21,7 +21,6 @@ import com.mellisuga.bean.AnswerBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.MessageGroupDAO;
-import com.mellisuga.dao.MessageTextDAO;
 import com.mellisuga.dao.PublicMessageDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TrendsDAO;
@@ -29,7 +28,6 @@ import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
 import com.mellisuga.model.MessageGroup;
-import com.mellisuga.model.MessageText;
 import com.mellisuga.model.PublicMessage;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
@@ -128,10 +126,23 @@ public class AnswerServlet extends HttpServlet {
 			
 			// 更新消息
 			// 1. 插入消息
-			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
-			MessageText  messageText = new MessageText();
-			messageText.setContent("你关注的问题有了一个新回答");
-			messageTextDAO.insertMessageText(messageText);
+			// MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+			// MessageText  messageText = new MessageText();
+			// messageText.setContent("你关注的问题有了一个新回答");
+			// messageTextDAO.insertMessageText(messageText);
+			// 直接使用默认值
+			// 1 | 你关注的问题有了一个新回答 
+			// 2 | 系统公告             
+			// 3 | 邀请你回答一个问题         
+			// 4 | 评论了你的回答             
+			// 5 | 评论了你的问题             
+			// 6 | 回答了你的问题             
+			// 7 | 提到了你                   
+			// 8 | 评论了你的评论             
+			// 9 | 关注了你                   
+			// 10 | 赞同了你的回答             
+			// 11 | 感谢了你的回答  
+			
 			// 2. 插入用户组
 			MessageGroupDAO messageGroupDAO = session.getMapper(MessageGroupDAO.class);
 			MessageGroup messageGroup = new MessageGroup();
@@ -143,7 +154,7 @@ public class AnswerServlet extends HttpServlet {
 			// 3. 插入公共消息
 			PublicMessageDAO publicMessageDAO = session.getMapper(PublicMessageDAO.class);
 			PublicMessage publicMessage = new PublicMessage();
-			publicMessage.setText_id(messageText.getId());
+			publicMessage.setText_id(1);
 			publicMessage.setSend_time(now);
 			publicMessage.setMessage_type("NewAnswerMsg");
 			publicMessage.setMessage_group_id(messageGroup.getId());

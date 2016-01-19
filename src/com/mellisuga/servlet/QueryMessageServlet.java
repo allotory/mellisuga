@@ -79,10 +79,17 @@ public class QueryMessageServlet extends HttpServlet {
 					HashMap<String, Object> followMap = new HashMap<String, Object>();
 					followMap.put("question_id", messageGroup.getQuestion_id());
 					followMap.put("follower_id", m.getId());
+					int followFlag = followDAO.isExistInFollow(followMap);
 					
-					int flag = followDAO.isExistInFollow(followMap);
-					if(flag > 0) {
-						// 当前用户关注了该问题并且该问题有了一个新的答案
+					// 判断该公共消息是否已存入消息日志中
+					HashMap<String, Object> messageLogMap = new HashMap<String, Object>();
+					messageLogMap.put("receiver_id", m.getId());
+					messageLogMap.put("message_type", publicMessage.getMessage_type());
+					messageLogMap.put("message_group_id", publicMessage.getMessage_group_id());
+					int messageLogFlag = messageLogDAO.isExistInMessageLog(messageLogMap);
+					
+					if(followFlag > 0 && messageLogFlag <= 0) {
+						// 当前用户关注了该问题并且该问题有了一个新的答案, 同时用户还没接收消息
 						
 						// 消息数目加一
 						message_count += 1;

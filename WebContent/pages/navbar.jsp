@@ -24,7 +24,7 @@
 	</li>
 	<li>
 		<a href="./pages/notifications.jsp" id="msg" class="mouse-hand">
-      		消息<span class="badge" id="message_count">42</span>
+      		消息<span class="badge" id="message_count">0</span>
       	</a>
 	</li>
 </ul>

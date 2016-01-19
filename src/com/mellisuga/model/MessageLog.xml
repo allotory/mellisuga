@@ -34,8 +34,9 @@
     </insert>
     
     <!-- 查询单一数据 -->
-	<select id="queryPublicMessageLog" parameterType="java.util.HashMap" resultType="MessageLog">
-        select * from message_log where receiver_id=#{receiver_id} and text_id=#{text_id}
+	<select id="isExistInMessageLog" parameterType="java.util.HashMap" resultType="int">
+        select count(*) from message_log where receiver_id=#{receiver_id} and message_type=#{message_type} 
+        	and message_group_id=#{message_group_id}
     </select>
 </mapper>
 
