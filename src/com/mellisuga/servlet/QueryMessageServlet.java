@@ -108,9 +108,13 @@ public class QueryMessageServlet extends HttpServlet {
 						
 						messageLogDAO.insertMessageLog(messageLog);
 						session.commit();
-					}else {
+					} else if (followFlag > 0 && messageLogFlag > 0) {
+						// 当前用户了关注该问题并且该问题有了一个新的答案, 同时用户还没阅读消息
+						message_count += messageLogFlag;
+						//System.out.println("当前用户还没阅读消息");
+					} else if (followFlag <= 0) {
 						// 当前用户没有关注该问题
-						System.out.println("当前用户没有关注该问题");
+						//System.out.println("当前用户没有关注该问题");
 					}
 					
 				}

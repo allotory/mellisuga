@@ -23,7 +23,7 @@
 		<a href="#">发现</a>
 	</li>
 	<li>
-		<a href="./pages/notifications.jsp" id="msg" class="mouse-hand">
+		<a href="./MessageServlet" id="msg" class="mouse-hand">
       		消息<span class="badge" id="message_count">0</span>
       	</a>
 	</li>

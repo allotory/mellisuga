@@ -1350,7 +1350,7 @@ function getEditSubmit() {
 	input.setAttribute('type', 'hidden');
 	input.setAttribute('name', 'answer_content');
 	input.setAttribute('value', bacheditorq.getHTML());
-	alert(bacheditorq.getHTML());
+	//alert(bacheditorq.getHTML());
 	
 	//askdiv.appendChild(input);
 	
@@ -1390,10 +1390,11 @@ function followCollectionFolder(collection_folder_id) {
 	}
 }
 
+// 查询消息
 function getMessage() {
 	loadXMLDoc("QueryMessageServlet", function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			alert(xmlhttp.responseText);
+			//alert(xmlhttp.responseText);
 			document.getElementById("message_count").innerHTML = xmlhttp.responseText;
 		}
 	});
