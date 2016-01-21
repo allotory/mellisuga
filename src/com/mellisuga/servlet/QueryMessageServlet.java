@@ -86,6 +86,7 @@ public class QueryMessageServlet extends HttpServlet {
 					messageLogMap.put("receiver_id", m.getId());
 					messageLogMap.put("message_type", publicMessage.getMessage_type());
 					messageLogMap.put("message_group_id", publicMessage.getMessage_group_id());
+					//messageLogMap.put("is_read", 0);
 					int messageLogFlag = messageLogDAO.isExistInMessageLog(messageLogMap);
 					
 					if(followFlag > 0 && messageLogFlag <= 0) {
@@ -110,7 +111,10 @@ public class QueryMessageServlet extends HttpServlet {
 						session.commit();
 					} else if (followFlag > 0 && messageLogFlag > 0) {
 						// 当前用户了关注该问题并且该问题有了一个新的答案, 同时用户还没阅读消息
-						message_count += messageLogFlag;
+						// 查询未读消息的数量
+						int unreadCount = messageLogDAO.queryUnreadMessageByReceiverId(m.getId());
+						
+						message_count += unreadCount;
 						//System.out.println("当前用户还没阅读消息");
 					} else if (followFlag <= 0) {
 						// 当前用户没有关注该问题

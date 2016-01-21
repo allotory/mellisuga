@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.mellisuga.model.*" %>
 <%@ page import="com.mellisuga.bean.*" %>
+<%@ page import="java.util.Map" %>
 <%@include file="sitename.jsp"%>
 <%
 String path = request.getContextPath();   
@@ -22,8 +23,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 
 <%
 	Member m = (Member) request.getSession().getAttribute("member"); 
+	//@SuppressWarnings("unchecked")
+	//List<MessageBean> messageBeanList = (List<MessageBean>) request.getAttribute("messageBeanList");
 	@SuppressWarnings("unchecked")
-	List<MessageBean> messageBeanList = (List<MessageBean>) request.getAttribute("messageBeanList");
+	Map<String, List<MessageBean>> messageBeanMap = (Map<String, List<MessageBean>>) request.getAttribute("messageBeanMap");
 %>
 </head>
 <body>
@@ -79,56 +82,33 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<hr style="margin-top:12px;margin-bottom:12px;"/>
 					</div>
 					<%
-						for(MessageBean messageBean : messageBeanList) {
+						for(Map.Entry<String, List<MessageBean>> entry : messageBeanMap.entrySet()) {
 					%>
 					<div class="row msg-div">
-						<div class="msg-date"><%=messageBean.getMessageLog().getSend_time() %></div>
+						<div class="msg-date"><%=entry.getKey() %></div>
 						<div class="msg-detail">
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 msg-icon">
 								<i class="fa fa-file-text-o"></i>
 							</div>
 							<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 msg-content-list">
+								<%
+									for(MessageBean messageBean : entry.getValue()) {
+								%>
 								<div class="msg-content">
 									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
 									回答了
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 
 								</div>
-								<hr style="margin-top:5px; margin-bottom:5px;"/>
-								<div class="msg-content">
-									<a href="#">长桑</a>   
-									回答了
-									<a href="#">人这一生为什么要努力人这一生为什么要努力人这一生为什么要努力人这一生为什么要努力？</a> 
-								</div>
+								<hr style="margin-top:10px; margin-bottom:10px;"/>
+								<%
+									}
+								%>
 							</div>
 						</div>
 					</div>
 					<%
 						}
 					%>
-					<div class="row msg-div">
-						<div class="msg-date">2015-11-11</div>
-						<div class="msg-detail">
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 msg-icon">
-								<i class="fa fa-file-text-o"></i>
-							</div>
-							<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 msg-content-list">
-								<div class="msg-content">
-									<a href="#">长桑</a>   
-									回答了
-									<a href="#">人这一生为什么要努力？</a> 
-								</div>
-								<hr style="margin-top:5px; margin-bottom:5px;"/>
-								<div class="msg-content">
-									<a href="#">长桑</a>   
-									回答了
-									<a href="#">人这一生为什么要努力人这一生为什么要努力人这一生为什么要努力人这一生为什么要努力？</a> 
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					
-
 
 					<!-- loding more btn row  -->
 					<div class="row">
