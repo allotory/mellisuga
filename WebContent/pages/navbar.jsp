@@ -37,7 +37,7 @@
 			<li><a href="#"><i class="fa fa-envelope margin-icon"></i> 私信</a></li>
 			<li><a href="#"><i class="fa fa-cog margin-icon"></i> 设置</a></li>
 			<li class="divider"></li>
-			<li><a href="#"><i class="fa fa-power-off margin-icon"></i> 退出</a></li>
+			<li><a href="./LogoutServlet"><i class="fa fa-power-off margin-icon"></i> 退出</a></li>
 		</ul>
 	</li>
 </ul>    
