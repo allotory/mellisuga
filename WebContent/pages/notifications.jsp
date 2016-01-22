@@ -93,14 +93,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 							<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 msg-content-list">
 								<%
 									for(MessageBean messageBean : entry.getValue()) {
+										if(messageBean.getMessageLog().getMessage_type().equals("NewAnswerMsg")) {
 								%>
 								<div class="msg-content">
 									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
-									回答了
+									回答了问题
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 
 								</div>
 								<hr style="margin-top:10px; margin-bottom:10px;"/>
 								<%
+										} else if(messageBean.getMessageLog().getMessage_type().equals("SystemNotice")) {
+								%>
+								<div class="msg-content">
+									<a href="#">系统管理员</a>   
+									发布了公告
+									<a href="#"><%=messageBean.getMessageText().getContent() %></a> 
+								</div>
+								<hr style="margin-top:10px; margin-bottom:10px;"/>
+								<%
+										}
 									}
 								%>
 							</div>

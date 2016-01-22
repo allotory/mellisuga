@@ -8,5 +8,5 @@ public interface PublicMessageDAO {
 
 	public void insertPublicMessage(PublicMessage publicMessage);
 	
-	public List<PublicMessage> queryPublicMessageByTypeTime();
+	public List<PublicMessage> queryPublicMessageByTypeTime(String message_type);
 }

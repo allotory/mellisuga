@@ -68,7 +68,7 @@ public class QueryMessageServlet extends HttpServlet {
 			MessageLogDAO messageLogDAO = session.getMapper(MessageLogDAO.class);
 			
 			// 查询所有小于3个月的公共消息（关注的问题有了新答案）
-			List<PublicMessage> publicMessageList = publicMessageDAO.queryPublicMessageByTypeTime();
+			List<PublicMessage> publicMessageList = publicMessageDAO.queryPublicMessageByTypeTime("NewAnswerMsg");
 			if(publicMessageList != null & !publicMessageList.isEmpty()) {
 				for(PublicMessage publicMessage : publicMessageList) {
 					
@@ -110,15 +110,69 @@ public class QueryMessageServlet extends HttpServlet {
 						messageLogDAO.insertMessageLog(messageLog);
 						session.commit();
 					} else if (followFlag > 0 && messageLogFlag > 0) {
-						// 当前用户了关注该问题并且该问题有了一个新的答案, 同时用户还没阅读消息
-						// 查询未读消息的数量
-						int unreadCount = messageLogDAO.queryUnreadMessageByReceiverId(m.getId());
+						// 当前用户了关注该问题并且该问题有了一个新的答案, 同时不确定用户是否阅读消息
+						HashMap<String, Object> parameterMap = new HashMap<String, Object>();
+						parameterMap.put("receiver_id", m.getId());
+						parameterMap.put("message_type", publicMessage.getMessage_type());
+						parameterMap.put("message_group_id", publicMessage.getMessage_group_id());
 						
-						message_count += unreadCount;
-						//System.out.println("当前用户还没阅读消息");
+						// 判断该消息是否已读
+						MessageLog ml = messageLogDAO.queryMessageLogByIdTypeGroup(parameterMap);
+						if(ml.getIs_read() == 0) {
+							message_count += 1;
+						}
 					} else if (followFlag <= 0) {
 						// 当前用户没有关注该问题
-						//System.out.println("当前用户没有关注该问题");
+					}
+					
+				}
+			}
+			
+			// 查询所有小于3个月的系统公共消息
+			List<PublicMessage> publicSysMessageList = publicMessageDAO.queryPublicMessageByTypeTime("SystemNotice");
+			if(publicMessageList != null & !publicSysMessageList.isEmpty()) {
+				for(PublicMessage publicMessage : publicSysMessageList) {
+					
+					// 判断该系统公共消息是否已存入消息日志中
+					HashMap<String, Object> messageLogMap = new HashMap<String, Object>();
+					messageLogMap.put("receiver_id", m.getId());
+					messageLogMap.put("text_id", publicMessage.getText_id() );
+					messageLogMap.put("message_type", publicMessage.getMessage_type());
+					int messageLogFlag = messageLogDAO.isSysExistInMessageLog(messageLogMap);
+					
+					if( messageLogFlag <= 0) {
+						// 用户还没接收消息
+						
+						// 消息数目加一
+						message_count += 1;
+						
+						// 为该用户新添加一条消息记录
+						MessageLog messageLog = new MessageLog();
+						messageLog.setSender_id(0);
+						messageLog.setReceiver_id(m.getId());
+						messageLog.setText_id(publicMessage.getText_id());
+						messageLog.setSend_time(publicMessage.getSend_time());
+						messageLog.setMessage_type(publicMessage.getMessage_type());
+						messageLog.setSender_isdel(0);
+						messageLog.setReceiver_isdel(0);
+						messageLog.setIs_read(0);
+						messageLog.setMessage_group_id(0);
+						
+						messageLogDAO.insertMessageLog(messageLog);
+						session.commit();
+					} else if (messageLogFlag > 0) {
+						// 有新的系统消息，
+						HashMap<String, Object> parameterMap = new HashMap<String, Object>();
+						parameterMap.put("receiver_id", m.getId());
+						parameterMap.put("text_id", publicMessage.getText_id() );
+						parameterMap.put("message_type", publicMessage.getMessage_type());
+						
+						// 判断该消息是否已读
+						MessageLog ml = messageLogDAO.queryMessageLogByIdTextType(parameterMap);
+						if(ml.getIs_read() == 0) {
+							message_count += 1;
+						}
+						//System.out.println("当前用户还没阅读消息");
 					}
 					
 				}
