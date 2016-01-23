@@ -2,10 +2,12 @@ package com.mellisuga.db;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mellisuga.dao.MessageTextDAO;
 import com.mellisuga.dao.PermissionDAO;
 import com.mellisuga.dao.ReportTypeDAO;
 import com.mellisuga.dao.RoleDAO;
 import com.mellisuga.dao.RolePermissionDAO;
+import com.mellisuga.model.MessageText;
 import com.mellisuga.model.Permission;
 import com.mellisuga.model.ReportType;
 import com.mellisuga.model.Role;
@@ -225,6 +227,54 @@ public class InitDB {
 			reportTypeDAO.insertReportType(reportType4);
 			reportTypeDAO.insertReportType(reportType5);
 			reportTypeDAO.insertReportType(reportType6);
+			
+			// 初始化默认消息文本
+			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+
+			MessageText mt = new MessageText();
+			mt.setContent("你关注的问题有了一个新答案");
+			
+			MessageText mt1 = new MessageText();
+			mt.setContent("系统公告");
+			
+			MessageText mt2 = new MessageText();
+			mt.setContent("邀请你回答一个问题");
+			
+			MessageText mt3 = new MessageText();
+			mt.setContent("评论了你的回答");
+			
+			MessageText mt4 = new MessageText();
+			mt.setContent("评论了你的问题");
+			
+			MessageText mt5 = new MessageText();
+			mt.setContent("回答了你的问题");
+			
+			MessageText mt6 = new MessageText();
+			mt.setContent("提到了你");
+			
+			MessageText mt7 = new MessageText();
+			mt.setContent("回复了你的评论");
+			
+			MessageText mt8 = new MessageText();
+			mt.setContent("关注了你");
+			
+			MessageText mt9 = new MessageText();
+			mt.setContent("赞同了你的回答");
+			
+			MessageText mt10 = new MessageText();
+			mt.setContent("感谢了你的回答");
+			
+			messageTextDAO.insertMessageText(mt);
+			messageTextDAO.insertMessageText(mt1);
+			messageTextDAO.insertMessageText(mt2);
+			messageTextDAO.insertMessageText(mt3);
+			messageTextDAO.insertMessageText(mt4);
+			messageTextDAO.insertMessageText(mt5);
+			messageTextDAO.insertMessageText(mt6);
+			messageTextDAO.insertMessageText(mt7);
+			messageTextDAO.insertMessageText(mt8);
+			messageTextDAO.insertMessageText(mt9);
+			messageTextDAO.insertMessageText(mt10);
 			
 			session.commit();
 			

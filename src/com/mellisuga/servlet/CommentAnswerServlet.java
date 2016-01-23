@@ -86,6 +86,9 @@ public class CommentAnswerServlet extends HttpServlet {
 			
 			answersDAO.updateAnswer(as);
 			
+			// 插入消息
+			
+			
 			// 提交
 			session.commit();
 		} catch(Exception e) {

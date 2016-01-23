@@ -177,6 +177,13 @@ public class QueryMessageServlet extends HttpServlet {
 					
 				}
 			}
+			
+			// 查询所有对答案评论的消息
+			
+			
+			
+			
+			
 
 			out.println(message_count);
 		} catch(Exception e) {
