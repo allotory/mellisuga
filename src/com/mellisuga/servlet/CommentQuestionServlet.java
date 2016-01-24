@@ -19,10 +19,16 @@ import org.json.JSONObject;
 
 import com.mellisuga.bean.CommentBean;
 import com.mellisuga.dao.CommentDAO;
+import com.mellisuga.dao.MessageGroupDAO;
+import com.mellisuga.dao.MessageLogDAO;
+import com.mellisuga.dao.MessageTextDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Comment;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.MessageGroup;
+import com.mellisuga.model.MessageLog;
+import com.mellisuga.model.MessageText;
 import com.mellisuga.model.Question;
 
 @WebServlet("/CommentQuestionServlet")
@@ -81,6 +87,34 @@ public class CommentQuestionServlet extends HttpServlet {
 			q.setReply_num(q.getReply_num() + 1);
 			
 			questionDAO.updateQuestion(q);
+			
+			// 插入消息 -- 评论了问题
+			// 消息组
+			MessageGroupDAO messageGroupDAO = session.getMapper(MessageGroupDAO.class);
+			MessageGroup messageGroup = new MessageGroup();
+			messageGroup.setMember_id(m.getId());
+			messageGroup.setQuestion_id(q.getId());
+			
+			messageGroupDAO.insertMessageGroup(messageGroup);
+			session.commit();
+			// 查询消息内容
+			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+			MessageText messageText = messageTextDAO.queryMessageTextByContent("评论了你的问题");
+			// 插入消息日志
+			MessageLogDAO messageLogDAO = session.getMapper(MessageLogDAO.class);
+			MessageLog messageLog = new MessageLog();
+			messageLog.setSender_id(0);
+			messageLog.setReceiver_id(q.getMember_id());
+			messageLog.setText_id(messageText.getId());
+			messageLog.setSend_time(now);
+			messageLog.setRead_time(now);
+			messageLog.setMessage_type("CommentQuestionMsg");
+			messageLog.setSender_isdel(0);
+			messageLog.setReceiver_isdel(0);
+			messageLog.setIs_read(0);
+			messageLog.setMessage_group_id(messageGroup.getId());
+
+			messageLogDAO.insertMessageLog(messageLog);
 			
 			// 提交
 			session.commit();
