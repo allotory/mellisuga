@@ -111,6 +111,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 								</div>
 								<hr style="margin-top:10px; margin-bottom:10px;"/>
 								<%
+										} else if(messageBean.getMessageLog().getMessage_type().equals("CommentAnswerMsg")) {
+								%>
+								<div class="msg-content">
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									评论了你在
+									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 下的回答
+								</div>
+								<hr style="margin-top:10px; margin-bottom:10px;"/>
+								<%
 										}
 									}
 								%>

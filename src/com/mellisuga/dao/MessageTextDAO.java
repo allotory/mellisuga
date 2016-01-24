@@ -9,4 +9,7 @@ public interface MessageTextDAO {
 	
 	// 由id查询消息
 	public MessageText queryMessageTextById(int id);
+	
+	// 由内容查询消息
+	public MessageText queryMessageTextByContent(String content);
 }

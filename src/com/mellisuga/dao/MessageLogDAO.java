@@ -30,4 +30,7 @@ public interface MessageLogDAO {
 
 	// 由接收者、消息以及消息类型查询消息
 	public MessageLog queryMessageLogByIdTextType(HashMap<String, Object> parameterMap);
+
+	// 查询所有未读消息（不包括 NewAnswerMsg 和 SystemNotice）
+	public int queryBasicUnreadByReceiverId(int receiver_id);
 }

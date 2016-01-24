@@ -178,13 +178,10 @@ public class QueryMessageServlet extends HttpServlet {
 				}
 			}
 			
-			// 查询所有对答案评论的消息
+			// 查询所有未读的消息（不包括 NewAnswerMsg 和 SystemNotice）
+			int basic_message_count = messageLogDAO.queryBasicUnreadByReceiverId(m.getId());
+			message_count += basic_message_count;
 			
-			
-			
-			
-			
-
 			out.println(message_count);
 		} catch(Exception e) {
 			e.printStackTrace();
