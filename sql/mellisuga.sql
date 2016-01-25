@@ -310,15 +310,15 @@ CREATE TABLE IF NOT EXISTS block (
  * 	1. 提醒
  * 		别人邀请你回答一个问题^	-- InviteMsg
  * 		*别人评论了你的回答^		-- CommentAnswerMsg
- * 		别人评论了你的问题^		-- CommentQuestionMsg
- * 		别人回答了你的问题^		-- AnswerQuestionMsg
+ * 		*别人评论了你的问题^		-- CommentQuestionMsg
+ * 		*别人回答了你的问题^		-- AnswerQuestionMsg
  * 		@用户 提到了你^			-- AtUserMsg
  * 		二级回复 回复了你的评论^	-- ReplyCommentMsg
  * 	2. 系统通知
  * 		别人关注了你^				-- FollowingYouMsg
  * 		*你关注的问题有了一个新回答 #-- NewAnswerMsg
  * 		*系统公告#				-- SystemNotice
- * 		别人赞同了你的回答^		-- AgreeAnswerMsg
+ * 		*别人赞同了你的回答^		-- AgreeAnswerMsg
  * 		别人感谢了你的回答^		-- ThankYouAnswerMsg
  */
 

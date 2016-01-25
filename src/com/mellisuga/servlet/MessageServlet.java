@@ -160,8 +160,9 @@ public class MessageServlet extends HttpServlet {
 							List<MessageBean> messageBeanList = messageBeanMap.get(dateFormate);
 							messageBeanList.add(messageBean);
 						}
-					} else if(messageLog.getMessage_type().equals("CommentAnswerMsg")) {
-						// 基础消息（别人评论了你的回答、）
+					} else if(messageLog.getMessage_type().equals("CommentAnswerMsg") 
+								|| messageLog.getMessage_type().equals("AgreeAnswerMsg")) {
+						// 基础消息（别人评论了你的回答、别人赞同了你的回答）
 						if(!messageBeanMap.containsKey(dateFormate)) {
 							// map中不包含该日期
 							// 查询消息

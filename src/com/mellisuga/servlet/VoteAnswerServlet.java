@@ -17,12 +17,18 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
+import com.mellisuga.dao.MessageGroupDAO;
+import com.mellisuga.dao.MessageLogDAO;
+import com.mellisuga.dao.MessageTextDAO;
 import com.mellisuga.dao.QuestionDAO;
 import com.mellisuga.dao.TrendsDAO;
 import com.mellisuga.dao.VoteDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.model.Answers;
 import com.mellisuga.model.Member;
+import com.mellisuga.model.MessageGroup;
+import com.mellisuga.model.MessageLog;
+import com.mellisuga.model.MessageText;
 import com.mellisuga.model.Question;
 import com.mellisuga.model.Trends;
 import com.mellisuga.model.Vote;
@@ -84,6 +90,35 @@ public class VoteAnswerServlet extends HttpServlet {
 					Member member = memberDAO.queryMemberByID(answer.getAuthor_id());
 					member.setApprove_num(member.getApprove_num() + 1);
 					memberDAO.updateMember(member);
+					
+					// 赞同了回答消息
+					// 消息组
+					MessageGroupDAO messageGroupDAO = session.getMapper(MessageGroupDAO.class);
+					MessageGroup messageGroup = new MessageGroup();
+					messageGroup.setMember_id(m.getId());
+					messageGroup.setQuestion_id(question.getId());
+					messageGroup.setAnswer_id(answer.getId());
+					
+					messageGroupDAO.insertMessageGroup(messageGroup);
+					session.commit();
+					// 查询消息内容
+					MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
+					MessageText messageText = messageTextDAO.queryMessageTextByContent("赞同了你的回答");
+					// 插入消息日志
+					MessageLogDAO messageLogDAO = session.getMapper(MessageLogDAO.class);
+					MessageLog messageLog = new MessageLog();
+					messageLog.setSender_id(0);
+					messageLog.setReceiver_id(answer.getAuthor_id());
+					messageLog.setText_id(messageText.getId());
+					messageLog.setSend_time(now);
+					messageLog.setRead_time(now);
+					messageLog.setMessage_type("AgreeAnswerMsg");
+					messageLog.setSender_isdel(0);
+					messageLog.setReceiver_isdel(0);
+					messageLog.setIs_read(0);
+					messageLog.setMessage_group_id(messageGroup.getId());
+
+					messageLogDAO.insertMessageLog(messageLog);
 					
 					// 更新动态表
 					Trends trends = new Trends();
