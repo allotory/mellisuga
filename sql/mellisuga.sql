@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS block (
  * 		*你关注的问题有了一个新回答 #-- NewAnswerMsg
  * 		*系统公告#				-- SystemNotice
  * 		*别人赞同了你的回答^		-- AgreeAnswerMsg
- * 		别人感谢了你的回答^		-- ThankYouAnswerMsg
+ * 		*别人感谢了你的回答^		-- ThankYouAnswerMsg
  */
 
 /*
@@ -328,6 +328,7 @@ CREATE TABLE IF NOT EXISTS block (
 CREATE TABLE IF NOT EXISTS message_text (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 消息内容ID（唯一标识） */
 	content text NOT NULL,						/* 消息内容 */
+	message_name varchar(64) NOT NULL,			/* 消息英文名称  */
 	PRIMARY KEY (id)
 );
 
