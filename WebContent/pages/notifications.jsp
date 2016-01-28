@@ -96,7 +96,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										if(messageBean.getMessageLog().getMessage_type().equals("NewAnswerMsg")) {
 								%>
 								<div class="msg-content">
-									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
 									回答了问题
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 
 								</div>
@@ -114,7 +114,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										} else if(messageBean.getMessageLog().getMessage_type().equals("CommentAnswerMsg")) {
 								%>
 								<div class="msg-content">
-									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
 									评论了你在
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 下的回答
 								</div>
@@ -123,7 +123,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										}else if(messageBean.getMessageLog().getMessage_type().equals("CommentQuestionMsg")) {
 								%>
 								<div class="msg-content">
-									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
 									评论了你的问题
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a>
 								</div>
@@ -132,7 +132,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										}else if(messageBean.getMessageLog().getMessage_type().equals("AgreeAnswerMsg")) {
 								%>
 								<div class="msg-content">
-									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
 									赞同了你在问题
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 下的回答
 								</div>
@@ -141,9 +141,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										}else if(messageBean.getMessageLog().getMessage_type().equals("ThankYouAnswerMsg")) {
 								%>
 								<div class="msg-content">
-									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>"><%=messageBean.getMember().getFullname() %></a>   
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
 									感谢了你在问题
 									<a href="./QuestionDetails?id=<%=messageBean.getQuestion().getId() %>"><%=messageBean.getQuestion().getQuestion_title() %></a> 下的回答
+								</div>
+								<hr style="margin-top:10px; margin-bottom:10px;"/>
+								<%
+										}else if(messageBean.getMessageLog().getMessage_type().equals("FollowingYouMsg")) {
+								%>
+								<div class="msg-content">
+									<a href="./HomeServlet?id=<%=messageBean.getMember().getId() %>&pageNum=1"><%=messageBean.getMember().getFullname() %></a>   
+									关注了你
 								</div>
 								<hr style="margin-top:10px; margin-bottom:10px;"/>
 								<%

@@ -84,14 +84,21 @@ CREATE TABLE IF NOT EXISTS role_permission (
 /* 
  * 用户关注表
  *
- ** ee和er同时表示同一个用户A，
- * 如果A与当前用户互相关注则标记为（1，1），
- * 如果该用户A是当前用户粉丝且当前用户没有关注A 则标记为（0，1），反之亦然*/
+ * 	关注
+ *	粉丝
+ *	双向关注(互粉)
+ *	无关系
+	
+ *	查询关注列表
+ *	查询粉丝列表
+ *	查询双向关注列表
+ *	判断两个用户的关系
+ *	查询带关系状态的任一列表
+ * */
 CREATE TABLE IF NOT EXISTS relationship (
 	id int(11) NOT NULL AUTO_INCREMENT,			/* 关系ID（唯一标识） */
 	member_id int(11) NOT NULL,					/* 成员ID */
 	followee_id int(11) NOT NULL,				/* 当前成员关注的人  */		
-	follower_id int(11) NOT NULL,				/* 当前成员的关注者  */
 	PRIMARY KEY (id)
 );
 
@@ -312,7 +319,7 @@ CREATE TABLE IF NOT EXISTS block (
  * 		*别人评论了你的回答^		-- CommentAnswerMsg
  * 		*别人评论了你的问题^		-- CommentQuestionMsg
  * 		*别人回答了你的问题^		-- AnswerQuestionMsg
- * 		@用户 提到了你^			-- AtUserMsg
+ * 		@用户 提到了你^			-- AtYouMsg
  * 		二级回复 回复了你的评论^	-- ReplyCommentMsg
  * 	2. 系统通知
  * 		别人关注了你^				-- FollowingYouMsg

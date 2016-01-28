@@ -30,6 +30,7 @@ public class SystemNoticeTest {
 			MessageTextDAO messageTextDAO = session.getMapper(MessageTextDAO.class);
 			MessageText messageText = new MessageText();
 			messageText.setContent("为庆祝世界和平，全体放假一天！");
+			messageText.setMessage_name("worldPeaceHoliday!");
 			messageTextDAO.insertMessageText(messageText);
 			session.commit();
 			

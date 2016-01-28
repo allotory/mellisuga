@@ -12,4 +12,7 @@ public interface MessageTextDAO {
 	
 	// 由内容查询消息
 	public MessageText queryMessageTextByContent(String content);
+
+	// 由消息名称查询消息
+	public MessageText queryMessageTextByName(String name);
 }

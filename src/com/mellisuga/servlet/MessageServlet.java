@@ -254,10 +254,6 @@ public class MessageServlet extends HttpServlet {
 							Question question = new Question();
 							question.setId(messageGroup.getQuestion_id());
 							question = questionDAO.queryQuestionById(question);
-							// 查询相关答案
-							Answers answers = new Answers();
-							answers.setId(messageGroup.getAnswer_id());
-							answers = answersDAO.queryAnswerById(answers);
 							// 查询相关用户
 							Member member = memberDAO.queryMemberByID(messageGroup.getMember_id());
 							
@@ -265,7 +261,45 @@ public class MessageServlet extends HttpServlet {
 							messageBean.setMessageLog(messageLog);
 							messageBean.setMessageText(messageText);
 							messageBean.setQuestion(question);
-							messageBean.setAnswers(answers);
+							messageBean.setMember(member);
+							
+							List<MessageBean> messageBeanList = messageBeanMap.get(dateFormate);
+							messageBeanList.add(messageBean);
+						}
+					} else if(messageLog.getMessage_type().equals("FollowingYouMsg")) {
+						// 基础消息（关注了你、）
+						if(!messageBeanMap.containsKey(dateFormate)) {
+							// map中不包含该日期
+							// 查询消息
+							MessageText messageText = messageTextDAO.queryMessageTextById(messageLog.getText_id());
+							// 查询相关组
+							MessageGroup messageGroup = messageGroupDAO.queryMessageGroupByid(messageLog.getMessage_group_id());
+							// 查询相关用户
+							System.out.println(messageGroup.getMember_id());
+							Member member = memberDAO.queryMemberByID(messageGroup.getMember_id());
+							System.out.println(member.getFullname());
+							
+							MessageBean messageBean = new MessageBean();
+							messageBean.setMessageLog(messageLog);
+							messageBean.setMessageText(messageText);
+							messageBean.setMember(member);
+							
+							List<MessageBean> messageBeanList = new ArrayList<MessageBean>();
+							messageBeanList.add(messageBean);
+							
+							messageBeanMap.put(dateFormate, messageBeanList);
+						}else {
+							// map中包含该日期
+							// 查询消息
+							MessageText messageText = messageTextDAO.queryMessageTextById(messageLog.getText_id());
+							// 查询相关组
+							MessageGroup messageGroup = messageGroupDAO.queryMessageGroupByid(messageLog.getMessage_group_id());
+							// 查询相关用户
+							Member member = memberDAO.queryMemberByID(messageGroup.getMember_id());
+							
+							MessageBean messageBean = new MessageBean();
+							messageBean.setMessageLog(messageLog);
+							messageBean.setMessageText(messageText);
 							messageBean.setMember(member);
 							
 							List<MessageBean> messageBeanList = messageBeanMap.get(dateFormate);

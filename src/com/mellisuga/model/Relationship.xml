@@ -7,8 +7,8 @@
     <!-- useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；
     	 keyProperty="id"指定把获取到的主键值注入到Relationship的id属性--> 
     <insert id="insertRelationship" parameterType="Relationship" useGeneratedKeys="true" keyProperty="id">
-    	insert into relationship(member_id, followee_id, follower_id) 
-    	values(#{member_id}, #{followee_id}, #{follower_id})
+    	insert into relationship(member_id, followee_id) 
+    	values(#{member_id}, #{followee_id})
     </insert>
 </mapper>
 

@@ -233,36 +233,48 @@ public class InitDB {
 
 			MessageText mt = new MessageText();
 			mt.setContent("你关注的问题有了一个新答案");
+			mt.setMessage_name("NewAnswerMsg");
+			
 			
 			MessageText mt1 = new MessageText();
-			mt.setContent("系统公告");
+			mt1.setContent("系统公告");
+			mt1.setMessage_name("SystemNotice");
 			
 			MessageText mt2 = new MessageText();
-			mt.setContent("邀请你回答一个问题");
+			mt2.setContent("邀请你回答一个问题");
+			mt2.setMessage_name("InviteMsg");
 			
 			MessageText mt3 = new MessageText();
-			mt.setContent("评论了你的回答");
+			mt3.setContent("评论了你的回答");
+			mt3.setMessage_name("CommentAnswerMsg");
 			
 			MessageText mt4 = new MessageText();
-			mt.setContent("评论了你的问题");
+			mt4.setContent("评论了你的问题");
+			mt4.setMessage_name("CommentQuestionMsg");
 			
 			MessageText mt5 = new MessageText();
-			mt.setContent("回答了你的问题");
+			mt5.setContent("回答了你的问题");
+			mt5.setMessage_name("AnswerQuestionMsg");
 			
 			MessageText mt6 = new MessageText();
-			mt.setContent("提到了你");
+			mt6.setContent("提到了你");
+			mt6.setMessage_name("AtYouMsg");
 			
 			MessageText mt7 = new MessageText();
-			mt.setContent("回复了你的评论");
+			mt7.setContent("回复了你的评论");
+			mt7.setMessage_name("ReplyCommentMsg");
 			
 			MessageText mt8 = new MessageText();
-			mt.setContent("关注了你");
+			mt8.setContent("关注了你");
+			mt8.setMessage_name("FollowingYouMsg");
 			
 			MessageText mt9 = new MessageText();
-			mt.setContent("赞同了你的回答");
+			mt9.setContent("赞同了你的回答");
+			mt9.setMessage_name("AgreeAnswerMsg");
 			
 			MessageText mt10 = new MessageText();
-			mt.setContent("感谢了你的回答");
+			mt10.setContent("感谢了你的回答");
+			mt10.setMessage_name("ThankYouAnswerMsg");
 			
 			messageTextDAO.insertMessageText(mt);
 			messageTextDAO.insertMessageText(mt1);

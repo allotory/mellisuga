@@ -133,7 +133,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 										<i class="fa fa-heart-o"></i> 
 										<strong><%=homeBean.getMember().getThank_num() %></strong>感谢
 									</span>
+									<%
+										if(homeBean.getMember().getId() == m.getId()) {
+									%>
 									<a href="./pages/member_info.jsp" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
+									<%
+										}else {
+									%>
+									<a id="followMember-<%=homeBean.getMember().getId() %>" 
+										onclick="followMember(<%=homeBean.getMember().getId() %>)" 
+										class="btn btn-success btn-xs achieve-right">关注TA</a>
+									<%
+										}
+									%>
+									<a href="#" class="btn btn-default btn-xs achieve-right">
+										<i class="fa fa-envelope-o"></i>
+									</a>
 								</div>
 
 							</div>

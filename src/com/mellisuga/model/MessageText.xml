@@ -24,6 +24,10 @@
     <select id="queryMessageTextByContent" parameterType="String" resultType="MessageText">
 		select * from message_text where content=#{content}    
     </select>
+    
+    <select id="queryMessageTextByName" parameterType="String" resultType="MessageText">
+		select * from message_text where message_name=#{name}    
+    </select>
 </mapper>
 
 

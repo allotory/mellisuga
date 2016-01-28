@@ -281,7 +281,7 @@ boolean is_answered = false;
 
 								<div class="row">
 									<div class="author-info">
-										<a href="#" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">
+										<a href="./HomeServlet?id=<%=ab.getMember().getId() %>&pageNum=1">
 											<strong><%=ab.getMember().getFullname() %></strong>
 										</a>,
 										<span><%=ab.getMember().getAutograph() %></span>
@@ -298,7 +298,7 @@ boolean is_answered = false;
 										for(Member member : ab.getVoterBean().getVoterList()) {
 									%>
 										<%=split %>
-										<a href="./HomeServlet?id=<%=member.getId() %>"><%=member.getFullname() %></a>
+										<a href="./HomeServlet?id=<%=member.getId() %>&pageNum=1"><%=member.getFullname() %></a>
 									<%
 											split = "、";
 										}

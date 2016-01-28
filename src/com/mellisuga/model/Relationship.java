@@ -8,8 +8,6 @@ public class Relationship {
 	
 	private int followee_id;
 	
-	private int follower_id;
-
 	public int getId() {
 		return id;
 	}
@@ -34,12 +32,4 @@ public class Relationship {
 		this.followee_id = followee_id;
 	}
 
-	public int getFollower_id() {
-		return follower_id;
-	}
-
-	public void setFollower_id(int follower_id) {
-		this.follower_id = follower_id;
-	}
-	
 }
