@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS block (
  * 		@用户 提到了你^			-- AtYouMsg
  * 		二级回复 回复了你的评论^	-- ReplyCommentMsg
  * 	2. 系统通知
- * 		别人关注了你^				-- FollowingYouMsg
+ * 		*别人关注了你^			-- FollowingYouMsg
  * 		*你关注的问题有了一个新回答 #-- NewAnswerMsg
  * 		*系统公告#				-- SystemNotice
  * 		*别人赞同了你的回答^		-- AgreeAnswerMsg

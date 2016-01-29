@@ -11,4 +11,7 @@ public interface RelationshipDAO {
 	
 	// 查询是否关注
 	public int isExistInRelationship(HashMap<String, Object> parameterMap);
+	
+	// 删除关注
+	public void deleteRelationshipById(HashMap<String, Object> parameterMap);
 }

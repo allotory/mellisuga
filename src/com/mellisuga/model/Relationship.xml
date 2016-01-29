@@ -16,6 +16,10 @@
         select count(*) from relationship where member_id = #{member_id} 
         	and followee_id = #{followee_id}
     </select>
+    
+    <delete id="deleteRelationshipById" parameterType="java.util.HashMap">
+    	delete from relationship where member_id=#{member_id} and followee_id=#{followee_id}
+    </delete>
 </mapper>
 
 

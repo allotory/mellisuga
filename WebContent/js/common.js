@@ -1422,15 +1422,15 @@ function followMember(member_id) {
 		// 取消关注
 		followMember.className = "btn btn-success btn-xs achieve-right";
 		followMember.innerHTML = "关注TA";
-//		loadXMLDoc("UnFollowMemberServlet?question_id=" + question_id, function() {
-//			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//				if(xmlhttp.responseText == "followmembererror") {
-//					alert("取消关注失败，请稍候重试");
-//					followMember.className = "btn btn-default btn-xs achieve-right";
-//					followMember.innerHTML = "取消关注";
-//				}
-//			}
-//		});
+		loadXMLDoc("UnFollowMemberServlet?member_id=" + member_id, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "followmembererror") {
+					alert("取消关注失败，请稍候重试");
+					followMember.className = "btn btn-default btn-xs achieve-right";
+					followMember.innerHTML = "取消关注";
+				}
+			}
+		});
 	}
 }
 
