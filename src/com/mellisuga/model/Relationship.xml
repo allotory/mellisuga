@@ -10,6 +10,12 @@
     	insert into relationship(member_id, followee_id) 
     	values(#{member_id}, #{followee_id})
     </insert>
+    
+    <!-- 查询单一数据 -->
+	<select id="isExistInRelationship" parameterType="java.util.HashMap" resultType="int">
+        select count(*) from relationship where member_id = #{member_id} 
+        	and followee_id = #{followee_id}
+    </select>
 </mapper>
 
 

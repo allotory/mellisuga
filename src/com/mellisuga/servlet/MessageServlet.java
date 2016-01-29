@@ -275,9 +275,7 @@ public class MessageServlet extends HttpServlet {
 							// 查询相关组
 							MessageGroup messageGroup = messageGroupDAO.queryMessageGroupByid(messageLog.getMessage_group_id());
 							// 查询相关用户
-							System.out.println(messageGroup.getMember_id());
 							Member member = memberDAO.queryMemberByID(messageGroup.getMember_id());
-							System.out.println(member.getFullname());
 							
 							MessageBean messageBean = new MessageBean();
 							messageBean.setMessageLog(messageLog);

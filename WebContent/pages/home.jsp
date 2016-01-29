@@ -139,11 +139,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 									<a href="./pages/member_info.jsp" class="achieve-right info-edit"><i class="fa fa-edit"></i> 编辑我的资料</a>
 									<%
 										}else {
+											if(!homeBean.isFollowing()) {
 									%>
 									<a id="followMember-<%=homeBean.getMember().getId() %>" 
 										onclick="followMember(<%=homeBean.getMember().getId() %>)" 
 										class="btn btn-success btn-xs achieve-right">关注TA</a>
 									<%
+											} else {
+									%>
+									<a id="followMember-<%=homeBean.getMember().getId() %>" 
+										onclick="followMember(<%=homeBean.getMember().getId() %>)" 
+										class="btn btn-default btn-xs achieve-right">取消关注</a>
+									<%			
+											}
 										}
 									%>
 									<a href="#" class="btn btn-default btn-xs achieve-right">

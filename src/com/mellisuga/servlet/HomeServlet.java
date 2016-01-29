@@ -2,6 +2,7 @@ package com.mellisuga.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import com.mellisuga.bean.TrendsBean;
 import com.mellisuga.dao.AnswersDAO;
 import com.mellisuga.dao.MemberDAO;
 import com.mellisuga.dao.QuestionDAO;
+import com.mellisuga.dao.RelationshipDAO;
 import com.mellisuga.db.DBConnection;
 import com.mellisuga.function.TrendsFunc;
 import com.mellisuga.model.Answers;
@@ -75,6 +77,18 @@ public class HomeServlet extends HttpServlet {
 				answerBeanList.add(answerBean);
 			}
 			homeBean.setAnswerBeanList(answerBeanList);
+			
+			// 判断是否已关注
+			if(id != m.getId()) {
+				// 不是当前用户自己
+				RelationshipDAO relationshipDAO = session.getMapper(RelationshipDAO.class);
+				HashMap<String, Object> parameterMap = new HashMap<String, Object>();
+				parameterMap.put("member_id", m.getId());
+				parameterMap.put("followee_id", id);
+				boolean isFollowing = relationshipDAO.isExistInRelationship(parameterMap) > 0 ? true : false;
+				
+				homeBean.setFollowing(isFollowing);
+			}
 			
 			// 查询动态
 			List<TrendsBean> trendsBeanList = new TrendsFunc()

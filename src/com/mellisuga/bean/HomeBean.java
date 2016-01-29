@@ -20,6 +20,8 @@ public class HomeBean {
 	private PageInfo<Question> questionPageInfo;
 	
 	private PageInfo<Answers> answerPageInfo;
+	
+	private boolean isFollowing;
 
 	public Member getMember() {
 		return member;
@@ -67,6 +69,14 @@ public class HomeBean {
 
 	public void setAnswerPageInfo(PageInfo<Answers> answerPageInfo) {
 		this.answerPageInfo = answerPageInfo;
+	}
+
+	public boolean isFollowing() {
+		return isFollowing;
+	}
+
+	public void setFollowing(boolean isFollowing) {
+		this.isFollowing = isFollowing;
 	}
 	
 }
