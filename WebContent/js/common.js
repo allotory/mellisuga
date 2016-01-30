@@ -1434,6 +1434,29 @@ function followMember(member_id) {
 	}
 }
 
+// 判断长度，英文占1个字符，中文汉字占2个字符
+function getTextLength(text) {
+	var len = 0;  
+	for (var i=0; i < text.length; i++) {  
+		if (text.charCodeAt(i) > 127 || text.charCodeAt(i) == 94) {  
+			len += 2;  
+		} else {  
+			len ++;  
+		}  
+	}  
+	return len;  
+}
+
+// 查询私信用户
+function autoCompleteMember(member_name) {
+	
+	var text = document.getElementById(member_name).value;
+	
+	if(getTextLength(text) >= 2) {
+		alert(text);
+	}
+}
+
 
 
 

@@ -477,7 +477,20 @@ del {
 	margin-top: 5px;
 }
 
-
+.redpoint{
+	display:inline-block;
+	height:8px;
+	width:8px;
+	line-height:8px;
+	text-align:center;
+	font-size:0.1em;
+	border-radius:8px;
+	color:#fff;
+	background:red;
+	position: relative;
+	top: -8px;
+	right: 0px;
+}
 
 
 

@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						<div class="inbox-title">
 							<strong>我的私信</strong>
 							<span class="module-right">
-								<a href="#" class="btn btn-primary btn-xs">写私信</a>
+								<a href="./pages/new_message.jsp" class="btn btn-primary btn-xs">写私信</a>
 							</span>
 						</div><!-- end left main title -->
 					</div><!-- end left main title row -->
