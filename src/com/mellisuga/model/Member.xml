@@ -84,6 +84,32 @@
         select * from member where id = #{id}
     </select>
     
+    <resultMap type="Member" id="MemberList">
+    	<id column="id" property="id"/>
+    	<result column="fullname" property="fullname"/>
+    	<result column="gender" property="gender"/>
+    	<result column="avatar_path" property="avatar_path"/>
+    	<result column="location" property="location"/>
+    	<result column="business" property="business"/>
+    	<result column="employment" property="employment"/>
+    	<result column="position" property="position"/>
+    	<result column="education" property="education"/>
+    	<result column="major" property="major"/>
+    	<result column="description" property="description"/>
+    	<result column="autograph" property="autograph"/>
+    	<result column="approve_num" property="approve_num"/>
+    	<result column="thank_num" property="thank_num"/>
+    	<result column="question_num" property="question_num"/>
+    	<result column="answer_num" property="answer_num"/>
+    	<result column="collect_num" property="collect_num"/>
+    	<result column="personality_url" property="personality_url"/>
+    	<result column="is_emailactive" property="is_emailactive"/>
+    	<result column="user_id" property="user_id"/>
+    </resultMap>
+    <select id="queryMemberByLike" parameterType="String" resultMap="MemberList">
+    	select * from member where fullname Like #{text} limit 10
+    </select>
+    
 </mapper>
 
 

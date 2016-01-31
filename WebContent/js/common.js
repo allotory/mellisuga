@@ -1452,8 +1452,21 @@ function autoCompleteMember(member_name) {
 	
 	var text = document.getElementById(member_name).value;
 	
-	if(getTextLength(text) >= 2) {
-		alert(text);
+	if(getTextLength(text) >= 1) {
+		loadXMLDoc("AutoCompleteMemberServlet?text=" + text, function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if(xmlhttp.responseText == "autocompleteerror") {
+					alert("查询用户信息失败，请稍候重试!");
+				} else {
+					var obj = JSON.parse(xmlhttp.responseText);
+					for(var i = 0; i< obj.memberList.length; i++) {
+						var option = document.createElement('option');
+						option.innerHTML = obj.memberList[i].fullname;
+						document.getElementById("member_list").appendChild(option);
+					}
+				}
+			}
+		});
 	}
 }
 

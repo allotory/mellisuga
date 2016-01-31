@@ -76,20 +76,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												发给: 
 											</label>
 											<div class="col-lg-10">
-												<input type="text" list="pasta" oninput="autoCompleteMember(this.id);" class="form-control" name="member_name" id="member_name" placeholder="">
+												<input type="text" list="member_list" oninput="autoCompleteMember(this.id);" class="form-control" name="member_name" id="member_name" placeholder="">
 											</div>
-											<datalist id="pasta">
-												<option>cddd</option>
-												<option>Cannelloni</option>
-												<option>Fiorentine</option>
-												<option>Gnocchi</option>
-												<option>Pappardelle</option>
-												<option>Penne lisce</option>
-												<option>Pici</option>
-												<option>Rigatoni</option>
-												<option>Spaghetti</option>
-												<option>Tagliatelle</option>
-											</datalist>
+											<!-- 自动补全列表 -->
+											<datalist id="member_list"></datalist>
 										</div>
 										<div class="form-group">
 											<label for="description" class="col-lg-2 control-label">

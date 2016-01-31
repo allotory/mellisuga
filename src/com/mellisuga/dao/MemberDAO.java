@@ -1,5 +1,7 @@
 package com.mellisuga.dao;
 
+import java.util.List;
+
 import com.mellisuga.model.Member;
 
 public interface MemberDAO {
@@ -15,5 +17,8 @@ public interface MemberDAO {
 	
 	// 通过ID查询成员信息
 	public Member queryMemberByID(int id);
+	
+	// 有用户名模糊查询
+	public List<Member> queryMemberByLike(String text);
 }
  
