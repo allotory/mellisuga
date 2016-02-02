@@ -1459,10 +1459,21 @@ function autoCompleteMember(member_name) {
 					alert("查询用户信息失败，请稍候重试!");
 				} else {
 					var obj = JSON.parse(xmlhttp.responseText);
+					var list = document.getElementById("member_list");
+					while (list.hasChildNodes()) {
+						list.removeChild(list.lastChild);
+					}
 					for(var i = 0; i< obj.memberList.length; i++) {
 						var option = document.createElement('option');
-						option.innerHTML = obj.memberList[i].fullname;
-						document.getElementById("member_list").appendChild(option);
+						//option.innerHTML = obj.memberList[i].fullname;
+						
+						//option.value = obj.memberList[i].id;
+						option.id = obj.memberList[i].id;
+						//option.text = obj.memberList[i].fullname;
+					    option.value = obj.memberList[i].fullname;
+						
+						list.appendChild(option);
+						
 					}
 				}
 			}
@@ -1470,9 +1481,18 @@ function autoCompleteMember(member_name) {
 	}
 }
 
-
-
-
+function addHidden() {
+	var x = $('#member_name').val();
+    var z = $('#member_list');
+    var val = $(z).find('option[value="' + x + '"]');
+    var endval = val.attr('id');
+    //alert(endval);
+    
+    var hiddenInput = document.getElementById("m_id");
+    hiddenInput.value = endval;
+    
+    document.getElementById("messageForm").submit();
+}
 
 
 

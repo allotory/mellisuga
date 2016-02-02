@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 						
 						<div class="">
 							<div class="row col-lg-9 col-md-9 col-sm-9 col-xs-12">
-								<form class="form-horizontal" method="post">
+								<form action="./NewPrivateMsgServlet" method="post" id="messageForm" class="form-horizontal">
 								
 								<div class="inbox-back">
 									<a href="./pages/inbox.jsp">« 返回</a>
@@ -78,6 +78,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 											<div class="col-lg-10">
 												<input type="text" list="member_list" oninput="autoCompleteMember(this.id);" class="form-control" name="member_name" id="member_name" placeholder="">
 											</div>
+											<input type="hidden" name="m_id" id="m_id">
 											<!-- 自动补全列表 -->
 											<datalist id="member_list"></datalist>
 										</div>
@@ -86,13 +87,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 												内容:
 											</label>
 											<div class="col-lg-10">
-												<textarea class="form-control" name="description" rows="5" cols="20" placeholder=""></textarea>
+												<textarea class="form-control" name="msgContent" rows="5" cols="20" placeholder=""></textarea>
 											</div>
 										</div>
 										
 										<div class="form-group">
 											<div class="col-lg-10 col-lg-offset-2">
-												<button onclick="this.form.action='../InitInfo';this.form.submit()" class="btn btn-primary">提交</button>
+												<button onclick="addHidden();" class="btn btn-primary">提交</button>
 											</div>
 										</div>
 									</fieldset>
